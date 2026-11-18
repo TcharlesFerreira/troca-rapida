@@ -52,7 +52,7 @@ export function FormOS({ veiculos, veiculoIdInicial, hoje }: Props) {
   return (
     <form action={acao} noValidate className="grid max-w-2xl gap-4">
       <AlertaForm estado={estado} />
-      <div className="grid gap-2">
+      <div className="relative grid gap-2">
         <CampoTexto
           name="placa"
           rotulo="Placa"
@@ -68,11 +68,11 @@ export function FormOS({ veiculos, veiculoIdInicial, hoje }: Props) {
         {selecionado ? (
           <p className="text-sm font-semibold">{selecionado.rotulo}</p>
         ) : sugestoes.length > 0 ? (
-          <div>
-            <p className="mb-1 text-sm text-muted-foreground">
+          <div className="absolute left-0 right-0 top-full z-50 -mt-1 rounded-md border bg-card p-1 shadow-lg">
+            <p className="px-2 py-1 text-sm text-muted-foreground">
               {total === 1 ? "1 veículo encontrado:" : `${total} veículos encontrados${total > sugestoes.length ? ` (mostrando ${sugestoes.length}, digite mais para filtrar)` : ""}:`}
             </p>
-            <ul className="grid gap-1 rounded-md border bg-card p-1" aria-label="Veículos com esta placa">
+            <ul className="grid gap-1" aria-label="Veículos com esta placa">
               {sugestoes.map((x) => (
                 <li key={x.id}>
                   <button

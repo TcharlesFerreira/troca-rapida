@@ -1,7 +1,7 @@
 import Link from "next/link";
-import { LogOut, Search } from "lucide-react";
-import { buscarPlacaAction } from "@/acoes/busca";
+import { LogOut } from "lucide-react";
 import { sairAction } from "@/acoes/auth";
+import { BuscaPlacaTopo } from "@/components/busca-placa-topo";
 import { Marca } from "@/components/marca";
 import { NavAdmin } from "@/components/nav-admin";
 
@@ -14,25 +14,7 @@ export function CabecalhoAdmin({ nome, empresa, vinculosPendentes }: { nome: str
           <Marca />
         </Link>
 
-        <form action={buscarPlacaAction} role="search" className="order-last flex w-full gap-2 sm:order-none sm:w-auto sm:flex-1 sm:max-w-sm">
-          <label htmlFor="busca-placa" className="sr-only">
-            Buscar por placa
-          </label>
-          <input
-            id="busca-placa"
-            name="placa"
-            type="search"
-            autoComplete="off"
-            autoCapitalize="characters"
-            spellCheck={false}
-            maxLength={10}
-            placeholder="Buscar placa: ABC1D23"
-            className="min-h-11 w-full rounded-md border-2 border-white/40 bg-white px-3 font-placa text-xl font-bold uppercase tracking-widest text-foreground placeholder:font-sans placeholder:text-base placeholder:font-normal placeholder:normal-case placeholder:tracking-normal placeholder:text-muted-foreground"
-          />
-          <button type="submit" className="inline-flex min-h-11 min-w-11 items-center justify-center rounded-md bg-accent text-accent-foreground hover:bg-accent/90" aria-label="Buscar placa">
-            <Search aria-hidden className="size-5" />
-          </button>
-        </form>
+        <BuscaPlacaTopo />
 
         <div className="ml-auto flex items-center gap-3 text-sm">
           <span className="hidden sm:inline">{empresa ? `${empresa} · ${nome}` : nome}</span>

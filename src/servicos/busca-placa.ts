@@ -61,3 +61,16 @@ export async function consultarPlaca(ator: Ator, digitado: string, agora: Date =
     vencimento: avaliarVencimento(ultimaTroca?.troca, veiculo.kmAtual, agora),
   };
 }
+
+/** Sugestões para a busca por parte da placa (2+ letras/números), só da empresa de quem busca. */
+export async function sugerirPlacas(ator: Ator, digitado: string, limite = 8) {
+  const empresaId = exigirAdmin(ator);
+  const parte = normalizarPlaca(digitado);
+  if (parte.length < 2) return [];
+  return db.veiculo.findMany({
+    where: { empresaId, placa: { contains: parte } },
+    orderBy: { placa: "asc" },
+    take: limite,
+    select: { id: true, placa: true, marca: true, modelo: true, cliente: { select: { nome: true } } },
+  });
+}
