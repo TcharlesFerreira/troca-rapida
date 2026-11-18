@@ -1,0 +1,34 @@
+{
+  "marca": "Fiat",
+  "modelos": [
+    {
+      "nome": "Argo",
+      "motores": [
+        {
+          "motor": "1.0 Firefly",
+          "anos": [2026, 2026],
+          "fontes": [
+            {
+              "tipo": "TECNICA",
+              "url": "https://jkcarros.com.br/?p=38631",
+              "consultadaEm": "2026-11-16",
+              "observacao": "Guia do Argo 1.0 2026. Cita o manual: óleo sintético 0W-20 com norma Fiat 9.55535-GSX. Uso severo: óleo e filtro a cada 5.000 km ou 6 meses.",
+              "dados": {
+                "viscosidade": "0W-20",
+                "especificacao": "API SN / ILSAC GF-5 / Fiat 9.55535-GSX",
+                "capacidadeComFiltroL": 3.2
+              }
+            },
+            {
+              "tipo": "TECNICA",
+              "url": "https://omecanico.com.br/qual-o-oleo-e-filtros-corretos-do-fiat-argo-1-0-1-3-e-1-8/",
+              "consultadaEm": "2026-11-16",
+              "observacao": "Lista o óleo MaxPro 0W-20 (SP/GF-6A) para os motores Firefly. A diferença de nível (SN/GF-5 x SP/GF-6A) aparece como divergência de propósito: confira no manual.",
+              "dados": { "viscosidade": "0W-20", "especificacao": "API SP / ILSAC GF-6A" }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
