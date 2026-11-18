@@ -1,4 +1,5 @@
 import { db } from "@/lib/db";
+import { normalizarCodigo } from "@/lib/oleo";
 import { exigirAdmin, type Ator } from "@/lib/permissoes";
 
 export interface CatalogoMarca {
@@ -59,6 +60,40 @@ export async function buscarRecomendacao(carro: { marca: string; modelo: string;
     },
     select: { id: true },
   });
+}
+
+/** "1.0 Fire Evo 8V" -> "1.0". */
+const cilindrada = (motor: string) => motor.match(/\d[.,]\d/)?.[0].replace(",", ".") ?? null;
+
+/**
+ * Registros da base que PODEM ser do carro quando o motor cadastrado não bate exatamente
+ * (ex.: ficha antiga diz só "1.0" e o modelo teve dois motores 1.0 naquele ano).
+ * Mesma marca e modelo, ano dentro da faixa e, se o motor tiver cilindrada, a mesma.
+ */
+export async function opcoesDeRecomendacao(carro: { marca: string; modelo: string; motor: string; ano: number }) {
+  const recs = await db.recomendacaoOleo.findMany({
+    where: { anoInicial: { lte: carro.ano }, anoFinal: { gte: carro.ano } },
+    include: { modelo: { include: { marca: true } } },
+    orderBy: [{ motor: "asc" }],
+  });
+  const cc = cilindrada(carro.motor);
+  return recs
+    .filter(
+      (r) =>
+        normalizarCodigo(r.modelo.marca.nome) === normalizarCodigo(carro.marca) &&
+        normalizarCodigo(r.modelo.nome) === normalizarCodigo(carro.modelo) &&
+        (!cc || cilindrada(r.motor) === cc),
+    )
+    .map((r) => ({
+      id: r.id,
+      motor: r.motor,
+      anoInicial: r.anoInicial,
+      anoFinal: r.anoFinal,
+      viscosidade: r.viscosidade,
+      especificacao: r.especificacao,
+      capacidadeComFiltroL: r.capacidadeComFiltroL,
+      confianca: r.confianca,
+    }));
 }
 
 export async function listarMarcasComContagem(ator: Ator) {

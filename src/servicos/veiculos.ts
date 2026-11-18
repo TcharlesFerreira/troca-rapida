@@ -3,7 +3,7 @@ import { db } from "@/lib/db";
 import { ErroDeNegocio } from "@/lib/erros";
 import { exigirAdmin, type Ator } from "@/lib/permissoes";
 import { normalizarPlaca } from "@/lib/placa";
-import { buscarRecomendacao, incluirRecomendacaoCompleta } from "./base-oleo";
+import { buscarRecomendacao, incluirRecomendacaoCompleta, opcoesDeRecomendacao } from "./base-oleo";
 
 export interface VeiculoDados {
   clienteId: string;
@@ -83,4 +83,19 @@ export async function atualizarVeiculo(ator: Ator, id: string, dados: VeiculoDad
 
   const recomendacao = await buscarRecomendacao(dados);
   return db.veiculo.update({ where: { id }, data: { ...dados, recomendacaoOleoId: recomendacao?.id ?? null } });
+}
+
+/**
+ * A oficina confirma qual é o motor do carro entre as opções da base (ficha antiga com motor
+ * vago, como "1.0"). O motor do cadastro passa a ser o da base, e o carro ganha a recomendação.
+ */
+export async function escolherMotorDaBase(ator: Ator, veiculoId: string, recomendacaoId: string) {
+  const empresaId = exigirAdmin(ator);
+  const veiculo = await db.veiculo.findFirst({ where: { id: veiculoId, empresaId } });
+  if (!veiculo) throw new ErroDeNegocio("Veículo não encontrado.");
+
+  const opcao = (await opcoesDeRecomendacao(veiculo)).find((o) => o.id === recomendacaoId);
+  if (!opcao) throw new ErroDeNegocio("Esta opção não vale para este veículo.");
+
+  return db.veiculo.update({ where: { id: veiculo.id }, data: { motor: opcao.motor, recomendacaoOleoId: opcao.id } });
 }

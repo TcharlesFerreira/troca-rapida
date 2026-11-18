@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { Placa } from "@/components/placa";
+import { OleoSemRecomendacao } from "@/components/oleo-sem-recomendacao";
 import { RecomendacaoOleo } from "@/components/recomendacao-oleo";
 import { StatusBadge } from "@/components/selos";
 import { TituloPagina } from "@/components/titulo-pagina";
@@ -11,6 +12,7 @@ import { Table, Td, Th } from "@/components/ui/table";
 import { formatarCpf } from "@/lib/cpf";
 import { dataBR, kmBR, litrosBR, telefoneBR } from "@/lib/formatar";
 import { exigirAdminSessao } from "@/lib/sessao";
+import { opcoesDeRecomendacao } from "@/servicos/base-oleo";
 import { consultarPlaca } from "@/servicos/busca-placa";
 
 export const metadata: Metadata = { title: "Busca por placa" };
@@ -49,6 +51,7 @@ export default async function PaginaPlaca({ params }: { params: Promise<{ placa:
 
   const { veiculo, ultimaTroca, vencimento } = r;
   const rec = veiculo.recomendacaoOleo;
+  const opcoes = rec ? [] : await opcoesDeRecomendacao(veiculo);
 
   return (
     <>
@@ -138,7 +141,7 @@ export default async function PaginaPlaca({ params }: { params: Promise<{ placa:
           <h2 id="recomendado" className="sr-only">
             Óleo recomendado pela base
           </h2>
-          {rec ? <RecomendacaoOleo rec={rec} /> : <Alert variant="info">Este veículo não tem recomendação na base de óleo. Confira no manual do veículo.</Alert>}
+          {rec ? <RecomendacaoOleo rec={rec} /> : <OleoSemRecomendacao veiculo={veiculo} opcoes={opcoes} voltar={`/admin/placa/${veiculo.placa}`} />}
         </section>
 
         <section aria-labelledby="historico">

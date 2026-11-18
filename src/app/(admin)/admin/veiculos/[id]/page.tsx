@@ -3,6 +3,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { FormVeiculo } from "@/components/form-veiculo";
 import { Placa } from "@/components/placa";
+import { OleoSemRecomendacao } from "@/components/oleo-sem-recomendacao";
 import { RecomendacaoOleo } from "@/components/recomendacao-oleo";
 import { StatusBadge } from "@/components/selos";
 import { TituloPagina } from "@/components/titulo-pagina";
@@ -11,7 +12,7 @@ import { estiloBotao } from "@/components/ui/button";
 import { Table, Td, Th } from "@/components/ui/table";
 import { dataBR, kmBR, litrosBR } from "@/lib/formatar";
 import { exigirAdminSessao } from "@/lib/sessao";
-import { catalogoParaFormulario } from "@/servicos/base-oleo";
+import { catalogoParaFormulario, opcoesDeRecomendacao } from "@/servicos/base-oleo";
 import { listarClientesParaSelecao } from "@/servicos/clientes";
 import { obterVeiculo } from "@/servicos/veiculos";
 
@@ -22,6 +23,9 @@ export default async function PaginaVeiculo({ params }: { params: Promise<{ id: 
   const { id } = await params;
   const [veiculo, catalogo, clientes] = await Promise.all([obterVeiculo(ator, id), catalogoParaFormulario(ator), listarClientesParaSelecao(ator)]);
   if (!veiculo) notFound();
+  const opcoes = veiculo.recomendacaoOleo ? [] : await opcoesDeRecomendacao(veiculo);
+  // Última troca = a OS mais recente (não cancelada) com troca de óleo registrada.
+  const ultima = veiculo.ordens.find((o) => o.trocaOleo && o.status !== "CANCELADO");
 
   return (
     <>
@@ -47,6 +51,33 @@ export default async function PaginaVeiculo({ params }: { params: Promise<{ id: 
 
       <div className="grid gap-8 lg:grid-cols-2">
         <div className="grid content-start gap-8">
+          <section aria-labelledby="ultimo" className="rounded-lg border-2 border-accent bg-card p-5">
+            <h2 id="ultimo" className="mb-2 text-xl font-semibold">
+              Último óleo usado
+            </h2>
+            {ultima?.trocaOleo ? (
+              <>
+                <p className="font-display text-3xl font-semibold">
+                  {ultima.trocaOleo.oleoMarca} {ultima.trocaOleo.oleoViscosidade}
+                </p>
+                <p>
+                  {ultima.trocaOleo.oleoEspecificacao ?? "Norma não informada"} · {litrosBR(ultima.trocaOleo.quantidadeLitros)}
+                </p>
+                <p className="mt-2 text-muted-foreground">
+                  OS nº{" "}
+                  <Link href={`/admin/os/${ultima.id}`} className="text-primary underline underline-offset-4">
+                    {ultima.numero}
+                  </Link>{" "}
+                  em {dataBR(ultima.dataEntrada)}, {kmBR(ultima.kmEntrada)}
+                  {ultima.trocaOleo.proximaTrocaKm ? `. Próxima troca: ${kmBR(ultima.trocaOleo.proximaTrocaKm)}` : ""}
+                </p>
+                {ultima.trocaOleo.divergiuDaRecomendacao && <p className="mt-2 text-sm font-semibold">Diferente do recomendado na base.</p>}
+              </>
+            ) : (
+              <p className="text-muted-foreground">Nenhuma troca de óleo registrada para este veículo.</p>
+            )}
+          </section>
+
           <section aria-labelledby="oleo">
             <h2 id="oleo" className="sr-only">
               Óleo recomendado
@@ -54,7 +85,7 @@ export default async function PaginaVeiculo({ params }: { params: Promise<{ id: 
             {veiculo.recomendacaoOleo ? (
               <RecomendacaoOleo rec={veiculo.recomendacaoOleo} />
             ) : (
-              <Alert variant="info">Este veículo não tem recomendação na base de óleo. Você ainda pode registrar trocas normalmente.</Alert>
+              <OleoSemRecomendacao veiculo={veiculo} opcoes={opcoes} voltar={`/admin/veiculos/${veiculo.id}`} />
             )}
           </section>
 
