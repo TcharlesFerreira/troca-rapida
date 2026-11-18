@@ -1,6 +1,6 @@
 "use client";
 
-import { useActionState, useMemo, useState } from "react";
+import { useActionState, useMemo, useRef, useState } from "react";
 import { criarOrdemAction } from "@/acoes/ordens";
 import { AlertaForm } from "@/components/alerta-form";
 import { BotaoEnviar } from "@/components/botao-enviar";
@@ -27,6 +27,16 @@ export function FormOS({ veiculos, veiculoIdInicial, hoje }: Props) {
   const [km, setKm] = useState(v.kmEntrada ?? (inicial ? String(inicial.kmAtual) : ""));
   const [servico, setServico] = useState<string>(v.tipoServico ?? "");
   const versao = useMemo(() => Math.random(), [estado]);
+  const formRef = useRef<HTMLFormElement>(null);
+  const [perguntarCompleta, setPerguntarCompleta] = useState(false);
+  const manterIncompleta = useRef(false);
+
+  // Troca incompleta com tudo marcado (todos os filtros, bujão e arruela): pergunta se não é a completa.
+  const tudoMarcado = (form: HTMLFormElement) =>
+    [...TIPOS_FILTRO.map(campoFiltroTrocado), ...PECAS_CARTER.map(campoPecaTrocada)].every(
+      (nome) => (form.elements.namedItem(nome) as HTMLInputElement | null)?.checked,
+    );
+  const enviar = () => setTimeout(() => formRef.current?.requestSubmit(), 0);
   const [placa, setPlaca] = useState(v.placa ?? (inicial ? formatarPlaca(inicial.placa) : ""));
 
   const escolher = (id: string) => {
@@ -54,7 +64,19 @@ export function FormOS({ veiculos, veiculoIdInicial, hoje }: Props) {
   const total = !selecionado && parte.length >= 2 ? veiculos.filter((x) => x.placa.includes(parte)).length : 0;
 
   return (
-    <form action={acao} noValidate className="grid max-w-2xl gap-4">
+    <form
+      ref={formRef}
+      action={acao}
+      noValidate
+      className="grid max-w-2xl gap-4"
+      onSubmit={(ev) => {
+        if (servico === "TROCA_OLEO_INCOMPLETA" && !manterIncompleta.current && tudoMarcado(ev.currentTarget)) {
+          ev.preventDefault();
+          setPerguntarCompleta(true);
+        }
+        manterIncompleta.current = false;
+      }}
+    >
       <AlertaForm estado={estado} />
       <div className="relative grid gap-2">
         <CampoTexto
@@ -183,6 +205,39 @@ export function FormOS({ veiculos, veiculoIdInicial, hoje }: Props) {
       </fieldset>
 
       <CampoAreaTexto name="observacoes" rotulo="Observações" opcional rows={3} defaultValue={v.observacoes} erros={e.observacoes} dica="Anotações internas da oficina: o cliente não vê." />
+
+      {perguntarCompleta && (
+        <div role="alertdialog" aria-labelledby="pergunta-completa" className="grid gap-3 rounded-lg border-2 border-primary bg-card p-4">
+          <p id="pergunta-completa" className="font-semibold">
+            Você marcou todos os filtros, o bujão e a arruela. Esta troca é completa?
+          </p>
+          <div className="flex flex-wrap gap-2">
+            <button
+              type="button"
+              autoFocus
+              className="inline-flex min-h-11 items-center rounded-md bg-primary px-4 font-semibold text-primary-foreground hover:bg-primary/90"
+              onClick={() => {
+                setPerguntarCompleta(false);
+                setServico("TROCA_OLEO_COMPLETA");
+                enviar();
+              }}
+            >
+              Sim, é completa
+            </button>
+            <button
+              type="button"
+              className="inline-flex min-h-11 items-center rounded-md border px-4 font-semibold hover:bg-muted"
+              onClick={() => {
+                setPerguntarCompleta(false);
+                manterIncompleta.current = true;
+                enviar();
+              }}
+            >
+              Não, manter incompleta
+            </button>
+          </div>
+        </div>
+      )}
 
       <div>
         <BotaoEnviar>Abrir ordem de serviço</BotaoEnviar>
