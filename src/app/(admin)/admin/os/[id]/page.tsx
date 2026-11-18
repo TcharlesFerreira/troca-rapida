@@ -93,14 +93,18 @@ export default async function PaginaOrdem({ params, searchParams }: { params: Pr
               Status
             </h2>
             {seguintes.length > 0 ? (
-              <form action={mudarStatusAction} className="mb-5 flex flex-wrap gap-2">
-                <input type="hidden" name="id" value={ordem.id} />
+              <div className="mb-5 flex flex-wrap gap-2">
+                {/* Um formulário por botão: o status vai num campo escondido, sem depender do valor do botão que enviou. */}
                 {seguintes.map((s) => (
-                  <Button key={s} type="submit" name="status" value={s} variant={s === "CANCELADO" ? "outline" : "default"}>
-                    {s === "CANCELADO" ? "Cancelar OS" : `Marcar como ${ROTULO_STATUS[s].toLowerCase()}`}
-                  </Button>
+                  <form key={s} action={mudarStatusAction}>
+                    <input type="hidden" name="id" value={ordem.id} />
+                    <input type="hidden" name="status" value={s} />
+                    <Button type="submit" variant={s === "CANCELADO" ? "outline" : "default"}>
+                      {s === "CANCELADO" ? "Cancelar OS" : `Marcar como ${ROTULO_STATUS[s].toLowerCase()}`}
+                    </Button>
+                  </form>
                 ))}
-              </form>
+              </div>
             ) : (
               <p className="mb-5 text-muted-foreground">Esta ordem está encerrada: o status não muda mais.</p>
             )}
