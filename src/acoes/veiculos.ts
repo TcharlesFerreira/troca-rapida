@@ -3,8 +3,8 @@
 import { redirect } from "next/navigation";
 import { lerFormulario, valoresDe, type EstadoForm } from "@/lib/formulario";
 import { exigirAdminSessao } from "@/lib/sessao";
-import { veiculoSchema } from "@/lib/validacao";
-import { atualizarVeiculo, criarVeiculo, escolherMotorDaBase } from "@/servicos/veiculos";
+import { capacidadeOleoSchema, ultimoOleoSchema, veiculoSchema } from "@/lib/validacao";
+import { atualizarVeiculo, corrigirUltimoOleo, criarVeiculo, definirCapacidadeOleo, escolherMotorDaBase } from "@/servicos/veiculos";
 import { atualizarTelas, mensagemDeErro, tratarErro } from "./utils";
 
 export async function salvarVeiculoAction(_: EstadoForm, formData: FormData): Promise<EstadoForm> {
@@ -37,4 +37,30 @@ export async function escolherMotorAction(formData: FormData): Promise<void> {
   }
   atualizarTelas();
   redirect(voltar.startsWith("/admin/") ? voltar : `/admin/veiculos/${veiculoId}`);
+}
+
+export async function corrigirUltimoOleoAction(_: EstadoForm, formData: FormData): Promise<EstadoForm> {
+  const ator = await exigirAdminSessao();
+  const lido = lerFormulario(ultimoOleoSchema, formData);
+  if (!lido.ok) return lido.estado;
+  try {
+    await corrigirUltimoOleo(ator, String(formData.get("veiculoId") ?? ""), lido.dados);
+  } catch (erro) {
+    return { ...tratarErro(erro), valores: valoresDe(formData) };
+  }
+  atualizarTelas();
+  return { ok: true, mensagem: "Último óleo atualizado." };
+}
+
+export async function definirCapacidadeOleoAction(_: EstadoForm, formData: FormData): Promise<EstadoForm> {
+  const ator = await exigirAdminSessao();
+  const lido = lerFormulario(capacidadeOleoSchema, formData);
+  if (!lido.ok) return lido.estado;
+  try {
+    await definirCapacidadeOleo(ator, String(formData.get("veiculoId") ?? ""), lido.dados.capacidadeOleoL ?? null);
+  } catch (erro) {
+    return { ...tratarErro(erro), valores: valoresDe(formData) };
+  }
+  atualizarTelas();
+  return { ok: true, mensagem: "Quantidade salva." };
 }

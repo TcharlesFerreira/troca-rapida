@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import { EditarCapacidadeOleo, EditarUltimoOleo } from "@/components/editar-oleo-veiculo";
 import { FormVeiculo } from "@/components/form-veiculo";
 import { Placa } from "@/components/placa";
 import { OleoSemRecomendacao } from "@/components/oleo-sem-recomendacao";
@@ -26,6 +27,9 @@ export default async function PaginaVeiculo({ params }: { params: Promise<{ id: 
   const opcoes = veiculo.recomendacaoOleo ? [] : await opcoesDeRecomendacao(veiculo);
   // Última troca = a OS mais recente (não cancelada) com troca de óleo registrada.
   const ultima = veiculo.ordens.find((o) => o.trocaOleo && o.status !== "CANCELADO");
+  // Quanto vai no motor: o que a oficina informou para este carro vale mais que o da base.
+  const capacidadeBase = veiculo.recomendacaoOleo?.capacidadeComFiltroL ?? null;
+  const capacidade = veiculo.capacidadeOleoL ?? capacidadeBase;
 
   return (
     <>
@@ -72,10 +76,20 @@ export default async function PaginaVeiculo({ params }: { params: Promise<{ id: 
                   {ultima.trocaOleo.proximaTrocaKm ? `. Próxima troca: ${kmBR(ultima.trocaOleo.proximaTrocaKm)}` : ""}
                 </p>
                 {ultima.trocaOleo.divergiuDaRecomendacao && <p className="mt-2 text-sm font-semibold">Diferente do recomendado na base.</p>}
+                <EditarUltimoOleo veiculoId={veiculo.id} atual={ultima.trocaOleo} />
               </>
             ) : (
               <p className="text-muted-foreground">Nenhuma troca de óleo registrada para este veículo.</p>
             )}
+
+            <div className="mt-5 border-t pt-4">
+              <p className="text-sm font-semibold uppercase tracking-wide text-muted-foreground">Vai no motor</p>
+              <p className="font-display text-3xl font-semibold">{capacidade ? litrosBR(capacidade) : "Não informado"}</p>
+              <p className="text-sm text-muted-foreground">
+                {veiculo.capacidadeOleoL ? "Informado pela oficina para este carro." : capacidadeBase ? "Da base de óleo (com filtro)." : "Informe quanto óleo vai neste motor."}
+              </p>
+              <EditarCapacidadeOleo veiculoId={veiculo.id} atual={veiculo.capacidadeOleoL} daBase={capacidadeBase} />
+            </div>
           </section>
 
           <section aria-labelledby="oleo">

@@ -2,6 +2,7 @@ import type { Prisma } from "@prisma/client";
 import { db } from "@/lib/db";
 import { ErroDeNegocio } from "@/lib/erros";
 import { exigirAdmin, type Ator } from "@/lib/permissoes";
+import { compararOleo, normalizarCodigo } from "@/lib/oleo";
 import { normalizarPlaca } from "@/lib/placa";
 import { buscarRecomendacao, incluirRecomendacaoCompleta, opcoesDeRecomendacao } from "./base-oleo";
 
@@ -98,4 +99,54 @@ export async function escolherMotorDaBase(ator: Ator, veiculoId: string, recomen
   if (!opcao) throw new ErroDeNegocio("Esta opção não vale para este veículo.");
 
   return db.veiculo.update({ where: { id: veiculo.id }, data: { motor: opcao.motor, recomendacaoOleoId: opcao.id } });
+}
+
+/** Quanto óleo vai no motor deste carro (null = usar o da base). */
+export async function definirCapacidadeOleo(ator: Ator, veiculoId: string, litros: number | null) {
+  const empresaId = exigirAdmin(ator);
+  const alterados = await db.veiculo.updateMany({ where: { id: veiculoId, empresaId }, data: { capacidadeOleoL: litros } });
+  if (alterados.count !== 1) throw new ErroDeNegocio("Veículo não encontrado.");
+}
+
+export interface UltimoOleoDados {
+  oleoMarca: string;
+  oleoViscosidade: string;
+  oleoEspecificacao?: string;
+  quantidadeLitros?: number;
+}
+
+/**
+ * Corrige o último óleo usado no carro (a troca da OS mais recente, não cancelada).
+ * Recalcula se ficou diferente do recomendado: com a norma, compara tudo; sem ela, só a viscosidade.
+ */
+export async function corrigirUltimoOleo(ator: Ator, veiculoId: string, dados: UltimoOleoDados) {
+  const empresaId = exigirAdmin(ator);
+  const veiculo = await db.veiculo.findFirst({ where: { id: veiculoId, empresaId }, include: { recomendacaoOleo: true } });
+  if (!veiculo) throw new ErroDeNegocio("Veículo não encontrado.");
+
+  const troca = await db.trocaOleo.findFirst({
+    where: { ordemServico: { veiculoId, status: { not: "CANCELADO" } } },
+    orderBy: [{ ordemServico: { dataEntrada: "desc" } }, { ordemServico: { numero: "desc" } }],
+  });
+  if (!troca) throw new ErroDeNegocio("Este veículo ainda não tem troca de óleo registrada. Abra uma OS para registrar.");
+
+  const rec = veiculo.recomendacaoOleo;
+  let divergiu = false;
+  if (rec) {
+    divergiu = dados.oleoEspecificacao
+      ? compararOleo({ viscosidade: dados.oleoViscosidade, especificacao: dados.oleoEspecificacao }, rec).situacao === "DIFERENTE"
+      : !rec.viscosidade.split("/").some((v) => normalizarCodigo(v) === normalizarCodigo(dados.oleoViscosidade));
+  }
+
+  return db.trocaOleo.update({
+    where: { id: troca.id },
+    data: {
+      oleoMarca: dados.oleoMarca,
+      oleoViscosidade: dados.oleoViscosidade,
+      oleoEspecificacao: dados.oleoEspecificacao ?? null,
+      quantidadeLitros: dados.quantidadeLitros ?? null,
+      recomendacaoOleoId: rec?.id ?? null,
+      divergiuDaRecomendacao: divergiu,
+    },
+  });
 }

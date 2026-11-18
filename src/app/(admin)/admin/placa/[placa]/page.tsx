@@ -86,7 +86,10 @@ export default async function PaginaPlaca({ params }: { params: Promise<{ placa:
           </h2>
           {ultimaTroca ? (
             <>
-              <p className="font-display text-4xl font-semibold">{litrosBR(ultimaTroca.troca.quantidadeLitros)}</p>
+              <p className="font-display text-4xl font-semibold">{litrosBR(veiculo.capacidadeOleoL ?? rec?.capacidadeComFiltroL ?? ultimaTroca.troca.quantidadeLitros)}</p>
+              <p className="text-sm text-muted-foreground">
+                {veiculo.capacidadeOleoL ? "Vai no motor (informado pela oficina)" : rec?.capacidadeComFiltroL ? "Vai no motor (da base, com filtro)" : "Quantidade usada na última troca"}
+              </p>
               <p className="mt-1 text-lg font-semibold">
                 {ultimaTroca.troca.oleoMarca} {ultimaTroca.troca.oleoViscosidade}
               </p>
@@ -99,6 +102,11 @@ export default async function PaginaPlaca({ params }: { params: Promise<{ placa:
                 em {dataBR(ultimaTroca.dataEntrada)}, {kmBR(ultimaTroca.kmEntrada)}
               </p>
               {ultimaTroca.troca.divergiuDaRecomendacao && <p className="mt-2 text-sm font-semibold">Diferente do recomendado na base.</p>}
+              <p className="mt-3">
+                <Link href={`/admin/veiculos/${veiculo.id}`} className="font-semibold text-primary underline underline-offset-4">
+                  Mudar óleo ou quantidade
+                </Link>
+              </p>
             </>
           ) : (
             <p className="text-muted-foreground">Nenhuma troca de óleo registrada para este veículo.</p>

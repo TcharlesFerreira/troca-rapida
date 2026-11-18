@@ -134,6 +134,8 @@ model Veiculo {
   ano       Int
   cor       String
   kmAtual   Int
+  /// Quanto óleo vai no motor deste carro (litros), informado pela oficina. Vale mais que o da base.
+  capacidadeOleoL Float?
   criadoEm  DateTime @default(now())
 
   /// Recomendação da base de óleo (vazio quando o carro não existe na base).

@@ -147,6 +147,29 @@ export const ordemSchema = z.object({
   observacoes: textoOpcional("Observações", 2000),
 });
 
+const decimalOpcional = (rotulo: string, min: number, max: number) =>
+  z.preprocess(
+    (v) => (v === "" || v === null || v === undefined ? undefined : Number(String(v).replace(",", "."))),
+    z
+      .number({ invalid_type_error: `${rotulo} precisa ser um número` })
+      .min(min, `${rotulo} precisa ser maior que ${min}`)
+      .max(max, `${rotulo} não pode passar de ${max}`)
+      .optional(),
+  );
+
+/** Correção do último óleo usado, direto na tela do veículo (a norma e a quantidade podem ficar em branco). */
+export const ultimoOleoSchema = z.object({
+  oleoMarca: texto("Marca do óleo", 2, 80),
+  oleoViscosidade: texto("Viscosidade", 2, 20),
+  oleoEspecificacao: textoOpcional("Especificação", 80),
+  quantidadeLitros: decimalOpcional("Quantidade", 0.1, 30),
+});
+
+/** Quanto óleo vai no motor do carro. Vazio = usar o da base. */
+export const capacidadeOleoSchema = z.object({
+  capacidadeOleoL: decimalOpcional("Quantidade que vai no motor", 0.5, 30),
+});
+
 export const trocaOleoSchema = z.object({
   oleoMarca: texto("Marca do óleo", 2, 80),
   oleoViscosidade: texto("Viscosidade", 2, 20),
