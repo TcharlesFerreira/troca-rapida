@@ -60,11 +60,11 @@ export function FormTrocaOleo({ ordemId, recomendado, inicial, jaRegistrada }: P
         </div>
       )}
 
-      <CampoTexto name="oleoMarca" rotulo="Marca comercial do óleo" defaultValue={v.oleoMarca ?? inicial.oleoMarca} erros={e.oleoMarca} dica="Ex.: Lubrax, Castrol, Mobil." />
+      <CampoTexto name="oleoMarca" rotulo="Marca comercial do óleo" defaultValue={v.oleoMarca ?? inicial.oleoMarca} erros={e.oleoMarca} />
 
       <div className="grid gap-4 sm:grid-cols-2">
-        <CampoTexto name="oleoViscosidade" rotulo="Viscosidade" value={viscosidade} onChange={(ev) => setViscosidade(ev.target.value)} erros={e.oleoViscosidade} dica="Ex.: 5W-30." />
-        <CampoTexto name="oleoEspecificacao" rotulo="Especificação" value={especificacao} onChange={(ev) => setEspecificacao(ev.target.value)} erros={e.oleoEspecificacao} dica="Ex.: API SP." />
+        <CampoTexto name="oleoViscosidade" rotulo="Viscosidade" value={viscosidade} onChange={(ev) => setViscosidade(ev.target.value)} erros={e.oleoViscosidade} />
+        <CampoTexto name="oleoEspecificacao" rotulo="Especificação" value={especificacao} onChange={(ev) => setEspecificacao(ev.target.value)} erros={e.oleoEspecificacao} />
       </div>
 
       <div aria-live="polite">
@@ -74,7 +74,7 @@ export function FormTrocaOleo({ ordemId, recomendado, inicial, jaRegistrada }: P
       </div>
 
       <div className="grid gap-4 sm:grid-cols-2">
-        <CampoTexto name="quantidadeLitros" rotulo="Quantidade de óleo (litros)" inputMode="decimal" value={quantidade} onChange={(ev) => setQuantidade(ev.target.value)} erros={e.quantidadeLitros} dica="Ex.: 3,5." />
+        <CampoTexto name="quantidadeLitros" rotulo="Quantidade de óleo (litros)" inputMode="decimal" value={quantidade} onChange={(ev) => setQuantidade(ev.target.value)} erros={e.quantidadeLitros} />
         <CampoCaixa name="filtroTrocado" rotulo="Filtro de óleo trocado" defaultChecked={v.filtroTrocado ? v.filtroTrocado === "on" : (inicial.filtroTrocado ?? true)} />
       </div>
 

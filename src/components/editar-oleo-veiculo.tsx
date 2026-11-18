@@ -34,14 +34,13 @@ export function EditarOleoDoCarro({
       {ultimo ? (
         <div className="grid gap-4 sm:grid-cols-2">
           <CampoTexto name="oleoMarca" rotulo="Marca do óleo" defaultValue={v.oleoMarca ?? ultimo.oleoMarca} erros={e.oleoMarca} />
-          <CampoTexto name="oleoViscosidade" rotulo="Viscosidade" defaultValue={v.oleoViscosidade ?? ultimo.oleoViscosidade} erros={e.oleoViscosidade} dica="Ex.: 5W-30." />
+          <CampoTexto name="oleoViscosidade" rotulo="Viscosidade" defaultValue={v.oleoViscosidade ?? ultimo.oleoViscosidade} erros={e.oleoViscosidade} />
           <CampoTexto
             name="oleoEspecificacao"
             rotulo="Especificação"
             opcional
             defaultValue={v.oleoEspecificacao ?? ultimo.oleoEspecificacao ?? ""}
             erros={e.oleoEspecificacao}
-            dica="Ex.: API SP."
           />
         </div>
       ) : (
@@ -55,7 +54,7 @@ export function EditarOleoDoCarro({
           inputMode="decimal"
           defaultValue={v.capacidadeOleoL ?? virgula(quantidade)}
           erros={e.capacidadeOleoL}
-          dica={quantidadeDaBase ? `Deixe em branco para usar o da base (${virgula(quantidadeDaBase)} L).` : "Ex.: 3,5."}
+          dica={quantidadeDaBase ? `Deixe em branco para usar o da base (${virgula(quantidadeDaBase)} L).` : undefined}
         />
       </div>
       <div>
