@@ -41,6 +41,7 @@ export function EditarOleoDoCarro({
             opcional
             defaultValue={v.oleoEspecificacao ?? ultimo.oleoEspecificacao ?? ""}
             erros={e.oleoEspecificacao}
+            dica="Ex.: API SP."
           />
         </div>
       ) : (

@@ -64,7 +64,7 @@ export function FormTrocaOleo({ ordemId, recomendado, inicial, jaRegistrada }: P
 
       <div className="grid gap-4 sm:grid-cols-2">
         <CampoTexto name="oleoViscosidade" rotulo="Viscosidade" value={viscosidade} onChange={(ev) => setViscosidade(ev.target.value)} erros={e.oleoViscosidade} />
-        <CampoTexto name="oleoEspecificacao" rotulo="Especificação" value={especificacao} onChange={(ev) => setEspecificacao(ev.target.value)} erros={e.oleoEspecificacao} />
+        <CampoTexto name="oleoEspecificacao" rotulo="Especificação" value={especificacao} onChange={(ev) => setEspecificacao(ev.target.value)} erros={e.oleoEspecificacao} dica="Ex.: API SP." />
       </div>
 
       <div aria-live="polite">
