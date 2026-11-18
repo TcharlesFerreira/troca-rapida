@@ -80,7 +80,7 @@ export default async function PaginaPlaca({ params }: { params: Promise<{ placa:
       </div>
 
       <div className="mb-8 grid gap-4 md:grid-cols-2">
-        <section aria-labelledby="ultimo" className="rounded-lg border-2 border-accent bg-card p-5">
+        <section aria-labelledby="ultimo" className="rounded-lg border bg-card p-5">
           <h2 id="ultimo" className="mb-2 text-xl font-semibold">
             Último óleo usado
           </h2>
@@ -88,7 +88,7 @@ export default async function PaginaPlaca({ params }: { params: Promise<{ placa:
             <>
               <p className="font-display text-4xl font-semibold">{litrosBR(veiculo.capacidadeOleoL ?? rec?.capacidadeComFiltroL ?? ultimaTroca.troca.quantidadeLitros)}</p>
               <p className="text-sm text-muted-foreground">
-                {veiculo.capacidadeOleoL ? "Vai no motor (informado pela oficina)" : rec?.capacidadeComFiltroL ? "Vai no motor (da base, com filtro)" : "Quantidade usada na última troca"}
+                {veiculo.capacidadeOleoL ? "Quantidade de óleo (informada pela oficina)" : rec?.capacidadeComFiltroL ? "Quantidade de óleo (da base, com filtro)" : "Quantidade de óleo da última troca"}
               </p>
               <p className="mt-1 text-lg font-semibold">
                 {ultimaTroca.troca.oleoMarca} {ultimaTroca.troca.oleoViscosidade}

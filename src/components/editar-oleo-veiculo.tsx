@@ -48,20 +48,20 @@ export function EditarUltimoOleo({
   );
 }
 
-/** Quanto óleo vai no motor deste carro. Vazio = usar o valor da base de óleo. */
+/** Quantidade de óleo do motor deste carro. Vazio = usar o valor da base de óleo. */
 export function EditarCapacidadeOleo({ veiculoId, atual, daBase }: { veiculoId: string; atual: number | null; daBase: number | null }) {
   const [estado, acao] = useActionState<EstadoForm, FormData>(definirCapacidadeOleoAction, {});
   const v = estado.valores ?? {};
   const e = estado.erros ?? {};
   return (
     <details className="mt-3" open={!!estado.erro}>
-      <summary className={resumo}>Mudar quantidade do motor</summary>
+      <summary className={resumo}>Mudar quantidade de óleo</summary>
       <form action={acao} noValidate className="mt-4 grid max-w-xs gap-4">
         <AlertaForm estado={estado} />
         <input type="hidden" name="veiculoId" value={veiculoId} />
         <CampoTexto
           name="capacidadeOleoL"
-          rotulo="Vai no motor (litros)"
+          rotulo="Quantidade de óleo (litros)"
           inputMode="decimal"
           defaultValue={v.capacidadeOleoL ?? virgula(atual)}
           erros={e.capacidadeOleoL}

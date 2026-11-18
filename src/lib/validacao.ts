@@ -167,7 +167,7 @@ export const ultimoOleoSchema = z.object({
 
 /** Quanto óleo vai no motor do carro. Vazio = usar o da base. */
 export const capacidadeOleoSchema = z.object({
-  capacidadeOleoL: decimalOpcional("Quantidade que vai no motor", 0.5, 30),
+  capacidadeOleoL: decimalOpcional("Quantidade de óleo", 0.5, 30),
 });
 
 export const trocaOleoSchema = z.object({

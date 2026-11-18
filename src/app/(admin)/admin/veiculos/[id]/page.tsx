@@ -53,9 +53,9 @@ export default async function PaginaVeiculo({ params }: { params: Promise<{ id: 
         </p>
       </div>
 
-      <div className="grid gap-8 lg:grid-cols-2">
-        <div className="grid content-start gap-8">
-          <section aria-labelledby="ultimo" className="rounded-lg border-2 border-accent bg-card p-5">
+      <div className="grid grid-cols-1 gap-8 lg:grid-cols-2">
+        <div className="grid min-w-0 grid-cols-1 content-start gap-8">
+          <section aria-labelledby="ultimo" className="rounded-lg border bg-card p-5">
             <h2 id="ultimo" className="mb-2 text-xl font-semibold">
               Último óleo usado
             </h2>
@@ -79,15 +79,17 @@ export default async function PaginaVeiculo({ params }: { params: Promise<{ id: 
             ) : (
               <p className="text-muted-foreground">Nenhuma troca de óleo registrada para este veículo.</p>
             )}
+          </section>
 
-            <div className="mt-5 border-t pt-4">
-              <p className="text-sm font-semibold uppercase tracking-wide text-muted-foreground">Vai no motor</p>
-              <p className="font-display text-3xl font-semibold">{capacidade ? litrosBR(capacidade) : "Não informado"}</p>
-              <p className="text-sm text-muted-foreground">
-                {veiculo.capacidadeOleoL ? "Informado pela oficina para este carro." : capacidadeBase ? "Da base de óleo (com filtro)." : "Informe quanto óleo vai neste motor."}
-              </p>
-              <EditarCapacidadeOleo veiculoId={veiculo.id} atual={veiculo.capacidadeOleoL} daBase={capacidadeBase} />
-            </div>
+          <section aria-labelledby="quantidade" className="rounded-lg border bg-card p-5">
+            <h2 id="quantidade" className="mb-2 text-xl font-semibold">
+              Quantidade de óleo
+            </h2>
+            <p className="font-display text-3xl font-semibold">{capacidade ? litrosBR(capacidade) : "Não informada"}</p>
+            <p className="text-sm text-muted-foreground">
+              {veiculo.capacidadeOleoL ? "Informada pela oficina para este carro." : capacidadeBase ? "Da base de óleo (com filtro)." : "Informe quanto óleo vai neste motor."}
+            </p>
+            <EditarCapacidadeOleo veiculoId={veiculo.id} atual={veiculo.capacidadeOleoL} daBase={capacidadeBase} />
           </section>
 
           <section aria-labelledby="oleo">
@@ -142,7 +144,7 @@ export default async function PaginaVeiculo({ params }: { params: Promise<{ id: 
           </section>
         </div>
 
-        <section aria-labelledby="editar">
+        <section aria-labelledby="editar" className="min-w-0">
           <h2 id="editar" className="mb-3 text-xl font-semibold">
             Editar veículo
           </h2>
