@@ -59,9 +59,14 @@ export default async function PaginaPlaca({ params }: { params: Promise<{ placa:
         titulo={`${veiculo.marca} ${veiculo.modelo}`}
         descricao={`${veiculo.motor}, ${veiculo.ano}, ${veiculo.cor}. ${kmBR(veiculo.kmAtual)}.`}
         acoes={
-          <Link href={`/admin/os/nova?veiculoId=${veiculo.id}`} className={estiloBotao()}>
-            Abrir ordem de serviço
-          </Link>
+          <div className="flex flex-wrap gap-2">
+            <Link href={`/admin/veiculos/${veiculo.id}/editar`} className={estiloBotao({ variant: "outline" })}>
+              Editar veículo
+            </Link>
+            <Link href={`/admin/os/nova?veiculoId=${veiculo.id}`} className={estiloBotao()}>
+              Abrir ordem de serviço
+            </Link>
+          </div>
         }
       />
 

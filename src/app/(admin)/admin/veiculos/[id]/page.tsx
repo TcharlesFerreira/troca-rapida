@@ -2,19 +2,16 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { EditarCapacidadeOleo, EditarUltimoOleo } from "@/components/editar-oleo-veiculo";
-import { FormVeiculo } from "@/components/form-veiculo";
 import { Placa } from "@/components/placa";
 import { OleoSemRecomendacao } from "@/components/oleo-sem-recomendacao";
 import { RecomendacaoOleo } from "@/components/recomendacao-oleo";
 import { StatusBadge } from "@/components/selos";
 import { TituloPagina } from "@/components/titulo-pagina";
-import { Alert } from "@/components/ui/alert";
 import { estiloBotao } from "@/components/ui/button";
 import { Table, Td, Th } from "@/components/ui/table";
 import { dataBR, kmBR, litrosBR } from "@/lib/formatar";
 import { exigirAdminSessao } from "@/lib/sessao";
-import { catalogoParaFormulario, opcoesDeRecomendacao } from "@/servicos/base-oleo";
-import { listarClientesParaSelecao } from "@/servicos/clientes";
+import { opcoesDeRecomendacao } from "@/servicos/base-oleo";
 import { obterVeiculo } from "@/servicos/veiculos";
 
 export const metadata: Metadata = { title: "Veículo" };
@@ -22,7 +19,7 @@ export const metadata: Metadata = { title: "Veículo" };
 export default async function PaginaVeiculo({ params }: { params: Promise<{ id: string }> }) {
   const ator = await exigirAdminSessao();
   const { id } = await params;
-  const [veiculo, catalogo, clientes] = await Promise.all([obterVeiculo(ator, id), catalogoParaFormulario(ator), listarClientesParaSelecao(ator)]);
+  const veiculo = await obterVeiculo(ator, id);
   if (!veiculo) notFound();
   const opcoes = veiculo.recomendacaoOleo ? [] : await opcoesDeRecomendacao(veiculo);
   // Última troca = a OS mais recente (não cancelada) com troca de óleo registrada.
@@ -37,9 +34,14 @@ export default async function PaginaVeiculo({ params }: { params: Promise<{ id: 
         titulo={`${veiculo.marca} ${veiculo.modelo}`}
         descricao={`${veiculo.motor}, ${veiculo.ano}, ${veiculo.cor}. ${kmBR(veiculo.kmAtual)}.`}
         acoes={
-          <Link href={`/admin/os/nova?veiculoId=${veiculo.id}`} className={estiloBotao()}>
-            Abrir ordem de serviço
-          </Link>
+          <div className="flex flex-wrap gap-2">
+            <Link href={`/admin/veiculos/${veiculo.id}/editar`} className={estiloBotao({ variant: "outline" })}>
+              Editar veículo
+            </Link>
+            <Link href={`/admin/os/nova?veiculoId=${veiculo.id}`} className={estiloBotao()}>
+              Abrir ordem de serviço
+            </Link>
+          </div>
         }
       />
 
@@ -53,8 +55,8 @@ export default async function PaginaVeiculo({ params }: { params: Promise<{ id: 
         </p>
       </div>
 
-      <div className="grid grid-cols-1 gap-8 lg:grid-cols-2">
-        <div className="grid min-w-0 grid-cols-1 content-start gap-8">
+      <div>
+        <div className="grid min-w-0 grid-cols-1 content-start gap-8 lg:grid-cols-2">
           <section aria-labelledby="ultimo" className="rounded-lg border bg-card p-5">
             <h2 id="ultimo" className="mb-2 text-xl font-semibold">
               Último óleo usado
@@ -92,7 +94,7 @@ export default async function PaginaVeiculo({ params }: { params: Promise<{ id: 
             <EditarCapacidadeOleo veiculoId={veiculo.id} atual={veiculo.capacidadeOleoL} daBase={capacidadeBase} />
           </section>
 
-          <section aria-labelledby="oleo">
+          <section aria-labelledby="oleo" className="lg:col-span-2">
             <h2 id="oleo" className="sr-only">
               Óleo recomendado
             </h2>
@@ -103,7 +105,7 @@ export default async function PaginaVeiculo({ params }: { params: Promise<{ id: 
             )}
           </section>
 
-          <section aria-labelledby="historico">
+          <section aria-labelledby="historico" className="lg:col-span-2">
             <h2 id="historico" className="mb-3 text-xl font-semibold">
               Histórico de ordens
             </h2>
@@ -144,12 +146,6 @@ export default async function PaginaVeiculo({ params }: { params: Promise<{ id: 
           </section>
         </div>
 
-        <section aria-labelledby="editar" className="min-w-0">
-          <h2 id="editar" className="mb-3 text-xl font-semibold">
-            Editar veículo
-          </h2>
-          <FormVeiculo catalogo={catalogo} clientes={clientes} veiculo={veiculo} />
-        </section>
       </div>
     </>
   );

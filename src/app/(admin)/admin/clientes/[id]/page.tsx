@@ -59,12 +59,15 @@ export default async function PaginaCliente({ params }: { params: Promise<{ id: 
             ) : (
               <ul className="grid gap-3">
                 {cliente.veiculos.map((v) => (
-                  <li key={v.id}>
-                    <Link href={`/admin/veiculos/${v.id}`} className="flex flex-wrap items-center gap-3 rounded-lg border bg-card p-3 hover:border-primary">
+                  <li key={v.id} className="flex flex-wrap items-center gap-3 rounded-lg border bg-card p-3">
+                    <Link href={`/admin/veiculos/${v.id}`} className="flex flex-1 flex-wrap items-center gap-3 rounded-md hover:text-primary">
                       <Placa valor={v.placa} tamanho="sm" />
                       <span>
                         {v.marca} {v.modelo} {v.ano}
                       </span>
+                    </Link>
+                    <Link href={`/admin/veiculos/${v.id}/editar`} className={estiloBotao({ variant: "outline", size: "sm" })}>
+                      Editar
                     </Link>
                   </li>
                 ))}
