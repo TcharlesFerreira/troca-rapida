@@ -14,9 +14,10 @@ export function normalizarEmail(email: string): string {
  */
 export function decidirVinculo(
   conta: { cpf: string; email: string },
-  cadastro: { cpf: string; email: string } | null,
+  cadastro: { cpf: string | null; email: string | null } | null,
 ): ResultadoVinculo {
-  if (!cadastro) return "SEM_CADASTRO";
+  if (!cadastro || !cadastro.cpf) return "SEM_CADASTRO";
+  if (!cadastro.email) return normalizarCpf(conta.cpf) === normalizarCpf(cadastro.cpf) ? "PENDENTE" : "SEM_CADASTRO";
   if (normalizarCpf(conta.cpf) !== normalizarCpf(cadastro.cpf)) return "SEM_CADASTRO";
   return normalizarEmail(conta.email) === normalizarEmail(cadastro.email) ? "AUTOMATICO" : "PENDENTE";
 }

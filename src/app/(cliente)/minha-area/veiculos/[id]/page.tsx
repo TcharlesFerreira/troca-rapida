@@ -68,7 +68,7 @@ export default async function MeuVeiculo({ params }: { params: Promise<{ id: str
                 <p className="mt-1 whitespace-pre-line">{o.descricao}</p>
                 {o.trocaOleo && (
                   <p className="mt-2 text-sm">
-                    <strong>Troca de óleo:</strong> {o.trocaOleo.oleoMarca} {o.trocaOleo.oleoViscosidade} ({o.trocaOleo.oleoEspecificacao}), {litrosBR(o.trocaOleo.quantidadeLitros)},{" "}
+                    <strong>Troca de óleo:</strong> {o.trocaOleo.oleoMarca} {o.trocaOleo.oleoViscosidade} ({o.trocaOleo.oleoEspecificacao ?? "norma não informada"}), {litrosBR(o.trocaOleo.quantidadeLitros)},{" "}
                     {o.trocaOleo.filtroTrocado ? "com troca de filtro" : "sem troca de filtro"}.
                   </p>
                 )}

@@ -17,7 +17,8 @@ export function litrosBR(n: number | null | undefined): string {
   return n === null || n === undefined ? "—" : `${new Intl.NumberFormat("pt-BR", { maximumFractionDigits: 2 }).format(n)} L`;
 }
 
-export function telefoneBR(valor: string): string {
+export function telefoneBR(valor: string | null | undefined): string {
+  if (!valor) return "—";
   const d = valor.replace(/\D/g, "");
   if (d.length === 11) return d.replace(/(\d{2})(\d{5})(\d{4})/, "($1) $2-$3");
   if (d.length === 10) return d.replace(/(\d{2})(\d{4})(\d{4})/, "($1) $2-$3");

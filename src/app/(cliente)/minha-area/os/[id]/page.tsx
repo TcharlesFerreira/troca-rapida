@@ -40,7 +40,7 @@ export default async function MinhaOrdem({ params }: { params: Promise<{ id: str
           <p className="mt-2 whitespace-pre-line">{ordem.descricao}</p>
           {ordem.trocaOleo && (
             <p className="mt-3">
-              <strong>Troca de óleo:</strong> {ordem.trocaOleo.oleoMarca} {ordem.trocaOleo.oleoViscosidade} ({ordem.trocaOleo.oleoEspecificacao}), {litrosBR(ordem.trocaOleo.quantidadeLitros)},{" "}
+              <strong>Troca de óleo:</strong> {ordem.trocaOleo.oleoMarca} {ordem.trocaOleo.oleoViscosidade} ({ordem.trocaOleo.oleoEspecificacao ?? "norma não informada"}), {litrosBR(ordem.trocaOleo.quantidadeLitros)},{" "}
               {ordem.trocaOleo.filtroTrocado ? "com troca de filtro" : "sem troca de filtro"}.
             </p>
           )}

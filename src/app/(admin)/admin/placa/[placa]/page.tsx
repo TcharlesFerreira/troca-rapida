@@ -87,7 +87,7 @@ export default async function PaginaPlaca({ params }: { params: Promise<{ placa:
               <p className="mt-1 text-lg font-semibold">
                 {ultimaTroca.troca.oleoMarca} {ultimaTroca.troca.oleoViscosidade}
               </p>
-              <p>{ultimaTroca.troca.oleoEspecificacao}</p>
+              <p>{ultimaTroca.troca.oleoEspecificacao ?? "Norma não informada"}</p>
               <p className="mt-2 text-muted-foreground">
                 {ultimaTroca.troca.filtroTrocado ? "Com troca de filtro" : "Sem troca de filtro"} · OS nº{" "}
                 <Link href={`/admin/os/${ultimaTroca.ordemId}`} className="text-primary underline underline-offset-4">

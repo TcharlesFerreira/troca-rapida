@@ -128,8 +128,8 @@ export default async function PaginaOrdem({ params, searchParams }: { params: Pr
                       ? {
                           oleoMarca: trocaOleo.oleoMarca,
                           oleoViscosidade: trocaOleo.oleoViscosidade,
-                          oleoEspecificacao: trocaOleo.oleoEspecificacao,
-                          quantidadeLitros: virgula(trocaOleo.quantidadeLitros),
+                          oleoEspecificacao: trocaOleo.oleoEspecificacao ?? "",
+                          quantidadeLitros: trocaOleo.quantidadeLitros === null ? "" : virgula(trocaOleo.quantidadeLitros),
                           filtroTrocado: trocaOleo.filtroTrocado,
                           proximaTrocaKm: trocaOleo.proximaTrocaKm?.toString(),
                           proximaTrocaData: paraInputData(trocaOleo.proximaTrocaData),

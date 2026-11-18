@@ -64,9 +64,9 @@ model Usuario {
 model Cliente {
   id           String   @id @default(cuid())
   nome         String
-  cpf          String   @unique // só dígitos
-  telefone     String
-  email        String
+  cpf          String?  @unique // só dígitos; vazio em cadastros importados sem CPF
+  telefone     String?
+  email        String?
   endereco     String?
   criadoEm     DateTime @default(now())
   atualizadoEm DateTime @updatedAt
@@ -161,8 +161,8 @@ model TrocaOleo {
   ordemServicoId          String   @unique
   oleoMarca               String
   oleoViscosidade         String
-  oleoEspecificacao       String
-  quantidadeLitros        Float
+  oleoEspecificacao       String? // vazio quando a ficha não informa a norma
+  quantidadeLitros        Float?
   filtroTrocado           Boolean
   proximaTrocaKm          Int?
   proximaTrocaData        DateTime? @db.Date

@@ -16,7 +16,8 @@ export function cpfValido(valor: string): boolean {
   return digito(cpf.slice(0, 9), 10) === Number(cpf[9]) && digito(cpf.slice(0, 10), 11) === Number(cpf[10]);
 }
 
-export function formatarCpf(valor: string): string {
+export function formatarCpf(valor: string | null | undefined): string {
+  if (!valor) return "—";
   const cpf = normalizarCpf(valor);
   return cpf.length === 11 ? cpf.replace(/(\d{3})(\d{3})(\d{3})(\d{2})/, "$1.$2.$3-$4") : valor;
 }

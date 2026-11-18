@@ -12,9 +12,9 @@ import { telefoneBR } from "@/lib/formatar";
 interface ClienteForm {
   id: string;
   nome: string;
-  cpf: string;
-  telefone: string;
-  email: string;
+  cpf: string | null;
+  telefone: string | null;
+  email: string | null;
   endereco: string | null;
 }
 
@@ -32,13 +32,13 @@ export function FormCliente({ cliente, cpfTravado = false }: { cliente?: Cliente
         rotulo="CPF"
         inputMode="numeric"
         autoComplete="off"
-        defaultValue={v.cpf ?? (cliente ? formatarCpf(cliente.cpf) : undefined)}
+        defaultValue={v.cpf ?? (cliente?.cpf ? formatarCpf(cliente.cpf) : undefined)}
         erros={e.cpf}
         readOnly={cpfTravado}
         dica={cpfTravado ? "Este cliente já tem conta no site, então o CPF não pode ser alterado." : undefined}
       />
-      <CampoTexto name="telefone" rotulo="Telefone" type="tel" autoComplete="off" defaultValue={v.telefone ?? (cliente ? telefoneBR(cliente.telefone) : undefined)} erros={e.telefone} dica="Com DDD." />
-      <CampoTexto name="email" rotulo="E-mail" type="email" autoComplete="off" defaultValue={v.email ?? cliente?.email} erros={e.email} dica="Se o cliente criar conta com o mesmo CPF e e-mail, a conta se liga sozinha." />
+      <CampoTexto name="telefone" rotulo="Telefone" type="tel" autoComplete="off" defaultValue={v.telefone ?? (cliente?.telefone ? telefoneBR(cliente.telefone) : undefined)} erros={e.telefone} dica="Com DDD." />
+      <CampoTexto name="email" rotulo="E-mail" type="email" autoComplete="off" defaultValue={v.email ?? cliente?.email ?? undefined} erros={e.email} dica="Se o cliente criar conta com o mesmo CPF e e-mail, a conta se liga sozinha." />
       <CampoAreaTexto name="endereco" rotulo="Endereço" opcional rows={2} defaultValue={v.endereco ?? cliente?.endereco ?? ""} erros={e.endereco} />
       <div>
         <BotaoEnviar>{cliente ? "Salvar alterações" : "Cadastrar cliente"}</BotaoEnviar>
