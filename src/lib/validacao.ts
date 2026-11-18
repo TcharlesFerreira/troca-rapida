@@ -1,7 +1,7 @@
 import { z } from "zod";
 import { cnpjValido, normalizarCnpj } from "./cnpj";
 import { TIPOS_FILTRO } from "./filtros";
-import { PEDE_DETALHE, SERVICOS_OS, montarDescricao } from "./servicos-os";
+import { PECAS_CARTER, SERVICOS_OS, montarDescricao } from "./servicos-os";
 import { cpfValido, normalizarCpf } from "./cpf";
 import { normalizarPlaca, placaValida } from "./placa";
 
@@ -144,8 +144,12 @@ export const veiculoSchema = z.object({
 const caixa = z.preprocess((v) => v === "on" || v === "true", z.boolean());
 
 /**
- * Abrir OS: o serviço é escolhido numa lista. "Troca de óleo incompleta" e "Outro serviço" pedem
- * o texto do que foi feito; "Troca de filtros" pede ao menos um filtro. Vira a descrição da OS.
+ * Abrir OS: o serviço é escolhido numa lista.
+ *  - Troca de óleo completa: pode marcar bujão e/ou arruela.
+ *  - Troca de óleo incompleta: marca filtros, bujão/arruela e/ou escreve o que foi trocado (ao menos um).
+ *  - Troca de filtros: ao menos um filtro.
+ *  - Outro serviço: texto obrigatório.
+ * Tudo vira a descrição da OS.
  */
 export const ordemSchema = z
   .object({
@@ -158,15 +162,18 @@ export const ordemSchema = z
     filtroTrocado_COMBUSTIVEL: caixa,
     filtroTrocado_AR: caixa,
     filtroTrocado_AR_CABINE: caixa,
+    pecaTrocada_BUJAO: caixa,
+    pecaTrocada_ARRUELA: caixa,
     observacoes: textoOpcional("Observações", 2000),
   })
   .superRefine((d, ctx) => {
-    if (PEDE_DETALHE.includes(d.tipoServico) && (!d.detalheServico || d.detalheServico.length < 3)) {
-      const msg = d.tipoServico === "OUTRO" ? "Escreva qual é o serviço" : "Escreva o que foi trocado";
-      ctx.addIssue({ code: "custom", path: ["detalheServico"], message: msg });
-    }
-    if (d.tipoServico === "TROCA_FILTROS" && !TIPOS_FILTRO.some((t) => d[`filtroTrocado_${t}`])) {
-      ctx.addIssue({ code: "custom", path: ["filtrosTrocados"], message: "Marque ao menos um filtro" });
+    const filtros = TIPOS_FILTRO.some((t) => d[`filtroTrocado_${t}`]);
+    const pecas = PECAS_CARTER.some((p) => d[`pecaTrocada_${p}`]);
+    const texto = !!d.detalheServico && d.detalheServico.length >= 3;
+    if (d.tipoServico === "OUTRO" && !texto) ctx.addIssue({ code: "custom", path: ["detalheServico"], message: "Escreva qual é o serviço" });
+    if (d.tipoServico === "TROCA_FILTROS" && !filtros) ctx.addIssue({ code: "custom", path: ["filtrosTrocados"], message: "Marque ao menos um filtro" });
+    if (d.tipoServico === "TROCA_OLEO_INCOMPLETA" && !filtros && !pecas && !texto) {
+      ctx.addIssue({ code: "custom", path: ["detalheServico"], message: "Marque o que foi trocado ou escreva aqui" });
     }
   })
   .transform((d) => ({
@@ -175,8 +182,9 @@ export const ordemSchema = z
     kmEntrada: d.kmEntrada,
     descricao: montarDescricao(
       d.tipoServico,
-      PEDE_DETALHE.includes(d.tipoServico) ? d.detalheServico : undefined,
+      d.detalheServico,
       TIPOS_FILTRO.filter((t) => d[`filtroTrocado_${t}`]),
+      PECAS_CARTER.filter((p) => d[`pecaTrocada_${p}`]),
     ),
     observacoes: d.observacoes,
   }));

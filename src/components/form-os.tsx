@@ -7,7 +7,7 @@ import { BotaoEnviar } from "@/components/botao-enviar";
 import Link from "next/link";
 import { CampoAreaTexto, CampoCaixa, CampoSelecao, CampoTexto } from "@/components/campos";
 import { ROTULO_FILTRO, TIPOS_FILTRO } from "@/lib/filtros";
-import { PEDE_DETALHE, ROTULO_SERVICO, SERVICOS_OS, campoFiltroTrocado, type ServicoOS } from "@/lib/servicos-os";
+import { MOSTRA_DETALHE, MOSTRA_FILTROS, MOSTRA_PECAS, PECAS_CARTER, ROTULO_PECA, ROTULO_SERVICO, SERVICOS_OS, campoFiltroTrocado, campoPecaTrocada, type ServicoOS } from "@/lib/servicos-os";
 import type { EstadoForm } from "@/lib/formulario";
 import { formatarPlaca, normalizarPlaca, placaValida } from "@/lib/placa";
 
@@ -151,26 +151,37 @@ export function FormOS({ veiculos, veiculoIdInicial, hoje }: Props) {
           </p>
         )}
 
-        {PEDE_DETALHE.includes(servico as ServicoOS) && (
+        {MOSTRA_FILTROS.includes(servico as ServicoOS) && (
+          <fieldset className="grid gap-1 rounded-md border p-3">
+            <legend className="px-1 text-sm font-semibold">Quais filtros foram trocados</legend>
+            {TIPOS_FILTRO.map((t) => (
+              <CampoCaixa key={`${versao}-${t}`} name={campoFiltroTrocado(t)} rotulo={ROTULO_FILTRO[t]} defaultChecked={v[campoFiltroTrocado(t)] === "on"} />
+            ))}
+            {e.filtrosTrocados && <p className="text-sm font-medium text-destructive">{e.filtrosTrocados[0]}</p>}
+          </fieldset>
+        )}
+
+        {MOSTRA_PECAS.includes(servico as ServicoOS) && (
+          <fieldset className="grid gap-1 rounded-md border p-3">
+            <legend className="px-1 text-sm font-semibold">Também trocou</legend>
+            {PECAS_CARTER.map((p) => (
+              <CampoCaixa key={`${versao}-${p}`} name={campoPecaTrocada(p)} rotulo={ROTULO_PECA[p]} defaultChecked={v[campoPecaTrocada(p)] === "on"} />
+            ))}
+          </fieldset>
+        )}
+
+        {MOSTRA_DETALHE.includes(servico as ServicoOS) && (
           <CampoAreaTexto
             name="detalheServico"
-            rotulo={servico === "OUTRO" ? "Qual é o serviço" : "O que foi trocado"}
+            rotulo={servico === "OUTRO" ? "Qual é o serviço" : "O que mais foi trocado"}
+            opcional={servico !== "OUTRO"}
             rows={3}
             defaultValue={v.detalheServico}
             erros={e.detalheServico}
           />
         )}
-
-        {servico === "TROCA_FILTROS" && (
-          <fieldset className="grid gap-1 rounded-md border p-3">
-            <legend className="px-1 text-sm font-semibold">Quais filtros foram trocados</legend>
-            {TIPOS_FILTRO.map((t) => (
-              <CampoCaixa key={t} name={campoFiltroTrocado(t)} rotulo={ROTULO_FILTRO[t]} defaultChecked={v[campoFiltroTrocado(t)] === "on"} />
-            ))}
-            {e.filtrosTrocados && <p className="text-sm font-medium text-destructive">{e.filtrosTrocados[0]}</p>}
-          </fieldset>
-        )}
       </fieldset>
+
       <CampoAreaTexto name="observacoes" rotulo="Observações" opcional rows={3} defaultValue={v.observacoes} erros={e.observacoes} dica="Anotações internas da oficina: o cliente não vê." />
 
       <div>
