@@ -31,9 +31,9 @@ export function FormOS({ veiculos, veiculoIdInicial, hoje }: Props) {
   const [perguntarCompleta, setPerguntarCompleta] = useState(false);
   const manterIncompleta = useRef(false);
 
-  // Troca incompleta com tudo marcado (todos os filtros, bujão e arruela): pergunta se não é a completa.
+  // Troca incompleta com todos os filtros marcados (bujão e arruela não contam): pergunta se não é a completa.
   const tudoMarcado = (form: HTMLFormElement) =>
-    [...TIPOS_FILTRO.map(campoFiltroTrocado), ...PECAS_CARTER.map(campoPecaTrocada)].every(
+    TIPOS_FILTRO.map(campoFiltroTrocado).every(
       (nome) => (form.elements.namedItem(nome) as HTMLInputElement | null)?.checked,
     );
   const enviar = () => setTimeout(() => formRef.current?.requestSubmit(), 0);
@@ -209,7 +209,7 @@ export function FormOS({ veiculos, veiculoIdInicial, hoje }: Props) {
       {perguntarCompleta && (
         <div role="alertdialog" aria-labelledby="pergunta-completa" className="grid gap-3 rounded-lg border-2 border-primary bg-card p-4">
           <p id="pergunta-completa" className="font-semibold">
-            Você marcou todos os filtros, o bujão e a arruela. Esta troca é completa?
+            Você marcou todos os filtros. Esta troca é completa?
           </p>
           <div className="flex flex-wrap gap-2">
             <button
