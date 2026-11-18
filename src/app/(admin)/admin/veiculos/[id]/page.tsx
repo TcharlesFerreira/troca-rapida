@@ -27,7 +27,7 @@ export default async function PaginaVeiculo({ params }: { params: Promise<{ id: 
   const opcoes = veiculo.recomendacaoOleo ? [] : await opcoesDeRecomendacao(veiculo);
   // Última troca = a OS mais recente (não cancelada) com troca de óleo registrada.
   const ultima = veiculo.ordens.find((o) => o.trocaOleo && o.status !== "CANCELADO");
-  // Quanto vai no motor: o que a oficina informou para este carro vale mais que o da base.
+  // Quanto vai no motor (a única quantidade da tela): o que a oficina informou vale mais que o da base.
   const capacidadeBase = veiculo.recomendacaoOleo?.capacidadeComFiltroL ?? null;
   const capacidade = veiculo.capacidadeOleoL ?? capacidadeBase;
 
@@ -64,9 +64,7 @@ export default async function PaginaVeiculo({ params }: { params: Promise<{ id: 
                 <p className="font-display text-3xl font-semibold">
                   {ultima.trocaOleo.oleoMarca} {ultima.trocaOleo.oleoViscosidade}
                 </p>
-                <p>
-                  {ultima.trocaOleo.oleoEspecificacao ?? "Norma não informada"} · {litrosBR(ultima.trocaOleo.quantidadeLitros)}
-                </p>
+                <p>{ultima.trocaOleo.oleoEspecificacao ?? "Norma não informada"}</p>
                 <p className="mt-2 text-muted-foreground">
                   OS nº{" "}
                   <Link href={`/admin/os/${ultima.id}`} className="text-primary underline underline-offset-4">

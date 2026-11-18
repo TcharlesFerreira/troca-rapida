@@ -56,11 +56,15 @@ export async function salvarTrocaOleo(
     divergiuDaRecomendacao: comparacao.situacao === "DIFERENTE",
   };
 
-  await db.trocaOleo.upsert({
-    where: { ordemServicoId: ordemId },
-    create: { ordemServicoId: ordemId, ...campos },
-    update: campos,
-  });
+  await db.$transaction([
+    db.trocaOleo.upsert({
+      where: { ordemServicoId: ordemId },
+      create: { ordemServicoId: ordemId, ...campos },
+      update: campos,
+    }),
+    // A quantidade da troca é a que vai no motor: o carro passa a guardar esse valor.
+    db.veiculo.update({ where: { id: ordem.veiculoId }, data: { capacidadeOleoL: dados.quantidadeLitros } }),
+  ]);
 
   return { comparacao };
 }

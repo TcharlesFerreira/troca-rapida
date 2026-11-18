@@ -157,12 +157,12 @@ const decimalOpcional = (rotulo: string, min: number, max: number) =>
       .optional(),
   );
 
-/** Correção do último óleo usado, direto na tela do veículo (a norma e a quantidade podem ficar em branco). */
+/** Correção do último óleo usado, direto na tela do veículo (a norma pode ficar em branco).
+ *  A quantidade não entra aqui: é a do motor do carro (capacidadeOleoSchema). */
 export const ultimoOleoSchema = z.object({
   oleoMarca: texto("Marca do óleo", 2, 80),
   oleoViscosidade: texto("Viscosidade", 2, 20),
   oleoEspecificacao: textoOpcional("Especificação", 80),
-  quantidadeLitros: decimalOpcional("Quantidade", 0.1, 30),
 });
 
 /** Quanto óleo vai no motor do carro. Vazio = usar o da base. */

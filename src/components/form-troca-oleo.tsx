@@ -74,7 +74,7 @@ export function FormTrocaOleo({ ordemId, recomendado, inicial, jaRegistrada }: P
       </div>
 
       <div className="grid gap-4 sm:grid-cols-2">
-        <CampoTexto name="quantidadeLitros" rotulo="Quantidade (litros)" inputMode="decimal" value={quantidade} onChange={(ev) => setQuantidade(ev.target.value)} erros={e.quantidadeLitros} dica="Ex.: 3,5." />
+        <CampoTexto name="quantidadeLitros" rotulo="Vai no motor (litros)" inputMode="decimal" value={quantidade} onChange={(ev) => setQuantidade(ev.target.value)} erros={e.quantidadeLitros} dica="Ex.: 3,5." />
         <CampoCaixa name="filtroTrocado" rotulo="Filtro de óleo trocado" defaultChecked={v.filtroTrocado ? v.filtroTrocado === "on" : (inicial.filtroTrocado ?? true)} />
       </div>
 

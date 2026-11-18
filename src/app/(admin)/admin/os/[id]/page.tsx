@@ -134,7 +134,14 @@ export default async function PaginaOrdem({ params, searchParams }: { params: Pr
                           proximaTrocaKm: trocaOleo.proximaTrocaKm?.toString(),
                           proximaTrocaData: paraInputData(trocaOleo.proximaTrocaData),
                         }
-                      : { proximaTrocaKm: sugestaoKm, proximaTrocaData: sugestaoData }
+                      : {
+                          proximaTrocaKm: sugestaoKm,
+                          proximaTrocaData: sugestaoData,
+                          quantidadeLitros: (() => {
+                            const litros = veiculo.capacidadeOleoL ?? rec?.capacidadeComFiltroL;
+                            return litros ? virgula(litros) : undefined;
+                          })(),
+                        }
                   }
                 />
               </div>

@@ -11,13 +11,13 @@ const virgula = (n: number | null | undefined) => (n === null || n === undefined
 
 const resumo = "inline-flex min-h-11 cursor-pointer items-center rounded-md border px-4 font-semibold hover:bg-muted";
 
-/** Corrigir o último óleo usado (marca, viscosidade, norma, quantidade). */
+/** Corrigir o último óleo usado (marca, viscosidade, norma). A quantidade é a do motor, logo abaixo. */
 export function EditarUltimoOleo({
   veiculoId,
   atual,
 }: {
   veiculoId: string;
-  atual: { oleoMarca: string; oleoViscosidade: string; oleoEspecificacao: string | null; quantidadeLitros: number | null };
+  atual: { oleoMarca: string; oleoViscosidade: string; oleoEspecificacao: string | null };
 }) {
   const [estado, acao] = useActionState<EstadoForm, FormData>(corrigirUltimoOleoAction, {});
   const v = estado.valores ?? {};
@@ -38,15 +38,6 @@ export function EditarUltimoOleo({
             defaultValue={v.oleoEspecificacao ?? atual.oleoEspecificacao ?? ""}
             erros={e.oleoEspecificacao}
             dica="Ex.: API SP."
-          />
-          <CampoTexto
-            name="quantidadeLitros"
-            rotulo="Quantidade usada (litros)"
-            opcional
-            inputMode="decimal"
-            defaultValue={v.quantidadeLitros ?? virgula(atual.quantidadeLitros)}
-            erros={e.quantidadeLitros}
-            dica="Ex.: 3,5."
           />
         </div>
         <div>

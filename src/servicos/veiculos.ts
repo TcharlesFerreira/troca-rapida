@@ -101,18 +101,27 @@ export async function escolherMotorDaBase(ator: Ator, veiculoId: string, recomen
   return db.veiculo.update({ where: { id: veiculo.id }, data: { motor: opcao.motor, recomendacaoOleoId: opcao.id } });
 }
 
-/** Quanto óleo vai no motor deste carro (null = usar o da base). */
+/**
+ * Quanto óleo vai no motor deste carro (null = usar o da base). É a única quantidade da tela:
+ * a da última troca acompanha, para as duas nunca ficarem diferentes.
+ */
 export async function definirCapacidadeOleo(ator: Ator, veiculoId: string, litros: number | null) {
   const empresaId = exigirAdmin(ator);
   const alterados = await db.veiculo.updateMany({ where: { id: veiculoId, empresaId }, data: { capacidadeOleoL: litros } });
   if (alterados.count !== 1) throw new ErroDeNegocio("Veículo não encontrado.");
+  if (litros === null) return;
+  const ultima = await db.trocaOleo.findFirst({
+    where: { ordemServico: { veiculoId, status: { not: "CANCELADO" } } },
+    orderBy: [{ ordemServico: { dataEntrada: "desc" } }, { ordemServico: { numero: "desc" } }],
+    select: { id: true },
+  });
+  if (ultima) await db.trocaOleo.update({ where: { id: ultima.id }, data: { quantidadeLitros: litros } });
 }
 
 export interface UltimoOleoDados {
   oleoMarca: string;
   oleoViscosidade: string;
   oleoEspecificacao?: string;
-  quantidadeLitros?: number;
 }
 
 /**
@@ -144,7 +153,6 @@ export async function corrigirUltimoOleo(ator: Ator, veiculoId: string, dados: U
       oleoMarca: dados.oleoMarca,
       oleoViscosidade: dados.oleoViscosidade,
       oleoEspecificacao: dados.oleoEspecificacao ?? null,
-      quantidadeLitros: dados.quantidadeLitros ?? null,
       recomendacaoOleoId: rec?.id ?? null,
       divergiuDaRecomendacao: divergiu,
     },
