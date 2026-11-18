@@ -94,7 +94,12 @@ export function FormOS({ veiculos, veiculoIdInicial, hoje }: Props) {
             </Link>
           </p>
         ) : parte.length >= 2 ? (
-          <p className="text-sm">Nenhuma placa com “{parte}”.</p>
+          <p className="text-sm">
+            Nenhuma placa com “{parte}”.{" "}
+            <Link href="/admin/veiculos/novo" className="font-semibold text-primary underline underline-offset-4">
+              Cadastrar um veículo novo
+            </Link>
+          </p>
         ) : null}
       </div>
       <CampoSelecao

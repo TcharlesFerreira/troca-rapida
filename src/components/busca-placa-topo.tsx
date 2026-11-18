@@ -4,7 +4,7 @@ import { useEffect, useRef, useState } from "react";
 import { useRouter } from "next/navigation";
 import { Search } from "lucide-react";
 import { buscarPlacaAction, sugerirPlacasAction } from "@/acoes/busca";
-import { placaValida } from "@/lib/placa";
+import { formatarPlaca, normalizarPlaca, placaValida } from "@/lib/placa";
 
 /**
  * Busca por placa do topo. Com 2+ letras/números mostra, logo abaixo do campo, os carros cuja placa
@@ -101,7 +101,16 @@ export function BuscaPlacaTopo() {
       {mostrar && (
         <div className="absolute left-0 right-0 top-full z-50 mt-1 overflow-hidden rounded-md border bg-card text-foreground shadow-lg">
           {sugestoes.length === 0 ? (
-            <p className="px-3 py-2 text-sm text-muted-foreground">Nenhuma placa encontrada.</p>
+            <div className="grid gap-1 p-1">
+              <p className="px-2 py-1 text-sm text-muted-foreground">Nenhum veículo com esta placa.</p>
+              <a
+                href={placaValida(texto) ? `/admin/veiculos/novo?placa=${normalizarPlaca(texto)}` : "/admin/veiculos/novo"}
+                onMouseDown={(ev) => ev.preventDefault()}
+                className="flex min-h-11 items-center rounded px-2 text-sm font-semibold text-primary hover:bg-muted"
+              >
+                {placaValida(texto) ? `+ Cadastrar o veículo ${formatarPlaca(texto)}` : "+ Cadastrar um veículo novo"}
+              </a>
+            </div>
           ) : (
             <ul id="sugestoes-placa" role="listbox" aria-label="Placas encontradas">
               {sugestoes.map((s, i) => (
