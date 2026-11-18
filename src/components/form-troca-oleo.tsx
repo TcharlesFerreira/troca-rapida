@@ -9,9 +9,12 @@ import { Alert } from "@/components/ui/alert";
 import { Button } from "@/components/ui/button";
 import type { EstadoForm } from "@/lib/formulario";
 import { compararOleo } from "@/lib/oleo";
+import { proximaTrocaKmSugerida } from "@/lib/intervalo-troca";
 
 interface Props {
   ordemId: string;
+  /** Quilometragem da entrada da OS: base da próxima troca. */
+  kmEntrada: number;
   recomendado: { viscosidade: string; especificacao: string; capacidadeComFiltroL: number | null } | null;
   /** Valores já salvos (para corrigir) ou sugeridos a partir da base. */
   inicial: {
@@ -26,7 +29,7 @@ interface Props {
   jaRegistrada: boolean;
 }
 
-export function FormTrocaOleo({ ordemId, recomendado, inicial, jaRegistrada }: Props) {
+export function FormTrocaOleo({ ordemId, kmEntrada, recomendado, inicial, jaRegistrada }: Props) {
   const [estado, acao] = useActionState<EstadoForm, FormData>(salvarTrocaOleoAction, {});
   const v = estado.valores ?? {};
   const e = estado.erros ?? {};
@@ -35,6 +38,18 @@ export function FormTrocaOleo({ ordemId, recomendado, inicial, jaRegistrada }: P
   const [especificacao, setEspecificacao] = useState(v.oleoEspecificacao ?? inicial.oleoEspecificacao ?? "");
   const [quantidade, setQuantidade] = useState(v.quantidadeLitros ?? inicial.quantidadeLitros ?? "");
 
+  // Próxima troca em km: sai da viscosidade (0W20 a 5W40: 10 mil; 10W30 a 15W40: 7 mil; 20W50 a 25W60: 5 mil).
+  // Muda sozinha enquanto a oficina não mexer no campo; viscosidade fora da lista deixa em branco para preencher à mão.
+  const sugerir = (visc: string) => {
+    const km = proximaTrocaKmSugerida(kmEntrada, visc);
+    return km === null ? "" : String(km);
+  };
+  const [proximaKm, setProximaKm] = useState(v.proximaTrocaKm ?? inicial.proximaTrocaKm ?? sugerir(viscosidade));
+  const [kmEditado, setKmEditado] = useState(!!(v.proximaTrocaKm ?? inicial.proximaTrocaKm));
+  const mudarViscosidade = (nova: string) => {
+    setViscosidade(nova);
+    if (!kmEditado) setProximaKm(sugerir(nova));
+  };
   // Aviso ao vivo; o servidor confere de novo ao salvar. Nunca impede o registro.
   const comparacao =
     viscosidade.trim() && especificacao.trim() ? compararOleo({ viscosidade, especificacao }, recomendado) : null;
@@ -50,7 +65,7 @@ export function FormTrocaOleo({ ordemId, recomendado, inicial, jaRegistrada }: P
             type="button"
             variant="outline"
             onClick={() => {
-              setViscosidade(recomendado.viscosidade);
+              mudarViscosidade(recomendado.viscosidade);
               setEspecificacao(recomendado.especificacao);
               if (!quantidade && recomendado.capacidadeComFiltroL) setQuantidade(String(recomendado.capacidadeComFiltroL).replace(".", ","));
             }}
@@ -63,7 +78,7 @@ export function FormTrocaOleo({ ordemId, recomendado, inicial, jaRegistrada }: P
       <CampoTexto name="oleoMarca" rotulo="Marca comercial do óleo" defaultValue={v.oleoMarca ?? inicial.oleoMarca} erros={e.oleoMarca} />
 
       <div className="grid gap-4 sm:grid-cols-2">
-        <CampoTexto name="oleoViscosidade" rotulo="Viscosidade" value={viscosidade} onChange={(ev) => setViscosidade(ev.target.value)} erros={e.oleoViscosidade} />
+        <CampoTexto name="oleoViscosidade" rotulo="Viscosidade" value={viscosidade} onChange={(ev) => mudarViscosidade(ev.target.value)} erros={e.oleoViscosidade} />
         <CampoTexto name="oleoEspecificacao" rotulo="Especificação" value={especificacao} onChange={(ev) => setEspecificacao(ev.target.value)} erros={e.oleoEspecificacao} dica="Ex.: API SP." />
       </div>
 
@@ -80,7 +95,15 @@ export function FormTrocaOleo({ ordemId, recomendado, inicial, jaRegistrada }: P
 
       <fieldset className="grid gap-4 rounded-md border p-4 sm:grid-cols-2">
         <legend className="px-1 text-sm font-semibold">Próxima troca prevista</legend>
-        <CampoTexto name="proximaTrocaKm" rotulo="Quilometragem" opcional inputMode="numeric" defaultValue={v.proximaTrocaKm ?? inicial.proximaTrocaKm} erros={e.proximaTrocaKm} />
+        <CampoTexto name="proximaTrocaKm" rotulo="Quilometragem" opcional inputMode="numeric"
+          value={proximaKm}
+          onChange={(ev) => {
+            setProximaKm(ev.target.value);
+            setKmEditado(true);
+          }}
+          erros={e.proximaTrocaKm}
+          dica={!kmEditado && proximaKm ? "Sugerido pela viscosidade; pode mudar." : undefined}
+        />
         <CampoTexto name="proximaTrocaData" rotulo="Data" opcional type="date" defaultValue={v.proximaTrocaData ?? inicial.proximaTrocaData} erros={e.proximaTrocaData} />
       </fieldset>
 

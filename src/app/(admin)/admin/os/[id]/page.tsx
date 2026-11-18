@@ -32,8 +32,6 @@ export default async function PaginaOrdem({ params, searchParams }: { params: Pr
   const rec = veiculo.recomendacaoOleo;
   const seguintes = proximosStatus(ordem.status);
 
-  // Sugestão de "próxima troca" a partir do intervalo da base (só quando ainda não há registro).
-  const sugestaoKm = rec?.intervaloKm ? String(ordem.kmEntrada + rec.intervaloKm) : undefined;
   // Próxima troca por data: sempre 6 meses depois da entrada (a oficina pode mudar no campo).
   const sugestaoData = paraInputData(somarMeses(ordem.dataEntrada, MESES_PROXIMA_TROCA));
 
@@ -122,6 +120,7 @@ export default async function PaginaOrdem({ params, searchParams }: { params: Pr
               <div className="rounded-lg border bg-card p-5">
                 <FormTrocaOleo
                   ordemId={ordem.id}
+                  kmEntrada={ordem.kmEntrada}
                   jaRegistrada={!!trocaOleo}
                   recomendado={rec ? { viscosidade: rec.viscosidade, especificacao: rec.especificacao, capacidadeComFiltroL: rec.capacidadeComFiltroL } : null}
                   inicial={
@@ -136,7 +135,6 @@ export default async function PaginaOrdem({ params, searchParams }: { params: Pr
                           proximaTrocaData: trocaOleo.proximaTrocaData ? paraInputData(trocaOleo.proximaTrocaData) : sugestaoData,
                         }
                       : {
-                          proximaTrocaKm: sugestaoKm,
                           proximaTrocaData: sugestaoData,
                           quantidadeLitros: (() => {
                             const litros = veiculo.capacidadeOleoL ?? rec?.capacidadeComFiltroL;
