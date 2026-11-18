@@ -54,6 +54,10 @@ Se preferir não usar o `setup:env`, copie `.env.example` para `.env` e preencha
 - **Administrador (uma empresa):** clientes, veículos, OS, trocas de óleo, busca por placa, vínculos pendentes e consulta da base de óleo, **só da própria empresa**. Não existe cadastro público de administrador: o superadministrador cria um por empresa (o seed pode criar o da primeira empresa com `EMPRESA_NOME`, `ADMIN_EMAIL` e `ADMIN_PASSWORD`).
 - **Cliente:** cria a própria conta e vê só os seus veículos, serviços em andamento, histórico e próxima troca de óleo, em todas as oficinas em que tem cadastro confirmado.
 
+### Filtros
+
+Cada carro guarda os filtros que a oficina usa (óleo, combustível, ar do motor e ar da cabine). A tela do veículo mostra, ao lado, o que o catálogo do fabricante indica e avisa quando o código é diferente. O catálogo fica em `data/filtros/*.json` (hoje, Tecfil), carregado pelo seed; cada aplicação guarda a página consultada e a data. Os códigos são comparados sem espaço/hífen, e o "GL" das fichas antigas é lido como o "GI" da Tecfil.
+
 ### Empresas
 
 Cada empresa tem os próprios clientes, veículos e ordens de serviço. CPF e placa são únicos **dentro** da empresa: o mesmo carro pode ter cadastro em duas oficinas, e uma não vê o da outra. Todo serviço de administrador filtra pelo `empresaId` da sessão (`exigirAdmin` devolve esse id), e `tests/isolamento-empresa.test.ts` quebra se algum esquecer. A base de óleo é a mesma para todas.

@@ -133,12 +133,64 @@ async function carregarBaseDeOleo(): Promise<number> {
   return totalErros;
 }
 
+/**
+ * Catálogo de filtros (data/filtros/*.json): o que o fabricante indica para cada modelo,
+ * motor e faixa de anos. Toda aplicação precisa da página consultada (url) e da data.
+ * Recarrega tudo a cada seed (os arquivos são a fonte da verdade).
+ */
+async function carregarFiltros(): Promise<number> {
+  const pasta = join(process.cwd(), "data", "filtros");
+  let arquivos: string[] = [];
+  try {
+    arquivos = readdirSync(pasta).filter((a) => a.endsWith(".json")).sort();
+  } catch {
+    return 0;
+  }
+  const TIPOS = ["OLEO", "COMBUSTIVEL", "AR", "AR_CABINE"] as const;
+  const linhas: Array<{
+    fabricante: string; marca: string; modelo: string; motor: string; anoInicial: number; anoFinal: number;
+    tipo: (typeof TIPOS)[number]; codigo: string; url: string; consultadaEm: Date; observacao: string | null;
+  }> = [];
+  let erros = 0;
+  for (const arquivo of arquivos) {
+    const conteudo = JSON.parse(readFileSync(join(pasta, arquivo), "utf8"));
+    const fabricante = String(conteudo.fabricante ?? "").trim();
+    if (!fabricante) { console.error(`  ✗ ${arquivo}: falta "fabricante"`); erros++; continue; }
+    for (const [i, ap] of (conteudo.aplicacoes ?? []).entries()) {
+      const onde = `${arquivo} > aplicacoes[${i}]`;
+      const ok =
+        typeof ap.marca === "string" && typeof ap.modelo === "string" && typeof ap.motor === "string" &&
+        Array.isArray(ap.anos) && ap.anos.length === 2 && ap.anos[0] <= ap.anos[1] &&
+        typeof ap.url === "string" && ap.url.startsWith("https://") &&
+        /^\d{4}-\d{2}-\d{2}$/.test(ap.consultadaEm ?? "") && ap.filtros && typeof ap.filtros === "object";
+      if (!ok) { console.error(`  ✗ ${onde}: precisa de marca, modelo, motor, anos [ini, fim], url https, consultadaEm e filtros`); erros++; continue; }
+      // Um código ou uma lista de códigos equivalentes (ex.: OLEO: ["PSL619", "TM3"]).
+      const pares = Object.entries(ap.filtros as Record<string, unknown>).flatMap(([tipo, v]) =>
+        (Array.isArray(v) ? v : [v]).map((codigo) => [tipo, codigo] as const),
+      );
+      for (const [tipo, codigo] of pares) {
+        if (!(TIPOS as readonly string[]).includes(tipo) || typeof codigo !== "string" || !codigo.trim()) {
+          console.error(`  ✗ ${onde}: filtro inválido "${tipo}"`); erros++; continue;
+        }
+        linhas.push({
+          fabricante, marca: ap.marca, modelo: ap.modelo, motor: ap.motor, anoInicial: ap.anos[0], anoFinal: ap.anos[1],
+          tipo: tipo as (typeof TIPOS)[number], codigo: codigo.trim(), url: ap.url, consultadaEm: new Date(ap.consultadaEm),
+          observacao: typeof ap.observacao === "string" ? ap.observacao : null,
+        });
+      }
+    }
+  }
+  await db.$transaction([db.filtroAplicacao.deleteMany({}), db.filtroAplicacao.createMany({ data: linhas, skipDuplicates: true })]);
+  console.log(`Catálogo de filtros carregado: ${linhas.length} filtro(s), ${erros} problema(s).`);
+  return erros;
+}
+
 async function main(): Promise<void> {
   await criarSuperadmin();
   await criarAdministrador();
-  const erros = await carregarBaseDeOleo();
+  const erros = (await carregarBaseDeOleo()) + (await carregarFiltros());
   if (erros > 0) {
-    console.error("Há registros recusados na base de óleo (veja acima). Corrija os arquivos e rode o seed de novo.");
+    console.error("Há registros recusados na base de óleo ou no catálogo de filtros (veja acima). Corrija os arquivos e rode o seed de novo.");
     process.exitCode = 1;
   }
 }

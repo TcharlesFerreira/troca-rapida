@@ -136,6 +136,11 @@ model Veiculo {
   kmAtual   Int
   /// Quanto óleo vai no motor deste carro (litros), informado pela oficina. Vale mais que o da base.
   capacidadeOleoL Float?
+  /// Filtros que a oficina usa neste carro (código como anotado, ex.: "PSL 675"). "NAO_TEM" = o carro não tem esse filtro.
+  filtroOleo        String?
+  filtroCombustivel String?
+  filtroAr          String?
+  filtroArCabine    String?
   criadoEm  DateTime @default(now())
 
   /// Recomendação da base de óleo (vazio quando o carro não existe na base).
@@ -257,6 +262,34 @@ model RecomendacaoOleo {
 
   @@unique([modeloId, motor, anoInicial, anoFinal])
   @@map("recomendacoes_oleo")
+}
+
+/// Filtros indicados por um fabricante (catálogo) para um modelo, motor e faixa de anos.
+/// Vem de data/filtros/*.json pelo seed, sempre com a página consultada como fonte.
+model FiltroAplicacao {
+  id          String   @id @default(cuid())
+  fabricante  String   // ex.: "Tecfil"
+  marca       String
+  modelo      String
+  motor       String
+  anoInicial  Int
+  anoFinal    Int
+  tipo        TipoFiltro
+  codigo      String
+  url         String
+  consultadaEm DateTime @db.Date
+  observacao  String?
+
+  @@unique([fabricante, marca, modelo, motor, anoInicial, anoFinal, tipo, codigo])
+  @@index([marca, modelo])
+  @@map("filtros_aplicacao")
+}
+
+enum TipoFiltro {
+  OLEO
+  COMBUSTIVEL
+  AR
+  AR_CABINE
 }
 
 model FonteOleo {

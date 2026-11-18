@@ -2,6 +2,7 @@ import type { Prisma } from "@prisma/client";
 import { db } from "@/lib/db";
 import { ErroDeNegocio } from "@/lib/erros";
 import { exigirAdmin, type Ator } from "@/lib/permissoes";
+import { normalizarCodigoFiltro } from "@/lib/filtros";
 import { compararOleo, normalizarCodigo } from "@/lib/oleo";
 import { normalizarPlaca } from "@/lib/placa";
 import { buscarRecomendacao, incluirRecomendacaoCompleta, opcoesDeRecomendacao } from "./base-oleo";
@@ -157,4 +158,26 @@ export async function corrigirUltimoOleo(ator: Ator, veiculoId: string, dados: U
       divergiuDaRecomendacao: divergiu,
     },
   });
+}
+
+export interface FiltrosDados {
+  filtroOleo?: string;
+  filtroCombustivel?: string;
+  filtroAr?: string;
+  filtroArCabine?: string;
+}
+
+/** Filtros que a oficina usa neste carro. */
+export async function definirFiltros(ator: Ator, veiculoId: string, dados: FiltrosDados) {
+  const empresaId = exigirAdmin(ator);
+  const alterados = await db.veiculo.updateMany({
+    where: { id: veiculoId, empresaId },
+    data: {
+      filtroOleo: normalizarCodigoFiltro(dados.filtroOleo),
+      filtroCombustivel: normalizarCodigoFiltro(dados.filtroCombustivel),
+      filtroAr: normalizarCodigoFiltro(dados.filtroAr),
+      filtroArCabine: normalizarCodigoFiltro(dados.filtroArCabine),
+    },
+  });
+  if (alterados.count !== 1) throw new ErroDeNegocio("Veículo não encontrado.");
 }

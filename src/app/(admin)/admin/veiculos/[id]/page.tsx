@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { Placa } from "@/components/placa";
+import { FiltrosDoCarro } from "@/components/filtros-do-carro";
 import { OleoSemRecomendacao } from "@/components/oleo-sem-recomendacao";
 import { RecomendacaoOleo } from "@/components/recomendacao-oleo";
 import { StatusBadge } from "@/components/selos";
@@ -10,7 +11,7 @@ import { estiloBotao } from "@/components/ui/button";
 import { Table, Td, Th } from "@/components/ui/table";
 import { dataBR, kmBR, litrosBR } from "@/lib/formatar";
 import { exigirAdminSessao } from "@/lib/sessao";
-import { opcoesDeRecomendacao } from "@/servicos/base-oleo";
+import { filtrosIndicados, opcoesDeRecomendacao } from "@/servicos/base-oleo";
 import { obterVeiculo } from "@/servicos/veiculos";
 
 export const metadata: Metadata = { title: "Veículo" };
@@ -20,7 +21,7 @@ export default async function PaginaVeiculo({ params }: { params: Promise<{ id: 
   const { id } = await params;
   const veiculo = await obterVeiculo(ator, id);
   if (!veiculo) notFound();
-  const opcoes = veiculo.recomendacaoOleo ? [] : await opcoesDeRecomendacao(veiculo);
+  const [opcoes, indicados] = await Promise.all([veiculo.recomendacaoOleo ? [] : opcoesDeRecomendacao(veiculo), filtrosIndicados(veiculo)]);
   // Última troca = a OS mais recente (não cancelada) com troca de óleo registrada.
   const ultima = veiculo.ordens.find((o) => o.trocaOleo && o.status !== "CANCELADO");
   // Quanto vai no motor (a única quantidade da tela): o que a oficina informou vale mais que o da base.
@@ -89,6 +90,13 @@ export default async function PaginaVeiculo({ params }: { params: Promise<{ id: 
             <p className="text-sm text-muted-foreground">
               {veiculo.capacidadeOleoL ? "Informada pela oficina para este carro." : capacidadeBase ? "Da base de óleo (com filtro)." : "Informe quanto óleo vai neste motor."}
             </p>
+          </section>
+
+          <section aria-labelledby="filtros" className="rounded-lg border bg-card p-5 lg:col-span-2">
+            <h2 id="filtros" className="mb-3 text-xl font-semibold">
+              Filtros
+            </h2>
+            <FiltrosDoCarro usados={veiculo} indicados={indicados} />
           </section>
 
           <section aria-labelledby="oleo" className="lg:col-span-2">

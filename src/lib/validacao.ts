@@ -170,6 +170,17 @@ export const capacidadeOleoSchema = z.object({
   capacidadeOleoL: decimalOpcional("Quantidade de óleo", 0.5, 30),
 });
 
+const filtro = (rotulo: string) =>
+  z.preprocess(vazioParaUndefined, z.string().trim().max(40, `${rotulo} aceita até 40 caracteres`).optional());
+
+/** Filtros que a oficina usa no carro. Vazio = não informado; "não tem" = o carro não tem esse filtro. */
+export const filtrosSchema = z.object({
+  filtroOleo: filtro("Filtro de óleo"),
+  filtroCombustivel: filtro("Filtro de combustível"),
+  filtroAr: filtro("Filtro de ar do motor"),
+  filtroArCabine: filtro("Filtro de ar da cabine"),
+});
+
 export const trocaOleoSchema = z.object({
   oleoMarca: texto("Marca do óleo", 2, 80),
   oleoViscosidade: texto("Viscosidade", 2, 20),

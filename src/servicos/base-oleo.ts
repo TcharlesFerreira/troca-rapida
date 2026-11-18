@@ -132,3 +132,22 @@ export async function obterModelo(ator: Ator, modeloId: string) {
   exigirAdmin(ator);
   return db.modeloVeiculo.findUnique({ where: { id: modeloId }, include: { marca: true } });
 }
+
+/**
+ * Filtros indicados pelos catálogos (ex.: Tecfil) para o carro: mesma marca e modelo, ano na faixa
+ * e, se o motor tiver cilindrada, a mesma. Pode voltar mais de uma opção quando o modelo teve
+ * motores diferentes naquele ano.
+ */
+export async function filtrosIndicados(carro: { marca: string; modelo: string; motor: string; ano: number }) {
+  const linhas = await db.filtroAplicacao.findMany({
+    where: { anoInicial: { lte: carro.ano }, anoFinal: { gte: carro.ano } },
+    orderBy: [{ tipo: "asc" }, { motor: "asc" }],
+  });
+  const cc = cilindrada(carro.motor);
+  return linhas.filter(
+    (l) =>
+      normalizarCodigo(l.marca) === normalizarCodigo(carro.marca) &&
+      normalizarCodigo(l.modelo) === normalizarCodigo(carro.modelo) &&
+      (!cc || cilindrada(l.motor) === cc),
+  );
+}

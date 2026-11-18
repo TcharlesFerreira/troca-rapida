@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import { EditarFiltros } from "@/components/editar-filtros";
 import { EditarOleoDoCarro } from "@/components/editar-oleo-veiculo";
 import { FormVeiculo } from "@/components/form-veiculo";
 import { Placa } from "@/components/placa";
@@ -42,6 +43,13 @@ export default async function EditarVeiculo({ params }: { params: Promise<{ id: 
             quantidade={veiculo.capacidadeOleoL}
             quantidadeDaBase={veiculo.recomendacaoOleo?.capacidadeComFiltroL ?? null}
           />
+        </section>
+
+        <section aria-labelledby="filtros-carro" className="rounded-lg border bg-card p-5">
+          <h2 id="filtros-carro" className="mb-4 text-xl font-semibold">
+            Filtros
+          </h2>
+          <EditarFiltros veiculoId={veiculo.id} atuais={veiculo} />
         </section>
 
         <section aria-labelledby="dados-carro" className="min-w-0">

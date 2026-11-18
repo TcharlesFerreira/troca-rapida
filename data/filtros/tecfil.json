@@ -1,0 +1,7348 @@
+{
+ "fabricante": "Tecfil",
+ "nota": "Consultado no catálogo público da Tecfil (catalogo.tecfil.com.br), um modelo por vez. Confira sempre a versão do carro.",
+ "aplicacoes": [
+  {
+   "marca": "Chevrolet",
+   "modelo": "Agile",
+   "motor": "1.4",
+   "anos": [
+    2009,
+    2015
+   ],
+   "url": "https://catalogo.tecfil.com.br/search/AGILE",
+   "consultadaEm": "2026-11-18",
+   "observacao": "Tecfil: Econo Flex (Flex)",
+   "filtros": {
+    "AR_CABINE": "ACP003",
+    "AR": "ARL8832",
+    "OLEO": [
+     "PSL619",
+     "TM3"
+    ],
+    "COMBUSTIVEL": "GI04/7"
+   }
+  },
+  {
+   "marca": "Chevrolet",
+   "modelo": "Astra",
+   "motor": "1.8 8V MPFI",
+   "anos": [
+    2001,
+    2004
+   ],
+   "url": "https://catalogo.tecfil.com.br/search/ASTRA%201%3CDOT%3E8",
+   "consultadaEm": "2026-11-18",
+   "observacao": "Tecfil: (Álcool) 01/2001 - 12/2004",
+   "filtros": {
+    "AR_CABINE": "ACP001",
+    "AR": "ARL8840",
+    "OLEO": [
+     "PSL619",
+     "TM3"
+    ],
+    "COMBUSTIVEL": "GI04/7"
+   }
+  },
+  {
+   "marca": "Chevrolet",
+   "modelo": "Astra",
+   "motor": "1.8 e 2.0",
+   "anos": [
+    1999,
+    2003
+   ],
+   "url": "https://catalogo.tecfil.com.br/search/ASTRA%202%3CDOT%3E0",
+   "consultadaEm": "2026-11-18",
+   "observacao": "Tecfil: 8V e 16V (Gasolina)",
+   "filtros": {
+    "AR_CABINE": "ACP001",
+    "AR": "ARL8840",
+    "OLEO": [
+     "PSL619",
+     "TM3"
+    ],
+    "COMBUSTIVEL": "GI04/7"
+   }
+  },
+  {
+   "marca": "Chevrolet",
+   "modelo": "Astra",
+   "motor": "2.0 16V",
+   "anos": [
+    1995,
+    1996
+   ],
+   "url": "https://catalogo.tecfil.com.br/search/ASTRA%202%3CDOT%3E0",
+   "consultadaEm": "2026-11-18",
+   "observacao": "Tecfil: Importado (Gasolina) 01/1995 - 12/1996",
+   "filtros": {
+    "AR_CABINE": "ACP003",
+    "OLEO": [
+     "PSL619",
+     "TM3"
+    ],
+    "COMBUSTIVEL": "GI03/7"
+   }
+  },
+  {
+   "marca": "Chevrolet",
+   "modelo": "Astra",
+   "motor": "2.0 8V",
+   "anos": [
+    2004,
+    2011
+   ],
+   "url": "https://catalogo.tecfil.com.br/search/ASTRA%202%3CDOT%3E0",
+   "consultadaEm": "2026-11-18",
+   "observacao": "Tecfil: (Flex)",
+   "filtros": {
+    "AR_CABINE": "ACP001",
+    "AR": "ARL8840",
+    "OLEO": [
+     "PSL619",
+     "TM3"
+    ],
+    "COMBUSTIVEL": "GI06/7"
+   }
+  },
+  {
+   "marca": "Chevrolet",
+   "modelo": "Celta",
+   "motor": "1.0 8V 60cv",
+   "anos": [
+    2000,
+    2006
+   ],
+   "url": "https://catalogo.tecfil.com.br/search/CELTA",
+   "consultadaEm": "2026-11-18",
+   "observacao": "Tecfil: (Life / Spirit / Super) - mecânico (Gasolina)",
+   "filtros": {
+    "AR_CABINE": "ACP003",
+    "AR": "ARL8834",
+    "OLEO": [
+     "PSL619",
+     "TM3"
+    ],
+    "COMBUSTIVEL": "GI04/7"
+   }
+  },
+  {
+   "marca": "Chevrolet",
+   "modelo": "Celta",
+   "motor": "1.0 8V 60cv",
+   "anos": [
+    2000,
+    2006
+   ],
+   "url": "https://catalogo.tecfil.com.br/search/CELTA",
+   "consultadaEm": "2026-11-18",
+   "observacao": "Tecfil: sem ar cond. - (Life / Spirit / Super) - mecânico (Gasolina)",
+   "filtros": {
+    "AR_CABINE": "ACP121",
+    "AR": "ARL8834",
+    "OLEO": [
+     "PSL619",
+     "TM3"
+    ],
+    "COMBUSTIVEL": "GI04/7"
+   }
+  },
+  {
+   "marca": "Chevrolet",
+   "modelo": "Celta",
+   "motor": "1.0 8V 70cv",
+   "anos": [
+    2007,
+    2026
+   ],
+   "url": "https://catalogo.tecfil.com.br/search/CELTA",
+   "consultadaEm": "2026-11-18",
+   "observacao": "Tecfil: Flex Power - (Advantage / Life / Spirit / Super) - mecânico (Flex)",
+   "filtros": {
+    "AR_CABINE": "ACP003",
+    "AR": "ARL8834",
+    "OLEO": [
+     "PSL619",
+     "TM3"
+    ],
+    "COMBUSTIVEL": "GI04/7"
+   }
+  },
+  {
+   "marca": "Chevrolet",
+   "modelo": "Celta",
+   "motor": "1.4 8V",
+   "anos": [
+    2007,
+    2026
+   ],
+   "url": "https://catalogo.tecfil.com.br/search/CELTA",
+   "consultadaEm": "2026-11-18",
+   "observacao": "Tecfil: Flex Power - (Life / Spirit / Super) - mecânico (Flex)",
+   "filtros": {
+    "AR_CABINE": "ACP003",
+    "AR": "ARL8834",
+    "OLEO": [
+     "PSL619",
+     "TM3"
+    ],
+    "COMBUSTIVEL": "GI04/7"
+   }
+  },
+  {
+   "marca": "Chevrolet",
+   "modelo": "Celta",
+   "motor": "1.4 8V 85cv",
+   "anos": [
+    2003,
+    2007
+   ],
+   "url": "https://catalogo.tecfil.com.br/search/CELTA",
+   "consultadaEm": "2026-11-18",
+   "observacao": "Tecfil: (Energy / Life / Spirit / Super) - mecânico (Gasolina)",
+   "filtros": {
+    "AR_CABINE": "ACP003",
+    "AR": "ARL8834",
+    "OLEO": [
+     "PSL619",
+     "TM3"
+    ],
+    "COMBUSTIVEL": "GI04/7"
+   }
+  },
+  {
+   "marca": "Chevrolet",
+   "modelo": "Cobalt",
+   "motor": "1.4 8V 102cv",
+   "anos": [
+    2011,
+    2026
+   ],
+   "url": "https://catalogo.tecfil.com.br/search/COBALT",
+   "consultadaEm": "2026-11-18",
+   "observacao": "Tecfil: Flex Power - (LS / LT / LTZ) - mecânico (Flex)",
+   "filtros": {
+    "AR_CABINE": "ACP126",
+    "AR": "ARL8829",
+    "OLEO": [
+     "PSL619",
+     "TM3"
+    ],
+    "COMBUSTIVEL": "GI04/7"
+   }
+  },
+  {
+   "marca": "Chevrolet",
+   "modelo": "Cobalt",
+   "motor": "1.8 8V 108cv",
+   "anos": [
+    2013,
+    2017
+   ],
+   "url": "https://catalogo.tecfil.com.br/search/COBALT",
+   "consultadaEm": "2026-11-18",
+   "observacao": "Tecfil: Econo Flex - (Advantage / LT / LTZ) - automático / mecânico (Flex)",
+   "filtros": {
+    "AR_CABINE": "ACP126",
+    "AR": "ARL8829",
+    "OLEO": [
+     "PSL619",
+     "TM3"
+    ],
+    "COMBUSTIVEL": "GI04/7"
+   }
+  },
+  {
+   "marca": "Chevrolet",
+   "modelo": "Cobalt",
+   "motor": "1.8 8V 111cv",
+   "anos": [
+    2017,
+    2026
+   ],
+   "url": "https://catalogo.tecfil.com.br/search/COBALT",
+   "consultadaEm": "2026-11-18",
+   "observacao": "Tecfil: Econo Flex - (ELITE / LTZ) - automático / mecânico (Flex)",
+   "filtros": {
+    "AR_CABINE": "ACP126",
+    "AR": "ARL8830",
+    "OLEO": "PSL619",
+    "COMBUSTIVEL": "GI04/7"
+   }
+  },
+  {
+   "marca": "Chevrolet",
+   "modelo": "Corsa",
+   "motor": "1.0 16V 68cv",
+   "anos": [
+    1999,
+    2001
+   ],
+   "url": "https://catalogo.tecfil.com.br/search/CORSA%201%3CDOT%3E0",
+   "consultadaEm": "2026-11-18",
+   "observacao": "Tecfil: (Classic / Hatch / Pick Up / Wagon / Milleniun / Sedã / Super / Wind) - mecânico (Gasolina)",
+   "filtros": {
+    "AR_CABINE": "ACP003",
+    "AR": "ARL8832",
+    "OLEO": [
+     "PSL619",
+     "TM3"
+    ],
+    "COMBUSTIVEL": "GI04/7"
+   }
+  },
+  {
+   "marca": "Chevrolet",
+   "modelo": "Corsa",
+   "motor": "1.0 8V 60cv",
+   "anos": [
+    1994,
+    2001
+   ],
+   "url": "https://catalogo.tecfil.com.br/search/CORSA%201%3CDOT%3E0",
+   "consultadaEm": "2026-11-18",
+   "observacao": "Tecfil: (Hatch / Classic / Pick Up / Wind / Joy / Millenium) - mecânico (Gasolina)",
+   "filtros": {
+    "AR_CABINE": "ACP003",
+    "AR": "ARL8832",
+    "OLEO": [
+     "PSL619",
+     "TM3"
+    ],
+    "COMBUSTIVEL": "GI04/7"
+   }
+  },
+  {
+   "marca": "Chevrolet",
+   "modelo": "Corsa",
+   "motor": "1.0 8V 64cv",
+   "anos": [
+    2000,
+    2006
+   ],
+   "url": "https://catalogo.tecfil.com.br/search/CORSA%201%3CDOT%3E0",
+   "consultadaEm": "2026-11-18",
+   "observacao": "Tecfil",
+   "filtros": {
+    "AR_CABINE": "ACP005",
+    "AR": "ARL8832",
+    "OLEO": [
+     "PSL619",
+     "TM3"
+    ],
+    "COMBUSTIVEL": "GI04/7"
+   }
+  },
+  {
+   "marca": "Chevrolet",
+   "modelo": "Corsa",
+   "motor": "1.0 8V 79cv",
+   "anos": [
+    2005,
+    2009
+   ],
+   "url": "https://catalogo.tecfil.com.br/search/CORSA%201%3CDOT%3E0",
+   "consultadaEm": "2026-11-18",
+   "observacao": "Tecfil: Flex Power - (Classic / Hatch / Premium / Spirit / Maxx) - mecânico (Flex)",
+   "filtros": {
+    "AR_CABINE": "ACP005",
+    "AR": "ARL8825",
+    "OLEO": [
+     "PSL619",
+     "TM3"
+    ],
+    "COMBUSTIVEL": "GI04/7"
+   }
+  },
+  {
+   "marca": "Chevrolet",
+   "modelo": "Corsa",
+   "motor": "1.0 8v 71cv",
+   "anos": [
+    2002,
+    2007
+   ],
+   "url": "https://catalogo.tecfil.com.br/search/CORSA%201%3CDOT%3E0",
+   "consultadaEm": "2026-11-18",
+   "observacao": "Tecfil: (Hatch / Classic / Pick Up / Wind / Joy / Millenium) - mecânico (Gasolina)",
+   "filtros": {
+    "AR_CABINE": "ACP005",
+    "AR": "ARL8825",
+    "OLEO": [
+     "PSL619",
+     "TM3"
+    ],
+    "COMBUSTIVEL": "GI04/7"
+   }
+  },
+  {
+   "marca": "Chevrolet",
+   "modelo": "Corsa",
+   "motor": "1.4 8V 105cv",
+   "anos": [
+    2007,
+    2026
+   ],
+   "url": "https://catalogo.tecfil.com.br/search/CORSA%201%3CDOT%3E4",
+   "consultadaEm": "2026-11-18",
+   "observacao": "Tecfil: Econo Flex - (Hatch / Premium / Maxx) - mecânico (Flex)",
+   "filtros": {
+    "AR_CABINE": "ACP005",
+    "AR": "ARL8825",
+    "OLEO": [
+     "PSL619",
+     "TM3"
+    ],
+    "COMBUSTIVEL": "GI04/7"
+   }
+  },
+  {
+   "marca": "Chevrolet",
+   "modelo": "Corsa",
+   "motor": "1.4 8V 60cv",
+   "anos": [
+    1994,
+    2001
+   ],
+   "url": "https://catalogo.tecfil.com.br/search/CORSA%201%3CDOT%3E4",
+   "consultadaEm": "2026-11-18",
+   "observacao": "Tecfil: (Hatch / GL) - mecânico (Gasolina)",
+   "filtros": {
+    "AR_CABINE": "ACP003",
+    "AR": "ARL8832",
+    "OLEO": [
+     "PSL619",
+     "TM3"
+    ],
+    "COMBUSTIVEL": "GI04/7"
+   }
+  },
+  {
+   "marca": "Chevrolet",
+   "modelo": "Corsa",
+   "motor": "1.6 8V 92cv",
+   "anos": [
+    1994,
+    2001
+   ],
+   "url": "https://catalogo.tecfil.com.br/search/CORSA%201%3CDOT%3E6",
+   "consultadaEm": "2026-11-18",
+   "observacao": "Tecfil: (Classic / Hatch / Pick Up) - mecânico (Gasolina)",
+   "filtros": {
+    "AR_CABINE": "ACP003",
+    "AR": "ARL8832",
+    "OLEO": [
+     "PSL619",
+     "TM3"
+    ],
+    "COMBUSTIVEL": "GI04/7"
+   }
+  },
+  {
+   "marca": "Chevrolet",
+   "modelo": "Corsa",
+   "motor": "1.6 8V 92cv",
+   "anos": [
+    1996,
+    2026
+   ],
+   "url": "https://catalogo.tecfil.com.br/search/CORSA%201%3CDOT%3E6",
+   "consultadaEm": "2026-11-18",
+   "observacao": "Tecfil: (Classic / Hatch / Pick Up) - mecânico (Álcool)",
+   "filtros": {
+    "AR_CABINE": "ACP003",
+    "AR": "ARL8832",
+    "OLEO": [
+     "PSL619",
+     "TM3"
+    ],
+    "COMBUSTIVEL": "GI04/7"
+   }
+  },
+  {
+   "marca": "Chevrolet",
+   "modelo": "Corsa",
+   "motor": "1.8 114cv",
+   "anos": [
+    2003,
+    2008
+   ],
+   "url": "https://catalogo.tecfil.com.br/search/CORSA%201%3CDOT%3E8",
+   "consultadaEm": "2026-11-18",
+   "observacao": "Tecfil: Flex Power - (Hatch / Premium / Maxx / SS) - mecânico (Flex)",
+   "filtros": {
+    "AR_CABINE": "ACP005",
+    "AR": "ARL8825",
+    "OLEO": [
+     "PSL619",
+     "TM3"
+    ],
+    "COMBUSTIVEL": "GI04/7"
+   }
+  },
+  {
+   "marca": "Chevrolet",
+   "modelo": "Meriva",
+   "motor": "1.4 8V",
+   "anos": [
+    2008,
+    2012
+   ],
+   "url": "https://catalogo.tecfil.com.br/search/MERIVA",
+   "consultadaEm": "2026-11-18",
+   "observacao": "Tecfil: EconoFlex MPFI (Flex) 09/2008",
+   "filtros": {
+    "AR_CABINE": "ACP004",
+    "AR": "ARL8825",
+    "OLEO": [
+     "PSL619",
+     "TM3"
+    ],
+    "COMBUSTIVEL": "GI04/7"
+   }
+  },
+  {
+   "marca": "Chevrolet",
+   "modelo": "Meriva",
+   "motor": "1.8",
+   "anos": [
+    2003,
+    2012
+   ],
+   "url": "https://catalogo.tecfil.com.br/search/MERIVA",
+   "consultadaEm": "2026-11-18",
+   "observacao": "Tecfil: 8V e 16V (Gasolina/Flex) 01/2003",
+   "filtros": {
+    "AR_CABINE": "ACP004",
+    "AR": "ARL8825",
+    "OLEO": [
+     "PSL619",
+     "TM3"
+    ],
+    "COMBUSTIVEL": "GI04/7"
+   }
+  },
+  {
+   "marca": "Chevrolet",
+   "modelo": "Montana",
+   "motor": "1.2 12V 132cv",
+   "anos": [
+    2023,
+    2026
+   ],
+   "url": "https://catalogo.tecfil.com.br/search/MONTANA",
+   "consultadaEm": "2026-11-18",
+   "observacao": "Tecfil: Turbo - (LT / LTZ / Premier) - automático / manual (Flex)",
+   "filtros": {
+    "AR_CABINE": "ACP008",
+    "AR": "ART8860",
+    "OLEO": "PSL612",
+    "COMBUSTIVEL": "GI04/7"
+   }
+  },
+  {
+   "marca": "Chevrolet",
+   "modelo": "Montana",
+   "motor": "1.4",
+   "anos": [
+    2007,
+    2011
+   ],
+   "url": "https://catalogo.tecfil.com.br/search/MONTANA",
+   "consultadaEm": "2026-11-18",
+   "observacao": "Tecfil: Econoflex MPFI (Flex) 01/2007 - 03/2011",
+   "filtros": {
+    "AR_CABINE": "ACP005",
+    "AR": "ARL8825",
+    "OLEO": [
+     "PSL619",
+     "TM3"
+    ],
+    "COMBUSTIVEL": "GI04/7"
+   }
+  },
+  {
+   "marca": "Chevrolet",
+   "modelo": "Montana",
+   "motor": "1.4",
+   "anos": [
+    2011,
+    2026
+   ],
+   "url": "https://catalogo.tecfil.com.br/search/MONTANA",
+   "consultadaEm": "2026-11-18",
+   "observacao": "Tecfil: LS Sport (Flex) 04/2011",
+   "filtros": {
+    "AR_CABINE": "ACP003",
+    "AR": "ARL8832",
+    "OLEO": [
+     "PSL619",
+     "TM3"
+    ],
+    "COMBUSTIVEL": "GI04/7"
+   }
+  },
+  {
+   "marca": "Chevrolet",
+   "modelo": "Montana",
+   "motor": "1.8 8V",
+   "anos": [
+    2003,
+    2010
+   ],
+   "url": "https://catalogo.tecfil.com.br/search/MONTANA",
+   "consultadaEm": "2026-11-18",
+   "observacao": "Tecfil: (Flex)",
+   "filtros": {
+    "AR_CABINE": "ACP005",
+    "AR": "ARL8825",
+    "OLEO": [
+     "PSL619",
+     "TM3"
+    ],
+    "COMBUSTIVEL": "GI04/7"
+   }
+  },
+  {
+   "marca": "Chevrolet",
+   "modelo": "Onix",
+   "motor": "1.0 3cil 116cv Turbo",
+   "anos": [
+    2019,
+    2026
+   ],
+   "url": "https://catalogo.tecfil.com.br/search/ONIX",
+   "consultadaEm": "2026-11-18",
+   "observacao": "Tecfil: Hatch - (LT / LTZ / Premier) - automático / mecânico (Flex)",
+   "filtros": {
+    "AR_CABINE": "ACP008",
+    "AR": "ART8860",
+    "OLEO": "PSL612",
+    "COMBUSTIVEL": "GI04/7"
+   }
+  },
+  {
+   "marca": "Chevrolet",
+   "modelo": "Onix",
+   "motor": "1.0 8V 80cv",
+   "anos": [
+    2012,
+    2019
+   ],
+   "url": "https://catalogo.tecfil.com.br/search/ONIX",
+   "consultadaEm": "2026-11-18",
+   "observacao": "Tecfil: Hatch - (LS / LT) - mecânico (Flex Power) 11/2012 - 09/2019",
+   "filtros": {
+    "AR_CABINE": "ACP126",
+    "AR": "ARL8830",
+    "OLEO": [
+     "PSL619",
+     "TM3"
+    ],
+    "COMBUSTIVEL": "GI04/7"
+   }
+  },
+  {
+   "marca": "Chevrolet",
+   "modelo": "Onix",
+   "motor": "1.4",
+   "anos": [
+    2012,
+    2026
+   ],
+   "url": "https://catalogo.tecfil.com.br/search/ONIX",
+   "consultadaEm": "2026-11-18",
+   "observacao": "Tecfil: (Flex)",
+   "filtros": {
+    "AR_CABINE": "ACP126",
+    "AR": "ARL8830",
+    "OLEO": [
+     "PSL619",
+     "TM3"
+    ],
+    "COMBUSTIVEL": "GI04/7"
+   }
+  },
+  {
+   "marca": "Chevrolet",
+   "modelo": "Onix Plus",
+   "motor": "1.0 3cil 116cv Turbo",
+   "anos": [
+    2019,
+    2026
+   ],
+   "url": "https://catalogo.tecfil.com.br/search/ONIX",
+   "consultadaEm": "2026-11-18",
+   "observacao": "Tecfil: Sedan - (LT / LTZ / PREMIER) - automático / mecânico (Flex)",
+   "filtros": {
+    "AR_CABINE": "ACP008",
+    "AR": "ART8860",
+    "OLEO": "PSL612",
+    "COMBUSTIVEL": "GI04/7"
+   }
+  },
+  {
+   "marca": "Chevrolet",
+   "modelo": "Prisma",
+   "motor": "1.0",
+   "anos": [
+    2013,
+    2026
+   ],
+   "url": "https://catalogo.tecfil.com.br/search/PRISMA",
+   "consultadaEm": "2026-11-18",
+   "observacao": "Tecfil: (Flex)",
+   "filtros": {
+    "AR_CABINE": "ACP126",
+    "AR": "ARL8830",
+    "OLEO": [
+     "PSL619",
+     "TM3"
+    ],
+    "COMBUSTIVEL": "GI04/7"
+   }
+  },
+  {
+   "marca": "Chevrolet",
+   "modelo": "Prisma",
+   "motor": "1.0 8V",
+   "anos": [
+    2009,
+    2012
+   ],
+   "url": "https://catalogo.tecfil.com.br/search/PRISMA",
+   "consultadaEm": "2026-11-18",
+   "observacao": "Tecfil: Sem Ar Condicionado (Flex) 03/2009",
+   "filtros": {
+    "AR_CABINE": "ACP121",
+    "AR": "ARL8834",
+    "OLEO": [
+     "PSL619",
+     "TM3"
+    ],
+    "COMBUSTIVEL": "GI04/7"
+   }
+  },
+  {
+   "marca": "Chevrolet",
+   "modelo": "Prisma",
+   "motor": "1.0 8V",
+   "anos": [
+    2009,
+    2012
+   ],
+   "url": "https://catalogo.tecfil.com.br/search/PRISMA",
+   "consultadaEm": "2026-11-18",
+   "observacao": "Tecfil: VHCE (MPFI) (Flex) 03/2009",
+   "filtros": {
+    "AR_CABINE": "ACP003",
+    "AR": "ARL8834",
+    "OLEO": [
+     "PSL619",
+     "TM3"
+    ],
+    "COMBUSTIVEL": "GI04/7"
+   }
+  },
+  {
+   "marca": "Chevrolet",
+   "modelo": "Prisma",
+   "motor": "1.4",
+   "anos": [
+    2013,
+    2026
+   ],
+   "url": "https://catalogo.tecfil.com.br/search/PRISMA",
+   "consultadaEm": "2026-11-18",
+   "observacao": "Tecfil: (Flex)",
+   "filtros": {
+    "AR_CABINE": "ACP126",
+    "AR": "ARL8830",
+    "OLEO": [
+     "PSL619",
+     "TM3"
+    ],
+    "COMBUSTIVEL": "GI04/7"
+   }
+  },
+  {
+   "marca": "Chevrolet",
+   "modelo": "Prisma",
+   "motor": "1.4 8V",
+   "anos": [
+    2006,
+    2012
+   ],
+   "url": "https://catalogo.tecfil.com.br/search/PRISMA",
+   "consultadaEm": "2026-11-18",
+   "observacao": "Tecfil: Econoflex MPFI (Flex)",
+   "filtros": {
+    "AR_CABINE": "ACP003",
+    "AR": "ARL8834",
+    "OLEO": [
+     "PSL619",
+     "TM3"
+    ],
+    "COMBUSTIVEL": "GI04/7"
+   }
+  },
+  {
+   "marca": "Chevrolet",
+   "modelo": "Prisma",
+   "motor": "1.4 MPFI Econoflex",
+   "anos": [
+    2006,
+    2012
+   ],
+   "url": "https://catalogo.tecfil.com.br/search/PRISMA",
+   "consultadaEm": "2026-11-18",
+   "observacao": "Tecfil: Sem Ar Condicionado (Flex) 10/2006",
+   "filtros": {
+    "AR_CABINE": "ACP121",
+    "AR": "ARL8834",
+    "OLEO": [
+     "PSL619",
+     "TM3"
+    ],
+    "COMBUSTIVEL": "GI04/7"
+   }
+  },
+  {
+   "marca": "Chevrolet",
+   "modelo": "S10",
+   "motor": "2.2 8V  113cv",
+   "anos": [
+    1995,
+    1996
+   ],
+   "url": "https://catalogo.tecfil.com.br/search/S10",
+   "consultadaEm": "2026-11-18",
+   "observacao": "Tecfil: EFI - (CS / CD / CE) - mecânico (Gasolina)",
+   "filtros": {
+    "AR": "ARL8838",
+    "OLEO": [
+     "PSL619",
+     "TM3"
+    ],
+    "COMBUSTIVEL": "GI02/2"
+   }
+  },
+  {
+   "marca": "Chevrolet",
+   "modelo": "S10",
+   "motor": "2.2 8V  136cv",
+   "anos": [
+    1997,
+    2000
+   ],
+   "url": "https://catalogo.tecfil.com.br/search/S10",
+   "consultadaEm": "2026-11-18",
+   "observacao": "Tecfil: MPFI - (CS / CD / CE) - mecânico (Gasolina)",
+   "filtros": {
+    "AR": "ARS2868",
+    "OLEO": [
+     "PSL619",
+     "TM3"
+    ],
+    "COMBUSTIVEL": "GI04/7"
+   }
+  },
+  {
+   "marca": "Chevrolet",
+   "modelo": "S10",
+   "motor": "2.4 8V  128cv",
+   "anos": [
+    2001,
+    2006
+   ],
+   "url": "https://catalogo.tecfil.com.br/search/S10",
+   "consultadaEm": "2026-11-18",
+   "observacao": "Tecfil: MPFI - (CS / CD / CE) - mecânico (Gasolina)",
+   "filtros": {
+    "AR": "ARS2869",
+    "OLEO": [
+     "PSL619",
+     "TM3"
+    ],
+    "COMBUSTIVEL": "GI04/7"
+   }
+  },
+  {
+   "marca": "Chevrolet",
+   "modelo": "S10",
+   "motor": "2.4 8V  147cv",
+   "anos": [
+    2007,
+    2011
+   ],
+   "url": "https://catalogo.tecfil.com.br/search/S10",
+   "consultadaEm": "2026-11-18",
+   "observacao": "Tecfil: (CS / CD / CE) - mecânico (Flex)",
+   "filtros": {
+    "AR": "ARS2869",
+    "OLEO": [
+     "PSL619",
+     "TM3"
+    ],
+    "COMBUSTIVEL": "GI06/7"
+   }
+  },
+  {
+   "marca": "Chevrolet",
+   "modelo": "S10",
+   "motor": "2.4 8V  147cv",
+   "anos": [
+    2012,
+    2026
+   ],
+   "url": "https://catalogo.tecfil.com.br/search/S10",
+   "consultadaEm": "2026-11-18",
+   "observacao": "Tecfil: Flex Power - (CS / CD / CE) - automático / mecânico (Flex)",
+   "filtros": {
+    "AR": "ARS2870",
+    "OLEO": [
+     "PSL619",
+     "TM3"
+    ],
+    "COMBUSTIVEL": "GI06/7"
+   }
+  },
+  {
+   "marca": "Chevrolet",
+   "modelo": "S10",
+   "motor": "2.5 16V 206cv",
+   "anos": [
+    2014,
+    2026
+   ],
+   "url": "https://catalogo.tecfil.com.br/search/S10",
+   "consultadaEm": "2026-11-18",
+   "observacao": "Tecfil: Ecotec (Flex)",
+   "filtros": {
+    "AR": "ARS2870",
+    "OLEO": "PSL612",
+    "COMBUSTIVEL": "GI04/7"
+   }
+  },
+  {
+   "marca": "Chevrolet",
+   "modelo": "S10",
+   "motor": "2.5 4cil Maxion",
+   "anos": [
+    1995,
+    2005
+   ],
+   "url": "https://catalogo.tecfil.com.br/search/S10",
+   "consultadaEm": "2026-11-18",
+   "observacao": "Tecfil: (Diesel)",
+   "filtros": {
+    "AR": "ARL8839",
+    "OLEO": "PSL902",
+    "COMBUSTIVEL": "PSC498"
+   }
+  },
+  {
+   "marca": "Chevrolet",
+   "modelo": "S10",
+   "motor": "2.5 8V  101cv",
+   "anos": [
+    1996,
+    2000
+   ],
+   "url": "https://catalogo.tecfil.com.br/search/S10",
+   "consultadaEm": "2026-11-18",
+   "observacao": "Tecfil: Turbo - mecânico (Diesel)",
+   "filtros": {
+    "AR": "AP7108",
+    "OLEO": "PSL902",
+    "COMBUSTIVEL": "PSC496"
+   }
+  },
+  {
+   "marca": "Chevrolet",
+   "modelo": "S10",
+   "motor": "2.8 12V  140cv",
+   "anos": [
+    2006,
+    2007
+   ],
+   "url": "https://catalogo.tecfil.com.br/search/S10",
+   "consultadaEm": "2026-11-18",
+   "observacao": "Tecfil: Turbo - (CS / CD / CE) - mecânico (Diesel)",
+   "filtros": {
+    "AR": "ARS2868",
+    "OLEO": "PSL340",
+    "COMBUSTIVEL": "PSC498/4"
+   }
+  },
+  {
+   "marca": "Chevrolet",
+   "modelo": "S10",
+   "motor": "2.8 12V  140cv",
+   "anos": [
+    2007,
+    2011
+   ],
+   "url": "https://catalogo.tecfil.com.br/search/S10",
+   "consultadaEm": "2026-11-18",
+   "observacao": "Tecfil: Turbo - (CS / CD / CE) - mecânico (Diesel)",
+   "filtros": {
+    "AR": "ARS2868",
+    "OLEO": "PSL340",
+    "COMBUSTIVEL": "PSC454"
+   }
+  },
+  {
+   "marca": "Chevrolet",
+   "modelo": "S10",
+   "motor": "2.8 12V MWM  132cv",
+   "anos": [
+    1998,
+    2001
+   ],
+   "url": "https://catalogo.tecfil.com.br/search/S10",
+   "consultadaEm": "2026-11-18",
+   "observacao": "Tecfil: Turbo - (CS / CD / CE) - mecânico (Diesel)",
+   "filtros": {
+    "AR": "ARS2868",
+    "OLEO": "PSL340",
+    "COMBUSTIVEL": "PSC498"
+   }
+  },
+  {
+   "marca": "Chevrolet",
+   "modelo": "S10",
+   "motor": "2.8 12V MWM  132cv",
+   "anos": [
+    2002,
+    2005
+   ],
+   "url": "https://catalogo.tecfil.com.br/search/S10",
+   "consultadaEm": "2026-11-18",
+   "observacao": "Tecfil: Turbo - (CS / CD / CE) - mecânico (Diesel)",
+   "filtros": {
+    "AR": "ARS2868",
+    "OLEO": "PSL340",
+    "COMBUSTIVEL": "PSC498/3"
+   }
+  },
+  {
+   "marca": "Chevrolet",
+   "modelo": "S10",
+   "motor": "2.8 16V  200cv",
+   "anos": [
+    2012,
+    2026
+   ],
+   "url": "https://catalogo.tecfil.com.br/search/S10",
+   "consultadaEm": "2026-11-18",
+   "observacao": "Tecfil: Turbo - (CS / CD / CE) - automático / mecânico (Diesel)",
+   "filtros": {
+    "AR": "ARS2870",
+    "OLEO": "PEL726",
+    "COMBUSTIVEL": "PEC3029"
+   }
+  },
+  {
+   "marca": "Chevrolet",
+   "modelo": "S10",
+   "motor": "2.8 4 Cils. 16v 200cv",
+   "anos": [
+    2012,
+    2016
+   ],
+   "url": "https://catalogo.tecfil.com.br/search/S10",
+   "consultadaEm": "2026-11-18",
+   "observacao": "Tecfil: LS / LTZ (Diesel)",
+   "filtros": {
+    "AR": "ARS2870",
+    "OLEO": "PEL726",
+    "COMBUSTIVEL": "PEC3029"
+   }
+  },
+  {
+   "marca": "Chevrolet",
+   "modelo": "S10",
+   "motor": "2.8 MWM",
+   "anos": [
+    2002,
+    2026
+   ],
+   "url": "https://catalogo.tecfil.com.br/search/S10",
+   "consultadaEm": "2026-11-18",
+   "observacao": "Tecfil: Turbo Intercooler Mecânico - com sist. anti-borbulha (Diesel) 01/2002",
+   "filtros": {
+    "AR": "ARS2868",
+    "OLEO": "PSL340",
+    "COMBUSTIVEL": "PSC498/1"
+   }
+  },
+  {
+   "marca": "Chevrolet",
+   "modelo": "S10",
+   "motor": "2.8 MWM Sprint",
+   "anos": [
+    2000,
+    2002
+   ],
+   "url": "https://catalogo.tecfil.com.br/search/S10",
+   "consultadaEm": "2026-11-18",
+   "observacao": "Tecfil: TDI STD DLX (Diesel) 01/2000 - 01/2002",
+   "filtros": {
+    "AR": "ARS2868",
+    "OLEO": "PSL340",
+    "COMBUSTIVEL": "PSC498"
+   }
+  },
+  {
+   "marca": "Chevrolet",
+   "modelo": "S10",
+   "motor": "2.8 MWM Sprint",
+   "anos": [
+    2005,
+    2026
+   ],
+   "url": "https://catalogo.tecfil.com.br/search/S10",
+   "consultadaEm": "2026-11-18",
+   "observacao": "Tecfil: TDI STD DLX LTD (4X4) (Diesel) 03/2005",
+   "filtros": {
+    "AR": "ARS2868",
+    "OLEO": "PSL340",
+    "COMBUSTIVEL": "PSC498/3"
+   }
+  },
+  {
+   "marca": "Chevrolet",
+   "modelo": "S10",
+   "motor": "4.3 V6 12V  180cv",
+   "anos": [
+    1996,
+    1997
+   ],
+   "url": "https://catalogo.tecfil.com.br/search/S10",
+   "consultadaEm": "2026-11-18",
+   "observacao": "Tecfil",
+   "filtros": {
+    "AR": "ARL8838",
+    "OLEO": [
+     "PSL620",
+     "TM3"
+    ]
+   }
+  },
+  {
+   "marca": "Chevrolet",
+   "modelo": "S10",
+   "motor": "4.3 V6 12V  180cv",
+   "anos": [
+    1998,
+    2001
+   ],
+   "url": "https://catalogo.tecfil.com.br/search/S10",
+   "consultadaEm": "2026-11-18",
+   "observacao": "Tecfil",
+   "filtros": {
+    "AR": "ARL8838",
+    "OLEO": [
+     "PSL620",
+     "TM3"
+    ],
+    "COMBUSTIVEL": "GI11"
+   }
+  },
+  {
+   "marca": "Chevrolet",
+   "modelo": "S10",
+   "motor": "MWM Sprint 2.8 SOHC",
+   "anos": [
+    2000,
+    2026
+   ],
+   "url": "https://catalogo.tecfil.com.br/search/S10",
+   "consultadaEm": "2026-11-18",
+   "observacao": "Tecfil: STD / DLX (Diesel) 01/2000",
+   "filtros": {
+    "AR": "ARS2868",
+    "OLEO": "PSL340",
+    "COMBUSTIVEL": "PSC498"
+   }
+  },
+  {
+   "marca": "Chevrolet",
+   "modelo": "S10",
+   "motor": "STD 2.5 Turbodiesel",
+   "anos": [
+    1997,
+    1997
+   ],
+   "url": "https://catalogo.tecfil.com.br/search/S10",
+   "consultadaEm": "2026-11-18",
+   "observacao": "Tecfil: Maxion (Diesel) - 12/1997",
+   "filtros": {
+    "AR": "AP7108",
+    "OLEO": "PSL902",
+    "COMBUSTIVEL": "PSC498"
+   }
+  },
+  {
+   "marca": "Chevrolet",
+   "modelo": "Spin",
+   "motor": "1.8",
+   "anos": [
+    2012,
+    2016
+   ],
+   "url": "https://catalogo.tecfil.com.br/search/SPIN",
+   "consultadaEm": "2026-11-18",
+   "observacao": "Tecfil: EconoFlex (Flex)",
+   "filtros": {
+    "AR_CABINE": "ACP126",
+    "AR": "ARL8829",
+    "OLEO": [
+     "PSL619",
+     "TM3"
+    ],
+    "COMBUSTIVEL": "GI04/7"
+   }
+  },
+  {
+   "marca": "Chevrolet",
+   "modelo": "Spin",
+   "motor": "1.8 8V 111 cv",
+   "anos": [
+    2017,
+    2026
+   ],
+   "url": "https://catalogo.tecfil.com.br/search/SPIN",
+   "consultadaEm": "2026-11-18",
+   "observacao": "Tecfil: Econo Flex (LS / LT / LTZ / Advantage / Active) (Flex)",
+   "filtros": {
+    "AR_CABINE": "ACP126",
+    "AR": "ARL8830",
+    "OLEO": [
+     "PSL619",
+     "TM3"
+    ],
+    "COMBUSTIVEL": "GI04/7"
+   }
+  },
+  {
+   "marca": "Chevrolet",
+   "modelo": "Vectra",
+   "motor": "2.0 16V",
+   "anos": [
+    1999,
+    2005
+   ],
+   "url": "https://catalogo.tecfil.com.br/search/VECTRA%202%3CDOT%3E0",
+   "consultadaEm": "2026-11-18",
+   "observacao": "Tecfil: MPFI (Gasolina) 01/1999 - 12/2005",
+   "filtros": {
+    "AR_CABINE": "ACP002",
+    "AR": "ARL8839",
+    "OLEO": [
+     "PSL619",
+     "TM3"
+    ],
+    "COMBUSTIVEL": "GI04/7"
+   }
+  },
+  {
+   "marca": "Chevrolet",
+   "modelo": "Vectra",
+   "motor": "2.0 8V",
+   "anos": [
+    1993,
+    1996
+   ],
+   "url": "https://catalogo.tecfil.com.br/search/VECTRA%202%3CDOT%3E0",
+   "consultadaEm": "2026-11-18",
+   "observacao": "Tecfil: MPFI (Gasolina) 01/1993 - 12/1996",
+   "filtros": {
+    "AR": "ARL8836",
+    "OLEO": [
+     "PSL619",
+     "TM3"
+    ],
+    "COMBUSTIVEL": "GI03/7"
+   }
+  },
+  {
+   "marca": "Chevrolet",
+   "modelo": "Vectra",
+   "motor": "2.0 8V",
+   "anos": [
+    1997,
+    1998
+   ],
+   "url": "https://catalogo.tecfil.com.br/search/VECTRA%202%3CDOT%3E0",
+   "consultadaEm": "2026-11-18",
+   "observacao": "Tecfil: MPFI (Gasolina) 01/1997 - 12/1998",
+   "filtros": {
+    "AR_CABINE": "ACP002",
+    "AR": "ARL8839",
+    "OLEO": [
+     "PSL619",
+     "TM3"
+    ],
+    "COMBUSTIVEL": "GI04/7"
+   }
+  },
+  {
+   "marca": "Chevrolet",
+   "modelo": "Vectra",
+   "motor": "2.0 8V",
+   "anos": [
+    2003,
+    2005
+   ],
+   "url": "https://catalogo.tecfil.com.br/search/VECTRA%202%3CDOT%3E0",
+   "consultadaEm": "2026-11-18",
+   "observacao": "Tecfil: MPFI (Gasolina) 01/2003 - 12/2005",
+   "filtros": {
+    "AR_CABINE": "ACP002",
+    "AR": "ARL8839",
+    "OLEO": [
+     "PSL619",
+     "TM3"
+    ],
+    "COMBUSTIVEL": "GI04/7"
+   }
+  },
+  {
+   "marca": "Chevrolet",
+   "modelo": "Vectra",
+   "motor": "2.0 8V",
+   "anos": [
+    2005,
+    2012
+   ],
+   "url": "https://catalogo.tecfil.com.br/search/VECTRA%202%3CDOT%3E0",
+   "consultadaEm": "2026-11-18",
+   "observacao": "Tecfil: MPFI (Flex) 01/2005",
+   "filtros": {
+    "AR_CABINE": "ACP001",
+    "AR": "ARL8840",
+    "OLEO": [
+     "PSL619",
+     "TM3"
+    ],
+    "COMBUSTIVEL": "GI06/7"
+   }
+  },
+  {
+   "marca": "Chevrolet",
+   "modelo": "Vectra",
+   "motor": "2.0 8V",
+   "anos": [
+    2006,
+    2007
+   ],
+   "url": "https://catalogo.tecfil.com.br/search/VECTRA%202%3CDOT%3E0",
+   "consultadaEm": "2026-11-18",
+   "observacao": "Tecfil: MPFI (Gasolina) 01/2006",
+   "filtros": {
+    "AR_CABINE": "ACP001",
+    "AR": "ARL8840",
+    "OLEO": [
+     "PSL619",
+     "TM3"
+    ],
+    "COMBUSTIVEL": "GI04/7"
+   }
+  },
+  {
+   "marca": "Chevrolet",
+   "modelo": "Vectra",
+   "motor": "2.0 8V",
+   "anos": [
+    2007,
+    2012
+   ],
+   "url": "https://catalogo.tecfil.com.br/search/VECTRA%202%3CDOT%3E0",
+   "consultadaEm": "2026-11-18",
+   "observacao": "Tecfil: GT / GTX - Com Ref. Original: 93316245 e 93312682. (Flex) 07/2007",
+   "filtros": {
+    "AR_CABINE": "ACP001",
+    "AR": "ARL8840",
+    "OLEO": [
+     "PSL619",
+     "TM3"
+    ],
+    "COMBUSTIVEL": [
+     "GI04/7",
+     "GI06/7"
+    ]
+   }
+  },
+  {
+   "marca": "Chevrolet",
+   "modelo": "Vectra",
+   "motor": "2.0 8V",
+   "anos": [
+    2009,
+    2012
+   ],
+   "url": "https://catalogo.tecfil.com.br/search/VECTRA%202%3CDOT%3E0",
+   "consultadaEm": "2026-11-18",
+   "observacao": "Tecfil: Next Edition - Power (Flex) 02/2009",
+   "filtros": {
+    "AR_CABINE": "ACP001",
+    "AR": "ARL8840",
+    "OLEO": [
+     "PSL619",
+     "TM3"
+    ],
+    "COMBUSTIVEL": "GI06/7"
+   }
+  },
+  {
+   "marca": "Citroën",
+   "modelo": "C3",
+   "motor": "1.0 3 Cil - 75 cv 2023 - Manual",
+   "anos": [
+    2023,
+    2026
+   ],
+   "url": "https://catalogo.tecfil.com.br/search/C3",
+   "consultadaEm": "2026-11-18",
+   "observacao": "Tecfil: Live / Live Pack / First Edition (Flex)",
+   "filtros": {
+    "AR_CABINE": "ACP788"
+   }
+  },
+  {
+   "marca": "Citroën",
+   "modelo": "C3",
+   "motor": "1.0 3 Cil 130 cv",
+   "anos": [
+    2024,
+    2026
+   ],
+   "url": "https://catalogo.tecfil.com.br/search/C3",
+   "consultadaEm": "2026-11-18",
+   "observacao": "Tecfil: Aircross Feel / Pack / Shine / T200 (Flex)",
+   "filtros": {
+    "OLEO": "PSL56",
+    "COMBUSTIVEL": "GI50/7"
+   }
+  },
+  {
+   "marca": "Citroën",
+   "modelo": "C3",
+   "motor": "1.0 3cil. 75cv",
+   "anos": [
+    2023,
+    2026
+   ],
+   "url": "https://catalogo.tecfil.com.br/search/C3",
+   "consultadaEm": "2026-11-18",
+   "observacao": "Tecfil: (Feel /Live / Live Pack / First Edition)  - manual (Flex)",
+   "filtros": {
+    "AR_CABINE": "ACP799/9",
+    "AR": "ARL5075",
+    "OLEO": "PSL56",
+    "COMBUSTIVEL": "GI50/7"
+   }
+  },
+  {
+   "marca": "Citroën",
+   "modelo": "C3",
+   "motor": "1.2",
+   "anos": [
+    2016,
+    2026
+   ],
+   "url": "https://catalogo.tecfil.com.br/search/C3",
+   "consultadaEm": "2026-11-18",
+   "observacao": "Tecfil: (Origine / Attraction) (Flex)",
+   "filtros": {
+    "AR_CABINE": "ACP811/9",
+    "AR": "ARL5056",
+    "OLEO": [
+     "PSL135",
+     "TM4"
+    ],
+    "COMBUSTIVEL": "GI50/7"
+   }
+  },
+  {
+   "marca": "Citroën",
+   "modelo": "C3",
+   "motor": "1.4 e 1.6",
+   "anos": [
+    2001,
+    2013
+   ],
+   "url": "https://catalogo.tecfil.com.br/search/C3",
+   "consultadaEm": "2026-11-18",
+   "observacao": "Tecfil: GLX / EXCLUSIVE (Gasolina)",
+   "filtros": {
+    "AR_CABINE": "ACP903",
+    "AR": "ARL5053",
+    "OLEO": [
+     "PEL108",
+     "PEL110"
+    ],
+    "COMBUSTIVEL": "GI50/7"
+   }
+  },
+  {
+   "marca": "Citroën",
+   "modelo": "C3",
+   "motor": "1.4 e 1.6",
+   "anos": [
+    2001,
+    2013
+   ],
+   "url": "https://catalogo.tecfil.com.br/search/C3",
+   "consultadaEm": "2026-11-18",
+   "observacao": "Tecfil: GLX / EXCLUSIVE (Gasolina)",
+   "filtros": {
+    "AR_CABINE": "ACP903",
+    "AR": "ARL5053/1",
+    "OLEO": [
+     "PEL108",
+     "PEL110"
+    ],
+    "COMBUSTIVEL": "GI50/7"
+   }
+  },
+  {
+   "marca": "Citroën",
+   "modelo": "C3",
+   "motor": "1.4 e 1.6",
+   "anos": [
+    2006,
+    2013
+   ],
+   "url": "https://catalogo.tecfil.com.br/search/C3",
+   "consultadaEm": "2026-11-18",
+   "observacao": "Tecfil: GLX / EXCLUSIVE (Flex)",
+   "filtros": {
+    "AR_CABINE": "ACP903",
+    "AR": "ARL5053",
+    "OLEO": [
+     "PEL108",
+     "PEL110"
+    ],
+    "COMBUSTIVEL": "GI50/7"
+   }
+  },
+  {
+   "marca": "Citroën",
+   "modelo": "C3",
+   "motor": "1.4 e 1.6",
+   "anos": [
+    2006,
+    2013
+   ],
+   "url": "https://catalogo.tecfil.com.br/search/C3",
+   "consultadaEm": "2026-11-18",
+   "observacao": "Tecfil: GLX / EXCLUSIVE (Flex)",
+   "filtros": {
+    "AR_CABINE": "ACP903",
+    "AR": "ARL5053/1",
+    "OLEO": [
+     "PEL108",
+     "PEL110"
+    ],
+    "COMBUSTIVEL": "GI50/7"
+   }
+  },
+  {
+   "marca": "Citroën",
+   "modelo": "C3",
+   "motor": "1.5 8V 113cv",
+   "anos": [
+    2012,
+    2016
+   ],
+   "url": "https://catalogo.tecfil.com.br/search/C3",
+   "consultadaEm": "2026-11-18",
+   "observacao": "Tecfil: Picasso - (GL / GLX) - Mecânico (Flex)",
+   "filtros": {
+    "AR_CABINE": "ACP811/9",
+    "AR": "ARL5053",
+    "OLEO": "PEL108",
+    "COMBUSTIVEL": "GI50/7"
+   }
+  },
+  {
+   "marca": "Citroën",
+   "modelo": "C3",
+   "motor": "1.6 16V 113cv",
+   "anos": [
+    2023,
+    2026
+   ],
+   "url": "https://catalogo.tecfil.com.br/search/C3",
+   "consultadaEm": "2026-11-18",
+   "observacao": "Tecfil: (Feel / Feel Parck / First Edition) - automático / manual (Flex)",
+   "filtros": {
+    "AR_CABINE": "ACP799/9",
+    "AR": "ARL5058",
+    "OLEO": "PEL108",
+    "COMBUSTIVEL": "GI50/7"
+   }
+  },
+  {
+   "marca": "Citroën",
+   "modelo": "C3 Aircross",
+   "motor": "1.0 3 cil 130cv",
+   "anos": [
+    2024,
+    2026
+   ],
+   "url": "https://catalogo.tecfil.com.br/search/C3",
+   "consultadaEm": "2026-11-18",
+   "observacao": "Tecfil: (Feel / Pack / Shine / T200) -  automático / mecânico (Flex)",
+   "filtros": {
+    "AR": "ARL5059",
+    "OLEO": "PSL56",
+    "COMBUSTIVEL": "GI50/7"
+   }
+  },
+  {
+   "marca": "Fiat",
+   "modelo": "Argo",
+   "motor": "1.0 3 Cils. 6v Firefly 72cv Gas. 77cv Etanol",
+   "anos": [
+    2016,
+    2026
+   ],
+   "url": "https://catalogo.tecfil.com.br/search/ARGO",
+   "consultadaEm": "2026-11-18",
+   "observacao": "Tecfil: Drive / S-Design (Flex)",
+   "filtros": {
+    "AR_CABINE": "ACP906",
+    "AR": "ARL4161",
+    "OLEO": "PSL56",
+    "COMBUSTIVEL": "GI04/7"
+   }
+  },
+  {
+   "marca": "Fiat",
+   "modelo": "Argo",
+   "motor": "1.0 3cil",
+   "anos": [
+    2017,
+    2026
+   ],
+   "url": "https://catalogo.tecfil.com.br/search/ARGO",
+   "consultadaEm": "2026-11-18",
+   "observacao": "Tecfil: Drive (Flex)",
+   "filtros": {
+    "AR_CABINE": "ACP906",
+    "AR": "ARL4161",
+    "OLEO": "PSL56",
+    "COMBUSTIVEL": "GI04/7"
+   }
+  },
+  {
+   "marca": "Fiat",
+   "modelo": "Argo",
+   "motor": "1.3",
+   "anos": [
+    2017,
+    2026
+   ],
+   "url": "https://catalogo.tecfil.com.br/search/ARGO",
+   "consultadaEm": "2026-11-18",
+   "observacao": "Tecfil: Drive (Flex)",
+   "filtros": {
+    "AR_CABINE": "ACP906",
+    "AR": "ARL4161",
+    "OLEO": "PSL56",
+    "COMBUSTIVEL": "GI04/7"
+   }
+  },
+  {
+   "marca": "Fiat",
+   "modelo": "Argo",
+   "motor": "1.3 4 Cils. 8V 101cv Gas. 109cv Etanol",
+   "anos": [
+    2017,
+    2026
+   ],
+   "url": "https://catalogo.tecfil.com.br/search/ARGO",
+   "consultadaEm": "2026-11-18",
+   "observacao": "Tecfil: Drive / Deive GSR / Trekking (Flex)",
+   "filtros": {
+    "AR_CABINE": "ACP906",
+    "AR": "ARL4161",
+    "COMBUSTIVEL": "GI04/7"
+   }
+  },
+  {
+   "marca": "Fiat",
+   "modelo": "Argo",
+   "motor": "1.8",
+   "anos": [
+    2017,
+    2026
+   ],
+   "url": "https://catalogo.tecfil.com.br/search/ARGO",
+   "consultadaEm": "2026-11-18",
+   "observacao": "Tecfil: E-torq (Flex)",
+   "filtros": {
+    "AR_CABINE": "ACP906",
+    "AR": "ARL4160",
+    "OLEO": "PEL119",
+    "COMBUSTIVEL": "GI04/7"
+   }
+  },
+  {
+   "marca": "Fiat",
+   "modelo": "Doblo",
+   "motor": "1.3 16V",
+   "anos": [
+    2001,
+    2006
+   ],
+   "url": "https://catalogo.tecfil.com.br/search/DOBLO",
+   "consultadaEm": "2026-11-18",
+   "observacao": "Tecfil: Cargo / EX RST (Gasolina)",
+   "filtros": {
+    "AR_CABINE": "ACP131",
+    "AR": "ARS1029",
+    "OLEO": [
+     "PSL55",
+     "TM5"
+    ]
+   }
+  },
+  {
+   "marca": "Fiat",
+   "modelo": "Doblo",
+   "motor": "1.4 8V",
+   "anos": [
+    2009,
+    2015
+   ],
+   "url": "https://catalogo.tecfil.com.br/search/DOBLO",
+   "consultadaEm": "2026-11-18",
+   "observacao": "Tecfil: Attractive / ELX (Flex) 11/2009",
+   "filtros": {
+    "AR_CABINE": "ACP131",
+    "AR": "ARS1029",
+    "OLEO": [
+     "PSL55",
+     "TM5"
+    ],
+    "COMBUSTIVEL": "GI04/7"
+   }
+  },
+  {
+   "marca": "Fiat",
+   "modelo": "Doblo",
+   "motor": "1.6 16V",
+   "anos": [
+    2001,
+    2005
+   ],
+   "url": "https://catalogo.tecfil.com.br/search/DOBLO",
+   "consultadaEm": "2026-11-18",
+   "observacao": "Tecfil: ELX / Cargo (Gasolina)",
+   "filtros": {
+    "AR_CABINE": "ACP131",
+    "AR": "ARS1029",
+    "OLEO": [
+     "PSL45",
+     "TM4"
+    ]
+   }
+  },
+  {
+   "marca": "Fiat",
+   "modelo": "Doblo",
+   "motor": "1.8 8V",
+   "anos": [
+    2003,
+    2006
+   ],
+   "url": "https://catalogo.tecfil.com.br/search/DOBLO",
+   "consultadaEm": "2026-11-18",
+   "observacao": "Tecfil: Adventure / ELX / Cargo (Gasolina)",
+   "filtros": {
+    "AR_CABINE": "ACP131",
+    "AR": "ARS1029",
+    "OLEO": [
+     "PSL619",
+     "TM3"
+    ]
+   }
+  },
+  {
+   "marca": "Fiat",
+   "modelo": "Doblo",
+   "motor": "1.8 8V",
+   "anos": [
+    2006,
+    2010
+   ],
+   "url": "https://catalogo.tecfil.com.br/search/DOBLO",
+   "consultadaEm": "2026-11-18",
+   "observacao": "Tecfil: Adventure / ELX / HLX Cargo (Flex)",
+   "filtros": {
+    "AR_CABINE": "ACP131",
+    "AR": "ARS1029",
+    "OLEO": [
+     "PSL619",
+     "TM3"
+    ],
+    "COMBUSTIVEL": "GI04/7"
+   }
+  },
+  {
+   "marca": "Fiat",
+   "modelo": "Doblo",
+   "motor": "1.8 8V e 16V",
+   "anos": [
+    2010,
+    2026
+   ],
+   "url": "https://catalogo.tecfil.com.br/search/DOBLO",
+   "consultadaEm": "2026-11-18",
+   "observacao": "Tecfil: E-torq (Flex)",
+   "filtros": {
+    "AR_CABINE": "ACP131",
+    "AR": "ARL4154",
+    "OLEO": "PEL119",
+    "COMBUSTIVEL": "GI04/7"
+   }
+  },
+  {
+   "marca": "Fiat",
+   "modelo": "Idea",
+   "motor": "1.4 8V",
+   "anos": [
+    2005,
+    2012
+   ],
+   "url": "https://catalogo.tecfil.com.br/search/IDEA",
+   "consultadaEm": "2026-11-18",
+   "observacao": "Tecfil: Attractive/ELX  FIRE (Flex)",
+   "filtros": {
+    "AR_CABINE": "ACP103",
+    "AR": "ARL4150",
+    "OLEO": [
+     "PSL55",
+     "TM5"
+    ],
+    "COMBUSTIVEL": "GI04/7"
+   }
+  },
+  {
+   "marca": "Fiat",
+   "modelo": "Idea",
+   "motor": "1.6 16V",
+   "anos": [
+    2010,
+    2017
+   ],
+   "url": "https://catalogo.tecfil.com.br/search/IDEA",
+   "consultadaEm": "2026-11-18",
+   "observacao": "Tecfil: E-torq (Flex)",
+   "filtros": {
+    "AR_CABINE": "ACP103",
+    "AR": "ARL4154",
+    "OLEO": "PEL119",
+    "COMBUSTIVEL": "GI04/7"
+   }
+  },
+  {
+   "marca": "Fiat",
+   "modelo": "Idea",
+   "motor": "1.8 16V",
+   "anos": [
+    2010,
+    2015
+   ],
+   "url": "https://catalogo.tecfil.com.br/search/IDEA",
+   "consultadaEm": "2026-11-18",
+   "observacao": "Tecfil: E-torq (Flex)",
+   "filtros": {
+    "AR_CABINE": "ACP103",
+    "AR": "ARL4154",
+    "OLEO": "PEL119",
+    "COMBUSTIVEL": "GI04/7"
+   }
+  },
+  {
+   "marca": "Fiat",
+   "modelo": "Idea",
+   "motor": "1.8 8V",
+   "anos": [
+    2005,
+    2015
+   ],
+   "url": "https://catalogo.tecfil.com.br/search/IDEA",
+   "consultadaEm": "2026-11-18",
+   "observacao": "Tecfil: ELX  FLEX (Flex)",
+   "filtros": {
+    "AR_CABINE": "ACP103",
+    "AR": "ARL4150",
+    "OLEO": [
+     "PSL619",
+     "TM3"
+    ],
+    "COMBUSTIVEL": "GI04/7"
+   }
+  },
+  {
+   "marca": "Fiat",
+   "modelo": "Mobi",
+   "motor": "1.0 12V 3cil",
+   "anos": [
+    2017,
+    2026
+   ],
+   "url": "https://catalogo.tecfil.com.br/search/MOBI",
+   "consultadaEm": "2026-11-18",
+   "observacao": "Tecfil: (Flex)",
+   "filtros": {
+    "AR_CABINE": "ACP906",
+    "AR": "ARL4161",
+    "OLEO": "PSL56",
+    "COMBUSTIVEL": "GI04/7"
+   }
+  },
+  {
+   "marca": "Fiat",
+   "modelo": "Mobi",
+   "motor": "1.0 3 Cil 6v",
+   "anos": [
+    2016,
+    2021
+   ],
+   "url": "https://catalogo.tecfil.com.br/search/MOBI",
+   "consultadaEm": "2026-11-18",
+   "observacao": "Tecfil: DRIVE / DRIVE GSR (Flex)",
+   "filtros": {
+    "AR_CABINE": "ACP906",
+    "AR": "ARL4161",
+    "OLEO": "PSL56",
+    "COMBUSTIVEL": "GI04/7"
+   }
+  },
+  {
+   "marca": "Fiat",
+   "modelo": "Mobi",
+   "motor": "1.0 4cil",
+   "anos": [
+    2016,
+    2026
+   ],
+   "url": "https://catalogo.tecfil.com.br/search/MOBI",
+   "consultadaEm": "2026-11-18",
+   "observacao": "Tecfil: Fire - Easy / Like / Way (Flex)",
+   "filtros": {
+    "AR_CABINE": "ACP906",
+    "AR": "ARL4152/1",
+    "OLEO": [
+     "PSL55",
+     "TM5"
+    ],
+    "COMBUSTIVEL": "GI04/7"
+   }
+  },
+  {
+   "marca": "Fiat",
+   "modelo": "Palio",
+   "motor": "1.0",
+   "anos": [
+    2011,
+    2026
+   ],
+   "url": "https://catalogo.tecfil.com.br/search/PALIO%201%3CDOT%3E0",
+   "consultadaEm": "2026-11-18",
+   "observacao": "Tecfil: Attractive (Flex)",
+   "filtros": {
+    "AR_CABINE": "ACP906",
+    "AR": "ARL4150",
+    "OLEO": [
+     "PSL55",
+     "TM5"
+    ],
+    "COMBUSTIVEL": "GI04/7"
+   }
+  },
+  {
+   "marca": "Fiat",
+   "modelo": "Palio",
+   "motor": "1.0 16V",
+   "anos": [
+    2001,
+    2003
+   ],
+   "url": "https://catalogo.tecfil.com.br/search/PALIO%201%3CDOT%3E0",
+   "consultadaEm": "2026-11-18",
+   "observacao": "Tecfil: ELX / EX FIRE (Gasolina/Flex)",
+   "filtros": {
+    "AR_CABINE": "ACP103",
+    "AR": "ARL4150",
+    "OLEO": [
+     "PSL55",
+     "TM5"
+    ],
+    "COMBUSTIVEL": "GI04/7"
+   }
+  },
+  {
+   "marca": "Fiat",
+   "modelo": "Palio",
+   "motor": "1.0 8V",
+   "anos": [
+    1996,
+    1999
+   ],
+   "url": "https://catalogo.tecfil.com.br/search/PALIO%201%3CDOT%3E0",
+   "consultadaEm": "2026-11-18",
+   "observacao": "Tecfil: ED / EDX / MPI (Gasolina)",
+   "filtros": {
+    "AR_CABINE": "ACP100",
+    "AR": "ARL4150",
+    "OLEO": [
+     "PSL45",
+     "TM4"
+    ],
+    "COMBUSTIVEL": "GI41"
+   }
+  },
+  {
+   "marca": "Fiat",
+   "modelo": "Palio",
+   "motor": "1.0 8V",
+   "anos": [
+    1996,
+    2002
+   ],
+   "url": "https://catalogo.tecfil.com.br/search/PALIO%201%3CDOT%3E0",
+   "consultadaEm": "2026-11-18",
+   "observacao": "Tecfil: EL / ELX / EX (Álcool/Gasolina)",
+   "filtros": {
+    "AR_CABINE": "ACP101",
+    "AR": "ARL4150",
+    "OLEO": [
+     "PSL45",
+     "TM4"
+    ],
+    "COMBUSTIVEL": "GI41"
+   }
+  },
+  {
+   "marca": "Fiat",
+   "modelo": "Palio",
+   "motor": "1.0 8V",
+   "anos": [
+    2003,
+    2026
+   ],
+   "url": "https://catalogo.tecfil.com.br/search/PALIO%201%3CDOT%3E0",
+   "consultadaEm": "2026-11-18",
+   "observacao": "Tecfil: FIRE (Flex)",
+   "filtros": {
+    "AR_CABINE": "ACP103",
+    "AR": "ARL4150",
+    "OLEO": [
+     "PSL55",
+     "TM5"
+    ],
+    "COMBUSTIVEL": "GI04/7"
+   }
+  },
+  {
+   "marca": "Fiat",
+   "modelo": "Palio",
+   "motor": "1.3 16V",
+   "anos": [
+    2000,
+    2003
+   ],
+   "url": "https://catalogo.tecfil.com.br/search/PALIO%201%3CDOT%3E3",
+   "consultadaEm": "2026-11-18",
+   "observacao": "Tecfil: FIRE (Gasolina)",
+   "filtros": {
+    "AR_CABINE": "ACP103",
+    "AR": "ARL4150",
+    "OLEO": [
+     "PSL55",
+     "TM5"
+    ],
+    "COMBUSTIVEL": "GI04/7"
+   }
+  },
+  {
+   "marca": "Fiat",
+   "modelo": "Palio",
+   "motor": "1.3 8V",
+   "anos": [
+    2002,
+    2005
+   ],
+   "url": "https://catalogo.tecfil.com.br/search/PALIO%201%3CDOT%3E3",
+   "consultadaEm": "2026-11-18",
+   "observacao": "Tecfil: FIRE (Flex)",
+   "filtros": {
+    "AR_CABINE": "ACP103",
+    "AR": "ARL4150",
+    "OLEO": [
+     "PSL55",
+     "TM5"
+    ],
+    "COMBUSTIVEL": "GI04/7"
+   }
+  },
+  {
+   "marca": "Fiat",
+   "modelo": "Palio",
+   "motor": "1.4",
+   "anos": [
+    2011,
+    2026
+   ],
+   "url": "https://catalogo.tecfil.com.br/search/PALIO%201%3CDOT%3E4",
+   "consultadaEm": "2026-11-18",
+   "observacao": "Tecfil: Attractive (Flex)",
+   "filtros": {
+    "AR_CABINE": "ACP906",
+    "AR": "ARL4152",
+    "OLEO": [
+     "PSL55",
+     "TM5"
+    ],
+    "COMBUSTIVEL": "GI04/7"
+   }
+  },
+  {
+   "marca": "Fiat",
+   "modelo": "Palio",
+   "motor": "1.4 8V",
+   "anos": [
+    2005,
+    2012
+   ],
+   "url": "https://catalogo.tecfil.com.br/search/PALIO%201%3CDOT%3E4",
+   "consultadaEm": "2026-11-18",
+   "observacao": "Tecfil: FIRE (Flex)",
+   "filtros": {
+    "AR_CABINE": "ACP103",
+    "AR": "ARL4150",
+    "OLEO": [
+     "PSL55",
+     "TM5"
+    ],
+    "COMBUSTIVEL": "GI04/7"
+   }
+  },
+  {
+   "marca": "Fiat",
+   "modelo": "Palio",
+   "motor": "1.6 16V",
+   "anos": [
+    1996,
+    2000
+   ],
+   "url": "https://catalogo.tecfil.com.br/search/PALIO%201%3CDOT%3E6",
+   "consultadaEm": "2026-11-18",
+   "observacao": "Tecfil: ELX  MPI (Gasolina)",
+   "filtros": {
+    "AR_CABINE": "ACP101",
+    "AR": "ARL4150",
+    "OLEO": [
+     "PSL45",
+     "TM4"
+    ],
+    "COMBUSTIVEL": "GI41"
+   }
+  },
+  {
+   "marca": "Fiat",
+   "modelo": "Palio",
+   "motor": "1.6 16V",
+   "anos": [
+    2001,
+    2004
+   ],
+   "url": "https://catalogo.tecfil.com.br/search/PALIO%201%3CDOT%3E6",
+   "consultadaEm": "2026-11-18",
+   "observacao": "Tecfil: ELX (Álcool/Gasolina)",
+   "filtros": {
+    "AR_CABINE": "ACP103",
+    "AR": "ARL4150",
+    "OLEO": [
+     "PSL45",
+     "TM4"
+    ],
+    "COMBUSTIVEL": "GI04/7"
+   }
+  },
+  {
+   "marca": "Fiat",
+   "modelo": "Palio",
+   "motor": "1.6 16V",
+   "anos": [
+    2010,
+    2026
+   ],
+   "url": "https://catalogo.tecfil.com.br/search/PALIO%201%3CDOT%3E6",
+   "consultadaEm": "2026-11-18",
+   "observacao": "Tecfil: NOVO - E-torq (Flex) 09/2010",
+   "filtros": {
+    "AR_CABINE": "ACP103",
+    "AR": "ARL4154",
+    "OLEO": "PEL119",
+    "COMBUSTIVEL": "GI04/7"
+   }
+  },
+  {
+   "marca": "Fiat",
+   "modelo": "Palio",
+   "motor": "1.6 8V",
+   "anos": [
+    1998,
+    1999
+   ],
+   "url": "https://catalogo.tecfil.com.br/search/PALIO%201%3CDOT%3E6",
+   "consultadaEm": "2026-11-18",
+   "observacao": "Tecfil: EL SPI (Gasolina)",
+   "filtros": {
+    "AR_CABINE": "ACP101",
+    "AR": "ARL4150",
+    "OLEO": [
+     "PSL45",
+     "TM4"
+    ],
+    "COMBUSTIVEL": "GI41"
+   }
+  },
+  {
+   "marca": "Fiat",
+   "modelo": "Palio",
+   "motor": "1.6 8V",
+   "anos": [
+    1998,
+    2000
+   ],
+   "url": "https://catalogo.tecfil.com.br/search/PALIO%201%3CDOT%3E6",
+   "consultadaEm": "2026-11-18",
+   "observacao": "Tecfil: EL / ELX / MPI (Gasolina)",
+   "filtros": {
+    "AR_CABINE": "ACP100",
+    "AR": "ARL4150",
+    "OLEO": [
+     "PSL45",
+     "TM4"
+    ],
+    "COMBUSTIVEL": "GI41"
+   }
+  },
+  {
+   "marca": "Fiat",
+   "modelo": "Palio",
+   "motor": "1.8 16V",
+   "anos": [
+    2010,
+    2026
+   ],
+   "url": "https://catalogo.tecfil.com.br/search/PALIO%201%3CDOT%3E8",
+   "consultadaEm": "2026-11-18",
+   "observacao": "Tecfil: E-torq (Flex) 09/2010",
+   "filtros": {
+    "AR_CABINE": "ACP103",
+    "AR": "ARL4154",
+    "OLEO": "PEL119",
+    "COMBUSTIVEL": "GI04/7"
+   }
+  },
+  {
+   "marca": "Fiat",
+   "modelo": "Palio",
+   "motor": "1.8 8V",
+   "anos": [
+    2003,
+    2004
+   ],
+   "url": "https://catalogo.tecfil.com.br/search/PALIO%201%3CDOT%3E8",
+   "consultadaEm": "2026-11-18",
+   "observacao": "Tecfil: ELX / EX / HLX (Gasolina)",
+   "filtros": {
+    "AR_CABINE": "ACP103",
+    "AR": "ARL4150",
+    "OLEO": [
+     "PSL619",
+     "TM3"
+    ],
+    "COMBUSTIVEL": "GI04/7"
+   }
+  },
+  {
+   "marca": "Fiat",
+   "modelo": "Palio",
+   "motor": "1.8 8V",
+   "anos": [
+    2004,
+    2008
+   ],
+   "url": "https://catalogo.tecfil.com.br/search/PALIO%201%3CDOT%3E8",
+   "consultadaEm": "2026-11-18",
+   "observacao": "Tecfil: HLX / RST (Flex)",
+   "filtros": {
+    "AR_CABINE": "ACP103",
+    "AR": "ARL4150",
+    "OLEO": [
+     "PSL619",
+     "TM3"
+    ],
+    "COMBUSTIVEL": "GI04/7"
+   }
+  },
+  {
+   "marca": "Fiat",
+   "modelo": "Palio Weekend",
+   "motor": "1.0 16V",
+   "anos": [
+    2000,
+    2003
+   ],
+   "url": "https://catalogo.tecfil.com.br/search/PALIO%201%3CDOT%3E0",
+   "consultadaEm": "2026-11-18",
+   "observacao": "Tecfil: FIRE (Gasolina)",
+   "filtros": {
+    "AR_CABINE": "ACP103",
+    "AR": "ARL4150",
+    "OLEO": [
+     "PSL55",
+     "TM5"
+    ],
+    "COMBUSTIVEL": "GI04/7"
+   }
+  },
+  {
+   "marca": "Fiat",
+   "modelo": "Palio Weekend",
+   "motor": "1.0 8V",
+   "anos": [
+    1999,
+    2000
+   ],
+   "url": "https://catalogo.tecfil.com.br/search/PALIO%201%3CDOT%3E0",
+   "consultadaEm": "2026-11-18",
+   "observacao": "Tecfil: MPI (Gasolina)",
+   "filtros": {
+    "AR_CABINE": "ACP101",
+    "AR": "ARL4150",
+    "OLEO": [
+     "PSL45",
+     "TM4"
+    ],
+    "COMBUSTIVEL": "GI41"
+   }
+  },
+  {
+   "marca": "Fiat",
+   "modelo": "Palio Weekend",
+   "motor": "1.3 16V",
+   "anos": [
+    2000,
+    2005
+   ],
+   "url": "https://catalogo.tecfil.com.br/search/PALIO%201%3CDOT%3E3",
+   "consultadaEm": "2026-11-18",
+   "observacao": "Tecfil: FIRE (Gasolina/Flex)",
+   "filtros": {
+    "AR_CABINE": "ACP103",
+    "AR": "ARL4150",
+    "OLEO": [
+     "PSL55",
+     "TM5"
+    ],
+    "COMBUSTIVEL": "GI04/7"
+   }
+  },
+  {
+   "marca": "Fiat",
+   "modelo": "Palio Weekend",
+   "motor": "1.3 8V",
+   "anos": [
+    2003,
+    2004
+   ],
+   "url": "https://catalogo.tecfil.com.br/search/PALIO%201%3CDOT%3E3",
+   "consultadaEm": "2026-11-18",
+   "observacao": "Tecfil: FIRE (Gasolina)",
+   "filtros": {
+    "AR_CABINE": "ACP103",
+    "AR": "ARL4150",
+    "OLEO": [
+     "PSL55",
+     "TM5"
+    ],
+    "COMBUSTIVEL": "GI04/7"
+   }
+  },
+  {
+   "marca": "Fiat",
+   "modelo": "Palio Weekend",
+   "motor": "1.4 8V",
+   "anos": [
+    2005,
+    2026
+   ],
+   "url": "https://catalogo.tecfil.com.br/search/PALIO%201%3CDOT%3E4",
+   "consultadaEm": "2026-11-18",
+   "observacao": "Tecfil: Attractive/ELX  FIRE (Flex)",
+   "filtros": {
+    "AR_CABINE": "ACP103",
+    "AR": "ARL4150",
+    "OLEO": [
+     "PSL55",
+     "TM5"
+    ],
+    "COMBUSTIVEL": "GI04/7"
+   }
+  },
+  {
+   "marca": "Fiat",
+   "modelo": "Palio Weekend",
+   "motor": "1.6 16V",
+   "anos": [
+    1999,
+    2003
+   ],
+   "url": "https://catalogo.tecfil.com.br/search/PALIO%201%3CDOT%3E6",
+   "consultadaEm": "2026-11-18",
+   "observacao": "Tecfil: (Álcool/Gasolina)",
+   "filtros": {
+    "AR_CABINE": "ACP101",
+    "AR": "ARL4150",
+    "OLEO": [
+     "PSL45",
+     "TM4"
+    ],
+    "COMBUSTIVEL": "GI41"
+   }
+  },
+  {
+   "marca": "Fiat",
+   "modelo": "Palio Weekend",
+   "motor": "1.6 16V",
+   "anos": [
+    2010,
+    2026
+   ],
+   "url": "https://catalogo.tecfil.com.br/search/PALIO%201%3CDOT%3E6",
+   "consultadaEm": "2026-11-18",
+   "observacao": "Tecfil: E-torq (Flex)",
+   "filtros": {
+    "AR_CABINE": "ACP103",
+    "AR": "ARL4154",
+    "OLEO": "PEL119",
+    "COMBUSTIVEL": "GI04/7"
+   }
+  },
+  {
+   "marca": "Fiat",
+   "modelo": "Palio Weekend",
+   "motor": "1.6 8V",
+   "anos": [
+    1999,
+    2003
+   ],
+   "url": "https://catalogo.tecfil.com.br/search/PALIO%201%3CDOT%3E6",
+   "consultadaEm": "2026-11-18",
+   "observacao": "Tecfil: (Gasolina)",
+   "filtros": {
+    "AR_CABINE": "ACP101",
+    "AR": "ARL4150",
+    "OLEO": [
+     "PSL45",
+     "TM4"
+    ],
+    "COMBUSTIVEL": "GI41"
+   }
+  },
+  {
+   "marca": "Fiat",
+   "modelo": "Palio Weekend",
+   "motor": "1.8 16V",
+   "anos": [
+    2010,
+    2026
+   ],
+   "url": "https://catalogo.tecfil.com.br/search/PALIO%201%3CDOT%3E8",
+   "consultadaEm": "2026-11-18",
+   "observacao": "Tecfil: E-torq (Flex)",
+   "filtros": {
+    "AR_CABINE": "ACP103",
+    "AR": "ARL4154",
+    "OLEO": "PEL119",
+    "COMBUSTIVEL": "GI04/7"
+   }
+  },
+  {
+   "marca": "Fiat",
+   "modelo": "Palio Weekend",
+   "motor": "1.8 8V",
+   "anos": [
+    2003,
+    2006
+   ],
+   "url": "https://catalogo.tecfil.com.br/search/PALIO%201%3CDOT%3E8",
+   "consultadaEm": "2026-11-18",
+   "observacao": "Tecfil: (Gasolina/Flex)",
+   "filtros": {
+    "AR_CABINE": "ACP103",
+    "AR": "ARL4150",
+    "OLEO": [
+     "PSL619",
+     "TM3"
+    ],
+    "COMBUSTIVEL": "GI04/7"
+   }
+  },
+  {
+   "marca": "Fiat",
+   "modelo": "Punto",
+   "motor": "1.4 16V",
+   "anos": [
+    2009,
+    2026
+   ],
+   "url": "https://catalogo.tecfil.com.br/search/PUNTO",
+   "consultadaEm": "2026-11-18",
+   "observacao": "Tecfil: Jet (Gasolina)",
+   "filtros": {
+    "AR_CABINE": "ACP904",
+    "AR": "ARL4153",
+    "OLEO": "PEL118",
+    "COMBUSTIVEL": "GI04/7"
+   }
+  },
+  {
+   "marca": "Fiat",
+   "modelo": "Punto",
+   "motor": "1.4 8V",
+   "anos": [
+    2007,
+    2012
+   ],
+   "url": "https://catalogo.tecfil.com.br/search/PUNTO",
+   "consultadaEm": "2026-11-18",
+   "observacao": "Tecfil: FIRE  (ELX) (Flex) 07/2007 - 12/2012",
+   "filtros": {
+    "AR_CABINE": "ACP904",
+    "AR": "ARL4151",
+    "OLEO": [
+     "PSL55",
+     "TM5"
+    ],
+    "COMBUSTIVEL": "GI04/7"
+   }
+  },
+  {
+   "marca": "Fiat",
+   "modelo": "Punto",
+   "motor": "1.4 8V",
+   "anos": [
+    2013,
+    2016
+   ],
+   "url": "https://catalogo.tecfil.com.br/search/PUNTO",
+   "consultadaEm": "2026-11-18",
+   "observacao": "Tecfil: Attractive (Flex)",
+   "filtros": {
+    "AR_CABINE": "ACP904",
+    "AR": "ARL4152",
+    "OLEO": [
+     "PSL55",
+     "TM5"
+    ],
+    "COMBUSTIVEL": "GI04/7"
+   }
+  },
+  {
+   "marca": "Fiat",
+   "modelo": "Punto",
+   "motor": "1.6 16V",
+   "anos": [
+    2010,
+    2015
+   ],
+   "url": "https://catalogo.tecfil.com.br/search/PUNTO",
+   "consultadaEm": "2026-11-18",
+   "observacao": "Tecfil: E-torq (Flex) 07/2010",
+   "filtros": {
+    "AR_CABINE": "ACP904",
+    "AR": "ARL4154",
+    "OLEO": "PEL119",
+    "COMBUSTIVEL": "GI04/7"
+   }
+  },
+  {
+   "marca": "Fiat",
+   "modelo": "Punto",
+   "motor": "1.8 132 cv",
+   "anos": [
+    2012,
+    2026
+   ],
+   "url": "https://catalogo.tecfil.com.br/search/PUNTO",
+   "consultadaEm": "2026-11-18",
+   "observacao": "Tecfil: (Essence / HLX / Sporting)  Dualogic (Flex)",
+   "filtros": {
+    "AR_CABINE": "ACP904",
+    "AR": "ARL4154",
+    "OLEO": "PEL119",
+    "COMBUSTIVEL": "GI04/7"
+   }
+  },
+  {
+   "marca": "Fiat",
+   "modelo": "Punto",
+   "motor": "1.8 16V",
+   "anos": [
+    2010,
+    2026
+   ],
+   "url": "https://catalogo.tecfil.com.br/search/PUNTO",
+   "consultadaEm": "2026-11-18",
+   "observacao": "Tecfil: E-torq (Flex) 07/2010",
+   "filtros": {
+    "AR_CABINE": "ACP904",
+    "AR": "ARL4154",
+    "OLEO": "PEL119",
+    "COMBUSTIVEL": "GI04/7"
+   }
+  },
+  {
+   "marca": "Fiat",
+   "modelo": "Punto",
+   "motor": "1.8 8V MPI",
+   "anos": [
+    2007,
+    2010
+   ],
+   "url": "https://catalogo.tecfil.com.br/search/PUNTO",
+   "consultadaEm": "2026-11-18",
+   "observacao": "Tecfil: Essence / HLX / Sporting (Flex) 07/2007 - 06/2010",
+   "filtros": {
+    "AR_CABINE": "ACP904",
+    "AR": "ARL4155",
+    "OLEO": [
+     "PSL619",
+     "TM3"
+    ],
+    "COMBUSTIVEL": "GI04/7"
+   }
+  },
+  {
+   "marca": "Fiat",
+   "modelo": "Siena",
+   "motor": "1.0 16V",
+   "anos": [
+    2000,
+    2003
+   ],
+   "url": "https://catalogo.tecfil.com.br/search/SIENA%201%3CDOT%3E0",
+   "consultadaEm": "2026-11-18",
+   "observacao": "Tecfil: FIRE (Gasolina)",
+   "filtros": {
+    "AR_CABINE": "ACP103",
+    "AR": "ARL4150",
+    "OLEO": [
+     "PSL55",
+     "TM5"
+    ],
+    "COMBUSTIVEL": "GI04/7"
+   }
+  },
+  {
+   "marca": "Fiat",
+   "modelo": "Siena",
+   "motor": "1.0 8V",
+   "anos": [
+    1998,
+    2001
+   ],
+   "url": "https://catalogo.tecfil.com.br/search/SIENA%201%3CDOT%3E0",
+   "consultadaEm": "2026-11-18",
+   "observacao": "Tecfil: MPI (Gasolina)",
+   "filtros": {
+    "AR_CABINE": "ACP100",
+    "AR": "ARL4150",
+    "OLEO": [
+     "PSL45",
+     "TM4"
+    ],
+    "COMBUSTIVEL": "GI41"
+   }
+  },
+  {
+   "marca": "Fiat",
+   "modelo": "Siena",
+   "motor": "1.0 8V",
+   "anos": [
+    2000,
+    2016
+   ],
+   "url": "https://catalogo.tecfil.com.br/search/SIENA%201%3CDOT%3E0",
+   "consultadaEm": "2026-11-18",
+   "observacao": "Tecfil: Attractive/FIRE (Gasolina/Flex)",
+   "filtros": {
+    "AR_CABINE": "ACP103",
+    "AR": "ARL4150",
+    "OLEO": [
+     "PSL55",
+     "TM5"
+    ],
+    "COMBUSTIVEL": "GI04/7"
+   }
+  },
+  {
+   "marca": "Fiat",
+   "modelo": "Siena",
+   "motor": "1.4 8V",
+   "anos": [
+    2005,
+    2012
+   ],
+   "url": "https://catalogo.tecfil.com.br/search/SIENA%201%3CDOT%3E4",
+   "consultadaEm": "2026-11-18",
+   "observacao": "Tecfil: FIRE / TETRAFUEL (Flex)",
+   "filtros": {
+    "AR_CABINE": "ACP103",
+    "AR": "ARL4150",
+    "OLEO": [
+     "PSL55",
+     "TM5"
+    ],
+    "COMBUSTIVEL": "GI04/7"
+   }
+  },
+  {
+   "marca": "Fiat",
+   "modelo": "Strada",
+   "motor": "1.3 8V",
+   "anos": [
+    2002,
+    2005
+   ],
+   "url": "https://catalogo.tecfil.com.br/search/STRADA%201%3CDOT%3E3",
+   "consultadaEm": "2026-11-18",
+   "observacao": "Tecfil: FIRE (Gasolina)",
+   "filtros": {
+    "AR_CABINE": "ACP103",
+    "AR": "ARL4150",
+    "OLEO": [
+     "PSL55",
+     "TM5"
+    ],
+    "COMBUSTIVEL": "GI04/7"
+   }
+  },
+  {
+   "marca": "Fiat",
+   "modelo": "Strada",
+   "motor": "1.3 8V",
+   "anos": [
+    2020,
+    2026
+   ],
+   "url": "https://catalogo.tecfil.com.br/search/STRADA%201%3CDOT%3E3",
+   "consultadaEm": "2026-11-18",
+   "observacao": "Tecfil: (Fire / Volcano / Freedom) (Flex)",
+   "filtros": {
+    "AR_CABINE": "ACP906",
+    "AR": "ARL4161",
+    "OLEO": "PSL56",
+    "COMBUSTIVEL": "GI04/7"
+   }
+  },
+  {
+   "marca": "Fiat",
+   "modelo": "Strada",
+   "motor": "1.3 Firefly 109cv",
+   "anos": [
+    2022,
+    2026
+   ],
+   "url": "https://catalogo.tecfil.com.br/search/STRADA%201%3CDOT%3E3",
+   "consultadaEm": "2026-11-18",
+   "observacao": "Tecfil: Freedom Cabine Plus / Freedom Cabine Dupla /  Volcano Cabine Dupla - Automática (Flex)",
+   "filtros": {
+    "AR_CABINE": "ACP906",
+    "AR": "ARL4161",
+    "OLEO": "PSL56",
+    "COMBUSTIVEL": "GI04/7"
+   }
+  },
+  {
+   "marca": "Fiat",
+   "modelo": "Strada",
+   "motor": "1.4 8V",
+   "anos": [
+    2005,
+    2026
+   ],
+   "url": "https://catalogo.tecfil.com.br/search/STRADA%201%3CDOT%3E4",
+   "consultadaEm": "2026-11-18",
+   "observacao": "Tecfil: (Fire - Working) (Flex)",
+   "filtros": {
+    "AR_CABINE": "ACP103",
+    "AR": "ARL4150",
+    "OLEO": [
+     "PSL55",
+     "TM5"
+    ],
+    "COMBUSTIVEL": "GI04/7"
+   }
+  },
+  {
+   "marca": "Fiat",
+   "modelo": "Strada",
+   "motor": "1.4 8V",
+   "anos": [
+    2020,
+    2026
+   ],
+   "url": "https://catalogo.tecfil.com.br/search/STRADA%201%3CDOT%3E4",
+   "consultadaEm": "2026-11-18",
+   "observacao": "Tecfil: (Hard Working / Freedom / Working) (Flex)",
+   "filtros": {
+    "AR_CABINE": "ACP906",
+    "AR": "ARL4152",
+    "OLEO": [
+     "PSL55",
+     "TM5"
+    ],
+    "COMBUSTIVEL": "GI04/7"
+   }
+  },
+  {
+   "marca": "Fiat",
+   "modelo": "Strada",
+   "motor": "1.8 16V",
+   "anos": [
+    2010,
+    2026
+   ],
+   "url": "https://catalogo.tecfil.com.br/search/STRADA%201%3CDOT%3E8",
+   "consultadaEm": "2026-11-18",
+   "observacao": "Tecfil: E-torq (Flex)",
+   "filtros": {
+    "AR_CABINE": "ACP103",
+    "AR": "ARL4154",
+    "OLEO": "PEL119",
+    "COMBUSTIVEL": "GI04/7"
+   }
+  },
+  {
+   "marca": "Fiat",
+   "modelo": "Strada",
+   "motor": "1.8 8V",
+   "anos": [
+    2002,
+    2010
+   ],
+   "url": "https://catalogo.tecfil.com.br/search/STRADA%201%3CDOT%3E8",
+   "consultadaEm": "2026-11-18",
+   "observacao": "Tecfil: Adventure (Gasolina/Flex)",
+   "filtros": {
+    "AR_CABINE": "ACP103",
+    "AR": "ARL4150",
+    "OLEO": [
+     "PSL619",
+     "TM3"
+    ],
+    "COMBUSTIVEL": "GI04/7"
+   }
+  },
+  {
+   "marca": "Fiat",
+   "modelo": "Uno",
+   "motor": "1.0  8V",
+   "anos": [
+    1990,
+    1999
+   ],
+   "url": "https://catalogo.tecfil.com.br/search/UNO%201%3CDOT%3E0",
+   "consultadaEm": "2026-11-18",
+   "observacao": "Tecfil: EX / ELX / SX / Young / Mille (Álcool/Gasolina)",
+   "filtros": {
+    "AR": "ARL4147",
+    "OLEO": [
+     "PSL47",
+     "TM1"
+    ],
+    "COMBUSTIVEL": "GI40/7"
+   }
+  },
+  {
+   "marca": "Fiat",
+   "modelo": "Uno",
+   "motor": "1.0 3cil",
+   "anos": [
+    2016,
+    2026
+   ],
+   "url": "https://catalogo.tecfil.com.br/search/UNO%201%3CDOT%3E0",
+   "consultadaEm": "2026-11-18",
+   "observacao": "Tecfil: (Flex)",
+   "filtros": {
+    "AR_CABINE": "ACP906",
+    "AR": "ARL4161",
+    "OLEO": "PSL56",
+    "COMBUSTIVEL": "GI04/7"
+   }
+  },
+  {
+   "marca": "Fiat",
+   "modelo": "Uno",
+   "motor": "1.0 8V",
+   "anos": [
+    2000,
+    2006
+   ],
+   "url": "https://catalogo.tecfil.com.br/search/UNO%201%3CDOT%3E0",
+   "consultadaEm": "2026-11-18",
+   "observacao": "Tecfil: FIRE (Álcool/Gasolina)",
+   "filtros": {
+    "AR": "ARL4147",
+    "OLEO": [
+     "PSL55",
+     "TM5"
+    ],
+    "COMBUSTIVEL": "GI40/7"
+   }
+  },
+  {
+   "marca": "Fiat",
+   "modelo": "Uno",
+   "motor": "1.0 8V",
+   "anos": [
+    2005,
+    2015
+   ],
+   "url": "https://catalogo.tecfil.com.br/search/UNO%201%3CDOT%3E0",
+   "consultadaEm": "2026-11-18",
+   "observacao": "Tecfil: FIRE - Economy (Flex)",
+   "filtros": {
+    "AR": "ARL4147",
+    "OLEO": [
+     "PSL55",
+     "TM5"
+    ],
+    "COMBUSTIVEL": "GI40/7"
+   }
+  },
+  {
+   "marca": "Fiat",
+   "modelo": "Uno",
+   "motor": "1.0 8V 75cv",
+   "anos": [
+    2017,
+    2026
+   ],
+   "url": "https://catalogo.tecfil.com.br/search/UNO%201%3CDOT%3E0",
+   "consultadaEm": "2026-11-18",
+   "observacao": "Tecfil: Attractive (Flex)",
+   "filtros": {
+    "AR_CABINE": "ACP906",
+    "AR": "ARL4152",
+    "OLEO": [
+     "PSL55",
+     "TM5"
+    ],
+    "COMBUSTIVEL": "GI04/7"
+   }
+  },
+  {
+   "marca": "Fiat",
+   "modelo": "Uno",
+   "motor": "1.0 EVO 8V Fire",
+   "anos": [
+    2010,
+    2016
+   ],
+   "url": "https://catalogo.tecfil.com.br/search/UNO%201%3CDOT%3E0",
+   "consultadaEm": "2026-11-18",
+   "observacao": "Tecfil: VIVACE (Flex) 05/2010",
+   "filtros": {
+    "AR_CABINE": "ACP906",
+    "AR": "ARL4152",
+    "OLEO": [
+     "PSL55",
+     "TM5"
+    ],
+    "COMBUSTIVEL": "GI04/7"
+   }
+  },
+  {
+   "marca": "Fiat",
+   "modelo": "Uno",
+   "motor": "1.3",
+   "anos": [
+    2016,
+    2026
+   ],
+   "url": "https://catalogo.tecfil.com.br/search/UNO%201%3CDOT%3E3",
+   "consultadaEm": "2026-11-18",
+   "observacao": "Tecfil: (Flex)",
+   "filtros": {
+    "AR_CABINE": "ACP906",
+    "AR": "ARL4161",
+    "OLEO": "PSL56",
+    "COMBUSTIVEL": "GI04/7"
+   }
+  },
+  {
+   "marca": "Fiat",
+   "modelo": "Uno",
+   "motor": "1.3 8V",
+   "anos": [
+    1984,
+    1988
+   ],
+   "url": "https://catalogo.tecfil.com.br/search/UNO%201%3CDOT%3E3",
+   "consultadaEm": "2026-11-18",
+   "observacao": "Tecfil: S / CS / SX (Gasolina)",
+   "filtros": {
+    "AR": "AR3147",
+    "OLEO": [
+     "PSL47",
+     "TM1"
+    ],
+    "COMBUSTIVEL": [
+     "AG68",
+     "GU86"
+    ]
+   }
+  },
+  {
+   "marca": "Fiat",
+   "modelo": "Uno",
+   "motor": "1.3 8V",
+   "anos": [
+    1984,
+    1988
+   ],
+   "url": "https://catalogo.tecfil.com.br/search/UNO%201%3CDOT%3E3",
+   "consultadaEm": "2026-11-18",
+   "observacao": "Tecfil: S / CS / SX (Álcool)",
+   "filtros": {
+    "AR": "AR3147",
+    "OLEO": [
+     "PSL47",
+     "TM1"
+    ],
+    "COMBUSTIVEL": "AG68"
+   }
+  },
+  {
+   "marca": "Fiat",
+   "modelo": "Uno",
+   "motor": "1.3 8V",
+   "anos": [
+    1989,
+    1991
+   ],
+   "url": "https://catalogo.tecfil.com.br/search/UNO%201%3CDOT%3E3",
+   "consultadaEm": "2026-11-18",
+   "observacao": "Tecfil: S / CS / SX (Álcool/Gasolina)",
+   "filtros": {
+    "AR": "AR3147",
+    "OLEO": [
+     "PSL47",
+     "TM1"
+    ],
+    "COMBUSTIVEL": "GI40/7"
+   }
+  },
+  {
+   "marca": "Fiat",
+   "modelo": "Uno",
+   "motor": "1.4 8V",
+   "anos": [
+    1994,
+    1996
+   ],
+   "url": "https://catalogo.tecfil.com.br/search/UNO%201%3CDOT%3E4",
+   "consultadaEm": "2026-11-18",
+   "observacao": "Tecfil: Turbo (Gasolina)",
+   "filtros": {
+    "AR": "ARL4147",
+    "OLEO": [
+     "PSL45",
+     "TM4"
+    ],
+    "COMBUSTIVEL": "GI03/7"
+   }
+  },
+  {
+   "marca": "Fiat",
+   "modelo": "Uno",
+   "motor": "1.4 EVO 8V Fire",
+   "anos": [
+    2010,
+    2016
+   ],
+   "url": "https://catalogo.tecfil.com.br/search/UNO%201%3CDOT%3E4",
+   "consultadaEm": "2026-11-18",
+   "observacao": "Tecfil: VIVACE (Flex) 05/2010",
+   "filtros": {
+    "AR_CABINE": "ACP906",
+    "AR": "ARL4152",
+    "OLEO": [
+     "PSL55",
+     "TM5"
+    ],
+    "COMBUSTIVEL": "GI04/7"
+   }
+  },
+  {
+   "marca": "Ford",
+   "modelo": "Ecosport",
+   "motor": "1.6 16V",
+   "anos": [
+    2012,
+    2026
+   ],
+   "url": "https://catalogo.tecfil.com.br/search/ECOSPORT%201%3CDOT%3E6",
+   "consultadaEm": "2026-11-18",
+   "observacao": "Tecfil: Freestyle / Titanium - Mecânico (Flex)",
+   "filtros": {
+    "AR_CABINE": "ACP205",
+    "AR": "ART9614",
+    "OLEO": "TM1",
+    "COMBUSTIVEL": "GI04/7"
+   }
+  },
+  {
+   "marca": "Ford",
+   "modelo": "Ecosport",
+   "motor": "1.6 8V",
+   "anos": [
+    2003,
+    2012
+   ],
+   "url": "https://catalogo.tecfil.com.br/search/ECOSPORT%201%3CDOT%3E6",
+   "consultadaEm": "2026-11-18",
+   "observacao": "Tecfil: XL / XLT (Gasolina/Flex)",
+   "filtros": {
+    "AR_CABINE": "ACP202",
+    "AR": "ARL9608",
+    "OLEO": [
+     "PSL148",
+     "TM1"
+    ],
+    "COMBUSTIVEL": "GI60/7"
+   }
+  },
+  {
+   "marca": "Ford",
+   "modelo": "Ecosport",
+   "motor": "2.0",
+   "anos": [
+    2003,
+    2003
+   ],
+   "url": "https://catalogo.tecfil.com.br/search/ECOSPORT%202%3CDOT%3E0",
+   "consultadaEm": "2026-11-18",
+   "observacao": "Tecfil: Duratech HE (Câmbio Manual) (Gasolina) 01/2003 - 02/2003",
+   "filtros": {
+    "AR_CABINE": "ACP202",
+    "AR": "ARS7991",
+    "OLEO": "PEL106"
+   }
+  },
+  {
+   "marca": "Ford",
+   "modelo": "Ecosport",
+   "motor": "2.0",
+   "anos": [
+    2003,
+    2009
+   ],
+   "url": "https://catalogo.tecfil.com.br/search/ECOSPORT%202%3CDOT%3E0",
+   "consultadaEm": "2026-11-18",
+   "observacao": "Tecfil: Duratech HE (Câmbio Manual) (Gasolina) 03/2003",
+   "filtros": {
+    "AR_CABINE": "ACP202",
+    "AR": "ARS7991",
+    "OLEO": [
+     "PSL145",
+     "TM1"
+    ]
+   }
+  },
+  {
+   "marca": "Ford",
+   "modelo": "Ecosport",
+   "motor": "2.0",
+   "anos": [
+    2006,
+    2008
+   ],
+   "url": "https://catalogo.tecfil.com.br/search/ECOSPORT%202%3CDOT%3E0",
+   "consultadaEm": "2026-11-18",
+   "observacao": "Tecfil: Duratech HE (Câmbio Automático) (Gasolina) 11/2006 - 12/2008",
+   "filtros": {
+    "AR_CABINE": "ACP202",
+    "AR": "ART6098",
+    "OLEO": [
+     "PSL147",
+     "TM1"
+    ],
+    "COMBUSTIVEL": "GI60/7"
+   }
+  },
+  {
+   "marca": "Ford",
+   "modelo": "Ecosport",
+   "motor": "2.0",
+   "anos": [
+    2009,
+    2026
+   ],
+   "url": "https://catalogo.tecfil.com.br/search/ECOSPORT%202%3CDOT%3E0",
+   "consultadaEm": "2026-11-18",
+   "observacao": "Tecfil: Duratech HE (Câmbio Automático) (Gasolina) 01/2009",
+   "filtros": {
+    "AR_CABINE": "ACP202",
+    "OLEO": [
+     "PSL147",
+     "TM1"
+    ]
+   }
+  },
+  {
+   "marca": "Ford",
+   "modelo": "Ecosport",
+   "motor": "2.0 16V",
+   "anos": [
+    2003,
+    2012
+   ],
+   "url": "https://catalogo.tecfil.com.br/search/ECOSPORT%202%3CDOT%3E0",
+   "consultadaEm": "2026-11-18",
+   "observacao": "Tecfil: 4WD / XLT (Gasolina/Flex)",
+   "filtros": {
+    "AR_CABINE": "ACP202",
+    "AR": "ARS7991",
+    "OLEO": [
+     "PSL147",
+     "TM1"
+    ],
+    "COMBUSTIVEL": "GI60/7"
+   }
+  },
+  {
+   "marca": "Ford",
+   "modelo": "Ecosport",
+   "motor": "2.0 16V",
+   "anos": [
+    2007,
+    2012
+   ],
+   "url": "https://catalogo.tecfil.com.br/search/ECOSPORT%202%3CDOT%3E0",
+   "consultadaEm": "2026-11-18",
+   "observacao": "Tecfil: ( S / SE / XL / XLS / XLT ) (Flex)",
+   "filtros": {
+    "AR_CABINE": "ACP202",
+    "AR": "ARL9617",
+    "OLEO": [
+     "PSL145",
+     "TM1"
+    ]
+   }
+  },
+  {
+   "marca": "Ford",
+   "modelo": "Ecosport",
+   "motor": "2.0 16V",
+   "anos": [
+    2012,
+    2026
+   ],
+   "url": "https://catalogo.tecfil.com.br/search/ECOSPORT%202%3CDOT%3E0",
+   "consultadaEm": "2026-11-18",
+   "observacao": "Tecfil: (Freestyle / Titanium) - Automático / Mecânico (Flex)",
+   "filtros": {
+    "AR_CABINE": "ACP205",
+    "AR": "ART9615",
+    "OLEO": "TM1",
+    "COMBUSTIVEL": "GI04/7"
+   }
+  },
+  {
+   "marca": "Ford",
+   "modelo": "Ecosport",
+   "motor": "2.0 16V",
+   "anos": [
+    2017,
+    2026
+   ],
+   "url": "https://catalogo.tecfil.com.br/search/ECOSPORT%202%3CDOT%3E0",
+   "consultadaEm": "2026-11-18",
+   "observacao": "Tecfil: DURATEC (Flex)",
+   "filtros": {
+    "AR_CABINE": "ACP205",
+    "AR": "ART9618",
+    "OLEO": "TM1",
+    "COMBUSTIVEL": "GI04/7"
+   }
+  },
+  {
+   "marca": "Ford",
+   "modelo": "Fiesta",
+   "motor": "1.0 12V 3cil",
+   "anos": [
+    2017,
+    2026
+   ],
+   "url": "https://catalogo.tecfil.com.br/search/FIESTA%201%3CDOT%3E0",
+   "consultadaEm": "2026-11-18",
+   "observacao": "Tecfil: Turbo - Ecoboost Titanium Plus (Flex)",
+   "filtros": {
+    "AR_CABINE": "ACP205",
+    "AR": "ART9614",
+    "OLEO": "TM1",
+    "COMBUSTIVEL": "GI04/7"
+   }
+  },
+  {
+   "marca": "Ford",
+   "modelo": "Fiesta",
+   "motor": "1.0 8V",
+   "anos": [
+    2000,
+    2001
+   ],
+   "url": "https://catalogo.tecfil.com.br/search/FIESTA%201%3CDOT%3E0",
+   "consultadaEm": "2026-11-18",
+   "observacao": "Tecfil: Zetec Rocam (Gasolina)",
+   "filtros": {
+    "AR_CABINE": "ACP200",
+    "AR": "ARL9603",
+    "OLEO": [
+     "PSL145",
+     "TM1"
+    ],
+    "COMBUSTIVEL": "GI06/7"
+   }
+  },
+  {
+   "marca": "Ford",
+   "modelo": "Fiesta",
+   "motor": "1.0 8V",
+   "anos": [
+    2002,
+    2006
+   ],
+   "url": "https://catalogo.tecfil.com.br/search/FIESTA%201%3CDOT%3E0",
+   "consultadaEm": "2026-11-18",
+   "observacao": "Tecfil: Supercharger (Gasolina)",
+   "filtros": {
+    "AR_CABINE": "ACP202",
+    "AR": "ARL9609",
+    "OLEO": [
+     "PSL148",
+     "TM1"
+    ],
+    "COMBUSTIVEL": "GI60/7"
+   }
+  },
+  {
+   "marca": "Ford",
+   "modelo": "Fiesta",
+   "motor": "1.0 8V",
+   "anos": [
+    2002,
+    2014
+   ],
+   "url": "https://catalogo.tecfil.com.br/search/FIESTA%201%3CDOT%3E0",
+   "consultadaEm": "2026-11-18",
+   "observacao": "Tecfil: Zetec Rocam (Gasolina/Flex)",
+   "filtros": {
+    "AR_CABINE": "ACP202",
+    "AR": "ARL9608",
+    "OLEO": [
+     "PSL145",
+     "TM1"
+    ],
+    "COMBUSTIVEL": "GI60/7"
+   }
+  },
+  {
+   "marca": "Ford",
+   "modelo": "Fiesta",
+   "motor": "1.0 8V 53cv",
+   "anos": [
+    1996,
+    1999
+   ],
+   "url": "https://catalogo.tecfil.com.br/search/FIESTA%201%3CDOT%3E0",
+   "consultadaEm": "2026-11-18",
+   "observacao": "Tecfil: (Endura) - mecânico (Gasolina)",
+   "filtros": {
+    "AR_CABINE": "ACP200",
+    "AR": "AR8819",
+    "OLEO": [
+     "PSL145",
+     "TM1"
+    ],
+    "COMBUSTIVEL": "GI06/7"
+   }
+  },
+  {
+   "marca": "Ford",
+   "modelo": "Fiesta",
+   "motor": "1.6 8V",
+   "anos": [
+    1999,
+    2002
+   ],
+   "url": "https://catalogo.tecfil.com.br/search/FIESTA%201%3CDOT%3E6",
+   "consultadaEm": "2026-11-18",
+   "observacao": "Tecfil: Zetec Rocam (Gasolina)",
+   "filtros": {
+    "AR_CABINE": "ACP200",
+    "AR": "ARL9603",
+    "OLEO": [
+     "PSL144",
+     "TM1"
+    ],
+    "COMBUSTIVEL": "GI06/7"
+   }
+  },
+  {
+   "marca": "Ford",
+   "modelo": "Fiesta",
+   "motor": "1.6 8V",
+   "anos": [
+    2001,
+    2005
+   ],
+   "url": "https://catalogo.tecfil.com.br/search/FIESTA%201%3CDOT%3E6",
+   "consultadaEm": "2026-11-18",
+   "observacao": "Tecfil: Street Zetec Rocam (Gasolina)",
+   "filtros": {
+    "AR_CABINE": "ACP202",
+    "AR": "ARL9608",
+    "OLEO": [
+     "PSL144",
+     "TM1"
+    ],
+    "COMBUSTIVEL": "GI60/7"
+   }
+  },
+  {
+   "marca": "Ford",
+   "modelo": "Fiesta",
+   "motor": "1.6 8V",
+   "anos": [
+    2004,
+    2015
+   ],
+   "url": "https://catalogo.tecfil.com.br/search/FIESTA%201%3CDOT%3E6",
+   "consultadaEm": "2026-11-18",
+   "observacao": "Tecfil: (Gasolina/Flex)",
+   "filtros": {
+    "AR_CABINE": "ACP202",
+    "AR": "ARL9608",
+    "OLEO": [
+     "PSL148",
+     "TM1"
+    ],
+    "COMBUSTIVEL": "GI60/7"
+   }
+  },
+  {
+   "marca": "Ford",
+   "modelo": "Ka",
+   "motor": "1.0",
+   "anos": [
+    1998,
+    1998
+   ],
+   "url": "https://catalogo.tecfil.com.br/search/KA%201%3CDOT%3E0",
+   "consultadaEm": "2026-11-18",
+   "observacao": "Tecfil: (Gasolina)",
+   "filtros": {
+    "AR_CABINE": "ACP200",
+    "AR": "ARL9604",
+    "OLEO": [
+     "PSL145",
+     "TM1"
+    ],
+    "COMBUSTIVEL": "GI06/7"
+   }
+  },
+  {
+   "marca": "Ford",
+   "modelo": "Ka",
+   "motor": "1.0 12V 3cil",
+   "anos": [
+    2014,
+    2015
+   ],
+   "url": "https://catalogo.tecfil.com.br/search/KA%201%3CDOT%3E0",
+   "consultadaEm": "2026-11-18",
+   "observacao": "Tecfil: TiVCT - (SE/SE Plus /SEL) - Mecânico (Flex)",
+   "filtros": {
+    "AR_CABINE": "ACP205",
+    "AR": "ART9614",
+    "OLEO": "TM1",
+    "COMBUSTIVEL": "GI50/7"
+   }
+  },
+  {
+   "marca": "Ford",
+   "modelo": "Ka",
+   "motor": "1.0 12V 3cil",
+   "anos": [
+    2016,
+    2026
+   ],
+   "url": "https://catalogo.tecfil.com.br/search/KA%201%3CDOT%3E0",
+   "consultadaEm": "2026-11-18",
+   "observacao": "Tecfil: TiVCT - (SE/SE Plus /SEL) (Flex)",
+   "filtros": {
+    "AR_CABINE": "ACP205",
+    "AR": "ART9614",
+    "OLEO": "TM1",
+    "COMBUSTIVEL": "GI50/7"
+   }
+  },
+  {
+   "marca": "Ford",
+   "modelo": "Ka",
+   "motor": "1.0 8V",
+   "anos": [
+    1997,
+    2007
+   ],
+   "url": "https://catalogo.tecfil.com.br/search/KA%201%3CDOT%3E0",
+   "consultadaEm": "2026-11-18",
+   "observacao": "Tecfil: (Gasolina)",
+   "filtros": {
+    "AR_CABINE": "ACP200",
+    "AR": "ARL9605",
+    "OLEO": [
+     "PSL145",
+     "TM1"
+    ],
+    "COMBUSTIVEL": "GI06/7"
+   }
+  },
+  {
+   "marca": "Ford",
+   "modelo": "Ka",
+   "motor": "1.0 e 1.6",
+   "anos": [
+    2008,
+    2013
+   ],
+   "url": "https://catalogo.tecfil.com.br/search/KA%201%3CDOT%3E0",
+   "consultadaEm": "2026-11-18",
+   "observacao": "Tecfil: Com filtro de cabine adaptável. (Flex) - 12/2013",
+   "filtros": {
+    "AR_CABINE": "ACP200",
+    "AR": "ARL9608",
+    "OLEO": [
+     "PSL145",
+     "TM1"
+    ],
+    "COMBUSTIVEL": "GI60/7"
+   }
+  },
+  {
+   "marca": "Ford",
+   "modelo": "Ka",
+   "motor": "1.5 12v Dragon 3cil",
+   "anos": [
+    2019,
+    2026
+   ],
+   "url": "https://catalogo.tecfil.com.br/search/KA%201%3CDOT%3E5",
+   "consultadaEm": "2026-11-18",
+   "observacao": "Tecfil: (SE / SEPlus / Trail / SEL) (Flex)",
+   "filtros": {
+    "AR_CABINE": "ACP205",
+    "AR": "ART9618",
+    "OLEO": "TM1",
+    "COMBUSTIVEL": "GI04/7"
+   }
+  },
+  {
+   "marca": "Ford",
+   "modelo": "Ka",
+   "motor": "1.5 16V Sigma",
+   "anos": [
+    2016,
+    2026
+   ],
+   "url": "https://catalogo.tecfil.com.br/search/KA%201%3CDOT%3E5",
+   "consultadaEm": "2026-11-18",
+   "observacao": "Tecfil: (SE / SE Plus / SEL) Automático/Mecânico (Flex)",
+   "filtros": {
+    "AR_CABINE": "ACP205",
+    "AR": "ART9614",
+    "OLEO": "TM1",
+    "COMBUSTIVEL": "GI04/7"
+   }
+  },
+  {
+   "marca": "Ford",
+   "modelo": "Ka",
+   "motor": "1.5 16V Sigma 105cv",
+   "anos": [
+    2014,
+    2015
+   ],
+   "url": "https://catalogo.tecfil.com.br/search/KA%201%3CDOT%3E5",
+   "consultadaEm": "2026-11-18",
+   "observacao": "Tecfil: (SE / SE Plus / SEL ) - Automático/ Mecânico (Flex)",
+   "filtros": {
+    "AR_CABINE": "ACP205",
+    "AR": "ART9614",
+    "OLEO": "TM1",
+    "COMBUSTIVEL": "GI04/7"
+   }
+  },
+  {
+   "marca": "Ford",
+   "modelo": "Ka",
+   "motor": "1.6 8V",
+   "anos": [
+    2000,
+    2007
+   ],
+   "url": "https://catalogo.tecfil.com.br/search/KA%201%3CDOT%3E6",
+   "consultadaEm": "2026-11-18",
+   "observacao": "Tecfil: (Gasolina)",
+   "filtros": {
+    "AR_CABINE": "ACP200",
+    "AR": "ARL9605",
+    "OLEO": [
+     "PSL145",
+     "TM1"
+    ],
+    "COMBUSTIVEL": "GI06/7"
+   }
+  },
+  {
+   "marca": "Honda",
+   "modelo": "City",
+   "motor": "1.5 16V",
+   "anos": [
+    2009,
+    2013
+   ],
+   "url": "https://catalogo.tecfil.com.br/search/CITY",
+   "consultadaEm": "2026-11-18",
+   "observacao": "Tecfil: i-VTEC (Flex)",
+   "filtros": {
+    "AR_CABINE": "ACP709",
+    "AR": "ARL1035",
+    "OLEO": [
+     "PSL55",
+     "TM5"
+    ],
+    "COMBUSTIVEL": "GI04/7"
+   }
+  },
+  {
+   "marca": "Honda",
+   "modelo": "City",
+   "motor": "1.5 16V",
+   "anos": [
+    2014,
+    2026
+   ],
+   "url": "https://catalogo.tecfil.com.br/search/CITY",
+   "consultadaEm": "2026-11-18",
+   "observacao": "Tecfil: ( EXL / LX / Sport) - Automático / Mecânico (Flex)",
+   "filtros": {
+    "AR_CABINE": "ACP709",
+    "AR": "ARL1038",
+    "OLEO": [
+     "PSL55",
+     "TM5"
+    ],
+    "COMBUSTIVEL": "GI04/7"
+   }
+  },
+  {
+   "marca": "Honda",
+   "modelo": "City",
+   "motor": "1.5 16V 126cv",
+   "anos": [
+    2022,
+    2026
+   ],
+   "url": "https://catalogo.tecfil.com.br/search/CITY",
+   "consultadaEm": "2026-11-18",
+   "observacao": "Tecfil: (EX / CVT  / EXL CVT / Touring) - automática / mecânica (Flex)",
+   "filtros": {
+    "AR_CABINE": "ACP709",
+    "AR": "ARL1047",
+    "OLEO": [
+     "PSL55",
+     "TM5"
+    ],
+    "COMBUSTIVEL": "GI50/7"
+   }
+  },
+  {
+   "marca": "Honda",
+   "modelo": "Civic",
+   "motor": "1.5",
+   "anos": [
+    1992,
+    1997
+   ],
+   "url": "https://catalogo.tecfil.com.br/search/CIVIC",
+   "consultadaEm": "2026-11-18",
+   "observacao": "Tecfil: LX (Gasolina)",
+   "filtros": {
+    "OLEO": [
+     "PSL55",
+     "TM5"
+    ]
+   }
+  },
+  {
+   "marca": "Honda",
+   "modelo": "Civic",
+   "motor": "1.6 16V",
+   "anos": [
+    1991,
+    1998
+   ],
+   "url": "https://catalogo.tecfil.com.br/search/CIVIC",
+   "consultadaEm": "2026-11-18",
+   "observacao": "Tecfil: Coupe EX / EXS (Gasolina) - 12/1998",
+   "filtros": {
+    "OLEO": [
+     "PSL55",
+     "TM5"
+    ]
+   }
+  },
+  {
+   "marca": "Honda",
+   "modelo": "Civic",
+   "motor": "1.6 16V",
+   "anos": [
+    1997,
+    2000
+   ],
+   "url": "https://catalogo.tecfil.com.br/search/CIVIC",
+   "consultadaEm": "2026-11-18",
+   "observacao": "Tecfil: EX / Aut. (Gasolina) - 12/2000",
+   "filtros": {
+    "AR_CABINE": "ACP700",
+    "OLEO": [
+     "PSL55",
+     "TM5"
+    ],
+    "COMBUSTIVEL": "GI09"
+   }
+  },
+  {
+   "marca": "Honda",
+   "modelo": "Civic",
+   "motor": "1.6 16V",
+   "anos": [
+    1997,
+    2000
+   ],
+   "url": "https://catalogo.tecfil.com.br/search/CIVIC",
+   "consultadaEm": "2026-11-18",
+   "observacao": "Tecfil: Sedã LX / Aut. (Gasolina) - 12/2000",
+   "filtros": {
+    "AR_CABINE": "ACP700",
+    "AR": "ARL1030",
+    "OLEO": [
+     "PSL55",
+     "TM5"
+    ],
+    "COMBUSTIVEL": "GI09"
+   }
+  },
+  {
+   "marca": "Honda",
+   "modelo": "Civic",
+   "motor": "1.6 8V",
+   "anos": [
+    1992,
+    1997
+   ],
+   "url": "https://catalogo.tecfil.com.br/search/CIVIC",
+   "consultadaEm": "2026-11-18",
+   "observacao": "Tecfil: EX/EXS (Gasolina) - 12/1997",
+   "filtros": {
+    "OLEO": [
+     "PSL55",
+     "TM5"
+    ]
+   }
+  },
+  {
+   "marca": "Honda",
+   "modelo": "Civic",
+   "motor": "1.6i",
+   "anos": [
+    1996,
+    2000
+   ],
+   "url": "https://catalogo.tecfil.com.br/search/CIVIC",
+   "consultadaEm": "2026-11-18",
+   "observacao": "Tecfil: LX / EX / VTi (Gasolina)",
+   "filtros": {
+    "AR_CABINE": "ACP700",
+    "AR": "ARL1032",
+    "OLEO": [
+     "PSL55",
+     "TM5"
+    ]
+   }
+  },
+  {
+   "marca": "Honda",
+   "modelo": "Civic",
+   "motor": "1.7 16V",
+   "anos": [
+    2001,
+    2003
+   ],
+   "url": "https://catalogo.tecfil.com.br/search/CIVIC",
+   "consultadaEm": "2026-11-18",
+   "observacao": "Tecfil: EX (Gasolina) - 12/2003",
+   "filtros": {
+    "AR_CABINE": "ACP703/9",
+    "AR": "ARL1032",
+    "OLEO": [
+     "PSL55",
+     "TM5"
+    ],
+    "COMBUSTIVEL": "FBT2361"
+   }
+  },
+  {
+   "marca": "Honda",
+   "modelo": "Civic",
+   "motor": "1.7 16V",
+   "anos": [
+    2001,
+    2005
+   ],
+   "url": "https://catalogo.tecfil.com.br/search/CIVIC",
+   "consultadaEm": "2026-11-18",
+   "observacao": "Tecfil: EX / ELX / LXL (Gasolina)",
+   "filtros": {
+    "AR_CABINE": "ACP703/9",
+    "AR": "ARL1032",
+    "OLEO": [
+     "PSL55",
+     "TM5"
+    ],
+    "COMBUSTIVEL": "FBT2361"
+   }
+  },
+  {
+   "marca": "Honda",
+   "modelo": "Civic",
+   "motor": "1.7 16V",
+   "anos": [
+    2006,
+    2006
+   ],
+   "url": "https://catalogo.tecfil.com.br/search/CIVIC",
+   "consultadaEm": "2026-11-18",
+   "observacao": "Tecfil: EX / Automático (Gasolina) 01/2006 - 12/2006",
+   "filtros": {
+    "AR_CABINE": "ACP708",
+    "OLEO": [
+     "PSL55",
+     "TM5"
+    ]
+   }
+  },
+  {
+   "marca": "Honda",
+   "modelo": "Civic",
+   "motor": "1.8",
+   "anos": [
+    2006,
+    2007
+   ],
+   "url": "https://catalogo.tecfil.com.br/search/CIVIC",
+   "consultadaEm": "2026-11-18",
+   "observacao": "Tecfil: (LXL / LXS / EXS) (Gasolina)",
+   "filtros": {
+    "AR_CABINE": "ACP708",
+    "AR": "ARL1034",
+    "OLEO": [
+     "PSL55",
+     "TM5"
+    ]
+   }
+  },
+  {
+   "marca": "Honda",
+   "modelo": "Civic",
+   "motor": "1.8 16V",
+   "anos": [
+    2007,
+    2011
+   ],
+   "url": "https://catalogo.tecfil.com.br/search/CIVIC",
+   "consultadaEm": "2026-11-18",
+   "observacao": "Tecfil: (EXS / LXS / LXL) - Automático / Mecânico (Flex) 01/2007 - 12/2011",
+   "filtros": {
+    "AR_CABINE": "ACP708",
+    "AR": "ARL1034",
+    "OLEO": [
+     "PSL55",
+     "TM5"
+    ],
+    "COMBUSTIVEL": "GI12/7"
+   }
+  },
+  {
+   "marca": "Honda",
+   "modelo": "Civic",
+   "motor": "1.8 16v i-VTEC",
+   "anos": [
+    2012,
+    2026
+   ],
+   "url": "https://catalogo.tecfil.com.br/search/CIVIC",
+   "consultadaEm": "2026-11-18",
+   "observacao": "Tecfil: (EXS / LXS / LXL) - Automático / Mecânico (Flex) 02/2012",
+   "filtros": {
+    "AR_CABINE": "ACP708",
+    "AR": "ARL1037",
+    "OLEO": [
+     "PSL55",
+     "TM5"
+    ],
+    "COMBUSTIVEL": "GI04/7"
+   }
+  },
+  {
+   "marca": "Honda",
+   "modelo": "Civic",
+   "motor": "2.0 155 cv",
+   "anos": [
+    2013,
+    2015
+   ],
+   "url": "https://catalogo.tecfil.com.br/search/CIVIC",
+   "consultadaEm": "2026-11-18",
+   "observacao": "Tecfil: (EXS / LXR) - Automático / Mecânico (Flex)",
+   "filtros": {
+    "AR_CABINE": "ACP708",
+    "AR": "ARL1037",
+    "OLEO": [
+     "PSL55",
+     "TM5"
+    ],
+    "COMBUSTIVEL": "GI04/7"
+   }
+  },
+  {
+   "marca": "Honda",
+   "modelo": "Civic",
+   "motor": "2.0 16V",
+   "anos": [
+    2016,
+    2026
+   ],
+   "url": "https://catalogo.tecfil.com.br/search/CIVIC",
+   "consultadaEm": "2026-11-18",
+   "observacao": "Tecfil: i-vtec (EXL/EX/Sport) (Flex)",
+   "filtros": {
+    "AR_CABINE": "ACP709",
+    "AR": "ARL1043",
+    "OLEO": [
+     "PSL55",
+     "TM5"
+    ],
+    "COMBUSTIVEL": "GI04/7"
+   }
+  },
+  {
+   "marca": "Honda",
+   "modelo": "Civic",
+   "motor": "2.0 L 16V DOHC L4",
+   "anos": [
+    2023,
+    2026
+   ],
+   "url": "https://catalogo.tecfil.com.br/search/CIVIC",
+   "consultadaEm": "2026-11-18",
+   "observacao": "Tecfil: Hybrid (Gasolina/Elétrico)",
+   "filtros": {
+    "AR_CABINE": "ACP709",
+    "AR": "ARL1049",
+    "OLEO": [
+     "PSL55",
+     "TM5"
+    ]
+   }
+  },
+  {
+   "marca": "Honda",
+   "modelo": "Civic",
+   "motor": "2.4 16V 206cv",
+   "anos": [
+    2015,
+    2026
+   ],
+   "url": "https://catalogo.tecfil.com.br/search/CIVIC",
+   "consultadaEm": "2026-11-18",
+   "observacao": "Tecfil: (Gasolina)",
+   "filtros": {
+    "AR_CABINE": "ACP708"
+   }
+  },
+  {
+   "marca": "Honda",
+   "modelo": "Fit",
+   "motor": "1.4 16V 100cv",
+   "anos": [
+    2008,
+    2026
+   ],
+   "url": "https://catalogo.tecfil.com.br/search/FIT",
+   "consultadaEm": "2026-11-18",
+   "observacao": "Tecfil: (LX / LXL) - automático / mecânico (Flex)",
+   "filtros": {
+    "AR_CABINE": "ACP707",
+    "AR": "ARL1035",
+    "OLEO": [
+     "PSL55",
+     "TM5"
+    ],
+    "COMBUSTIVEL": "GI04/7"
+   }
+  },
+  {
+   "marca": "Honda",
+   "modelo": "Fit",
+   "motor": "1.4 8V  80cv",
+   "anos": [
+    2003,
+    2008
+   ],
+   "url": "https://catalogo.tecfil.com.br/search/FIT",
+   "consultadaEm": "2026-11-18",
+   "observacao": "Tecfil: (LX / LXL) - mecânico (Gasolina)",
+   "filtros": {
+    "AR_CABINE": "ACP704",
+    "AR": "ARL1031",
+    "OLEO": [
+     "PSL55",
+     "TM5"
+    ],
+    "COMBUSTIVEL": "FBT2356"
+   }
+  },
+  {
+   "marca": "Honda",
+   "modelo": "Fit",
+   "motor": "1.4 8V 83cv",
+   "anos": [
+    2006,
+    2008
+   ],
+   "url": "https://catalogo.tecfil.com.br/search/FIT",
+   "consultadaEm": "2026-11-18",
+   "observacao": "Tecfil: (LX / LXL) - mecânico / automático (Flex)",
+   "filtros": {
+    "AR_CABINE": "ACP707",
+    "AR": "ARL1031",
+    "OLEO": [
+     "PSL55",
+     "TM5"
+    ],
+    "COMBUSTIVEL": "GI12/7"
+   }
+  },
+  {
+   "marca": "Honda",
+   "modelo": "Fit",
+   "motor": "1.5 16V",
+   "anos": [
+    2005,
+    2008
+   ],
+   "url": "https://catalogo.tecfil.com.br/search/FIT",
+   "consultadaEm": "2026-11-18",
+   "observacao": "Tecfil: V-Tec (Gasolina)",
+   "filtros": {
+    "AR_CABINE": "ACP707",
+    "AR": "ARL1036",
+    "OLEO": [
+     "PSL55",
+     "TM5"
+    ],
+    "COMBUSTIVEL": "FBT2356"
+   }
+  },
+  {
+   "marca": "Honda",
+   "modelo": "Fit",
+   "motor": "1.5 16V",
+   "anos": [
+    2009,
+    2013
+   ],
+   "url": "https://catalogo.tecfil.com.br/search/FIT",
+   "consultadaEm": "2026-11-18",
+   "observacao": "Tecfil: (Flex)",
+   "filtros": {
+    "AR_CABINE": "ACP709",
+    "AR": "ARL1035",
+    "OLEO": [
+     "PSL55",
+     "TM5"
+    ],
+    "COMBUSTIVEL": "GI04/7"
+   }
+  },
+  {
+   "marca": "Honda",
+   "modelo": "Fit Twist",
+   "motor": "1.5 16V",
+   "anos": [
+    2014,
+    2026
+   ],
+   "url": "https://catalogo.tecfil.com.br/search/FIT",
+   "consultadaEm": "2026-11-18",
+   "observacao": "Tecfil: automático / mecânico (Flex)",
+   "filtros": {
+    "AR_CABINE": "ACP709",
+    "AR": "ARL1038",
+    "OLEO": [
+     "PSL55",
+     "TM5"
+    ],
+    "COMBUSTIVEL": "GI04/7"
+   }
+  },
+  {
+   "marca": "Honda",
+   "modelo": "Fit Twist",
+   "motor": "1.5 16V 116cv",
+   "anos": [
+    2009,
+    2026
+   ],
+   "url": "https://catalogo.tecfil.com.br/search/FIT",
+   "consultadaEm": "2026-11-18",
+   "observacao": "Tecfil: (EX / EXL) - automático / mecânico (Flex)",
+   "filtros": {
+    "AR_CABINE": "ACP709",
+    "AR": "ARL1038",
+    "OLEO": [
+     "PSL55",
+     "TM5"
+    ],
+    "COMBUSTIVEL": "GI04/7"
+   }
+  },
+  {
+   "marca": "Hyundai",
+   "modelo": "HB20",
+   "motor": "1.0 12V 3cil  80cv",
+   "anos": [
+    2012,
+    2026
+   ],
+   "url": "https://catalogo.tecfil.com.br/search/HB20",
+   "consultadaEm": "2026-11-18",
+   "observacao": "Tecfil: (Confort / S) (Flex)",
+   "filtros": {
+    "AR_CABINE": "ACP972",
+    "AR": "ARL2338",
+    "OLEO": [
+     "PSL166",
+     "TM5"
+    ],
+    "COMBUSTIVEL": "GI50/7"
+   }
+  },
+  {
+   "marca": "Hyundai",
+   "modelo": "HB20",
+   "motor": "1.0 3Cils. 12v 75cv Gas. 80cv Etanol",
+   "anos": [
+    2012,
+    2026
+   ],
+   "url": "https://catalogo.tecfil.com.br/search/HB20",
+   "consultadaEm": "2026-11-18",
+   "observacao": "Tecfil: Confort / S (Flex)",
+   "filtros": {
+    "AR_CABINE": "ACP972",
+    "AR": "ARL2338",
+    "OLEO": "TM5",
+    "COMBUSTIVEL": "GI50/7"
+   }
+  },
+  {
+   "marca": "Hyundai",
+   "modelo": "HB20",
+   "motor": "1.0 TGDI 12V 120cv",
+   "anos": [
+    2020,
+    2026
+   ],
+   "url": "https://catalogo.tecfil.com.br/search/HB20",
+   "consultadaEm": "2026-11-18",
+   "observacao": "Tecfil: (Sport) - automático (Flex)",
+   "filtros": {
+    "AR_CABINE": "ACP972",
+    "AR": "ARL2349",
+    "OLEO": [
+     "PSL166",
+     "TM5"
+    ],
+    "COMBUSTIVEL": "GI50/7"
+   }
+  },
+  {
+   "marca": "Hyundai",
+   "modelo": "HB20",
+   "motor": "1.0 Turbo 12V 105cv",
+   "anos": [
+    2016,
+    2018
+   ],
+   "url": "https://catalogo.tecfil.com.br/search/HB20",
+   "consultadaEm": "2026-11-18",
+   "observacao": "Tecfil: (Confort Plus / Style) - Mecânico (Flex)",
+   "filtros": {
+    "AR_CABINE": "ACP972",
+    "AR": "ARL2340",
+    "OLEO": [
+     "PSL166",
+     "TM5"
+    ],
+    "COMBUSTIVEL": "GI50/7"
+   }
+  },
+  {
+   "marca": "Hyundai",
+   "modelo": "HB20",
+   "motor": "1.6 16V 128cv",
+   "anos": [
+    2012,
+    2019
+   ],
+   "url": "https://catalogo.tecfil.com.br/search/HB20",
+   "consultadaEm": "2026-11-18",
+   "observacao": "Tecfil: (Confort / Premiun / S / X) Automático / Mecânico (Flex)",
+   "filtros": {
+    "AR_CABINE": "ACP972",
+    "AR": "ARL2340",
+    "OLEO": "PSL818",
+    "COMBUSTIVEL": "GI50/7"
+   }
+  },
+  {
+   "marca": "Hyundai",
+   "modelo": "HB20/HB20S",
+   "motor": "1.0 TGDI 12v 120cv Turbo",
+   "anos": [
+    2019,
+    2026
+   ],
+   "url": "https://catalogo.tecfil.com.br/search/HB20",
+   "consultadaEm": "2026-11-18",
+   "observacao": "Tecfil: (Diamond Plus / Evolution / Diamond) (Flex)",
+   "filtros": {
+    "AR_CABINE": "ACP972",
+    "AR": "ARL2349",
+    "OLEO": [
+     "PSL166",
+     "TM5"
+    ],
+    "COMBUSTIVEL": "GI50/7"
+   }
+  },
+  {
+   "marca": "Hyundai",
+   "modelo": "HB20X",
+   "motor": "1.6 16V DOHC 130cv",
+   "anos": [
+    2020,
+    2026
+   ],
+   "url": "https://catalogo.tecfil.com.br/search/HB20",
+   "consultadaEm": "2026-11-18",
+   "observacao": "Tecfil: (Vision / Diamond Plus / Evolution) (Flex)",
+   "filtros": {
+    "AR_CABINE": "ACP972",
+    "AR": "ARL2349",
+    "OLEO": [
+     "PSL152",
+     "TM5"
+    ],
+    "COMBUSTIVEL": "GI50/7"
+   }
+  },
+  {
+   "marca": "Hyundai",
+   "modelo": "Tucson",
+   "motor": "2.0 16V",
+   "anos": [
+    2004,
+    2006
+   ],
+   "url": "https://catalogo.tecfil.com.br/search/TUCSON",
+   "consultadaEm": "2026-11-18",
+   "observacao": "Tecfil: CRDi (Diesel)",
+   "filtros": {
+    "AR_CABINE": "ACP972",
+    "AR": "ARL2331",
+    "OLEO": "PEL116"
+   }
+  },
+  {
+   "marca": "Hyundai",
+   "modelo": "Tucson",
+   "motor": "2.0 16V 112cv",
+   "anos": [
+    2005,
+    2005
+   ],
+   "url": "https://catalogo.tecfil.com.br/search/TUCSON",
+   "consultadaEm": "2026-11-18",
+   "observacao": "Tecfil",
+   "filtros": {
+    "AR_CABINE": "ACP972",
+    "AR": "ARL2331",
+    "OLEO": "PEL116"
+   }
+  },
+  {
+   "marca": "Hyundai",
+   "modelo": "Tucson",
+   "motor": "2.0 16V 142cv",
+   "anos": [
+    2004,
+    2006
+   ],
+   "url": "https://catalogo.tecfil.com.br/search/TUCSON",
+   "consultadaEm": "2026-11-18",
+   "observacao": "Tecfil: (GL / GLS) - automático / mecânico (Gasolina)",
+   "filtros": {
+    "AR_CABINE": "ACP971",
+    "AR": "ARL2331",
+    "OLEO": [
+     "PSL152",
+     "TM5"
+    ],
+    "COMBUSTIVEL": "GI04/7"
+   }
+  },
+  {
+   "marca": "Hyundai",
+   "modelo": "Tucson",
+   "motor": "2.0 16V 142cv",
+   "anos": [
+    2006,
+    2010
+   ],
+   "url": "https://catalogo.tecfil.com.br/search/TUCSON",
+   "consultadaEm": "2026-11-18",
+   "observacao": "Tecfil: (GL / GLS) - automático / mecânico (Gasolina)",
+   "filtros": {
+    "AR_CABINE": "ACP972",
+    "AR": "ARL2331",
+    "OLEO": [
+     "PSL152",
+     "TM5"
+    ],
+    "COMBUSTIVEL": "FBT2359"
+   }
+  },
+  {
+   "marca": "Hyundai",
+   "modelo": "Tucson",
+   "motor": "2.0 16V 142cv",
+   "anos": [
+    2011,
+    2012
+   ],
+   "url": "https://catalogo.tecfil.com.br/search/TUCSON",
+   "consultadaEm": "2026-11-18",
+   "observacao": "Tecfil: (GL / GLS) - automático / mecânico (Gasolina)",
+   "filtros": {
+    "AR_CABINE": "ACP972",
+    "AR": "ARL2331",
+    "OLEO": [
+     "PSL152",
+     "TM5"
+    ],
+    "COMBUSTIVEL": "FBT2359"
+   }
+  },
+  {
+   "marca": "Hyundai",
+   "modelo": "Tucson",
+   "motor": "2.0 16V 146cv",
+   "anos": [
+    2013,
+    2018
+   ],
+   "url": "https://catalogo.tecfil.com.br/search/TUCSON",
+   "consultadaEm": "2026-11-18",
+   "observacao": "Tecfil: Automático / Mecânico (Flex)",
+   "filtros": {
+    "AR_CABINE": "ACP972",
+    "AR": "ARL2331",
+    "OLEO": [
+     "PSL152",
+     "TM5"
+    ],
+    "COMBUSTIVEL": "GI50/7"
+   }
+  },
+  {
+   "marca": "Hyundai",
+   "modelo": "Tucson",
+   "motor": "2.7i 24V 175cv",
+   "anos": [
+    2004,
+    2005
+   ],
+   "url": "https://catalogo.tecfil.com.br/search/TUCSON",
+   "consultadaEm": "2026-11-18",
+   "observacao": "Tecfil: (GLS)  - automático (Gasolina)",
+   "filtros": {
+    "AR_CABINE": "ACP971",
+    "AR": "ARL2331",
+    "OLEO": [
+     "PSL152",
+     "TM5"
+    ],
+    "COMBUSTIVEL": "GI04/7"
+   }
+  },
+  {
+   "marca": "Hyundai",
+   "modelo": "Tucson",
+   "motor": "2.7i 24V 175cv",
+   "anos": [
+    2006,
+    2010
+   ],
+   "url": "https://catalogo.tecfil.com.br/search/TUCSON",
+   "consultadaEm": "2026-11-18",
+   "observacao": "Tecfil: (GLS)  - automático (Gasolina)",
+   "filtros": {
+    "AR_CABINE": "ACP972",
+    "AR": "ARL2331",
+    "OLEO": [
+     "PSL152",
+     "TM5"
+    ],
+    "COMBUSTIVEL": "FBT2359"
+   }
+  },
+  {
+   "marca": "Hyundai",
+   "modelo": "i30",
+   "motor": "1.6 16V 128cv",
+   "anos": [
+    2013,
+    2026
+   ],
+   "url": "https://catalogo.tecfil.com.br/search/I30",
+   "consultadaEm": "2026-11-18",
+   "observacao": "Tecfil: Automático (Flex)",
+   "filtros": {
+    "AR_CABINE": "ACP982",
+    "AR": "ARL2341",
+    "OLEO": [
+     "PSL152",
+     "TM5"
+    ],
+    "COMBUSTIVEL": "GI63"
+   }
+  },
+  {
+   "marca": "Hyundai",
+   "modelo": "i30",
+   "motor": "1.8 16V",
+   "anos": [
+    2014,
+    2026
+   ],
+   "url": "https://catalogo.tecfil.com.br/search/I30",
+   "consultadaEm": "2026-11-18",
+   "observacao": "Tecfil: Automático (Gasolina)",
+   "filtros": {
+    "AR_CABINE": "ACP982",
+    "AR": "ARL2337",
+    "OLEO": [
+     "PSL152",
+     "TM5"
+    ],
+    "COMBUSTIVEL": "GI63"
+   }
+  },
+  {
+   "marca": "Hyundai",
+   "modelo": "i30",
+   "motor": "2.0 16v 145cv",
+   "anos": [
+    2008,
+    2026
+   ],
+   "url": "https://catalogo.tecfil.com.br/search/I30",
+   "consultadaEm": "2026-11-18",
+   "observacao": "Tecfil: (CW / GLS) - automático / mecânico (Gasolina)",
+   "filtros": {
+    "AR_CABINE": "ACP979",
+    "AR": "ARL2334",
+    "OLEO": [
+     "PSL152",
+     "TM5"
+    ],
+    "COMBUSTIVEL": "FBT2360"
+   }
+  },
+  {
+   "marca": "Nissan",
+   "modelo": "Kicks",
+   "motor": "1.0 - 125cv (220T)",
+   "anos": [
+    2025,
+    2026
+   ],
+   "url": "https://catalogo.tecfil.com.br/search/KICKS",
+   "consultadaEm": "2026-11-18",
+   "observacao": "Tecfil: Turbo - (Sense  / Advance / Exclusive / Platinum) -  DCT automático (Flex)",
+   "filtros": {
+    "AR_CABINE": "ACP559",
+    "AR": "ARL5146",
+    "OLEO": "PEL730"
+   }
+  },
+  {
+   "marca": "Nissan",
+   "modelo": "Kicks",
+   "motor": "1.0 - 125cv (220T)",
+   "anos": [
+    2025,
+    2026
+   ],
+   "url": "https://catalogo.tecfil.com.br/search/KICKS",
+   "consultadaEm": "2026-11-18",
+   "observacao": "Tecfil: Turbo - (Sense  / Advance / Exclusive / Platinum) -  DCT automático (Flex)",
+   "filtros": {
+    "AR": "ARL5146"
+   }
+  },
+  {
+   "marca": "Nissan",
+   "modelo": "Kicks",
+   "motor": "1.6 4cil 114cv",
+   "anos": [
+    2016,
+    2026
+   ],
+   "url": "https://catalogo.tecfil.com.br/search/KICKS",
+   "consultadaEm": "2026-11-18",
+   "observacao": "Tecfil: (Sense MT / Sense CVT / Advance CVT) - manual / automático (Flex)",
+   "filtros": {
+    "AR_CABINE": "ACP559",
+    "AR": "ARL1659",
+    "OLEO": [
+     "PSL78",
+     "TM5"
+    ],
+    "COMBUSTIVEL": "GI50/7"
+   }
+  },
+  {
+   "marca": "Nissan",
+   "modelo": "March",
+   "motor": "1.0 12V 3cil",
+   "anos": [
+    2015,
+    2026
+   ],
+   "url": "https://catalogo.tecfil.com.br/search/MARCH",
+   "consultadaEm": "2026-11-18",
+   "observacao": "Tecfil: (Flex)",
+   "filtros": {
+    "AR_CABINE": "ACP731",
+    "AR": "ARL1658",
+    "OLEO": [
+     "PSL55",
+     "TM5"
+    ],
+    "COMBUSTIVEL": "GI50/7"
+   }
+  },
+  {
+   "marca": "Nissan",
+   "modelo": "March",
+   "motor": "1.0 16V",
+   "anos": [
+    2011,
+    2014
+   ],
+   "url": "https://catalogo.tecfil.com.br/search/MARCH",
+   "consultadaEm": "2026-11-18",
+   "observacao": "Tecfil: (Flex) - 12/2014",
+   "filtros": {
+    "AR_CABINE": "ACP730",
+    "AR": "ARL5138",
+    "OLEO": [
+     "PSL78",
+     "TM5"
+    ],
+    "COMBUSTIVEL": "GI50/7"
+   }
+  },
+  {
+   "marca": "Nissan",
+   "modelo": "March",
+   "motor": "1.6",
+   "anos": [
+    2011,
+    2026
+   ],
+   "url": "https://catalogo.tecfil.com.br/search/MARCH",
+   "consultadaEm": "2026-11-18",
+   "observacao": "Tecfil: (Flex)",
+   "filtros": {
+    "AR_CABINE": "ACP730",
+    "AR": "ARL1655",
+    "OLEO": [
+     "PSL78",
+     "TM5"
+    ],
+    "COMBUSTIVEL": "GI50/7"
+   }
+  },
+  {
+   "marca": "Renault",
+   "modelo": "Clio",
+   "motor": "1.0 16V",
+   "anos": [
+    2000,
+    2006
+   ],
+   "url": "https://catalogo.tecfil.com.br/search/CLIO",
+   "consultadaEm": "2026-11-18",
+   "observacao": "Tecfil: D4D (Gasolina) 01/2000",
+   "filtros": {
+    "AR_CABINE": "ACP550",
+    "AR": "ARL5136",
+    "OLEO": [
+     "PSL78",
+     "TM5"
+    ],
+    "COMBUSTIVEL": "GI50/7"
+   }
+  },
+  {
+   "marca": "Renault",
+   "modelo": "Clio",
+   "motor": "1.0 16V",
+   "anos": [
+    2005,
+    2006
+   ],
+   "url": "https://catalogo.tecfil.com.br/search/CLIO",
+   "consultadaEm": "2026-11-18",
+   "observacao": "Tecfil: Hi-Flex D4D (Flex) 12/2005",
+   "filtros": {
+    "AR_CABINE": "ACP550",
+    "AR": "ARL5138",
+    "OLEO": [
+     "PSL78",
+     "TM5"
+    ],
+    "COMBUSTIVEL": "GI50/7"
+   }
+  },
+  {
+   "marca": "Renault",
+   "modelo": "Clio",
+   "motor": "1.0 16V",
+   "anos": [
+    2005,
+    2012
+   ],
+   "url": "https://catalogo.tecfil.com.br/search/CLIO",
+   "consultadaEm": "2026-11-18",
+   "observacao": "Tecfil: Hi-Flex (Gasolina/Flex)",
+   "filtros": {
+    "AR_CABINE": "ACP550",
+    "AR": "ARL5138",
+    "OLEO": [
+     "PSL78",
+     "PEL705"
+    ],
+    "COMBUSTIVEL": "GI50/7"
+   }
+  },
+  {
+   "marca": "Renault",
+   "modelo": "Clio",
+   "motor": "1.0 16V",
+   "anos": [
+    2013,
+    2017
+   ],
+   "url": "https://catalogo.tecfil.com.br/search/CLIO",
+   "consultadaEm": "2026-11-18",
+   "observacao": "Tecfil: Hi Flex - (Autenthique / Campus / Expression / Get Up) - Mecânico (Flex)",
+   "filtros": {
+    "AR_CABINE": "ACP550",
+    "AR": "ARL5141",
+    "OLEO": [
+     "PSL78",
+     "TM5"
+    ],
+    "COMBUSTIVEL": "GI50/7"
+   }
+  },
+  {
+   "marca": "Renault",
+   "modelo": "Clio",
+   "motor": "1.0 8V",
+   "anos": [
+    1997,
+    2003
+   ],
+   "url": "https://catalogo.tecfil.com.br/search/CLIO",
+   "consultadaEm": "2026-11-18",
+   "observacao": "Tecfil: II (Gasolina) 01/1997 - 01/2003",
+   "filtros": {
+    "AR_CABINE": "ACP550",
+    "AR": "AR7704",
+    "OLEO": [
+     "PSL78",
+     "TM5"
+    ],
+    "COMBUSTIVEL": "GI50/7"
+   }
+  },
+  {
+   "marca": "Renault",
+   "modelo": "Clio",
+   "motor": "1.0 8V",
+   "anos": [
+    2001,
+    2003
+   ],
+   "url": "https://catalogo.tecfil.com.br/search/CLIO",
+   "consultadaEm": "2026-11-18",
+   "observacao": "Tecfil: D7D (Gasolina) 01/2001 - 12/2003",
+   "filtros": {
+    "AR_CABINE": "ACP550",
+    "AR": "AR7704",
+    "OLEO": "PEL705",
+    "COMBUSTIVEL": "GI50/7"
+   }
+  },
+  {
+   "marca": "Renault",
+   "modelo": "Clio",
+   "motor": "1.0 8V",
+   "anos": [
+    2004,
+    2008
+   ],
+   "url": "https://catalogo.tecfil.com.br/search/CLIO",
+   "consultadaEm": "2026-11-18",
+   "observacao": "Tecfil: D7D (Gasolina) 01/2004",
+   "filtros": {
+    "AR_CABINE": "ACP550",
+    "OLEO": [
+     "PSL78",
+     "TM5"
+    ],
+    "COMBUSTIVEL": "GI50/7"
+   }
+  },
+  {
+   "marca": "Renault",
+   "modelo": "Clio",
+   "motor": "1.4",
+   "anos": [
+    1991,
+    1995
+   ],
+   "url": "https://catalogo.tecfil.com.br/search/CLIO",
+   "consultadaEm": "2026-11-18",
+   "observacao": "Tecfil: B/C57, B/C57T (Gasolina) 01/1991 - 08/1995",
+   "filtros": {
+    "AR_CABINE": "ACP550",
+    "COMBUSTIVEL": "GI01/1"
+   }
+  },
+  {
+   "marca": "Renault",
+   "modelo": "Clio",
+   "motor": "1.4",
+   "anos": [
+    1995,
+    1998
+   ],
+   "url": "https://catalogo.tecfil.com.br/search/CLIO",
+   "consultadaEm": "2026-11-18",
+   "observacao": "Tecfil: B/C57, B/C57T (Gasolina) 09/1995 - 08/1998",
+   "filtros": {
+    "AR_CABINE": "ACP550",
+    "OLEO": "PSL77",
+    "COMBUSTIVEL": "GU86"
+   }
+  },
+  {
+   "marca": "Renault",
+   "modelo": "Clio",
+   "motor": "1.6",
+   "anos": [
+    1995,
+    1999
+   ],
+   "url": "https://catalogo.tecfil.com.br/search/CLIO",
+   "consultadaEm": "2026-11-18",
+   "observacao": "Tecfil: Argentino - C3C (Gasolina) 01/1995 - 12/1999",
+   "filtros": {
+    "AR_CABINE": "ACP550",
+    "OLEO": "PSL77",
+    "COMBUSTIVEL": "GI50/7"
+   }
+  },
+  {
+   "marca": "Renault",
+   "modelo": "Clio",
+   "motor": "1.6 16V",
+   "anos": [
+    1998,
+    2005
+   ],
+   "url": "https://catalogo.tecfil.com.br/search/CLIO",
+   "consultadaEm": "2026-11-18",
+   "observacao": "Tecfil: II (Gasolina) 09/1998 - 09/2005",
+   "filtros": {
+    "AR_CABINE": "ACP550",
+    "AR": "ART5051",
+    "OLEO": "PSL77"
+   }
+  },
+  {
+   "marca": "Renault",
+   "modelo": "Clio",
+   "motor": "1.6 16V",
+   "anos": [
+    2000,
+    2009
+   ],
+   "url": "https://catalogo.tecfil.com.br/search/CLIO",
+   "consultadaEm": "2026-11-18",
+   "observacao": "Tecfil: K4M / Hi Flex (Gasolina/Flex) 01/2000",
+   "filtros": {
+    "AR_CABINE": "ACP550",
+    "AR": "ART5051",
+    "OLEO": "PSL77",
+    "COMBUSTIVEL": "GI50/7"
+   }
+  },
+  {
+   "marca": "Renault",
+   "modelo": "Clio",
+   "motor": "1.6 8V",
+   "anos": [
+    1999,
+    2002
+   ],
+   "url": "https://catalogo.tecfil.com.br/search/CLIO",
+   "consultadaEm": "2026-11-18",
+   "observacao": "Tecfil: Importado (Gasolina) 01/1999",
+   "filtros": {
+    "AR_CABINE": "ACP550",
+    "AR": "AR7701",
+    "OLEO": "PSL77",
+    "COMBUSTIVEL": "GI50/7"
+   }
+  },
+  {
+   "marca": "Renault",
+   "modelo": "Kwid",
+   "motor": "1.0 12V 3cil",
+   "anos": [
+    2017,
+    2026
+   ],
+   "url": "https://catalogo.tecfil.com.br/search/KWID",
+   "consultadaEm": "2026-11-18",
+   "observacao": "Tecfil: (Flex)",
+   "filtros": {
+    "AR_CABINE": "ACP556",
+    "AR": "ARL5135",
+    "OLEO": "PSL76",
+    "COMBUSTIVEL": "GI50/7"
+   }
+  },
+  {
+   "marca": "Renault",
+   "modelo": "Logan",
+   "motor": "1.0 12V 3cil",
+   "anos": [
+    2017,
+    2026
+   ],
+   "url": "https://catalogo.tecfil.com.br/search/LOGAN",
+   "consultadaEm": "2026-11-18",
+   "observacao": "Tecfil: Authentique/Expression (Flex)",
+   "filtros": {
+    "AR_CABINE": "ACP559",
+    "AR": "ARL5144",
+    "OLEO": "PSL56",
+    "COMBUSTIVEL": "GI50/7"
+   }
+  },
+  {
+   "marca": "Renault",
+   "modelo": "Logan",
+   "motor": "1.0 16V",
+   "anos": [
+    2007,
+    2013
+   ],
+   "url": "https://catalogo.tecfil.com.br/search/LOGAN",
+   "consultadaEm": "2026-11-18",
+   "observacao": "Tecfil: Hi Flex, Express, Pick-Up (D4D) (Flex) - 12/2013",
+   "filtros": {
+    "AR_CABINE": "ACP554",
+    "AR": "ARL5138",
+    "OLEO": [
+     "PSL78",
+     "TM5"
+    ],
+    "COMBUSTIVEL": "GI50/7"
+   }
+  },
+  {
+   "marca": "Renault",
+   "modelo": "Logan",
+   "motor": "1.0 16V",
+   "anos": [
+    2014,
+    2016
+   ],
+   "url": "https://catalogo.tecfil.com.br/search/LOGAN",
+   "consultadaEm": "2026-11-18",
+   "observacao": "Tecfil: Hi Flex, Express, Pick-Up (D4D) (Flex)",
+   "filtros": {
+    "AR_CABINE": "ACP559",
+    "AR": "ARL5141",
+    "OLEO": [
+     "PSL78",
+     "TM5"
+    ],
+    "COMBUSTIVEL": "GI50/7"
+   }
+  },
+  {
+   "marca": "Renault",
+   "modelo": "Logan",
+   "motor": "1.6 16V",
+   "anos": [
+    2007,
+    2012
+   ],
+   "url": "https://catalogo.tecfil.com.br/search/LOGAN",
+   "consultadaEm": "2026-11-18",
+   "observacao": "Tecfil: Hi-Flex, Express, Pick-Up (K4M) (Flex) 06/2007 - 08/2012",
+   "filtros": {
+    "AR_CABINE": "ACP554",
+    "AR": "ART5051",
+    "OLEO": "PSL77",
+    "COMBUSTIVEL": "GI50/7"
+   }
+  },
+  {
+   "marca": "Renault",
+   "modelo": "Logan",
+   "motor": "1.6 16V",
+   "anos": [
+    2013,
+    2017
+   ],
+   "url": "https://catalogo.tecfil.com.br/search/LOGAN",
+   "consultadaEm": "2026-11-18",
+   "observacao": "Tecfil: (Flex)",
+   "filtros": {
+    "AR_CABINE": "ACP559",
+    "AR": "ART5051",
+    "OLEO": "PSL77",
+    "COMBUSTIVEL": "GI50/7"
+   }
+  },
+  {
+   "marca": "Renault",
+   "modelo": "Logan",
+   "motor": "1.6 16V",
+   "anos": [
+    2018,
+    2026
+   ],
+   "url": "https://catalogo.tecfil.com.br/search/LOGAN",
+   "consultadaEm": "2026-11-18",
+   "observacao": "Tecfil: (Flex)",
+   "filtros": {
+    "OLEO": [
+     "PSL78",
+     "TM5"
+    ]
+   }
+  },
+  {
+   "marca": "Renault",
+   "modelo": "Logan",
+   "motor": "1.6 8V",
+   "anos": [
+    2007,
+    2012
+   ],
+   "url": "https://catalogo.tecfil.com.br/search/LOGAN",
+   "consultadaEm": "2026-11-18",
+   "observacao": "Tecfil: Express, Pick Up (Hi-Flex) (Gasolina/Flex) 10/2007 - 08/2012",
+   "filtros": {
+    "AR_CABINE": "ACP554",
+    "AR": "AR7705",
+    "OLEO": "PSL77",
+    "COMBUSTIVEL": "GI50/7"
+   }
+  },
+  {
+   "marca": "Renault",
+   "modelo": "Logan",
+   "motor": "1.6 8V",
+   "anos": [
+    2012,
+    2013
+   ],
+   "url": "https://catalogo.tecfil.com.br/search/LOGAN",
+   "consultadaEm": "2026-11-18",
+   "observacao": "Tecfil: Express, Pick Up (Hi-Flex) (Gasolina/Flex) 09/2012 - 09/2013",
+   "filtros": {
+    "AR_CABINE": "ACP554",
+    "AR": "AR7705",
+    "OLEO": "PSL77",
+    "COMBUSTIVEL": "GI50/7"
+   }
+  },
+  {
+   "marca": "Renault",
+   "modelo": "Logan",
+   "motor": "1.6 8V",
+   "anos": [
+    2013,
+    2026
+   ],
+   "url": "https://catalogo.tecfil.com.br/search/LOGAN",
+   "consultadaEm": "2026-11-18",
+   "observacao": "Tecfil: (Flex) 09/2013",
+   "filtros": {
+    "AR_CABINE": "ACP559",
+    "AR": "AR7705",
+    "OLEO": "PSL77",
+    "COMBUSTIVEL": "GI50/7"
+   }
+  },
+  {
+   "marca": "Renault",
+   "modelo": "Logan",
+   "motor": "1.6 SCE 16V 115 cv",
+   "anos": [
+    2017,
+    2026
+   ],
+   "url": "https://catalogo.tecfil.com.br/search/LOGAN",
+   "consultadaEm": "2026-11-18",
+   "observacao": "Tecfil: (Expression / Hi-Flex) (Flex)",
+   "filtros": {
+    "AR_CABINE": "ACP559",
+    "AR": "ARL5144",
+    "OLEO": [
+     "PSL166",
+     "TM5"
+    ],
+    "COMBUSTIVEL": "GI50/7"
+   }
+  },
+  {
+   "marca": "Renault",
+   "modelo": "Sandero",
+   "motor": "1.0 12V 3cil",
+   "anos": [
+    2017,
+    2026
+   ],
+   "url": "https://catalogo.tecfil.com.br/search/SANDERO",
+   "consultadaEm": "2026-11-18",
+   "observacao": "Tecfil: Authentique/Expression/Vibe (Flex)",
+   "filtros": {
+    "AR_CABINE": "ACP559",
+    "AR": "ARL5144",
+    "OLEO": "PSL56",
+    "COMBUSTIVEL": "GI50/7"
+   }
+  },
+  {
+   "marca": "Renault",
+   "modelo": "Sandero",
+   "motor": "1.0 16V",
+   "anos": [
+    2007,
+    2013
+   ],
+   "url": "https://catalogo.tecfil.com.br/search/SANDERO",
+   "consultadaEm": "2026-11-18",
+   "observacao": "Tecfil: Hi-Flex (Flex)",
+   "filtros": {
+    "AR_CABINE": "ACP554",
+    "AR": "ARL5138",
+    "OLEO": [
+     "PSL78",
+     "TM5"
+    ],
+    "COMBUSTIVEL": "GI50/7"
+   }
+  },
+  {
+   "marca": "Renault",
+   "modelo": "Sandero",
+   "motor": "1.0 16V",
+   "anos": [
+    2014,
+    2014
+   ],
+   "url": "https://catalogo.tecfil.com.br/search/SANDERO",
+   "consultadaEm": "2026-11-18",
+   "observacao": "Tecfil: (Authentique / Expression / Tech Run) (Flex) 06/2014 - 12/2014",
+   "filtros": {
+    "AR_CABINE": "ACP559",
+    "AR": "ARL5138",
+    "OLEO": [
+     "PSL78",
+     "TM5"
+    ],
+    "COMBUSTIVEL": "GI50/7"
+   }
+  },
+  {
+   "marca": "Renault",
+   "modelo": "Sandero",
+   "motor": "1.0 16V",
+   "anos": [
+    2015,
+    2026
+   ],
+   "url": "https://catalogo.tecfil.com.br/search/SANDERO",
+   "consultadaEm": "2026-11-18",
+   "observacao": "Tecfil: (Authentique / Expression / Tech Run) (Flex) 01/2015",
+   "filtros": {
+    "AR_CABINE": "ACP559",
+    "AR": "ARL5141",
+    "OLEO": [
+     "PSL78",
+     "TM5"
+    ],
+    "COMBUSTIVEL": "GI50/7"
+   }
+  },
+  {
+   "marca": "Renault",
+   "modelo": "Sandero",
+   "motor": "1.6 16V",
+   "anos": [
+    2007,
+    2016
+   ],
+   "url": "https://catalogo.tecfil.com.br/search/SANDERO",
+   "consultadaEm": "2026-11-18",
+   "observacao": "Tecfil: Hi-Flex (Flex) 11/2007 - 10/2016",
+   "filtros": {
+    "AR_CABINE": "ACP554",
+    "AR": "ART5051",
+    "OLEO": "PSL77",
+    "COMBUSTIVEL": "GI50/7"
+   }
+  },
+  {
+   "marca": "Renault",
+   "modelo": "Sandero",
+   "motor": "1.6 8V",
+   "anos": [
+    2007,
+    2026
+   ],
+   "url": "https://catalogo.tecfil.com.br/search/SANDERO",
+   "consultadaEm": "2026-11-18",
+   "observacao": "Tecfil: (Authentique / Expression / Privilége / GT) (Flex) 11/2007",
+   "filtros": {
+    "AR_CABINE": "ACP554",
+    "AR": "AR7705",
+    "OLEO": "PSL77",
+    "COMBUSTIVEL": "GI50/7"
+   }
+  },
+  {
+   "marca": "Renault",
+   "modelo": "Sandero",
+   "motor": "1.6 SCE 16V 115 cv",
+   "anos": [
+    2016,
+    2026
+   ],
+   "url": "https://catalogo.tecfil.com.br/search/SANDERO",
+   "consultadaEm": "2026-11-18",
+   "observacao": "Tecfil: (Expression) (Flex) 11/2016",
+   "filtros": {
+    "AR_CABINE": "ACP559",
+    "AR": "ARL5144",
+    "OLEO": [
+     "PSL166",
+     "TM5"
+    ],
+    "COMBUSTIVEL": "GI50/7"
+   }
+  },
+  {
+   "marca": "Renault",
+   "modelo": "Sandero",
+   "motor": "2.0 16V",
+   "anos": [
+    2015,
+    2026
+   ],
+   "url": "https://catalogo.tecfil.com.br/search/SANDERO",
+   "consultadaEm": "2026-11-18",
+   "observacao": "Tecfil: (Flex)",
+   "filtros": {
+    "AR_CABINE": "ACP559",
+    "AR": "ARL5144",
+    "OLEO": "PSL77",
+    "COMBUSTIVEL": "GI50/7"
+   }
+  },
+  {
+   "marca": "Toyota",
+   "modelo": "Corolla",
+   "motor": "1.6",
+   "anos": [
+    1989,
+    1991
+   ],
+   "url": "https://catalogo.tecfil.com.br/search/COROLLA",
+   "consultadaEm": "2026-11-18",
+   "observacao": "Tecfil: 4AFE (Gasolina) 08/1989 - 12/1991",
+   "filtros": {
+    "OLEO": "TM6-3"
+   }
+  },
+  {
+   "marca": "Toyota",
+   "modelo": "Corolla",
+   "motor": "1.6",
+   "anos": [
+    1989,
+    1992
+   ],
+   "url": "https://catalogo.tecfil.com.br/search/COROLLA",
+   "consultadaEm": "2026-11-18",
+   "observacao": "Tecfil: 4AFE (Gasolina) 08/1989 - 04/1992",
+   "filtros": {
+    "AR": "ARL5071",
+    "OLEO": "PSL134"
+   }
+  },
+  {
+   "marca": "Toyota",
+   "modelo": "Corolla",
+   "motor": "1.6",
+   "anos": [
+    2008,
+    2026
+   ],
+   "url": "https://catalogo.tecfil.com.br/search/COROLLA",
+   "consultadaEm": "2026-11-18",
+   "observacao": "Tecfil: VVT-i (Flex)",
+   "filtros": {
+    "AR_CABINE": "ACP887",
+    "AR": "ARL2203",
+    "OLEO": "PSL129",
+    "COMBUSTIVEL": "GI04/7"
+   }
+  },
+  {
+   "marca": "Toyota",
+   "modelo": "Corolla",
+   "motor": "1.6 16V",
+   "anos": [
+    1993,
+    1999
+   ],
+   "url": "https://catalogo.tecfil.com.br/search/COROLLA",
+   "consultadaEm": "2026-11-18",
+   "observacao": "Tecfil: GLi / DX / SW / XLi (Gasolina) 01/1993 - 12/1999",
+   "filtros": {
+    "AR_CABINE": "ACP886",
+    "AR": "ARL5070",
+    "OLEO": "PSL134"
+   }
+  },
+  {
+   "marca": "Toyota",
+   "modelo": "Corolla",
+   "motor": "1.6 16V 107cv",
+   "anos": [
+    1997,
+    2001
+   ],
+   "url": "https://catalogo.tecfil.com.br/search/COROLLA",
+   "consultadaEm": "2026-11-18",
+   "observacao": "Tecfil: (GLI) - automático / mecânico (Gasolina)",
+   "filtros": {
+    "AR": "ARL5070",
+    "OLEO": "PSL129",
+    "COMBUSTIVEL": "FBT2351"
+   }
+  },
+  {
+   "marca": "Toyota",
+   "modelo": "Corolla",
+   "motor": "1.6 16V 110cv",
+   "anos": [
+    2002,
+    2007
+   ],
+   "url": "https://catalogo.tecfil.com.br/search/COROLLA",
+   "consultadaEm": "2026-11-18",
+   "observacao": "Tecfil: (XLI) - automático / mecânico (Gasolina)",
+   "filtros": {
+    "AR_CABINE": "ACP886",
+    "AR": "ARL2202",
+    "OLEO": "PSL129",
+    "COMBUSTIVEL": "FBT2351"
+   }
+  },
+  {
+   "marca": "Toyota",
+   "modelo": "Corolla",
+   "motor": "1.6 16V e 1.8 16V",
+   "anos": [
+    2003,
+    2007
+   ],
+   "url": "https://catalogo.tecfil.com.br/search/COROLLA",
+   "consultadaEm": "2026-11-18",
+   "observacao": "Tecfil: SEG / XEi / XLi / Aut. (Gasolina) 01/2003 - 12/2007",
+   "filtros": {
+    "AR_CABINE": "ACP886",
+    "AR": "ARL2202",
+    "OLEO": "PSL129"
+   }
+  },
+  {
+   "marca": "Toyota",
+   "modelo": "Corolla",
+   "motor": "1.8",
+   "anos": [
+    1993,
+    1998
+   ],
+   "url": "https://catalogo.tecfil.com.br/search/COROLLA",
+   "consultadaEm": "2026-11-18",
+   "observacao": "Tecfil: LE (Gasolina) - 12/1998",
+   "filtros": {
+    "AR_CABINE": "ACP886",
+    "AR": "ARL5070",
+    "OLEO": "PSL134"
+   }
+  },
+  {
+   "marca": "Toyota",
+   "modelo": "Corolla",
+   "motor": "1.8",
+   "anos": [
+    2012,
+    2026
+   ],
+   "url": "https://catalogo.tecfil.com.br/search/COROLLA",
+   "consultadaEm": "2026-11-18",
+   "observacao": "Tecfil: GLI (144 CV ) (Flex)",
+   "filtros": {
+    "AR_CABINE": "ACP887",
+    "AR": "ARL2203",
+    "OLEO": "PEL803",
+    "COMBUSTIVEL": "GI04/7"
+   }
+  },
+  {
+   "marca": "Toyota",
+   "modelo": "Corolla",
+   "motor": "1.8 16V",
+   "anos": [
+    1993,
+    1999
+   ],
+   "url": "https://catalogo.tecfil.com.br/search/COROLLA",
+   "consultadaEm": "2026-11-18",
+   "observacao": "Tecfil: SW LE (Gasolina) - 12/1999",
+   "filtros": {
+    "AR_CABINE": "ACP886",
+    "AR": "ARL5070",
+    "OLEO": "PSL134"
+   }
+  },
+  {
+   "marca": "Toyota",
+   "modelo": "Corolla",
+   "motor": "1.8 16V",
+   "anos": [
+    1999,
+    2002
+   ],
+   "url": "https://catalogo.tecfil.com.br/search/COROLLA",
+   "consultadaEm": "2026-11-18",
+   "observacao": "Tecfil: SE-G / XEi / XLi / Aut. (Gasolina) - 12/2002",
+   "filtros": {
+    "AR_CABINE": "ACP886",
+    "AR": "ARL5070",
+    "OLEO": "PSL134"
+   }
+  },
+  {
+   "marca": "Toyota",
+   "modelo": "Corolla",
+   "motor": "1.8 16V 136cv",
+   "anos": [
+    2007,
+    2007
+   ],
+   "url": "https://catalogo.tecfil.com.br/search/COROLLA",
+   "consultadaEm": "2026-11-18",
+   "observacao": "Tecfil: (S / SE - G / XEI) - automático / mecânico (Flex)",
+   "filtros": {
+    "AR_CABINE": "ACP885",
+    "AR": "ARL2202",
+    "OLEO": "PSL129",
+    "COMBUSTIVEL": "GI50/7"
+   }
+  },
+  {
+   "marca": "Toyota",
+   "modelo": "Corolla",
+   "motor": "1.8 16V 4cil 177 cv",
+   "anos": [
+    2019,
+    2026
+   ],
+   "url": "https://catalogo.tecfil.com.br/search/COROLLA",
+   "consultadaEm": "2026-11-18",
+   "observacao": "Tecfil: (Hybrid / Altis / Premium) - automático (Flex)",
+   "filtros": {
+    "AR_CABINE": "ACP887",
+    "AR": "ARL2211",
+    "OLEO": "PSL129",
+    "COMBUSTIVEL": "GI04/7"
+   }
+  },
+  {
+   "marca": "Toyota",
+   "modelo": "Corolla",
+   "motor": "1.8 16V VVT-i",
+   "anos": [
+    2007,
+    2008
+   ],
+   "url": "https://catalogo.tecfil.com.br/search/COROLLA",
+   "consultadaEm": "2026-11-18",
+   "observacao": "Tecfil: Fielder SE-G / XEi / XLi /Aut. (Flex) 03/2007 - 12/2008",
+   "filtros": {
+    "AR_CABINE": "ACP885",
+    "AR": "ARL2202",
+    "OLEO": "PSL129",
+    "COMBUSTIVEL": "GI04/7"
+   }
+  },
+  {
+   "marca": "Toyota",
+   "modelo": "Corolla",
+   "motor": "1.8 16V VVT-i",
+   "anos": [
+    2008,
+    2026
+   ],
+   "url": "https://catalogo.tecfil.com.br/search/COROLLA",
+   "consultadaEm": "2026-11-18",
+   "observacao": "Tecfil: SE-G / XEi / XLi (Flex)",
+   "filtros": {
+    "AR_CABINE": "ACP887",
+    "AR": "ARL2203",
+    "OLEO": "PSL129",
+    "COMBUSTIVEL": "GI04/7"
+   }
+  },
+  {
+   "marca": "Toyota",
+   "modelo": "Corolla",
+   "motor": "1.8 16V VVT-i",
+   "anos": [
+    2009,
+    2026
+   ],
+   "url": "https://catalogo.tecfil.com.br/search/COROLLA",
+   "consultadaEm": "2026-11-18",
+   "observacao": "Tecfil: Fielder SE-G / XEi / XLi / Aut. (Flex)",
+   "filtros": {
+    "AR_CABINE": "ACP887",
+    "AR": "ARL2203",
+    "OLEO": "PSL129",
+    "COMBUSTIVEL": "GI04/7"
+   }
+  },
+  {
+   "marca": "Toyota",
+   "modelo": "Corolla",
+   "motor": "2.0",
+   "anos": [
+    2010,
+    2026
+   ],
+   "url": "https://catalogo.tecfil.com.br/search/COROLLA",
+   "consultadaEm": "2026-11-18",
+   "observacao": "Tecfil: Altis / Xei (Flex) 01/2010",
+   "filtros": {
+    "AR_CABINE": "ACP887",
+    "AR": "ARL2203",
+    "OLEO": "PEL803",
+    "COMBUSTIVEL": "GI04/7"
+   }
+  },
+  {
+   "marca": "Toyota",
+   "modelo": "Corolla",
+   "motor": "2.0 16V 154 cv",
+   "anos": [
+    2019,
+    2026
+   ],
+   "url": "https://catalogo.tecfil.com.br/search/COROLLA",
+   "consultadaEm": "2026-11-18",
+   "observacao": "Tecfil: Altis/GLI/XEI (Flex) 09/2019",
+   "filtros": {
+    "AR_CABINE": "ACP881",
+    "AR": "ARL2220",
+    "OLEO": "PEL803",
+    "COMBUSTIVEL": "GI04/7"
+   }
+  },
+  {
+   "marca": "Toyota",
+   "modelo": "Corolla",
+   "motor": "2.0 16V 177cv",
+   "anos": [
+    2020,
+    2026
+   ],
+   "url": "https://catalogo.tecfil.com.br/search/COROLLA",
+   "consultadaEm": "2026-11-18",
+   "observacao": "Tecfil: (GLi / XEi / Altis Premium) – automático DOHC (Flex)",
+   "filtros": {
+    "AR_CABINE": "ACP889",
+    "AR": "ARL2220",
+    "OLEO": "PSL129",
+    "COMBUSTIVEL": "GI04/7"
+   }
+  },
+  {
+   "marca": "Toyota",
+   "modelo": "Corolla",
+   "motor": "2.2 16V",
+   "anos": [
+    1995,
+    1997
+   ],
+   "url": "https://catalogo.tecfil.com.br/search/COROLLA",
+   "consultadaEm": "2026-11-18",
+   "observacao": "Tecfil: LE (Gasolina) - 12/1997",
+   "filtros": {
+    "AR_CABINE": "ACP886",
+    "AR": "ARL5070",
+    "OLEO": "PSL134"
+   }
+  },
+  {
+   "marca": "Toyota",
+   "modelo": "Corolla Cross",
+   "motor": "1.8 4cil 122cv",
+   "anos": [
+    2022,
+    2026
+   ],
+   "url": "https://catalogo.tecfil.com.br/search/COROLLA",
+   "consultadaEm": "2026-11-18",
+   "observacao": "Tecfil: (SE / XRV / XRX) - automático transaxle CVT (Híbrido)",
+   "filtros": {
+    "AR_CABINE": "ACP886",
+    "AR": "ARL2211",
+    "OLEO": "PSL129",
+    "COMBUSTIVEL": "GI04/7"
+   }
+  },
+  {
+   "marca": "Toyota",
+   "modelo": "Corolla Cross",
+   "motor": "2.0 16V 177cv",
+   "anos": [
+    2021,
+    2026
+   ],
+   "url": "https://catalogo.tecfil.com.br/search/COROLLA",
+   "consultadaEm": "2026-11-18",
+   "observacao": "Tecfil: (XR / XRE / GRS) - automático (Flex)",
+   "filtros": {
+    "AR_CABINE": "ACP881",
+    "AR": "ARL2220",
+    "OLEO": "PSL129",
+    "COMBUSTIVEL": "GI04/7"
+   }
+  },
+  {
+   "marca": "Toyota",
+   "modelo": "Corolla Fielder",
+   "motor": "1.8 16V 136cv",
+   "anos": [
+    2002,
+    2007
+   ],
+   "url": "https://catalogo.tecfil.com.br/search/COROLLA",
+   "consultadaEm": "2026-11-18",
+   "observacao": "Tecfil: SW - (S / SE - G / XEI) - automático (Flex)",
+   "filtros": {
+    "AR_CABINE": "ACP886",
+    "AR": "ARL2202",
+    "OLEO": "PSL129",
+    "COMBUSTIVEL": "GI04/7"
+   }
+  },
+  {
+   "marca": "Toyota",
+   "modelo": "Corolla Fielder",
+   "motor": "1.8 16V 136cv",
+   "anos": [
+    2002,
+    2007
+   ],
+   "url": "https://catalogo.tecfil.com.br/search/COROLLA",
+   "consultadaEm": "2026-11-18",
+   "observacao": "Tecfil: SW - (S / SE - G / XEI) - automático (Gasolina)",
+   "filtros": {
+    "AR_CABINE": "ACP886",
+    "AR": "ARL2202",
+    "OLEO": "PSL129",
+    "COMBUSTIVEL": "FBT2351"
+   }
+  },
+  {
+   "marca": "Toyota",
+   "modelo": "Corolla Fielder",
+   "motor": "1.8 16V 136cv",
+   "anos": [
+    2008,
+    2026
+   ],
+   "url": "https://catalogo.tecfil.com.br/search/COROLLA",
+   "consultadaEm": "2026-11-18",
+   "observacao": "Tecfil: SW - (GLI / SE - G / XEI / XLI) - automático / mecânico (Flex)",
+   "filtros": {
+    "AR_CABINE": "ACP887",
+    "AR": "ARL2203",
+    "OLEO": "PSL129",
+    "COMBUSTIVEL": "GI04/7"
+   }
+  },
+  {
+   "marca": "Toyota",
+   "modelo": "Etios",
+   "motor": "1.3",
+   "anos": [
+    2013,
+    2015
+   ],
+   "url": "https://catalogo.tecfil.com.br/search/ETIOS",
+   "consultadaEm": "2026-11-18",
+   "observacao": "Tecfil: (X / XS) (Flex)",
+   "filtros": {
+    "AR_CABINE": "ACP888",
+    "AR": "ARL2204",
+    "OLEO": "PSL915",
+    "COMBUSTIVEL": "GI04/7"
+   }
+  },
+  {
+   "marca": "Toyota",
+   "modelo": "Etios",
+   "motor": "1.3",
+   "anos": [
+    2013,
+    2015
+   ],
+   "url": "https://catalogo.tecfil.com.br/search/ETIOS",
+   "consultadaEm": "2026-11-18",
+   "observacao": "Tecfil: (X / XS) (Flex)",
+   "filtros": {
+    "AR": "ARL2204",
+    "OLEO": "PSL915",
+    "COMBUSTIVEL": "GI04/7"
+   }
+  },
+  {
+   "marca": "Toyota",
+   "modelo": "Etios",
+   "motor": "1.3",
+   "anos": [
+    2016,
+    2026
+   ],
+   "url": "https://catalogo.tecfil.com.br/search/ETIOS",
+   "consultadaEm": "2026-11-18",
+   "observacao": "Tecfil: (X / XS) (Flex)",
+   "filtros": {
+    "AR_CABINE": "ACP888",
+    "AR": "ARL2207",
+    "OLEO": "PSL129",
+    "COMBUSTIVEL": "GI04/7"
+   }
+  },
+  {
+   "marca": "Toyota",
+   "modelo": "Etios",
+   "motor": "1.3",
+   "anos": [
+    2016,
+    2026
+   ],
+   "url": "https://catalogo.tecfil.com.br/search/ETIOS",
+   "consultadaEm": "2026-11-18",
+   "observacao": "Tecfil: (X / XS) (Flex)",
+   "filtros": {
+    "AR": "ARL2207",
+    "OLEO": "PSL129",
+    "COMBUSTIVEL": "GI04/7"
+   }
+  },
+  {
+   "marca": "Toyota",
+   "modelo": "Etios",
+   "motor": "1.5",
+   "anos": [
+    2013,
+    2015
+   ],
+   "url": "https://catalogo.tecfil.com.br/search/ETIOS",
+   "consultadaEm": "2026-11-18",
+   "observacao": "Tecfil: (X / XS / XLS) (Flex)",
+   "filtros": {
+    "AR": "ARL2204",
+    "OLEO": "PSL915",
+    "COMBUSTIVEL": "GI04/7"
+   }
+  },
+  {
+   "marca": "Toyota",
+   "modelo": "Etios",
+   "motor": "1.5",
+   "anos": [
+    2013,
+    2015
+   ],
+   "url": "https://catalogo.tecfil.com.br/search/ETIOS",
+   "consultadaEm": "2026-11-18",
+   "observacao": "Tecfil: (X / XS / XLS) (Flex)",
+   "filtros": {
+    "AR_CABINE": "ACP888",
+    "AR": "ARL2204",
+    "OLEO": "PSL915",
+    "COMBUSTIVEL": "GI04/7"
+   }
+  },
+  {
+   "marca": "Toyota",
+   "modelo": "Etios",
+   "motor": "1.5",
+   "anos": [
+    2016,
+    2026
+   ],
+   "url": "https://catalogo.tecfil.com.br/search/ETIOS",
+   "consultadaEm": "2026-11-18",
+   "observacao": "Tecfil: (X / XS / XLS) (Flex)",
+   "filtros": {
+    "AR_CABINE": "ACP888",
+    "AR": "ARL2207",
+    "OLEO": "PSL129",
+    "COMBUSTIVEL": "GI04/7"
+   }
+  },
+  {
+   "marca": "Toyota",
+   "modelo": "Etios",
+   "motor": "1.5",
+   "anos": [
+    2016,
+    2026
+   ],
+   "url": "https://catalogo.tecfil.com.br/search/ETIOS",
+   "consultadaEm": "2026-11-18",
+   "observacao": "Tecfil: (X / XS / XLS) (Flex)",
+   "filtros": {
+    "AR": "ARL2207",
+    "OLEO": "PSL129",
+    "COMBUSTIVEL": "GI04/7"
+   }
+  },
+  {
+   "marca": "Volkswagen",
+   "modelo": "Fox",
+   "motor": "1.0 3Cils 12v 75cv Gas. 82cv Etanol",
+   "anos": [
+    2013,
+    2019
+   ],
+   "url": "https://catalogo.tecfil.com.br/search/FOX%201%3CDOT%3E0",
+   "consultadaEm": "2026-11-18",
+   "observacao": "Tecfil: Bluemotion / Track (Flex)",
+   "filtros": {
+    "AR_CABINE": "ACP303",
+    "AR": "ARL6071",
+    "OLEO": "TM1",
+    "COMBUSTIVEL": "GI50/7"
+   }
+  },
+  {
+   "marca": "Volkswagen",
+   "modelo": "Fox",
+   "motor": "1.0 3cil. 12V MPI 82cv",
+   "anos": [
+    2014,
+    2017
+   ],
+   "url": "https://catalogo.tecfil.com.br/search/FOX%201%3CDOT%3E0",
+   "consultadaEm": "2026-11-18",
+   "observacao": "Tecfil: (G6 - BlueMotion) - mecânico (Total Flex)",
+   "filtros": {
+    "AR_CABINE": "ACP303",
+    "AR": "ARL6071",
+    "OLEO": [
+     "PSL545",
+     "TM1"
+    ],
+    "COMBUSTIVEL": "GI50/7"
+   }
+  },
+  {
+   "marca": "Volkswagen",
+   "modelo": "Fox",
+   "motor": "1.0 4cil. 8V 73cv",
+   "anos": [
+    2003,
+    2008
+   ],
+   "url": "https://catalogo.tecfil.com.br/search/FOX%201%3CDOT%3E0",
+   "consultadaEm": "2026-11-18",
+   "observacao": "Tecfil: (MI / City / Plus / Sportline / Sports) - mecânico (Total Flex)",
+   "filtros": {
+    "AR_CABINE": "ACP303",
+    "AR": "ARL6096",
+    "OLEO": [
+     "PSL560",
+     "TM2"
+    ],
+    "COMBUSTIVEL": "GI12/7"
+   }
+  },
+  {
+   "marca": "Volkswagen",
+   "modelo": "Fox",
+   "motor": "1.0 4cil. 8V 76cv",
+   "anos": [
+    2008,
+    2009
+   ],
+   "url": "https://catalogo.tecfil.com.br/search/FOX%201%3CDOT%3E0",
+   "consultadaEm": "2026-11-18",
+   "observacao": "Tecfil: (MI / City / Plus / Route) - mecânico (Total Flex)",
+   "filtros": {
+    "AR_CABINE": "ACP303",
+    "AR": "ARL6096",
+    "OLEO": [
+     "PSL560",
+     "TM2"
+    ],
+    "COMBUSTIVEL": "GI12/7"
+   }
+  },
+  {
+   "marca": "Volkswagen",
+   "modelo": "Fox",
+   "motor": "1.0 4cil. 8V 76cv",
+   "anos": [
+    2010,
+    2015
+   ],
+   "url": "https://catalogo.tecfil.com.br/search/FOX%201%3CDOT%3E0",
+   "consultadaEm": "2026-11-18",
+   "observacao": "Tecfil: (MI / Trend / Sunrise) - mecânico (Total Flex)",
+   "filtros": {
+    "AR_CABINE": "ACP303",
+    "AR": "ARL6096",
+    "OLEO": [
+     "PSL560",
+     "TM2"
+    ],
+    "COMBUSTIVEL": "GI12/7"
+   }
+  },
+  {
+   "marca": "Volkswagen",
+   "modelo": "Fox",
+   "motor": "1.6 16V 120cv",
+   "anos": [
+    2014,
+    2018
+   ],
+   "url": "https://catalogo.tecfil.com.br/search/FOX%201%3CDOT%3E6",
+   "consultadaEm": "2026-11-18",
+   "observacao": "Tecfil: (MSI / Highline / Highline Imotion / Comfortline / Comfortline Imotion / Pepper / Trendline) (Total Flex)",
+   "filtros": {
+    "AR_CABINE": "ACP303",
+    "AR": "ARL6080",
+    "OLEO": [
+     "PSL545",
+     "TM1"
+    ],
+    "COMBUSTIVEL": "GI08/1"
+   }
+  },
+  {
+   "marca": "Volkswagen",
+   "modelo": "Fox",
+   "motor": "1.6 8V 103cv",
+   "anos": [
+    2003,
+    2010
+   ],
+   "url": "https://catalogo.tecfil.com.br/search/FOX%201%3CDOT%3E6",
+   "consultadaEm": "2026-11-18",
+   "observacao": "Tecfil: (MI / Plus / Route / Sportline / Sports) - mecânico (Total Flex)",
+   "filtros": {
+    "AR_CABINE": "ACP303",
+    "AR": "ARL6095",
+    "OLEO": [
+     "PSL560",
+     "TM2"
+    ],
+    "COMBUSTIVEL": "GI08/1"
+   }
+  },
+  {
+   "marca": "Volkswagen",
+   "modelo": "Fox",
+   "motor": "1.6 8V 103cv",
+   "anos": [
+    2010,
+    2017
+   ],
+   "url": "https://catalogo.tecfil.com.br/search/FOX%201%3CDOT%3E6",
+   "consultadaEm": "2026-11-18",
+   "observacao": "Tecfil: (MI / Imotion / Extreme / BlueMotion / Prime) (Total Flex)",
+   "filtros": {
+    "AR_CABINE": "ACP303",
+    "AR": "ARL6095",
+    "OLEO": [
+     "PSL560",
+     "TM2"
+    ],
+    "COMBUSTIVEL": "GI08/1"
+   }
+  },
+  {
+   "marca": "Volkswagen",
+   "modelo": "Fox",
+   "motor": "1.6 8V 104cv",
+   "anos": [
+    2018,
+    2019
+   ],
+   "url": "https://catalogo.tecfil.com.br/search/FOX%201%3CDOT%3E6",
+   "consultadaEm": "2026-11-18",
+   "observacao": "Tecfil: (Connect / Xtreme) - manual / automático (Flex)",
+   "filtros": {
+    "AR_CABINE": "ACP303",
+    "AR": "ART6098",
+    "OLEO": [
+     "PSL545",
+     "TM1"
+    ],
+    "COMBUSTIVEL": "GI08/1"
+   }
+  },
+  {
+   "marca": "Volkswagen",
+   "modelo": "Gol",
+   "motor": "1.0 16V 111cv",
+   "anos": [
+    2000,
+    2004
+   ],
+   "url": "https://catalogo.tecfil.com.br/search/GOL%201%3CDOT%3E0",
+   "consultadaEm": "2026-11-18",
+   "observacao": "Tecfil: G3 - Turbo - mecânico (Gasolina)",
+   "filtros": {
+    "AR_CABINE": "ACP305",
+    "AR": "ARL6091",
+    "OLEO": [
+     "PSL563",
+     "TM2"
+    ],
+    "COMBUSTIVEL": "GI08/1"
+   }
+  },
+  {
+   "marca": "Volkswagen",
+   "modelo": "Gol",
+   "motor": "1.0 16V 71cv",
+   "anos": [
+    2004,
+    2008
+   ],
+   "url": "https://catalogo.tecfil.com.br/search/GOL%201%3CDOT%3E0",
+   "consultadaEm": "2026-11-18",
+   "observacao": "Tecfil: G4 / G5 - mecânico (Flex)",
+   "filtros": {
+    "AR_CABINE": "ACP305",
+    "AR": "ARL6096",
+    "OLEO": [
+     "PSL560",
+     "TM2"
+    ],
+    "COMBUSTIVEL": "GI12/7"
+   }
+  },
+  {
+   "marca": "Volkswagen",
+   "modelo": "Gol",
+   "motor": "1.0 16v 76cv",
+   "anos": [
+    1999,
+    2006
+   ],
+   "url": "https://catalogo.tecfil.com.br/search/GOL%201%3CDOT%3E0",
+   "consultadaEm": "2026-11-18",
+   "observacao": "Tecfil: 16V / FUN / PLUS / HIGHWAY / POWER / SELEÇÃO (Gasolina)",
+   "filtros": {
+    "AR_CABINE": "ACP305",
+    "AR": "ARL6095",
+    "OLEO": [
+     "PSL560",
+     "TM2"
+    ],
+    "COMBUSTIVEL": "GI08/1"
+   }
+  },
+  {
+   "marca": "Volkswagen",
+   "modelo": "Gol",
+   "motor": "1.0 3Cils. 12v 75cv Gas. 82cv Etanol",
+   "anos": [
+    2016,
+    2023
+   ],
+   "url": "https://catalogo.tecfil.com.br/search/GOL%201%3CDOT%3E0",
+   "consultadaEm": "2026-11-18",
+   "observacao": "Tecfil: Comfortline / Connect / I-Motion / Trendline (Flex)",
+   "filtros": {
+    "AR_CABINE": "ACP303",
+    "AR": "ARL6071",
+    "OLEO": "TM1",
+    "COMBUSTIVEL": "GI50/7"
+   }
+  },
+  {
+   "marca": "Volkswagen",
+   "modelo": "Gol",
+   "motor": "1.0 3cil. 12V 82cv",
+   "anos": [
+    2016,
+    2026
+   ],
+   "url": "https://catalogo.tecfil.com.br/search/GOL%201%3CDOT%3E0",
+   "consultadaEm": "2026-11-18",
+   "observacao": "Tecfil: G7 - Trendline / Comfortline - mecânico (Total Flex)",
+   "filtros": {
+    "AR_CABINE": "ACP303",
+    "AR": "ARL6071",
+    "OLEO": [
+     "PSL545",
+     "TM1"
+    ],
+    "COMBUSTIVEL": "GI50/7"
+   }
+  },
+  {
+   "marca": "Volkswagen",
+   "modelo": "Gol",
+   "motor": "1.0 4c il 8V 61cv",
+   "anos": [
+    2002,
+    2005
+   ],
+   "url": "https://catalogo.tecfil.com.br/search/GOL%201%3CDOT%3E0",
+   "consultadaEm": "2026-11-18",
+   "observacao": "Tecfil: G3 / G4 - MI / City / Plus / Trend / Tech / Power - mecânico (Etanol)",
+   "filtros": {
+    "AR_CABINE": "ACP305",
+    "AR": "AR9620",
+    "OLEO": [
+     "PSL560",
+     "TM2"
+    ],
+    "COMBUSTIVEL": "GI08/1"
+   }
+  },
+  {
+   "marca": "Volkswagen",
+   "modelo": "Gol",
+   "motor": "1.0 4cil 16V 69cv",
+   "anos": [
+    1997,
+    2001
+   ],
+   "url": "https://catalogo.tecfil.com.br/search/GOL%201%3CDOT%3E0",
+   "consultadaEm": "2026-11-18",
+   "observacao": "Tecfil: G2 - MI / Pus / Ouro - mecânico (Álcool/Gasolina)",
+   "filtros": {
+    "AR": "ARL6091",
+    "OLEO": [
+     "PSL560",
+     "TM2"
+    ],
+    "COMBUSTIVEL": "GI08/1"
+   }
+  },
+  {
+   "marca": "Volkswagen",
+   "modelo": "Gol",
+   "motor": "1.0 4cil 8V",
+   "anos": [
+    1997,
+    2001
+   ],
+   "url": "https://catalogo.tecfil.com.br/search/GOL%201%3CDOT%3E0",
+   "consultadaEm": "2026-11-18",
+   "observacao": "Tecfil: G2 - 1000 EFI - mecânico (Etanol)",
+   "filtros": {
+    "AR": "AR9620",
+    "OLEO": [
+     "PSL560",
+     "TM2"
+    ],
+    "COMBUSTIVEL": "AG68"
+   }
+  },
+  {
+   "marca": "Volkswagen",
+   "modelo": "Gol",
+   "motor": "1.0 4cil. 8V 50cv",
+   "anos": [
+    1996,
+    2002
+   ],
+   "url": "https://catalogo.tecfil.com.br/search/GOL%201%3CDOT%3E0",
+   "consultadaEm": "2026-11-18",
+   "observacao": "Tecfil: G2 - Special / Trend / EFI / MI Plus - mecânico (Gasolina)",
+   "filtros": {
+    "AR": "AR9620",
+    "OLEO": [
+     "PSL560",
+     "TM2"
+    ],
+    "COMBUSTIVEL": "GI08/1"
+   }
+  },
+  {
+   "marca": "Volkswagen",
+   "modelo": "Gol",
+   "motor": "1.0 4cil. 8V 65cv",
+   "anos": [
+    2002,
+    2013
+   ],
+   "url": "https://catalogo.tecfil.com.br/search/GOL%201%3CDOT%3E0",
+   "consultadaEm": "2026-11-18",
+   "observacao": "Tecfil: G3 / G4 - MI / City / Plus / Trend / Tech / Power - mecânico (Gasolina)",
+   "filtros": {
+    "AR_CABINE": "ACP305",
+    "AR": "ARL6096",
+    "OLEO": [
+     "PSL560",
+     "TM2"
+    ],
+    "COMBUSTIVEL": "GI08/1"
+   }
+  },
+  {
+   "marca": "Volkswagen",
+   "modelo": "Gol",
+   "motor": "1.0 4cil. 8V 76cv",
+   "anos": [
+    2001,
+    2003
+   ],
+   "url": "https://catalogo.tecfil.com.br/search/GOL%201%3CDOT%3E0",
+   "consultadaEm": "2026-11-18",
+   "observacao": "Tecfil: G3 / G4 - MI / Fun / Highway / Sport / Plus / Power) - mecânico (Gasolina)",
+   "filtros": {
+    "AR_CABINE": "ACP305",
+    "AR": "ARL6095",
+    "OLEO": [
+     "PSL560",
+     "TM2"
+    ],
+    "COMBUSTIVEL": "GI08/1"
+   }
+  },
+  {
+   "marca": "Volkswagen",
+   "modelo": "Gol",
+   "motor": "1.0 4cil. 8V CHT 50cv",
+   "anos": [
+    1992,
+    1996
+   ],
+   "url": "https://catalogo.tecfil.com.br/search/GOL%201%3CDOT%3E0",
+   "consultadaEm": "2026-11-18",
+   "observacao": "Tecfil: G2 - Special / Plus / 1000 - mecânico (Gasolina)",
+   "filtros": {
+    "AR": "ARL6090",
+    "OLEO": [
+     "PSL565",
+     "TM1"
+    ],
+    "COMBUSTIVEL": "AG68"
+   }
+  },
+  {
+   "marca": "Volkswagen",
+   "modelo": "Gol",
+   "motor": "1.0 8V 76cv",
+   "anos": [
+    2008,
+    2010
+   ],
+   "url": "https://catalogo.tecfil.com.br/search/GOL%201%3CDOT%3E0",
+   "consultadaEm": "2026-11-18",
+   "observacao": "Tecfil: G5 - MI / City / Trend - mecânico (Total Flex)",
+   "filtros": {
+    "AR_CABINE": "ACP303",
+    "AR": "ARL6096",
+    "OLEO": [
+     "PSL560",
+     "TM2"
+    ],
+    "COMBUSTIVEL": "GI50/7"
+   }
+  },
+  {
+   "marca": "Volkswagen",
+   "modelo": "Gol",
+   "motor": "1.0 8V 76cv",
+   "anos": [
+    2011,
+    2015
+   ],
+   "url": "https://catalogo.tecfil.com.br/search/GOL%201%3CDOT%3E0",
+   "consultadaEm": "2026-11-18",
+   "observacao": "Tecfil: G5 / G6 - MI / Black / Ecomotion / Track - mecânico (Total Flex)",
+   "filtros": {
+    "AR_CABINE": "ACP303",
+    "AR": "ARL6096",
+    "OLEO": [
+     "PSL560",
+     "TM2"
+    ],
+    "COMBUSTIVEL": "GI50/7"
+   }
+  },
+  {
+   "marca": "Volkswagen",
+   "modelo": "Gol",
+   "motor": "1.6 16V 120cv",
+   "anos": [
+    2014,
+    2015
+   ],
+   "url": "https://catalogo.tecfil.com.br/search/GOL%201%3CDOT%3E6",
+   "consultadaEm": "2026-11-18",
+   "observacao": "Tecfil: G5 / G6 / G7 / MSI / Rallye / Imotion - mecânico (Total Flex)",
+   "filtros": {
+    "AR_CABINE": "ACP303",
+    "AR": "ARL6080",
+    "OLEO": [
+     "PSL545",
+     "TM1"
+    ],
+    "COMBUSTIVEL": "GI50/7"
+   }
+  },
+  {
+   "marca": "Volkswagen",
+   "modelo": "Gol",
+   "motor": "1.6 8V 104cv",
+   "anos": [
+    2003,
+    2008
+   ],
+   "url": "https://catalogo.tecfil.com.br/search/GOL%201%3CDOT%3E6",
+   "consultadaEm": "2026-11-18",
+   "observacao": "Tecfil: MSI / Comfortline / Trendline / Highline) - automático / mecânico (Total Flex) 06/2003 - 06/2008",
+   "filtros": {
+    "AR_CABINE": "ACP305",
+    "AR": "ARL6091",
+    "OLEO": [
+     "PSL562",
+     "TM2"
+    ],
+    "COMBUSTIVEL": "GI12/7"
+   }
+  },
+  {
+   "marca": "Volkswagen",
+   "modelo": "Gol",
+   "motor": "1.6 8V 104cv",
+   "anos": [
+    2008,
+    2012
+   ],
+   "url": "https://catalogo.tecfil.com.br/search/GOL%201%3CDOT%3E6",
+   "consultadaEm": "2026-11-18",
+   "observacao": "Tecfil: G6 / G7 / MI / Power / Imotion / Rallye - mecânico (Total Flex)",
+   "filtros": {
+    "AR_CABINE": "ACP303",
+    "AR": "ART6098",
+    "OLEO": [
+     "PSL545",
+     "TM1"
+    ],
+    "COMBUSTIVEL": "GI50/7"
+   }
+  },
+  {
+   "marca": "Volkswagen",
+   "modelo": "Gol",
+   "motor": "1.6 8V 104cv",
+   "anos": [
+    2008,
+    2015
+   ],
+   "url": "https://catalogo.tecfil.com.br/search/GOL%201%3CDOT%3E6",
+   "consultadaEm": "2026-11-18",
+   "observacao": "Tecfil: G5 / G6 / MI / Power / Imotion / Rallye - mecânico (Total Flex)",
+   "filtros": {
+    "AR_CABINE": "ACP303",
+    "AR": "ART6098",
+    "OLEO": [
+     "PSL560",
+     "TM2"
+    ],
+    "COMBUSTIVEL": "GI50/7"
+   }
+  },
+  {
+   "marca": "Volkswagen",
+   "modelo": "Gol",
+   "motor": "1.6 8V 104cv",
+   "anos": [
+    2016,
+    2018
+   ],
+   "url": "https://catalogo.tecfil.com.br/search/GOL%201%3CDOT%3E6",
+   "consultadaEm": "2026-11-18",
+   "observacao": "Tecfil: MSI / Comfortline / Trendline / Highline) - automático / mecânico (Total Flex)",
+   "filtros": {
+    "AR_CABINE": "ACP303",
+    "AR": "ART6098",
+    "OLEO": [
+     "PSL545",
+     "TM1"
+    ],
+    "COMBUSTIVEL": "GI50/7"
+   }
+  },
+  {
+   "marca": "Volkswagen",
+   "modelo": "Gol",
+   "motor": "1.6 8V 88cv",
+   "anos": [
+    1997,
+    2002
+   ],
+   "url": "https://catalogo.tecfil.com.br/search/GOL%201%3CDOT%3E6",
+   "consultadaEm": "2026-11-18",
+   "observacao": "Tecfil: G2 / G3 - EFI - MI / Power - mecânico (Gasolina)",
+   "filtros": {
+    "AR_CABINE": "ACP305",
+    "AR": "ARL6091",
+    "OLEO": [
+     "PSL562",
+     "TM2"
+    ],
+    "COMBUSTIVEL": "GI08/1"
+   }
+  },
+  {
+   "marca": "Volkswagen",
+   "modelo": "Gol",
+   "motor": "1.6 8V 99cv",
+   "anos": [
+    1997,
+    2005
+   ],
+   "url": "https://catalogo.tecfil.com.br/search/GOL%201%3CDOT%3E6",
+   "consultadaEm": "2026-11-18",
+   "observacao": "Tecfil: G2 / G3 - EFI - MI / Power - mecânico (Etanol)",
+   "filtros": {
+    "AR": "ARL6091",
+    "OLEO": [
+     "PSL562",
+     "TM2"
+    ],
+    "COMBUSTIVEL": "GI08/1"
+   }
+  },
+  {
+   "marca": "Volkswagen",
+   "modelo": "Gol",
+   "motor": "1.6 8V 99cv",
+   "anos": [
+    2003,
+    2008
+   ],
+   "url": "https://catalogo.tecfil.com.br/search/GOL%201%3CDOT%3E6",
+   "consultadaEm": "2026-11-18",
+   "observacao": "Tecfil: G3 / G4 - MI / Plus / Power - mecânico (Total Flex)",
+   "filtros": {
+    "AR_CABINE": "ACP305",
+    "AR": "ARL6091",
+    "OLEO": [
+     "PSL562",
+     "TM2"
+    ],
+    "COMBUSTIVEL": "GI12/7"
+   }
+  },
+  {
+   "marca": "Volkswagen",
+   "modelo": "Gol",
+   "motor": "1.6 8V 99cv",
+   "anos": [
+    2005,
+    2006
+   ],
+   "url": "https://catalogo.tecfil.com.br/search/GOL%201%3CDOT%3E6",
+   "consultadaEm": "2026-11-18",
+   "observacao": "Tecfil: G2 / G3 - EFI - MI / Power - mecânico (Etanol)",
+   "filtros": {
+    "AR_CABINE": "ACP305",
+    "AR": "ARL6091",
+    "OLEO": [
+     "PSL562",
+     "TM2"
+    ],
+    "COMBUSTIVEL": "GI12/7"
+   }
+  },
+  {
+   "marca": "Volkswagen",
+   "modelo": "Gol",
+   "motor": "1.6 8v 69cv",
+   "anos": [
+    1985,
+    1986
+   ],
+   "url": "https://catalogo.tecfil.com.br/search/GOL%201%3CDOT%3E6",
+   "consultadaEm": "2026-11-18",
+   "observacao": "Tecfil: Refrigerado a Ar (Etanol) 01/1985 - 12/1986",
+   "filtros": {
+    "COMBUSTIVEL": "AG68"
+   }
+  },
+  {
+   "marca": "Volkswagen",
+   "modelo": "Gol",
+   "motor": "1.6 8v 76cv",
+   "anos": [
+    1982,
+    1986
+   ],
+   "url": "https://catalogo.tecfil.com.br/search/GOL%201%3CDOT%3E6",
+   "consultadaEm": "2026-11-18",
+   "observacao": "Tecfil: Refrigerado a Ar (Gasolina) 07/1982 - 08/1986",
+   "filtros": {
+    "COMBUSTIVEL": "AG68"
+   }
+  },
+  {
+   "marca": "Volkswagen",
+   "modelo": "Gol",
+   "motor": "1.6 8v 78cv",
+   "anos": [
+    1985,
+    1989
+   ],
+   "url": "https://catalogo.tecfil.com.br/search/GOL%201%3CDOT%3E6",
+   "consultadaEm": "2026-11-18",
+   "observacao": "Tecfil: AP (Gasolina) 01/1985 - 12/1989",
+   "filtros": {
+    "AR": "AR9620",
+    "OLEO": [
+     "PSL562",
+     "TM2"
+    ],
+    "COMBUSTIVEL": "AG68"
+   }
+  },
+  {
+   "marca": "Volkswagen",
+   "modelo": "Gol",
+   "motor": "1.6 CHT 75cv",
+   "anos": [
+    1989,
+    1994
+   ],
+   "url": "https://catalogo.tecfil.com.br/search/GOL%201%3CDOT%3E6",
+   "consultadaEm": "2026-11-18",
+   "observacao": "Tecfil: G1 - mecânico (Flex)",
+   "filtros": {
+    "AR": "ARL6090",
+    "OLEO": [
+     "PSL565",
+     "TM1"
+    ],
+    "COMBUSTIVEL": "AG68"
+   }
+  },
+  {
+   "marca": "Volkswagen",
+   "modelo": "Gol",
+   "motor": "AP 1.6",
+   "anos": [
+    1994,
+    1997
+   ],
+   "url": "https://catalogo.tecfil.com.br/search/GOL%201%3CDOT%3E6",
+   "consultadaEm": "2026-11-18",
+   "observacao": "Tecfil: G2 - CFI - MI / Power - mecânico (Flex)",
+   "filtros": {
+    "AR": "AR9620",
+    "OLEO": [
+     "PSL562",
+     "TM2"
+    ],
+    "COMBUSTIVEL": "GI07/1"
+   }
+  },
+  {
+   "marca": "Volkswagen",
+   "modelo": "Polo",
+   "motor": "1.0 12V 128cv",
+   "anos": [
+    2017,
+    2022
+   ],
+   "url": "https://catalogo.tecfil.com.br/search/POLO%201%3CDOT%3E0",
+   "consultadaEm": "2026-11-18",
+   "observacao": "Tecfil: 200 TSI - (Highline / Comfortline) - automático / manual (Total Flex) 09/2017 - 08/2022",
+   "filtros": {
+    "AR_CABINE": "ACP312",
+    "AR": "ARL6076",
+    "OLEO": [
+     "PSL545",
+     "TM1"
+    ],
+    "COMBUSTIVEL": "GI50/7"
+   }
+  },
+  {
+   "marca": "Volkswagen",
+   "modelo": "Polo",
+   "motor": "1.0 16V 79cv",
+   "anos": [
+    2002,
+    2013
+   ],
+   "url": "https://catalogo.tecfil.com.br/search/POLO%201%3CDOT%3E0",
+   "consultadaEm": "2026-11-18",
+   "observacao": "Tecfil: (G4 - Classic) - manual (Gasolina)",
+   "filtros": {
+    "AR_CABINE": "ACP300",
+    "AR": "ARL6095",
+    "OLEO": [
+     "PSL560",
+     "TM2"
+    ],
+    "COMBUSTIVEL": "GI14"
+   }
+  },
+  {
+   "marca": "Volkswagen",
+   "modelo": "Polo",
+   "motor": "1.0 3 cil. 12V 84 cv",
+   "anos": [
+    2017,
+    2022
+   ],
+   "url": "https://catalogo.tecfil.com.br/search/POLO%201%3CDOT%3E0",
+   "consultadaEm": "2026-11-18",
+   "observacao": "Tecfil: MPI / TRACK / TRACK 1ST EDITION / TRACK ROBUST / TRACK ROCK IN RIO - MANUAL (Flex) 09/2017 - 08/2022",
+   "filtros": {
+    "AR_CABINE": "ACP312",
+    "AR": "ARL6071",
+    "OLEO": [
+     "PSL545",
+     "TM1"
+    ],
+    "COMBUSTIVEL": "GI50/7"
+   }
+  },
+  {
+   "marca": "Volkswagen",
+   "modelo": "Polo",
+   "motor": "1.0 TSI 12V 128cv",
+   "anos": [
+    2017,
+    2022
+   ],
+   "url": "https://catalogo.tecfil.com.br/search/POLO%201%3CDOT%3E0",
+   "consultadaEm": "2026-11-18",
+   "observacao": "Tecfil: (Flex)",
+   "filtros": {
+    "AR_CABINE": "ACP312"
+   }
+  },
+  {
+   "marca": "Volkswagen",
+   "modelo": "Polo",
+   "motor": "1.6 16V 117cv",
+   "anos": [
+    2017,
+    2022
+   ],
+   "url": "https://catalogo.tecfil.com.br/search/POLO%201%3CDOT%3E6",
+   "consultadaEm": "2026-11-18",
+   "observacao": "Tecfil: MSI - manual (Total Flex) 09/2017 - 08/2022",
+   "filtros": {
+    "AR_CABINE": "ACP312",
+    "AR": "ARL6080",
+    "OLEO": [
+     "PSL545",
+     "TM1"
+    ],
+    "COMBUSTIVEL": "GI50/7"
+   }
+  },
+  {
+   "marca": "Volkswagen",
+   "modelo": "Polo",
+   "motor": "1.6 8V",
+   "anos": [
+    2002,
+    2005
+   ],
+   "url": "https://catalogo.tecfil.com.br/search/POLO%201%3CDOT%3E6",
+   "consultadaEm": "2026-11-18",
+   "observacao": "Tecfil: (Hatch / Sedan)",
+   "filtros": {
+    "AR_CABINE": "ACP303",
+    "AR": "ARL6095",
+    "OLEO": [
+     "PSL560",
+     "TM2"
+    ],
+    "COMBUSTIVEL": "GI14"
+   }
+  },
+  {
+   "marca": "Volkswagen",
+   "modelo": "Polo",
+   "motor": "1.6 8V 101cv",
+   "anos": [
+    2004,
+    2006
+   ],
+   "url": "https://catalogo.tecfil.com.br/search/POLO%201%3CDOT%3E6",
+   "consultadaEm": "2026-11-18",
+   "observacao": "Tecfil: (G4 - MI / Ouro / Evidence / Sportline) - manual (Total Flex)",
+   "filtros": {
+    "AR_CABINE": "ACP303",
+    "AR": "ARL6095",
+    "OLEO": [
+     "PSL560",
+     "TM2"
+    ],
+    "COMBUSTIVEL": "GI12/7"
+   }
+  },
+  {
+   "marca": "Volkswagen",
+   "modelo": "Polo",
+   "motor": "1.6 8V 104cv",
+   "anos": [
+    2007,
+    2013
+   ],
+   "url": "https://catalogo.tecfil.com.br/search/POLO%201%3CDOT%3E6",
+   "consultadaEm": "2026-11-18",
+   "observacao": "Tecfil: (G4 e G5 - BlueMotion / Imotion / Sportline) - automático / manual (Total Flex)",
+   "filtros": {
+    "AR_CABINE": "ACP303",
+    "AR": "ART6098",
+    "OLEO": [
+     "PSL560",
+     "TM2"
+    ],
+    "COMBUSTIVEL": "GI50/7"
+   }
+  },
+  {
+   "marca": "Volkswagen",
+   "modelo": "Polo",
+   "motor": "COMFORTLINE / HIGHLINE 1.0 TSI / SENSE TSI / TSI",
+   "anos": [
+    2022,
+    2026
+   ],
+   "url": "https://catalogo.tecfil.com.br/search/POLO%201%3CDOT%3E0",
+   "consultadaEm": "2026-11-18",
+   "observacao": "Tecfil: 1.0 L 12V DOHC L3 116CV (Flex)",
+   "filtros": {
+    "AR_CABINE": "ACP312",
+    "AR": "ARL6076",
+    "OLEO": [
+     "PSL545",
+     "TM1"
+    ],
+    "COMBUSTIVEL": "GI50/7"
+   }
+  },
+  {
+   "marca": "Volkswagen",
+   "modelo": "Saveiro",
+   "motor": "1.6",
+   "anos": [
+    1990,
+    1995
+   ],
+   "url": "https://catalogo.tecfil.com.br/search/SAVEIRO",
+   "consultadaEm": "2026-11-18",
+   "observacao": "Tecfil: CHT (Gasolina) 01/1990 - 12/1995",
+   "filtros": {
+    "AR": "ARL6090",
+    "OLEO": [
+     "PSL565",
+     "TM1"
+    ],
+    "COMBUSTIVEL": "AG68"
+   }
+  },
+  {
+   "marca": "Volkswagen",
+   "modelo": "Saveiro",
+   "motor": "1.6 16V",
+   "anos": [
+    2014,
+    2026
+   ],
+   "url": "https://catalogo.tecfil.com.br/search/SAVEIRO",
+   "consultadaEm": "2026-11-18",
+   "observacao": "Tecfil: (G6 - Cross / CE / CD) (Flex) 12/2014",
+   "filtros": {
+    "AR_CABINE": "ACP303",
+    "AR": "ARL6080",
+    "OLEO": [
+     "PSL545",
+     "TM1"
+    ],
+    "COMBUSTIVEL": "GI50/7"
+   }
+  },
+  {
+   "marca": "Volkswagen",
+   "modelo": "Saveiro",
+   "motor": "1.6 8V",
+   "anos": [
+    1982,
+    1996
+   ],
+   "url": "https://catalogo.tecfil.com.br/search/SAVEIRO",
+   "consultadaEm": "2026-11-18",
+   "observacao": "Tecfil: CL / GL / AP (Gasolina) 01/1982 - 12/1996",
+   "filtros": {
+    "AR": "AR9620",
+    "OLEO": [
+     "PSL562",
+     "TM2"
+    ],
+    "COMBUSTIVEL": [
+     "GU86",
+     "AG68"
+    ]
+   }
+  },
+  {
+   "marca": "Volkswagen",
+   "modelo": "Saveiro",
+   "motor": "1.6 8V",
+   "anos": [
+    1982,
+    1996
+   ],
+   "url": "https://catalogo.tecfil.com.br/search/SAVEIRO",
+   "consultadaEm": "2026-11-18",
+   "observacao": "Tecfil: CL / GL / AP (Álcool) 01/1982 - 12/1996",
+   "filtros": {
+    "AR": "AR9620",
+    "OLEO": [
+     "PSL562",
+     "TM2"
+    ],
+    "COMBUSTIVEL": "AG68"
+   }
+  },
+  {
+   "marca": "Volkswagen",
+   "modelo": "Saveiro",
+   "motor": "1.6 8V",
+   "anos": [
+    1997,
+    2000
+   ],
+   "url": "https://catalogo.tecfil.com.br/search/SAVEIRO",
+   "consultadaEm": "2026-11-18",
+   "observacao": "Tecfil: CL / MI / AP (Álcool/Gasolina) 01/1997 - 12/2000",
+   "filtros": {
+    "AR_CABINE": "ACP304",
+    "AR": "ARL6091",
+    "OLEO": [
+     "PSL562",
+     "TM2"
+    ],
+    "COMBUSTIVEL": "GI08/1"
+   }
+  },
+  {
+   "marca": "Volkswagen",
+   "modelo": "Saveiro",
+   "motor": "1.6 8V",
+   "anos": [
+    1999,
+    2004
+   ],
+   "url": "https://catalogo.tecfil.com.br/search/SAVEIRO",
+   "consultadaEm": "2026-11-18",
+   "observacao": "Tecfil: CL / MI / AP (Álcool/Gasolina) 01/1999 - 12/2004",
+   "filtros": {
+    "AR": "ARL6091",
+    "OLEO": [
+     "PSL562",
+     "TM2"
+    ],
+    "COMBUSTIVEL": "GI08/1"
+   }
+  },
+  {
+   "marca": "Volkswagen",
+   "modelo": "Saveiro",
+   "motor": "1.6 8V",
+   "anos": [
+    2003,
+    2008
+   ],
+   "url": "https://catalogo.tecfil.com.br/search/SAVEIRO",
+   "consultadaEm": "2026-11-18",
+   "observacao": "Tecfil: TOTAL FLEX (Flex) 01/2003 - 12/2008",
+   "filtros": {
+    "AR_CABINE": "ACP305",
+    "AR": "ARL6091",
+    "OLEO": [
+     "PSL562",
+     "TM2"
+    ],
+    "COMBUSTIVEL": "GI12/7"
+   }
+  },
+  {
+   "marca": "Volkswagen",
+   "modelo": "Saveiro",
+   "motor": "1.6 8V",
+   "anos": [
+    2008,
+    2014
+   ],
+   "url": "https://catalogo.tecfil.com.br/search/SAVEIRO",
+   "consultadaEm": "2026-11-18",
+   "observacao": "Tecfil: G5 (Flex) - 12/2014",
+   "filtros": {
+    "AR_CABINE": "ACP303",
+    "AR": "ART6098",
+    "OLEO": [
+     "PSL560",
+     "TM2"
+    ],
+    "COMBUSTIVEL": "GI50/7"
+   }
+  },
+  {
+   "marca": "Volkswagen",
+   "modelo": "Saveiro",
+   "motor": "1.6 8V 104cv",
+   "anos": [
+    2014,
+    2026
+   ],
+   "url": "https://catalogo.tecfil.com.br/search/SAVEIRO",
+   "consultadaEm": "2026-11-18",
+   "observacao": "Tecfil: (Rock in Rio/Surf/Startline/Trendline) (Flex) 01/2014",
+   "filtros": {
+    "AR_CABINE": "ACP303",
+    "AR": "ART6098",
+    "OLEO": [
+     "TM2",
+     "PSL560"
+    ],
+    "COMBUSTIVEL": "GI50/7"
+   }
+  },
+  {
+   "marca": "Volkswagen",
+   "modelo": "Saveiro",
+   "motor": "1.8 8V",
+   "anos": [
+    1988,
+    1996
+   ],
+   "url": "https://catalogo.tecfil.com.br/search/SAVEIRO",
+   "consultadaEm": "2026-11-18",
+   "observacao": "Tecfil: LS / GL / CL / SUNSET AP (Álcool) 01/1988 - 12/1996",
+   "filtros": {
+    "AR": "AR9620",
+    "OLEO": [
+     "PSL562",
+     "TM2"
+    ],
+    "COMBUSTIVEL": "AG68"
+   }
+  },
+  {
+   "marca": "Volkswagen",
+   "modelo": "Saveiro",
+   "motor": "1.8 8V",
+   "anos": [
+    1996,
+    2005
+   ],
+   "url": "https://catalogo.tecfil.com.br/search/SAVEIRO",
+   "consultadaEm": "2026-11-18",
+   "observacao": "Tecfil: AP EFI (Gasolina) 01/1996 - 12/2005",
+   "filtros": {
+    "AR_CABINE": "ACP304",
+    "AR": "ARL6091",
+    "OLEO": [
+     "PSL562",
+     "TM2"
+    ],
+    "COMBUSTIVEL": "GI08/1"
+   }
+  },
+  {
+   "marca": "Volkswagen",
+   "modelo": "Saveiro",
+   "motor": "1.8 8V",
+   "anos": [
+    2005,
+    2009
+   ],
+   "url": "https://catalogo.tecfil.com.br/search/SAVEIRO",
+   "consultadaEm": "2026-11-18",
+   "observacao": "Tecfil: TOTAL FLEX (Flex) 01/2005",
+   "filtros": {
+    "AR_CABINE": "ACP305",
+    "AR": "ARL6091",
+    "OLEO": [
+     "PSL562",
+     "TM2"
+    ],
+    "COMBUSTIVEL": "GI12/7"
+   }
+  },
+  {
+   "marca": "Volkswagen",
+   "modelo": "Saveiro",
+   "motor": "2.0 8V",
+   "anos": [
+    1999,
+    2004
+   ],
+   "url": "https://catalogo.tecfil.com.br/search/SAVEIRO",
+   "consultadaEm": "2026-11-18",
+   "observacao": "Tecfil: TSI G3 AP (Gasolina) 01/1999 - 12/2004",
+   "filtros": {
+    "AR_CABINE": "ACP305",
+    "AR": "ARL6091",
+    "OLEO": [
+     "PSL562",
+     "TM2"
+    ],
+    "COMBUSTIVEL": "GI08/1"
+   }
+  },
+  {
+   "marca": "Volkswagen",
+   "modelo": "Voyage",
+   "motor": "1.0  8V",
+   "anos": [
+    2011,
+    2026
+   ],
+   "url": "https://catalogo.tecfil.com.br/search/VOYAGE",
+   "consultadaEm": "2026-11-18",
+   "observacao": "Tecfil: (Flex)",
+   "filtros": {
+    "AR_CABINE": "ACP303",
+    "AR": "ARL6096",
+    "OLEO": [
+     "PSL560",
+     "TM2"
+    ],
+    "COMBUSTIVEL": "GI50/7"
+   }
+  },
+  {
+   "marca": "Volkswagen",
+   "modelo": "Voyage",
+   "motor": "1.0 12V 3cil",
+   "anos": [
+    2016,
+    2026
+   ],
+   "url": "https://catalogo.tecfil.com.br/search/VOYAGE",
+   "consultadaEm": "2026-11-18",
+   "observacao": "Tecfil: (Flex) 01/2016",
+   "filtros": {
+    "AR_CABINE": "ACP303",
+    "AR": "ARL6071",
+    "OLEO": [
+     "PSL545",
+     "TM1"
+    ],
+    "COMBUSTIVEL": "GI50/7"
+   }
+  },
+  {
+   "marca": "Volkswagen",
+   "modelo": "Voyage",
+   "motor": "1.0 3Cils. 12v 75cv Gas. 82cv Etanol",
+   "anos": [
+    2016,
+    2023
+   ],
+   "url": "https://catalogo.tecfil.com.br/search/VOYAGE",
+   "consultadaEm": "2026-11-18",
+   "observacao": "Tecfil: Comfortline / Trendline (Flex)",
+   "filtros": {
+    "AR_CABINE": "ACP303",
+    "AR": "ARL6071",
+    "OLEO": "TM1",
+    "COMBUSTIVEL": "GI50/7"
+   }
+  },
+  {
+   "marca": "Volkswagen",
+   "modelo": "Voyage",
+   "motor": "1.0 8V",
+   "anos": [
+    2008,
+    2015
+   ],
+   "url": "https://catalogo.tecfil.com.br/search/VOYAGE",
+   "consultadaEm": "2026-11-18",
+   "observacao": "Tecfil: TOTAL FLEX (Flex) 01/2008",
+   "filtros": {
+    "AR": "ARL6096",
+    "OLEO": [
+     "PSL560",
+     "TM2"
+    ],
+    "COMBUSTIVEL": "GI50/7"
+   }
+  },
+  {
+   "marca": "Volkswagen",
+   "modelo": "Voyage",
+   "motor": "1.6",
+   "anos": [
+    1990,
+    1995
+   ],
+   "url": "https://catalogo.tecfil.com.br/search/VOYAGE",
+   "consultadaEm": "2026-11-18",
+   "observacao": "Tecfil: CHT (Gasolina)",
+   "filtros": {
+    "AR": "ARL6090",
+    "OLEO": [
+     "PSL565",
+     "TM1"
+    ],
+    "COMBUSTIVEL": "AG68"
+   }
+  },
+  {
+   "marca": "Volkswagen",
+   "modelo": "Voyage",
+   "motor": "1.6 16V",
+   "anos": [
+    2019,
+    2023
+   ],
+   "url": "https://catalogo.tecfil.com.br/search/VOYAGE",
+   "consultadaEm": "2026-11-18",
+   "observacao": "Tecfil: MSI 120cv (Flex)",
+   "filtros": {
+    "AR_CABINE": "ACP303",
+    "AR": "ARL6080",
+    "OLEO": [
+     "PSL545",
+     "TM1"
+    ],
+    "COMBUSTIVEL": "GI50/7"
+   }
+  },
+  {
+   "marca": "Volkswagen",
+   "modelo": "Voyage",
+   "motor": "1.6 8V",
+   "anos": [
+    1981,
+    1985
+   ],
+   "url": "https://catalogo.tecfil.com.br/search/VOYAGE",
+   "consultadaEm": "2026-11-18",
+   "observacao": "Tecfil: c/s/cl/ls/gls/g (Álcool) 01/1981 - 12/1985",
+   "filtros": {
+    "AR": "AR9620",
+    "OLEO": [
+     "PSL561",
+     "TM2"
+    ],
+    "COMBUSTIVEL": "AG68"
+   }
+  },
+  {
+   "marca": "Volkswagen",
+   "modelo": "Voyage",
+   "motor": "1.6 8V",
+   "anos": [
+    1981,
+    1995
+   ],
+   "url": "https://catalogo.tecfil.com.br/search/VOYAGE",
+   "consultadaEm": "2026-11-18",
+   "observacao": "Tecfil: c/s/cl/ls/gl/gl (Gasolina) 01/1981 - 12/1995",
+   "filtros": {
+    "AR": "AR9620",
+    "OLEO": [
+     "PSL562",
+     "TM2"
+    ],
+    "COMBUSTIVEL": [
+     "GU86",
+     "AG68"
+    ]
+   }
+  },
+  {
+   "marca": "Volkswagen",
+   "modelo": "Voyage",
+   "motor": "1.6 8V",
+   "anos": [
+    2008,
+    2013
+   ],
+   "url": "https://catalogo.tecfil.com.br/search/VOYAGE",
+   "consultadaEm": "2026-11-18",
+   "observacao": "Tecfil: TOTAL FLEX (Flex) 09/2008 - 12/2013",
+   "filtros": {
+    "AR_CABINE": "ACP303",
+    "AR": "ART6098",
+    "OLEO": [
+     "PSL560",
+     "TM2"
+    ],
+    "COMBUSTIVEL": "GI50/7"
+   }
+  },
+  {
+   "marca": "Volkswagen",
+   "modelo": "Voyage",
+   "motor": "1.6 8V 105cv VHT",
+   "anos": [
+    2008,
+    2015
+   ],
+   "url": "https://catalogo.tecfil.com.br/search/VOYAGE",
+   "consultadaEm": "2026-11-18",
+   "observacao": "Tecfil: (CL/ Trendline/ Confortline/ Highline/ I-motion) (Flex) 09/2008 - 12/2015",
+   "filtros": {
+    "AR_CABINE": "ACP303",
+    "AR": "ART6098",
+    "OLEO": [
+     "PSL560",
+     "TM2"
+    ],
+    "COMBUSTIVEL": "GI50/7"
+   }
+  },
+  {
+   "marca": "Volkswagen",
+   "modelo": "Voyage",
+   "motor": "1.6 8V 4 CIL VHT",
+   "anos": [
+    2016,
+    2023
+   ],
+   "url": "https://catalogo.tecfil.com.br/search/VOYAGE",
+   "consultadaEm": "2026-11-18",
+   "observacao": "Tecfil: MSI / Comfortline / Trendline / Highline 104cv (Flex)",
+   "filtros": {
+    "AR_CABINE": "ACP303",
+    "AR": "ARL6080",
+    "OLEO": [
+     "PSL545",
+     "TM1"
+    ],
+    "COMBUSTIVEL": "GI50/7"
+   }
+  },
+  {
+   "marca": "Volkswagen",
+   "modelo": "Voyage",
+   "motor": "1.8 8V",
+   "anos": [
+    1983,
+    1985
+   ],
+   "url": "https://catalogo.tecfil.com.br/search/VOYAGE",
+   "consultadaEm": "2026-11-18",
+   "observacao": "Tecfil: spr gls/gl/gls (Gasolina) 01/1983 - 12/1985",
+   "filtros": {
+    "AR": "AR9620",
+    "OLEO": [
+     "PSL562",
+     "TM2"
+    ],
+    "COMBUSTIVEL": [
+     "GU86",
+     "AG68"
+    ]
+   }
+  },
+  {
+   "marca": "Volkswagen",
+   "modelo": "Voyage",
+   "motor": "1.8 8V",
+   "anos": [
+    1983,
+    1985
+   ],
+   "url": "https://catalogo.tecfil.com.br/search/VOYAGE",
+   "consultadaEm": "2026-11-18",
+   "observacao": "Tecfil: spr gls/gl/gls/ (Álcool) 01/1983 - 12/1985",
+   "filtros": {
+    "AR": "AR9620",
+    "OLEO": [
+     "PSL562",
+     "TM2"
+    ],
+    "COMBUSTIVEL": "AG68"
+   }
+  },
+  {
+   "marca": "Volkswagen",
+   "modelo": "Voyage",
+   "motor": "1.8 8V",
+   "anos": [
+    1987,
+    1995
+   ],
+   "url": "https://catalogo.tecfil.com.br/search/VOYAGE",
+   "consultadaEm": "2026-11-18",
+   "observacao": "Tecfil: spr gls/gl/gls/ (Álcool) 01/1987 - 12/1995",
+   "filtros": {
+    "AR": "AR9620",
+    "OLEO": [
+     "PSL562",
+     "TM2"
+    ],
+    "COMBUSTIVEL": "AG68"
+   }
+  },
+  {
+   "marca": "Volkswagen",
+   "modelo": "Voyage",
+   "motor": "1.8 8V",
+   "anos": [
+    1989,
+    1995
+   ],
+   "url": "https://catalogo.tecfil.com.br/search/VOYAGE",
+   "consultadaEm": "2026-11-18",
+   "observacao": "Tecfil: spr gls/gl/gls (Gasolina) 01/1989 - 12/1995",
+   "filtros": {
+    "AR": "AR9620",
+    "OLEO": [
+     "PSL562",
+     "TM2"
+    ],
+    "COMBUSTIVEL": [
+     "GU86",
+     "AG68"
+    ]
+   }
+  }
+ ]
+}
