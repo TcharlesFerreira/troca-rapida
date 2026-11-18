@@ -1,0 +1,249 @@
+// Banco do Troca Rápida. Só a variável DATABASE_URL muda ao migrar para Supabase ou AWS.
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum Papel {
+  ADMIN
+  CLIENTE
+}
+
+enum StatusOS {
+  AGUARDANDO
+  EM_ANDAMENTO
+  PRONTO_RETIRADA
+  ENTREGUE
+  CANCELADO
+}
+
+enum Confianca {
+  CONFIRMADO
+  FONTE_UNICA
+  DIVERGENTE
+}
+
+enum TipoFonte {
+  MONTADORA
+  LUBRIFICANTE
+  TECNICA
+}
+
+enum StatusVinculo {
+  PENDENTE
+  APROVADO
+  REJEITADO
+}
+
+/// Conta de login (administrador ou cliente).
+model Usuario {
+  id        String   @id @default(cuid())
+  email     String   @unique
+  senhaHash String
+  papel     Papel    @default(CLIENTE)
+  nome      String
+  cpf       String?  @unique // só dígitos; preenchido para clientes
+  telefone  String?
+  criadoEm  DateTime @default(now())
+
+  /// Vínculo CONFIRMADO com o cadastro feito pela oficina.
+  clienteId String?  @unique
+  cliente   Cliente? @relation(fields: [clienteId], references: [id], onDelete: SetNull)
+
+  solicitacoes    SolicitacaoVinculo[]
+  historicoStatus HistoricoStatusOS[]
+
+  @@map("usuarios")
+}
+
+/// Cadastro feito pela oficina (pode existir antes de o cliente ter conta).
+model Cliente {
+  id           String   @id @default(cuid())
+  nome         String
+  cpf          String   @unique // só dígitos
+  telefone     String
+  email        String
+  endereco     String?
+  criadoEm     DateTime @default(now())
+  atualizadoEm DateTime @updatedAt
+
+  usuario      Usuario?
+  veiculos     Veiculo[]
+  solicitacoes SolicitacaoVinculo[]
+
+  @@index([nome])
+  @@map("clientes")
+}
+
+/// CPF igual, e-mail diferente: espera o administrador confirmar.
+model SolicitacaoVinculo {
+  id             String        @id @default(cuid())
+  usuarioId      String
+  clienteId      String
+  status         StatusVinculo @default(PENDENTE)
+  criadoEm       DateTime      @default(now())
+  decididoEm     DateTime?
+  decididoPorId  String?
+
+  usuario Usuario @relation(fields: [usuarioId], references: [id], onDelete: Cascade)
+  cliente Cliente @relation(fields: [clienteId], references: [id], onDelete: Cascade)
+
+  @@unique([usuarioId, clienteId])
+  @@index([status])
+  @@map("solicitacoes_vinculo")
+}
+
+model Veiculo {
+  id        String   @id @default(cuid())
+  clienteId String
+  placa     String   @unique // sempre maiúscula e sem hífen
+  marca     String
+  modelo    String
+  motor     String
+  ano       Int
+  cor       String
+  kmAtual   Int
+  criadoEm  DateTime @default(now())
+
+  /// Recomendação da base de óleo (vazio quando o carro não existe na base).
+  recomendacaoOleoId String?
+  recomendacaoOleo   RecomendacaoOleo? @relation(fields: [recomendacaoOleoId], references: [id], onDelete: SetNull)
+
+  cliente Cliente        @relation(fields: [clienteId], references: [id], onDelete: Restrict)
+  ordens  OrdemServico[]
+
+  @@index([clienteId])
+  @@map("veiculos")
+}
+
+model OrdemServico {
+  id          String   @id @default(cuid())
+  numero      Int      @unique @default(autoincrement())
+  veiculoId   String
+  dataEntrada DateTime @db.Date
+  kmEntrada   Int
+  descricao   String
+  status      StatusOS @default(AGUARDANDO)
+  observacoes String?
+  criadoEm    DateTime @default(now())
+
+  veiculo   Veiculo             @relation(fields: [veiculoId], references: [id], onDelete: Restrict)
+  historico HistoricoStatusOS[]
+  trocaOleo TrocaOleo?
+
+  @@index([veiculoId])
+  @@index([status])
+  @@map("ordens_servico")
+}
+
+model HistoricoStatusOS {
+  id             String    @id @default(cuid())
+  ordemServicoId String
+  deStatus       StatusOS?
+  paraStatus     StatusOS
+  em             DateTime  @default(now())
+  porId          String?
+
+  ordemServico OrdemServico @relation(fields: [ordemServicoId], references: [id], onDelete: Cascade)
+  por          Usuario?     @relation(fields: [porId], references: [id], onDelete: SetNull)
+
+  @@index([ordemServicoId])
+  @@map("historico_status_os")
+}
+
+/// Troca de óleo registrada dentro de uma OS (no máximo uma por OS).
+model TrocaOleo {
+  id                      String   @id @default(cuid())
+  ordemServicoId          String   @unique
+  oleoMarca               String
+  oleoViscosidade         String
+  oleoEspecificacao       String
+  quantidadeLitros        Float
+  filtroTrocado           Boolean
+  proximaTrocaKm          Int?
+  proximaTrocaData        DateTime? @db.Date
+  /// Foto do que era recomendado no momento do registro.
+  recomendacaoOleoId      String?
+  divergiuDaRecomendacao  Boolean  @default(false)
+  criadoEm                DateTime @default(now())
+  atualizadoEm            DateTime @updatedAt
+
+  ordemServico OrdemServico      @relation(fields: [ordemServicoId], references: [id], onDelete: Cascade)
+  recomendacao RecomendacaoOleo? @relation(fields: [recomendacaoOleoId], references: [id], onDelete: SetNull)
+
+  @@map("trocas_oleo")
+}
+
+// ---------------------------------------------------------------------
+// Base de óleo: marca -> modelo -> motor -> faixa de anos.
+// Carregada pelo seed a partir de data/oleo/*.json. Tudo precisa de fonte.
+// ---------------------------------------------------------------------
+
+model MarcaVeiculo {
+  id      String          @id @default(cuid())
+  nome    String          @unique
+  modelos ModeloVeiculo[]
+
+  @@map("marcas_veiculo")
+}
+
+model ModeloVeiculo {
+  id      String @id @default(cuid())
+  marcaId String
+  nome    String
+
+  marca        MarcaVeiculo       @relation(fields: [marcaId], references: [id], onDelete: Cascade)
+  recomendacoes RecomendacaoOleo[]
+
+  @@unique([marcaId, nome])
+  @@map("modelos_veiculo")
+}
+
+model RecomendacaoOleo {
+  id                    String    @id @default(cuid())
+  modeloId              String
+  motor                 String
+  anoInicial            Int
+  anoFinal              Int
+  viscosidade           String
+  especificacao         String
+  capacidadeComFiltroL  Float?
+  capacidadeSemFiltroL  Float?
+  intervaloKm           Int?
+  intervaloMeses        Int?
+  confianca             Confianca
+  /// Campos em que as fontes discordam (quando DIVERGENTE).
+  divergencias          String[]
+
+  modelo  ModeloVeiculo @relation(fields: [modeloId], references: [id], onDelete: Cascade)
+  fontes  FonteOleo[]
+  veiculos Veiculo[]
+  trocas  TrocaOleo[]
+
+  @@unique([modeloId, motor, anoInicial, anoFinal])
+  @@map("recomendacoes_oleo")
+}
+
+model FonteOleo {
+  id                   String    @id @default(cuid())
+  recomendacaoId       String
+  tipo                 TipoFonte
+  url                  String
+  consultadaEm         DateTime  @db.Date
+  observacao           String?
+  viscosidade          String?
+  especificacao        String?
+  capacidadeComFiltroL Float?
+  capacidadeSemFiltroL Float?
+  intervaloKm          Int?
+  intervaloMeses       Int?
+
+  recomendacao RecomendacaoOleo @relation(fields: [recomendacaoId], references: [id], onDelete: Cascade)
+
+  @@index([recomendacaoId])
+  @@map("fontes_oleo")
+}
