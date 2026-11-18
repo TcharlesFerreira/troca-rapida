@@ -1,0 +1,50 @@
+{
+  "marca": "Honda",
+  "modelos": [
+    {
+      "nome": "HR-V",
+      "motores": [
+        {
+          "motor": "1.5 flex",
+          "anos": [
+            2022,
+            2024
+          ],
+          "fontes": [
+            {
+              "tipo": "TECNICA",
+              "url": "https://www.manualdooleo.com.br/tabela-oleo/honda/hr-v",
+              "consultadaEm": "2026-11-18",
+              "observacao": "Tabela: 1.5 16V 126 cv flex automático, 2022 a 2024, 3,3 L.",
+              "dados": {
+                "viscosidade": "0W-20",
+                "especificacao": "API SM ou superior",
+                "capacidadeComFiltroL": 3.3
+              }
+            }
+          ]
+        },
+        {
+          "motor": "1.5 turbo",
+          "anos": [
+            2023,
+            2025
+          ],
+          "fontes": [
+            {
+              "tipo": "TECNICA",
+              "url": "https://www.manualdooleo.com.br/tabela-oleo/honda/hr-v",
+              "consultadaEm": "2026-11-18",
+              "observacao": "Tabela: 1.5 16V Turbo 177 cv automático, 2023 a 2025, 3,6 L.",
+              "dados": {
+                "viscosidade": "0W-20",
+                "especificacao": "API SM ou superior",
+                "capacidadeComFiltroL": 3.6
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

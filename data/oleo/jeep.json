@@ -1,0 +1,40 @@
+{
+  "marca": "Jeep",
+  "modelos": [
+    {
+      "nome": "Renegade",
+      "motores": [
+        {
+          "motor": "1.3 turbo T270",
+          "anos": [
+            2022,
+            2026
+          ],
+          "fontes": [
+            {
+              "tipo": "TECNICA",
+              "url": "https://omecanico.com.br/qual-o-oleo-correto-do-motor-1-3-turbo-t270-dos-jeep-renegade-compass-commander-e-fiat-toro/",
+              "consultadaEm": "2026-11-18",
+              "observacao": "Matéria (mar/2024): a Jeep indica o Mopar MaxPro Synthetic 0W30 ACEA C2, FCA 9.55535-GS1, para Compass, Renegade e Commander. O Renegade recebeu o T270 em fev/2022.",
+              "dados": {
+                "viscosidade": "0W-30",
+                "especificacao": "FCA 9.55535-GS1 / ACEA C2"
+              }
+            },
+            {
+              "tipo": "TECNICA",
+              "url": "https://www.manualdooleo.com.br/tabela-oleo/jeep/renegade",
+              "consultadaEm": "2026-11-18",
+              "observacao": "Tabela: 1.3 16V Turbo 185 cv flex automático, 2022 a 2026, 4,8 L. Cita ACEA C2/C3.",
+              "dados": {
+                "viscosidade": "0W-30",
+                "especificacao": "FCA 9.55535-GS1 / ACEA C2/C3",
+                "capacidadeComFiltroL": 4.8
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,135 @@
+{
+  "marca": "Volkswagen",
+  "modelos": [
+    {
+      "nome": "Polo",
+      "motores": [
+        {
+          "motor": "1.0 TSI 170TSI",
+          "anos": [
+            2023,
+            2025
+          ],
+          "fontes": [
+            {
+              "tipo": "TECNICA",
+              "url": "https://omecanico.com.br/?p=119227",
+              "consultadaEm": "2026-11-18",
+              "observacao": "Guia dos motores 170TSI, 200TSI e 250TSI (mar/2025): norma VW 508 88 com viscosidade 5W-40; o 170TSI é o do Polo.",
+              "dados": {
+                "viscosidade": "5W-40",
+                "especificacao": "VW 508 88"
+              }
+            },
+            {
+              "tipo": "TECNICA",
+              "url": "https://omecanico.com.br/qual-e-o-oleo-correto-para-o-motor-1-0-tsi-dos-volkswagen-virtus-nivus-polo-e-t-cross/",
+              "consultadaEm": "2026-11-18",
+              "observacao": "Matéria sobre o 1.0 TSI (fev/2024): o de 116 cv é o do Polo a partir de 2023; troca a cada 10 mil km ou 12 meses. Cita o Shell Maxi Performance 5W-40 VW 508 88/509 99.",
+              "dados": {
+                "intervaloKm": 10000,
+                "intervaloMeses": 12
+              }
+            },
+            {
+              "tipo": "TECNICA",
+              "url": "https://www.manualdooleo.com.br/tabela-oleo/volkswagen/polo",
+              "consultadaEm": "2026-11-18",
+              "observacao": "Tabela: 1.0 12V TSI 116 cv flex, 2022 a 2025, 4,0 L (troca total, conforme o manual).",
+              "dados": {
+                "viscosidade": "5W-40",
+                "especificacao": "VW 508 88",
+                "capacidadeComFiltroL": 4.0
+              }
+            }
+          ]
+        },
+        {
+          "motor": "1.0 MPI",
+          "anos": [
+            2017,
+            2026
+          ],
+          "fontes": [
+            {
+              "tipo": "TECNICA",
+              "url": "https://www.manualdooleo.com.br/tabela-oleo/volkswagen/polo",
+              "consultadaEm": "2026-11-18",
+              "observacao": "Tabela: 1.0 12V 84 cv MPI flex manual, 2017 a 2026, 3,3 L (troca total, conforme o manual).",
+              "dados": {
+                "viscosidade": "5W-40",
+                "especificacao": "VW 508 88",
+                "capacidadeComFiltroL": 3.3
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "nome": "T-Cross",
+      "motores": [
+        {
+          "motor": "1.0 TSI 200TSI",
+          "anos": [
+            2019,
+            2026
+          ],
+          "fontes": [
+            {
+              "tipo": "TECNICA",
+              "url": "https://omecanico.com.br/?p=119227",
+              "consultadaEm": "2026-11-18",
+              "observacao": "Guia dos motores TSI (mar/2025): 200TSI no Nivus e T-Cross, norma VW 508 88 e viscosidade 5W-40.",
+              "dados": {
+                "viscosidade": "5W-40",
+                "especificacao": "VW 508 88"
+              }
+            },
+            {
+              "tipo": "TECNICA",
+              "url": "https://www.manualdooleo.com.br/tabela-oleo/volkswagen/t-cross",
+              "consultadaEm": "2026-11-18",
+              "observacao": "Tabela: 1.0 12V TSI 200 128 cv flex, 2019 a 2026, 4,0 L (troca total).",
+              "dados": {
+                "viscosidade": "5W-40",
+                "especificacao": "VW 508 88",
+                "capacidadeComFiltroL": 4.0
+              }
+            }
+          ]
+        },
+        {
+          "motor": "1.4 TSI 250TSI",
+          "anos": [
+            2019,
+            2026
+          ],
+          "fontes": [
+            {
+              "tipo": "TECNICA",
+              "url": "https://omecanico.com.br/?p=119227",
+              "consultadaEm": "2026-11-18",
+              "observacao": "Guia dos motores TSI (mar/2025): 250TSI no T-Cross e Taos, norma VW 508 88 e viscosidade 5W-40.",
+              "dados": {
+                "viscosidade": "5W-40",
+                "especificacao": "VW 508 88"
+              }
+            },
+            {
+              "tipo": "TECNICA",
+              "url": "https://www.manualdooleo.com.br/tabela-oleo/volkswagen/t-cross",
+              "consultadaEm": "2026-11-18",
+              "observacao": "Tabela: 1.4 16V TSI 150 cv flex automático, 2019 a 2026, 4,0 L (troca total).",
+              "dados": {
+                "viscosidade": "5W-40",
+                "especificacao": "VW 508 88",
+                "capacidadeComFiltroL": 4.0
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

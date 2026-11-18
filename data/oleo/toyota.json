@@ -1,0 +1,30 @@
+{
+  "marca": "Toyota",
+  "modelos": [
+    {
+      "nome": "Corolla Cross",
+      "motores": [
+        {
+          "motor": "2.0 flex",
+          "anos": [
+            2021,
+            2026
+          ],
+          "fontes": [
+            {
+              "tipo": "TECNICA",
+              "url": "https://www.manualdooleo.com.br/tabela-oleo/toyota/corolla-cross",
+              "consultadaEm": "2026-11-18",
+              "observacao": "Tabela: 2.0 16V 177 cv flex automático, 2021 a 2026, 4,6 L. O manual aceita 0W-20 ou 5W-30.",
+              "dados": {
+                "viscosidade": "0W-20 / 5W-30",
+                "especificacao": "API SL ou superior",
+                "capacidadeComFiltroL": 4.6
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

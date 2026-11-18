@@ -6,7 +6,10 @@
       "motores": [
         {
           "motor": "1.0 Firefly",
-          "anos": [2026, 2026],
+          "anos": [
+            2026,
+            2026
+          ],
           "fontes": [
             {
               "tipo": "TECNICA",
@@ -24,7 +27,95 @@
               "url": "https://omecanico.com.br/qual-o-oleo-e-filtros-corretos-do-fiat-argo-1-0-1-3-e-1-8/",
               "consultadaEm": "2026-11-16",
               "observacao": "Lista o óleo MaxPro 0W-20 (SP/GF-6A) para os motores Firefly. A diferença de nível (SN/GF-5 x SP/GF-6A) aparece como divergência de propósito: confira no manual.",
-              "dados": { "viscosidade": "0W-20", "especificacao": "API SP / ILSAC GF-6A" }
+              "dados": {
+                "viscosidade": "0W-20",
+                "especificacao": "API SP / ILSAC GF-6A"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "nome": "Strada",
+      "motores": [
+        {
+          "motor": "1.3 Firefly",
+          "anos": [
+            2020,
+            2022
+          ],
+          "fontes": [
+            {
+              "tipo": "TECNICA",
+              "url": "https://www.manualdooleo.com.br/tabela-oleo/fiat/strada",
+              "consultadaEm": "2026-11-18",
+              "observacao": "Tabela: 1.3 8V 109 cv flex, 2020 a 2024, 3,4 L (troca total).",
+              "dados": {
+                "viscosidade": "0W-20",
+                "especificacao": "Fiat 9.55535-GSX / API SN",
+                "capacidadeComFiltroL": 3.4
+              }
+            }
+          ]
+        },
+        {
+          "motor": "1.3 Firefly",
+          "anos": [
+            2023,
+            2026
+          ],
+          "fontes": [
+            {
+              "tipo": "TECNICA",
+              "url": "https://omecanico.com.br/qual-o-oleo-correto-da-fiat-strada-turbo/",
+              "consultadaEm": "2026-11-18",
+              "observacao": "Matéria (mar/2024) sobre a linha 2023: o 1.3 Firefly aspirado usa o Mopar MaxPro Synthetic 0W-20 API SP / ILSAC GF-6A. A norma difere da outra fonte: confira no manual.",
+              "dados": {
+                "viscosidade": "0W-20",
+                "especificacao": "API SP / ILSAC GF-6A"
+              }
+            },
+            {
+              "tipo": "TECNICA",
+              "url": "https://www.manualdooleo.com.br/tabela-oleo/fiat/strada",
+              "consultadaEm": "2026-11-18",
+              "observacao": "Tabela: 1.3 8V flex (107/109 cv), 2020 a 2026, 3,4 L (troca total).",
+              "dados": {
+                "viscosidade": "0W-20",
+                "especificacao": "Fiat 9.55535-GSX / API SN",
+                "capacidadeComFiltroL": 3.4
+              }
+            }
+          ]
+        },
+        {
+          "motor": "1.0 turbo T200",
+          "anos": [
+            2023,
+            2026
+          ],
+          "fontes": [
+            {
+              "tipo": "TECNICA",
+              "url": "https://omecanico.com.br/qual-o-oleo-correto-da-fiat-strada-turbo/",
+              "consultadaEm": "2026-11-18",
+              "observacao": "Matéria (mar/2024): conforme o manual, Mopar MaxPro Synthetic SAE 0W-30, norma FCA 9.55535-GSI e ACEA C2.",
+              "dados": {
+                "viscosidade": "0W-30",
+                "especificacao": "FCA 9.55535-GSI / ACEA C2"
+              }
+            },
+            {
+              "tipo": "TECNICA",
+              "url": "https://www.manualdooleo.com.br/tabela-oleo/fiat/strada",
+              "consultadaEm": "2026-11-18",
+              "observacao": "Tabela: 1.0 12V Turbo 130 cv flex, 2023 a 2026, 3,5 L (troca total).",
+              "dados": {
+                "viscosidade": "0W-30",
+                "especificacao": "FCA 9.55535-GSI / ACEA C2",
+                "capacidadeComFiltroL": 3.5
+              }
             }
           ]
         }

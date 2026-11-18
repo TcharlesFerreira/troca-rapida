@@ -1,0 +1,39 @@
+{
+  "marca": "Renault",
+  "modelos": [
+    {
+      "nome": "Kwid",
+      "motores": [
+        {
+          "motor": "1.0 SCe",
+          "anos": [
+            2017,
+            2026
+          ],
+          "fontes": [
+            {
+              "tipo": "TECNICA",
+              "url": "https://omecanico.com.br/veja-qual-o-oleo-e-os-filtros-corretos-do-renault-kwid/",
+              "consultadaEm": "2026-11-18",
+              "observacao": "Matéria (mai/2025): óleo do motor 5W30 Motrio Flex Sintético Ultra (8660089616). Motor único 1.0 três cilindros desde o lançamento. Não informa a norma.",
+              "dados": {
+                "viscosidade": "5W-30"
+              }
+            },
+            {
+              "tipo": "TECNICA",
+              "url": "https://www.manualdooleo.com.br/tabela-oleo/renault/kwid",
+              "consultadaEm": "2026-11-18",
+              "observacao": "Tabela: 1.0 12V 70 cv, 2017 a 2026, 3,0 L. Indica 10W-40 semissintético ou sintético, ou 5W-40 sintético.",
+              "dados": {
+                "viscosidade": "10W-40 / 5W-40",
+                "especificacao": "Renault RN0700 / RN0710",
+                "capacidadeComFiltroL": 3.0
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
