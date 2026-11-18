@@ -130,6 +130,313 @@
           ]
         }
       ]
+    },
+    {
+      "nome": "Gol",
+      "motores": [
+        {
+          "motor": "1.0 8V",
+          "anos": [
+            2009,
+            2016
+          ],
+          "fontes": [
+            {
+              "tipo": "TECNICA",
+              "url": "https://www.manualdooleo.com.br/tabela-oleo/volkswagen/gol",
+              "consultadaEm": "2026-11-18",
+              "observacao": "Tabela: 1.0 8V 76 cv EA111 flex (2008 a 2016) e 71 cv G4. 3,5 L (troca total). Também aceita 10W-40 semissintético ou sintético.",
+              "dados": {
+                "viscosidade": "5W-40",
+                "especificacao": "VW 502 00 / API SN",
+                "capacidadeComFiltroL": 3.5
+              }
+            },
+            {
+              "tipo": "TECNICA",
+              "url": "https://omecanico.com.br/motor-vw-ea111-retificado-muda-a-especificacao-do-oleo/",
+              "consultadaEm": "2026-11-18",
+              "observacao": "Matéria (fev/2024) sobre o motor EA111 (Gol/Fox 1.0 e 1.6 8V): o recomendado pela fabricante é o 5W-40 sintético. Não informa a norma.",
+              "dados": {
+                "viscosidade": "5W-40"
+              }
+            }
+          ]
+        },
+        {
+          "motor": "1.0 12V MPI (EA211)",
+          "anos": [
+            2016,
+            2023
+          ],
+          "fontes": [
+            {
+              "tipo": "TECNICA",
+              "url": "https://www.manualdooleo.com.br/tabela-oleo/volkswagen/gol",
+              "consultadaEm": "2026-11-18",
+              "observacao": "Tabela: 1.0 12V 82/84 cv EA211 flex, 2016 a 2023, 3,3 L (troca total).",
+              "dados": {
+                "viscosidade": "5W-40",
+                "especificacao": "VW 508 88",
+                "capacidadeComFiltroL": 3.3
+              }
+            }
+          ]
+        },
+        {
+          "motor": "1.6 8V",
+          "anos": [
+            2009,
+            2012
+          ],
+          "fontes": [
+            {
+              "tipo": "TECNICA",
+              "url": "https://www.manualdooleo.com.br/tabela-oleo/volkswagen/gol",
+              "consultadaEm": "2026-11-18",
+              "observacao": "Tabela: 1.6 8V 107 cv G4 flex, 2007 a 2013, 4,0 L (troca total). Também aceita 10W-40 semissintético ou sintético.",
+              "dados": {
+                "viscosidade": "5W-40",
+                "especificacao": "VW 502 00 / API SN",
+                "capacidadeComFiltroL": 4.0
+              }
+            },
+            {
+              "tipo": "TECNICA",
+              "url": "https://omecanico.com.br/motor-vw-ea111-retificado-muda-a-especificacao-do-oleo/",
+              "consultadaEm": "2026-11-18",
+              "observacao": "Matéria (fev/2024) sobre o motor EA111 (Gol/Fox 1.0 e 1.6 8V): o recomendado pela fabricante é o 5W-40 sintético. Não informa a norma.",
+              "dados": {
+                "viscosidade": "5W-40"
+              }
+            }
+          ]
+        },
+        {
+          "motor": "1.6 8V",
+          "anos": [
+            2013,
+            2022
+          ],
+          "fontes": [
+            {
+              "tipo": "TECNICA",
+              "url": "https://www.manualdooleo.com.br/tabela-oleo/volkswagen/gol",
+              "consultadaEm": "2026-11-18",
+              "observacao": "Tabela: 1.6 8V 104 cv EA111 flex, 2013 a 2017 e 2016 a 2022, 4,0 L (troca total).",
+              "dados": {
+                "viscosidade": "5W-40",
+                "especificacao": "VW 508 88",
+                "capacidadeComFiltroL": 4.0
+              }
+            },
+            {
+              "tipo": "TECNICA",
+              "url": "https://omecanico.com.br/motor-vw-ea111-retificado-muda-a-especificacao-do-oleo/",
+              "consultadaEm": "2026-11-18",
+              "observacao": "Matéria (fev/2024) sobre o motor EA111 (Gol/Fox 1.0 e 1.6 8V): o recomendado pela fabricante é o 5W-40 sintético. Não informa a norma.",
+              "dados": {
+                "viscosidade": "5W-40"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "nome": "Fox",
+      "motores": [
+        {
+          "motor": "1.0 8V",
+          "anos": [
+            2009,
+            2014
+          ],
+          "fontes": [
+            {
+              "tipo": "TECNICA",
+              "url": "https://www.manualdooleo.com.br/tabela-oleo/volkswagen/fox",
+              "consultadaEm": "2026-11-18",
+              "observacao": "Tabela: 1.0 8V 76 cv flex, 2009 a 2015, 3,3 L (troca total). Também aceita 10W-40 semissintético ou sintético.",
+              "dados": {
+                "viscosidade": "5W-40",
+                "especificacao": "VW 502 00 / API SN",
+                "capacidadeComFiltroL": 3.3
+              }
+            },
+            {
+              "tipo": "TECNICA",
+              "url": "https://omecanico.com.br/motor-vw-ea111-retificado-muda-a-especificacao-do-oleo/",
+              "consultadaEm": "2026-11-18",
+              "observacao": "Matéria (fev/2024) sobre o motor EA111 (Gol/Fox 1.0 e 1.6 8V): o recomendado pela fabricante é o 5W-40 sintético. Não informa a norma.",
+              "dados": {
+                "viscosidade": "5W-40"
+              }
+            }
+          ]
+        },
+        {
+          "motor": "1.0 12V MPI (EA211)",
+          "anos": [
+            2015,
+            2018
+          ],
+          "fontes": [
+            {
+              "tipo": "TECNICA",
+              "url": "https://www.manualdooleo.com.br/tabela-oleo/volkswagen/fox",
+              "consultadaEm": "2026-11-18",
+              "observacao": "Tabela: 1.0 12V 82 cv MPI flex, 2014 a 2018, 3,3 L (troca total).",
+              "dados": {
+                "viscosidade": "5W-40",
+                "especificacao": "VW 508 88",
+                "capacidadeComFiltroL": 3.3
+              }
+            }
+          ]
+        },
+        {
+          "motor": "1.6 8V",
+          "anos": [
+            2009,
+            2017
+          ],
+          "fontes": [
+            {
+              "tipo": "TECNICA",
+              "url": "https://www.manualdooleo.com.br/tabela-oleo/volkswagen/fox",
+              "consultadaEm": "2026-11-18",
+              "observacao": "Tabela: 1.6 8V 104 cv EA111 flex, 2008 a 2017, 4,0 L (troca total). Também aceita 10W-40 semissintético ou sintético.",
+              "dados": {
+                "viscosidade": "5W-40",
+                "especificacao": "VW 502 00 / API SN",
+                "capacidadeComFiltroL": 4.0
+              }
+            },
+            {
+              "tipo": "TECNICA",
+              "url": "https://omecanico.com.br/motor-vw-ea111-retificado-muda-a-especificacao-do-oleo/",
+              "consultadaEm": "2026-11-18",
+              "observacao": "Matéria (fev/2024) sobre o motor EA111 (Gol/Fox 1.0 e 1.6 8V): o recomendado pela fabricante é o 5W-40 sintético. Não informa a norma.",
+              "dados": {
+                "viscosidade": "5W-40"
+              }
+            }
+          ]
+        },
+        {
+          "motor": "1.6 8V",
+          "anos": [
+            2018,
+            2022
+          ],
+          "fontes": [
+            {
+              "tipo": "TECNICA",
+              "url": "https://www.manualdooleo.com.br/tabela-oleo/volkswagen/fox",
+              "consultadaEm": "2026-11-18",
+              "observacao": "Tabela: 1.6 8V 104 cv flex manual, 2018 a 2022, 4,0 L (troca total).",
+              "dados": {
+                "viscosidade": "5W-40",
+                "especificacao": "VW 508 88",
+                "capacidadeComFiltroL": 4.0
+              }
+            },
+            {
+              "tipo": "TECNICA",
+              "url": "https://omecanico.com.br/motor-vw-ea111-retificado-muda-a-especificacao-do-oleo/",
+              "consultadaEm": "2026-11-18",
+              "observacao": "Matéria (fev/2024) sobre o motor EA111 (Gol/Fox 1.0 e 1.6 8V): o recomendado pela fabricante é o 5W-40 sintético. Não informa a norma.",
+              "dados": {
+                "viscosidade": "5W-40"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "nome": "Saveiro",
+      "motores": [
+        {
+          "motor": "1.6 8V",
+          "anos": [
+            2009,
+            2013
+          ],
+          "fontes": [
+            {
+              "tipo": "TECNICA",
+              "url": "https://www.manualdooleo.com.br/tabela-oleo/volkswagen/saveiro",
+              "consultadaEm": "2026-11-18",
+              "observacao": "Tabela: 1.6 8V 104 cv EA111 flex, 2008 a 2014, 4,0 L (troca total). Também aceita 10W-40 semissintético ou sintético.",
+              "dados": {
+                "viscosidade": "5W-40",
+                "especificacao": "VW 502 00 / API SN",
+                "capacidadeComFiltroL": 4.0
+              }
+            },
+            {
+              "tipo": "TECNICA",
+              "url": "https://omecanico.com.br/motor-vw-ea111-retificado-muda-a-especificacao-do-oleo/",
+              "consultadaEm": "2026-11-18",
+              "observacao": "Matéria (fev/2024) sobre o motor EA111 (Gol/Fox 1.0 e 1.6 8V): o recomendado pela fabricante é o 5W-40 sintético. Não informa a norma.",
+              "dados": {
+                "viscosidade": "5W-40"
+              }
+            }
+          ]
+        },
+        {
+          "motor": "1.6 8V",
+          "anos": [
+            2014,
+            2022
+          ],
+          "fontes": [
+            {
+              "tipo": "TECNICA",
+              "url": "https://www.manualdooleo.com.br/tabela-oleo/volkswagen/saveiro",
+              "consultadaEm": "2026-11-18",
+              "observacao": "Tabela: 1.6 8V 104 cv flex, 2014 a 2016 e 2016 a 2022, 4,0 L (troca total).",
+              "dados": {
+                "viscosidade": "5W-40",
+                "especificacao": "VW 508 88",
+                "capacidadeComFiltroL": 4.0
+              }
+            },
+            {
+              "tipo": "TECNICA",
+              "url": "https://omecanico.com.br/motor-vw-ea111-retificado-muda-a-especificacao-do-oleo/",
+              "consultadaEm": "2026-11-18",
+              "observacao": "Matéria (fev/2024) sobre o motor EA111 (Gol/Fox 1.0 e 1.6 8V): o recomendado pela fabricante é o 5W-40 sintético. Não informa a norma.",
+              "dados": {
+                "viscosidade": "5W-40"
+              }
+            }
+          ]
+        },
+        {
+          "motor": "1.6 16V MSI",
+          "anos": [
+            2022,
+            2026
+          ],
+          "fontes": [
+            {
+              "tipo": "TECNICA",
+              "url": "https://www.manualdooleo.com.br/tabela-oleo/volkswagen/saveiro",
+              "consultadaEm": "2026-11-18",
+              "observacao": "Tabela: 1.6 16V 116 cv MSI flex, 2022 a 2026, 4,5 L (troca total).",
+              "dados": {
+                "viscosidade": "5W-40",
+                "especificacao": "VW 508 88",
+                "capacidadeComFiltroL": 4.5
+              }
+            }
+          ]
+        }
+      ]
     }
   ]
 }

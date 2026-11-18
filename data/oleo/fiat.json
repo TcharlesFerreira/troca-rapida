@@ -31,6 +31,77 @@
                 "viscosidade": "0W-20",
                 "especificacao": "API SP / ILSAC GF-6A"
               }
+            },
+            {
+              "tipo": "TECNICA",
+              "url": "https://www.manualdooleo.com.br/tabela-oleo/fiat/argo",
+              "consultadaEm": "2026-11-18",
+              "observacao": "Tabela: 1.0 6V, 2025 a 2026, 2,54 L.",
+              "dados": {
+                "viscosidade": "0W-20",
+                "especificacao": "Fiat 9.55535-GSX / API SN",
+                "capacidadeComFiltroL": 2.54
+              }
+            }
+          ]
+        },
+        {
+          "motor": "1.0 Firefly",
+          "anos": [
+            2017,
+            2025
+          ],
+          "fontes": [
+            {
+              "tipo": "TECNICA",
+              "url": "https://www.manualdooleo.com.br/tabela-oleo/fiat/argo",
+              "consultadaEm": "2026-11-18",
+              "observacao": "Tabela: 1.0 6V, 2017 a 2024 e 2025 a 2026, 2,54 L.",
+              "dados": {
+                "viscosidade": "0W-20",
+                "especificacao": "Fiat 9.55535-GSX / API SN",
+                "capacidadeComFiltroL": 2.54
+              }
+            },
+            {
+              "tipo": "TECNICA",
+              "url": "https://omecanico.com.br/qual-o-oleo-e-filtros-corretos-do-fiat-argo-1-0-1-3-e-1-8/",
+              "consultadaEm": "2026-11-18",
+              "observacao": "Lista o MaxPro 0W-20 (API SP / ILSAC GF-6A) para os motores Firefly 1.0 e 1.3. A norma difere da tabela: confira no manual.",
+              "dados": {
+                "viscosidade": "0W-20",
+                "especificacao": "API SP / ILSAC GF-6A"
+              }
+            }
+          ]
+        },
+        {
+          "motor": "1.3 Firefly",
+          "anos": [
+            2017,
+            2026
+          ],
+          "fontes": [
+            {
+              "tipo": "TECNICA",
+              "url": "https://www.manualdooleo.com.br/tabela-oleo/fiat/argo",
+              "consultadaEm": "2026-11-18",
+              "observacao": "Tabela: 1.3 8V, 2017 a 2021 e 2022 a 2026, 3,4 L.",
+              "dados": {
+                "viscosidade": "0W-20",
+                "especificacao": "Fiat 9.55535-GSX / API SN",
+                "capacidadeComFiltroL": 3.4
+              }
+            },
+            {
+              "tipo": "TECNICA",
+              "url": "https://omecanico.com.br/qual-o-oleo-e-filtros-corretos-do-fiat-argo-1-0-1-3-e-1-8/",
+              "consultadaEm": "2026-11-18",
+              "observacao": "Lista o MaxPro 0W-20 (API SP / ILSAC GF-6A) para os motores Firefly 1.0 e 1.3. A norma difere da tabela: confira no manual.",
+              "dados": {
+                "viscosidade": "0W-20",
+                "especificacao": "API SP / ILSAC GF-6A"
+              }
             }
           ]
         }
@@ -115,6 +186,219 @@
                 "viscosidade": "0W-30",
                 "especificacao": "FCA 9.55535-GSI / ACEA C2",
                 "capacidadeComFiltroL": 3.5
+              }
+            }
+          ]
+        },
+        {
+          "motor": "1.4 Fire 8V",
+          "anos": [
+            2016,
+            2019
+          ],
+          "fontes": [
+            {
+              "tipo": "TECNICA",
+              "url": "https://www.manualdooleo.com.br/tabela-oleo/fiat/strada",
+              "consultadaEm": "2026-11-18",
+              "observacao": "Tabela: 1.4 8V 88 cv flex, 2016 a 2020, 2,7 L. Também aceita 5W-40 sintético.",
+              "dados": {
+                "viscosidade": "5W-30",
+                "especificacao": "API SN / API SM",
+                "capacidadeComFiltroL": 2.7
+              }
+            }
+          ]
+        },
+        {
+          "motor": "1.4 Fire 8V",
+          "anos": [
+            2020,
+            2023
+          ],
+          "fontes": [
+            {
+              "tipo": "TECNICA",
+              "url": "https://www.manualdooleo.com.br/tabela-oleo/fiat/strada",
+              "consultadaEm": "2026-11-18",
+              "observacao": "Tabela: 1.4 8V 86 cv flex, 2020 a 2023, 2,7 L.",
+              "dados": {
+                "viscosidade": "5W-30",
+                "especificacao": "Fiat 9.55535-G1 / API SM/SP",
+                "capacidadeComFiltroL": 2.7
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "nome": "Uno",
+      "motores": [
+        {
+          "motor": "1.0 Fire Evo 8V",
+          "anos": [
+            2010,
+            2021
+          ],
+          "fontes": [
+            {
+              "tipo": "TECNICA",
+              "url": "https://www.manualdooleo.com.br/tabela-oleo/fiat/uno",
+              "consultadaEm": "2026-11-18",
+              "observacao": "Tabela: 1.0 8V 75 cv flex, 2010 a 2021, 2,7 L (troca total).",
+              "dados": {
+                "viscosidade": "5W-30",
+                "especificacao": "Fiat 9.55535-G1",
+                "capacidadeComFiltroL": 2.7
+              }
+            }
+          ]
+        },
+        {
+          "motor": "1.0 Firefly",
+          "anos": [
+            2017,
+            2021
+          ],
+          "fontes": [
+            {
+              "tipo": "TECNICA",
+              "url": "https://www.manualdooleo.com.br/tabela-oleo/fiat/uno",
+              "consultadaEm": "2026-11-18",
+              "observacao": "Tabela: 1.0 6V 77 cv flex, 2016 a 2021, 2,6 L (troca total).",
+              "dados": {
+                "viscosidade": "0W-20",
+                "especificacao": "Fiat 9.55535-GSX",
+                "capacidadeComFiltroL": 2.6
+              }
+            },
+            {
+              "tipo": "TECNICA",
+              "url": "https://omecanico.com.br/lancamento-fiat-uno-2017-ganha-nova-familia-de-motores/",
+              "consultadaEm": "2026-11-18",
+              "observacao": "Lançamento do Uno 2017 (out/2016): os motores Firefly usam corrente de comando e óleo de baixa viscosidade (0W20). Não informa a norma.",
+              "dados": {
+                "viscosidade": "0W-20"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "nome": "Palio",
+      "motores": [
+        {
+          "motor": "1.0 Fire 8V",
+          "anos": [
+            2009,
+            2011
+          ],
+          "fontes": [
+            {
+              "tipo": "TECNICA",
+              "url": "https://www.manualdooleo.com.br/tabela-oleo/fiat/palio",
+              "consultadaEm": "2026-11-18",
+              "observacao": "Tabela: 1.0 8V 75 cv flex, 2009 a 2016, 2,7 L. Também aceita 15W-40 semissintético.",
+              "dados": {
+                "viscosidade": "5W-30",
+                "especificacao": "ACEA A3/B4 / API SN / API SM",
+                "capacidadeComFiltroL": 2.7
+              }
+            }
+          ]
+        },
+        {
+          "motor": "1.0 Fire 8V",
+          "anos": [
+            2012,
+            2017
+          ],
+          "fontes": [
+            {
+              "tipo": "TECNICA",
+              "url": "https://www.manualdooleo.com.br/tabela-oleo/fiat/palio",
+              "consultadaEm": "2026-11-18",
+              "observacao": "Tabela: 1.0 8V 75 cv flex, 2012 a 2017, 2,7 L. A mesma página tem outra linha 2009 a 2016 com ACEA A3/B4: confira no manual.",
+              "dados": {
+                "viscosidade": "5W-30",
+                "especificacao": "Fiat 9.55535-G1 / API SM/SP",
+                "capacidadeComFiltroL": 2.7
+              }
+            }
+          ]
+        },
+        {
+          "motor": "1.4 Fire 8V",
+          "anos": [
+            2009,
+            2016
+          ],
+          "fontes": [
+            {
+              "tipo": "TECNICA",
+              "url": "https://www.manualdooleo.com.br/tabela-oleo/fiat/palio",
+              "consultadaEm": "2026-11-18",
+              "observacao": "Tabela: 1.4 8V 86/88 cv flex, 2005 a 2011 e 2012 a 2017, 2,7 L. Também aceita 15W-40 semissintético.",
+              "dados": {
+                "viscosidade": "5W-30",
+                "especificacao": "ACEA A3/B4",
+                "capacidadeComFiltroL": 2.7
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "nome": "Mobi",
+      "motores": [
+        {
+          "motor": "1.0 Fire Evo 8V",
+          "anos": [
+            2016,
+            2024
+          ],
+          "fontes": [
+            {
+              "tipo": "TECNICA",
+              "url": "https://www.manualdooleo.com.br/tabela-oleo/fiat/mobi",
+              "consultadaEm": "2026-11-18",
+              "observacao": "Tabela: 1.0 8V, 2016 a 2025, 2,7 L. O Fire saiu do Mobi na linha 2025.",
+              "dados": {
+                "viscosidade": "5W-30",
+                "especificacao": "Fiat 9.55535-G1 / API SM",
+                "capacidadeComFiltroL": 2.7
+              }
+            }
+          ]
+        },
+        {
+          "motor": "1.0 Firefly",
+          "anos": [
+            2017,
+            2026
+          ],
+          "fontes": [
+            {
+              "tipo": "TECNICA",
+              "url": "https://www.manualdooleo.com.br/tabela-oleo/fiat/mobi",
+              "consultadaEm": "2026-11-18",
+              "observacao": "Tabela: 1.0 6V, 2017 a 2026, 2,6 L. Saiu de linha em 2020 e voltou em 2025.",
+              "dados": {
+                "viscosidade": "0W-20",
+                "especificacao": "Fiat 9.55535-GSX / API SN",
+                "capacidadeComFiltroL": 2.6
+              }
+            },
+            {
+              "tipo": "TECNICA",
+              "url": "https://omecanico.com.br/lancamento-fiat-uno-2017-ganha-nova-familia-de-motores/",
+              "consultadaEm": "2026-11-18",
+              "observacao": "Lançamento do Uno 2017 (out/2016): os motores Firefly usam corrente de comando e óleo de baixa viscosidade (0W20). Não informa a norma.",
+              "dados": {
+                "viscosidade": "0W-20"
               }
             }
           ]

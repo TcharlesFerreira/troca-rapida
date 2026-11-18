@@ -34,6 +34,167 @@
           ]
         }
       ]
+    },
+    {
+      "nome": "Sandero",
+      "motores": [
+        {
+          "motor": "1.0 16V",
+          "anos": [
+            2009,
+            2017
+          ],
+          "fontes": [
+            {
+              "tipo": "TECNICA",
+              "url": "https://www.manualdooleo.com.br/tabela-oleo/renault/sandero",
+              "consultadaEm": "2026-11-18",
+              "observacao": "Tabela: 1.0 16V 77 cv flex, 2007 a 2013 e 2014 a 2017, 4,0 L.",
+              "dados": {
+                "viscosidade": "5W-40 / 10W-40",
+                "especificacao": "Renault RN0700 / RN0710",
+                "capacidadeComFiltroL": 4.0
+              }
+            }
+          ]
+        },
+        {
+          "motor": "1.6 8V",
+          "anos": [
+            2009,
+            2015
+          ],
+          "fontes": [
+            {
+              "tipo": "TECNICA",
+              "url": "https://www.manualdooleo.com.br/tabela-oleo/renault/sandero",
+              "consultadaEm": "2026-11-18",
+              "observacao": "Tabela: 1.6 8V 98/106 cv flex, 2007 a 2015, 3,3 L.",
+              "dados": {
+                "viscosidade": "5W-40 / 10W-40",
+                "especificacao": "Renault RN0700 / RN0710",
+                "capacidadeComFiltroL": 3.3
+              }
+            }
+          ]
+        },
+        {
+          "motor": "1.0 12V SCe",
+          "anos": [
+            2017,
+            2026
+          ],
+          "fontes": [
+            {
+              "tipo": "TECNICA",
+              "url": "https://www.manualdooleo.com.br/tabela-oleo/renault/sandero",
+              "consultadaEm": "2026-11-18",
+              "observacao": "Tabela: 1.0 12V 82 cv flex, 2017 a 2026, 3,0 a 3,5 L. Também aceita 10W-40 semissintético.",
+              "dados": {
+                "viscosidade": "5W-30",
+                "especificacao": "Renault RN0700 / RN0710"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "nome": "Logan",
+      "motores": [
+        {
+          "motor": "1.0 16V",
+          "anos": [
+            2014,
+            2017
+          ],
+          "fontes": [
+            {
+              "tipo": "TECNICA",
+              "url": "https://www.manualdooleo.com.br/tabela-oleo/renault/logan",
+              "consultadaEm": "2026-11-18",
+              "observacao": "Tabela: 1.0 16V 77 cv flex, 2013 a 2017, 4,0 L.",
+              "dados": {
+                "viscosidade": "5W-40 / 10W-40",
+                "especificacao": "Renault RN0700 / RN0710",
+                "capacidadeComFiltroL": 4.0
+              }
+            }
+          ]
+        },
+        {
+          "motor": "1.6 8V",
+          "anos": [
+            2009,
+            2013
+          ],
+          "fontes": [
+            {
+              "tipo": "TECNICA",
+              "url": "https://www.manualdooleo.com.br/tabela-oleo/renault/logan",
+              "consultadaEm": "2026-11-18",
+              "observacao": "Tabela: 1.6 8V 95 cv flex, 2007 a 2014, 3,3 L.",
+              "dados": {
+                "viscosidade": "5W-40 / 10W-40",
+                "especificacao": "Renault RN0700 / RN0710",
+                "capacidadeComFiltroL": 3.3
+              }
+            }
+          ]
+        },
+        {
+          "motor": "1.6 8V",
+          "anos": [
+            2014,
+            2017
+          ],
+          "fontes": [
+            {
+              "tipo": "TECNICA",
+              "url": "https://www.manualdooleo.com.br/tabela-oleo/renault/logan",
+              "consultadaEm": "2026-11-18",
+              "observacao": "Tabela: 1.6 8V 106 cv flex, 2014 a 2017, 3,3 L.",
+              "dados": {
+                "viscosidade": "5W-40 / 10W-40",
+                "especificacao": "Renault RN0700 / RN0710",
+                "capacidadeComFiltroL": 3.3
+              }
+            },
+            {
+              "tipo": "TECNICA",
+              "url": "https://omecanico.com.br/raio-x-renault-novo-logan-dynamique-1-6-2016/",
+              "consultadaEm": "2026-11-18",
+              "observacao": "Raio X do Logan 1.6 8V 2016: SAE 5W40 ou 10W40 API SL ou superior (ACEA A3/B4, A4/B5); 3,30 litros com filtro; troca a cada 10 mil km ou 1 ano.",
+              "dados": {
+                "viscosidade": "5W-40 / 10W-40",
+                "especificacao": "API SL / ACEA A3/B4 / A4/B5",
+                "capacidadeComFiltroL": 3.3,
+                "intervaloKm": 10000,
+                "intervaloMeses": 12
+              }
+            }
+          ]
+        },
+        {
+          "motor": "1.0 12V SCe",
+          "anos": [
+            2017,
+            2025
+          ],
+          "fontes": [
+            {
+              "tipo": "TECNICA",
+              "url": "https://www.manualdooleo.com.br/tabela-oleo/renault/logan",
+              "consultadaEm": "2026-11-18",
+              "observacao": "Tabela: 1.0 12V 82 cv, 2017 a 2025, 3,0 a 3,5 L.",
+              "dados": {
+                "viscosidade": "5W-30",
+                "especificacao": "Renault RN0700 / RN0710"
+              }
+            }
+          ]
+        }
+      ]
     }
   ]
 }
