@@ -1,5 +1,7 @@
 import { z } from "zod";
 import { cnpjValido, normalizarCnpj } from "./cnpj";
+import { TIPOS_FILTRO } from "./filtros";
+import { PEDE_DETALHE, SERVICOS_OS, montarDescricao } from "./servicos-os";
 import { cpfValido, normalizarCpf } from "./cpf";
 import { normalizarPlaca, placaValida } from "./placa";
 
@@ -139,13 +141,45 @@ export const veiculoSchema = z.object({
   kmAtual: inteiro("Quilometragem atual", 0, 2_000_000),
 });
 
-export const ordemSchema = z.object({
-  veiculoId: texto("Veículo", 1, 60),
-  dataEntrada: dataISO("Data de entrada"),
-  kmEntrada: inteiro("Quilometragem na entrada", 0, 2_000_000),
-  descricao: texto("Descrição dos serviços", 3, 2000),
-  observacoes: textoOpcional("Observações", 2000),
-});
+const caixa = z.preprocess((v) => v === "on" || v === "true", z.boolean());
+
+/**
+ * Abrir OS: o serviço é escolhido numa lista. "Troca de óleo incompleta" e "Outro serviço" pedem
+ * o texto do que foi feito; "Troca de filtros" pede ao menos um filtro. Vira a descrição da OS.
+ */
+export const ordemSchema = z
+  .object({
+    veiculoId: texto("Veículo", 1, 60),
+    dataEntrada: dataISO("Data de entrada"),
+    kmEntrada: inteiro("Quilometragem na entrada", 0, 2_000_000),
+    tipoServico: z.enum(SERVICOS_OS, { errorMap: () => ({ message: "Escolha o serviço" }) }),
+    detalheServico: textoOpcional("Detalhe do serviço", 2000),
+    filtroTrocado_OLEO: caixa,
+    filtroTrocado_COMBUSTIVEL: caixa,
+    filtroTrocado_AR: caixa,
+    filtroTrocado_AR_CABINE: caixa,
+    observacoes: textoOpcional("Observações", 2000),
+  })
+  .superRefine((d, ctx) => {
+    if (PEDE_DETALHE.includes(d.tipoServico) && (!d.detalheServico || d.detalheServico.length < 3)) {
+      const msg = d.tipoServico === "OUTRO" ? "Escreva qual é o serviço" : "Escreva o que foi trocado";
+      ctx.addIssue({ code: "custom", path: ["detalheServico"], message: msg });
+    }
+    if (d.tipoServico === "TROCA_FILTROS" && !TIPOS_FILTRO.some((t) => d[`filtroTrocado_${t}`])) {
+      ctx.addIssue({ code: "custom", path: ["filtrosTrocados"], message: "Marque ao menos um filtro" });
+    }
+  })
+  .transform((d) => ({
+    veiculoId: d.veiculoId,
+    dataEntrada: d.dataEntrada,
+    kmEntrada: d.kmEntrada,
+    descricao: montarDescricao(
+      d.tipoServico,
+      PEDE_DETALHE.includes(d.tipoServico) ? d.detalheServico : undefined,
+      TIPOS_FILTRO.filter((t) => d[`filtroTrocado_${t}`]),
+    ),
+    observacoes: d.observacoes,
+  }));
 
 const decimalOpcional = (rotulo: string, min: number, max: number) =>
   z.preprocess(

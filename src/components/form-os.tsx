@@ -1,11 +1,13 @@
 "use client";
 
-import { useActionState, useState } from "react";
+import { useActionState, useMemo, useState } from "react";
 import { criarOrdemAction } from "@/acoes/ordens";
 import { AlertaForm } from "@/components/alerta-form";
 import { BotaoEnviar } from "@/components/botao-enviar";
 import Link from "next/link";
-import { CampoAreaTexto, CampoSelecao, CampoTexto } from "@/components/campos";
+import { CampoAreaTexto, CampoCaixa, CampoSelecao, CampoTexto } from "@/components/campos";
+import { ROTULO_FILTRO, TIPOS_FILTRO } from "@/lib/filtros";
+import { PEDE_DETALHE, ROTULO_SERVICO, SERVICOS_OS, campoFiltroTrocado, type ServicoOS } from "@/lib/servicos-os";
 import type { EstadoForm } from "@/lib/formulario";
 import { formatarPlaca, normalizarPlaca, placaValida } from "@/lib/placa";
 
@@ -23,6 +25,8 @@ export function FormOS({ veiculos, veiculoIdInicial, hoje }: Props) {
   const [veiculoId, setVeiculoId] = useState(v.veiculoId ?? veiculoIdInicial ?? "");
   const inicial = veiculos.find((x) => x.id === veiculoId);
   const [km, setKm] = useState(v.kmEntrada ?? (inicial ? String(inicial.kmAtual) : ""));
+  const [servico, setServico] = useState<string>(v.tipoServico ?? "");
+  const versao = useMemo(() => Math.random(), [estado]);
   const [placa, setPlaca] = useState(v.placa ?? (inicial ? formatarPlaca(inicial.placa) : ""));
 
   const escolher = (id: string) => {
@@ -123,7 +127,50 @@ export function FormOS({ veiculos, veiculoIdInicial, hoje }: Props) {
         <CampoTexto name="kmEntrada" rotulo="Quilometragem na entrada" inputMode="numeric" value={km} onChange={(ev) => setKm(ev.target.value)} erros={e.kmEntrada} />
       </div>
 
-      <CampoAreaTexto name="descricao" rotulo="Serviços a fazer" rows={4} defaultValue={v.descricao} erros={e.descricao} dica="Ex.: troca de óleo e filtro, revisão dos freios." />
+      <fieldset className="grid gap-3">
+        <legend className="mb-1 text-sm font-semibold">Serviços a fazer</legend>
+        {/* key muda a cada resposta do servidor: o React limpa o formulário depois da ação, e assim a escolha volta a aparecer marcada */}
+        <div key={versao} className="grid gap-2 sm:grid-cols-2" role="radiogroup" aria-describedby={e.tipoServico ? "erro-servico" : undefined}>
+          {SERVICOS_OS.map((s) => (
+            <label key={s} className={`flex min-h-11 cursor-pointer items-center gap-3 rounded-md border px-3 ${servico === s ? "border-primary bg-primary/5" : "hover:bg-muted"}`}>
+              <input
+                type="radio"
+                name="tipoServico"
+                value={s}
+                checked={servico === s}
+                onChange={() => setServico(s)}
+                className="size-5 accent-[hsl(var(--primary))]"
+              />
+              <span className="font-medium">{ROTULO_SERVICO[s]}</span>
+            </label>
+          ))}
+        </div>
+        {e.tipoServico && (
+          <p id="erro-servico" className="text-sm font-medium text-destructive">
+            {e.tipoServico[0]}
+          </p>
+        )}
+
+        {PEDE_DETALHE.includes(servico as ServicoOS) && (
+          <CampoAreaTexto
+            name="detalheServico"
+            rotulo={servico === "OUTRO" ? "Qual é o serviço" : "O que foi trocado"}
+            rows={3}
+            defaultValue={v.detalheServico}
+            erros={e.detalheServico}
+          />
+        )}
+
+        {servico === "TROCA_FILTROS" && (
+          <fieldset className="grid gap-1 rounded-md border p-3">
+            <legend className="px-1 text-sm font-semibold">Quais filtros foram trocados</legend>
+            {TIPOS_FILTRO.map((t) => (
+              <CampoCaixa key={t} name={campoFiltroTrocado(t)} rotulo={ROTULO_FILTRO[t]} defaultChecked={v[campoFiltroTrocado(t)] === "on"} />
+            ))}
+            {e.filtrosTrocados && <p className="text-sm font-medium text-destructive">{e.filtrosTrocados[0]}</p>}
+          </fieldset>
+        )}
+      </fieldset>
       <CampoAreaTexto name="observacoes" rotulo="Observações" opcional rows={3} defaultValue={v.observacoes} erros={e.observacoes} dica="Anotações internas da oficina: o cliente não vê." />
 
       <div>
