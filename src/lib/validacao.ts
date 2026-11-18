@@ -1,4 +1,5 @@
 import { z } from "zod";
+import { cnpjValido, normalizarCnpj } from "./cnpj";
 import { cpfValido, normalizarCpf } from "./cpf";
 import { normalizarPlaca, placaValida } from "./placa";
 
@@ -76,6 +77,29 @@ const dataISOOpcional = (rotulo: string) => z.preprocess(vazioParaUndefined, dat
 export const loginSchema = z.object({
   email,
   senha: z.string({ required_error: "Informe a senha" }).min(1, "Informe a senha"),
+});
+
+const senhaNova = z
+  .string({ required_error: "Senha é obrigatória" })
+  .min(8, "A senha precisa ter ao menos 8 caracteres")
+  .max(72, "A senha aceita até 72 caracteres")
+  .refine((s) => /[A-Za-z]/.test(s) && /\d/.test(s), "Use letras e números na senha");
+
+const cnpjOpcional = z.preprocess(
+  vazioParaUndefined,
+  z.string().trim().refine(cnpjValido, "CNPJ inválido. Confira os 14 números").transform(normalizarCnpj).optional(),
+);
+
+export const empresaSchema = z.object({
+  nome: texto("Nome da empresa", 2, 120),
+  cnpj: cnpjOpcional,
+});
+
+/** Nova empresa já com o seu administrador (por enquanto, um por empresa). */
+export const novaEmpresaSchema = empresaSchema.extend({
+  adminNome: texto("Nome do administrador", 3),
+  adminEmail: email,
+  adminSenha: senhaNova,
 });
 
 export const cadastroSchema = z

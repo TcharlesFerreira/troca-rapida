@@ -15,18 +15,25 @@ export const authConfig = {
       const logado = !!auth?.user;
       const papel = auth?.user?.papel;
 
+      const inicio = papel === "SUPERADMIN" ? "/superadmin" : papel === "ADMIN" ? "/admin" : "/minha-area";
+
+      if (caminho.startsWith("/superadmin")) {
+        if (!logado) return false;
+        if (papel !== "SUPERADMIN") return Response.redirect(new URL(inicio, nextUrl));
+        return true;
+      }
       if (caminho.startsWith("/admin")) {
         if (!logado) return false;
-        if (papel !== "ADMIN") return Response.redirect(new URL("/minha-area", nextUrl));
+        if (papel !== "ADMIN") return Response.redirect(new URL(inicio, nextUrl));
         return true;
       }
       if (caminho.startsWith("/minha-area")) {
         if (!logado) return false;
-        if (papel !== "CLIENTE") return Response.redirect(new URL("/admin", nextUrl));
+        if (papel !== "CLIENTE") return Response.redirect(new URL(inicio, nextUrl));
         return true;
       }
       if ((caminho === "/login" || caminho === "/cadastro") && logado) {
-        return Response.redirect(new URL(papel === "ADMIN" ? "/admin" : "/minha-area", nextUrl));
+        return Response.redirect(new URL(inicio, nextUrl));
       }
       return true;
     },
@@ -39,7 +46,7 @@ export const authConfig = {
     },
     session({ session, token }) {
       session.user.id = token.id as string;
-      session.user.papel = token.papel as "ADMIN" | "CLIENTE";
+      session.user.papel = token.papel as "SUPERADMIN" | "ADMIN" | "CLIENTE";
       return session;
     },
   },

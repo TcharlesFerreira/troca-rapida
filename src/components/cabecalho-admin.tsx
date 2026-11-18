@@ -6,7 +6,7 @@ import { Marca } from "@/components/marca";
 import { NavAdmin } from "@/components/nav-admin";
 
 /** Cabeçalho da área administrativa. A busca por placa fica sempre à vista (item 8). */
-export function CabecalhoAdmin({ nome, vinculosPendentes }: { nome: string; vinculosPendentes: number }) {
+export function CabecalhoAdmin({ nome, empresa, vinculosPendentes }: { nome: string; empresa?: string; vinculosPendentes: number }) {
   return (
     <header className="bg-primary text-primary-foreground">
       <div className="mx-auto flex max-w-6xl flex-wrap items-center gap-x-6 gap-y-3 px-4 pt-3">
@@ -35,7 +35,7 @@ export function CabecalhoAdmin({ nome, vinculosPendentes }: { nome: string; vinc
         </form>
 
         <div className="ml-auto flex items-center gap-3 text-sm">
-          <span className="hidden sm:inline">{nome}</span>
+          <span className="hidden sm:inline">{empresa ? `${empresa} · ${nome}` : nome}</span>
           <form action={sairAction}>
             <button type="submit" className="inline-flex min-h-11 items-center gap-2 rounded-md px-3 font-semibold hover:bg-white/10">
               <LogOut aria-hidden className="size-4" />

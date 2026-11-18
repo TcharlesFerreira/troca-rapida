@@ -9,7 +9,8 @@ datasource db {
 }
 
 enum Papel {
-  ADMIN
+  SUPERADMIN // dono do sistema: cadastra as empresas
+  ADMIN      // administrador de uma empresa (oficina)
   CLIENTE
 }
 
@@ -40,6 +41,21 @@ enum StatusVinculo {
 }
 
 /// Conta de login (administrador ou cliente).
+/// Uma oficina. Cada empresa só enxerga os próprios clientes, veículos e ordens.
+model Empresa {
+  id           String   @id @default(cuid())
+  nome         String
+  cnpj         String?  @unique // só dígitos
+  criadoEm     DateTime @default(now())
+  atualizadoEm DateTime @updatedAt
+
+  usuarios Usuario[]
+  clientes Cliente[]
+  veiculos Veiculo[]
+
+  @@map("empresas")
+}
+
 model Usuario {
   id        String   @id @default(cuid())
   email     String   @unique
@@ -50,9 +66,12 @@ model Usuario {
   telefone  String?
   criadoEm  DateTime @default(now())
 
-  /// Vínculo CONFIRMADO com o cadastro feito pela oficina.
-  clienteId String?  @unique
-  cliente   Cliente? @relation(fields: [clienteId], references: [id], onDelete: SetNull)
+  /// Empresa do administrador (vazio para clientes e para o superadministrador).
+  empresaId String?
+  empresa   Empresa? @relation(fields: [empresaId], references: [id], onDelete: Restrict)
+
+  /// Cadastros CONFIRMADOS nas oficinas (um por empresa em que o cliente foi atendido).
+  clientes        Cliente[]
 
   solicitacoes    SolicitacaoVinculo[]
   historicoStatus HistoricoStatusOS[]
@@ -63,19 +82,26 @@ model Usuario {
 /// Cadastro feito pela oficina (pode existir antes de o cliente ter conta).
 model Cliente {
   id           String   @id @default(cuid())
+  empresaId    String
   nome         String
-  cpf          String?  @unique // só dígitos; vazio em cadastros importados sem CPF
+  cpf          String?  // só dígitos; único dentro da empresa; vazio em cadastros importados sem CPF
   telefone     String?
   email        String?
   endereco     String?
   criadoEm     DateTime @default(now())
   atualizadoEm DateTime @updatedAt
 
-  usuario      Usuario?
+  /// Conta do site ligada a este cadastro (vínculo confirmado).
+  usuarioId    String?
+  usuario      Usuario? @relation(fields: [usuarioId], references: [id], onDelete: SetNull)
+  empresa      Empresa  @relation(fields: [empresaId], references: [id], onDelete: Restrict)
   veiculos     Veiculo[]
   solicitacoes SolicitacaoVinculo[]
 
-  @@index([nome])
+  @@unique([empresaId, cpf])
+  @@unique([empresaId, usuarioId])
+  @@index([empresaId, nome])
+  @@index([usuarioId])
   @@map("clientes")
 }
 
@@ -99,8 +125,9 @@ model SolicitacaoVinculo {
 
 model Veiculo {
   id        String   @id @default(cuid())
+  empresaId String
   clienteId String
-  placa     String   @unique // sempre maiúscula e sem hífen
+  placa     String   // sempre maiúscula e sem hífen; única dentro da empresa
   marca     String
   modelo    String
   motor     String
@@ -113,9 +140,11 @@ model Veiculo {
   recomendacaoOleoId String?
   recomendacaoOleo   RecomendacaoOleo? @relation(fields: [recomendacaoOleoId], references: [id], onDelete: SetNull)
 
+  empresa Empresa        @relation(fields: [empresaId], references: [id], onDelete: Restrict)
   cliente Cliente        @relation(fields: [clienteId], references: [id], onDelete: Restrict)
   ordens  OrdemServico[]
 
+  @@unique([empresaId, placa])
   @@index([clienteId])
   @@map("veiculos")
 }

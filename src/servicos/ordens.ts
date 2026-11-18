@@ -15,11 +15,12 @@ export interface OrdemDados {
 }
 
 export async function listarOrdens(ator: Ator, filtro: { status?: StatusOS; busca?: string } = {}) {
-  exigirAdmin(ator);
+  const empresaId = exigirAdmin(ator);
   const termo = filtro.busca?.trim();
   const numero = termo && /^\d+$/.test(termo) ? Number(termo) : null;
 
   const where: Prisma.OrdemServicoWhereInput = {
+    veiculo: { empresaId },
     ...(filtro.status ? { status: filtro.status } : {}),
     ...(termo
       ? {
@@ -42,9 +43,9 @@ export async function listarOrdens(ator: Ator, filtro: { status?: StatusOS; busc
 }
 
 export async function obterOrdem(ator: Ator, id: string) {
-  exigirAdmin(ator);
-  return db.ordemServico.findUnique({
-    where: { id },
+  const empresaId = exigirAdmin(ator);
+  return db.ordemServico.findFirst({
+    where: { id, veiculo: { empresaId } },
     include: {
       veiculo: { include: { cliente: true, recomendacaoOleo: { include: incluirRecomendacaoCompleta } } },
       historico: { orderBy: { em: "asc" }, include: { por: { select: { nome: true } } } },
@@ -54,9 +55,9 @@ export async function obterOrdem(ator: Ator, id: string) {
 }
 
 export async function criarOrdem(ator: Ator, dados: OrdemDados) {
-  exigirAdmin(ator);
+  const empresaId = exigirAdmin(ator);
 
-  const veiculo = await db.veiculo.findUnique({ where: { id: dados.veiculoId }, select: { id: true, kmAtual: true } });
+  const veiculo = await db.veiculo.findFirst({ where: { id: dados.veiculoId, empresaId }, select: { id: true, kmAtual: true } });
   if (!veiculo) throw new ErroDeNegocio("Escolha um veículo da lista.", "veiculoId");
 
   return db.$transaction(async (tx) => {
@@ -81,10 +82,10 @@ export async function criarOrdem(ator: Ator, dados: OrdemDados) {
 
 /** Muda o status e registra no histórico, com data, hora e quem mudou. */
 export async function mudarStatus(ator: Ator, ordemId: string, novo: StatusOS): Promise<void> {
-  exigirAdmin(ator);
+  const empresaId = exigirAdmin(ator);
 
   await db.$transaction(async (tx) => {
-    const ordem = await tx.ordemServico.findUnique({ where: { id: ordemId }, select: { id: true, status: true } });
+    const ordem = await tx.ordemServico.findFirst({ where: { id: ordemId, veiculo: { empresaId } }, select: { id: true, status: true } });
     if (!ordem) throw new ErroDeNegocio("Ordem de serviço não encontrada.");
     if (!transicaoPermitida(ordem.status, novo)) {
       throw new ErroDeNegocio(`Não é possível ir de "${ROTULO_STATUS[ordem.status]}" para "${ROTULO_STATUS[novo]}".`);

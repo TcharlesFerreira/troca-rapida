@@ -1,6 +1,7 @@
 /**
  * Seed do Troca Rápida:
- *  1. cria o primeiro administrador (e-mail e senha vêm do .env; nunca ficam no código);
+ *  1. cria o superadministrador e, se configurado, a primeira empresa com o seu administrador
+ *     (e-mails e senhas vêm do .env; nunca ficam no código);
  *  2. carrega a base de óleo de data/oleo/*.json, validando cada registro.
  *     Registro sem fonte (ou inválido) NÃO entra, e o seed avisa o motivo.
  *
@@ -14,23 +15,46 @@ import { consolidar, validarMarcaJson } from "../src/lib/base-oleo-json";
 
 const db = new PrismaClient();
 
+/** Dono do sistema: entra em /superadmin e cadastra as empresas. */
+async function criarSuperadmin(): Promise<void> {
+  const email = process.env.SUPERADMIN_EMAIL?.trim().toLowerCase();
+  const senha = process.env.SUPERADMIN_PASSWORD;
+  if (!email || !senha) throw new Error("Defina SUPERADMIN_EMAIL e SUPERADMIN_PASSWORD no arquivo .env (veja .env.example).");
+  if (senha.length < 10) throw new Error("SUPERADMIN_PASSWORD precisa ter ao menos 10 caracteres.");
+
+  const existente = await db.usuario.findUnique({ where: { email } });
+  if (existente) {
+    if (existente.papel !== "SUPERADMIN") throw new Error(`${email} já existe com outro papel. Use outro SUPERADMIN_EMAIL.`);
+    console.log(`Superadministrador ${email} já existe (a senha não foi alterada).`);
+    return;
+  }
+  await db.usuario.create({ data: { email, senhaHash: await bcrypt.hash(senha, 12), papel: "SUPERADMIN", nome: "Superadministrador" } });
+  console.log(`Superadministrador criado: ${email}`);
+}
+
+/**
+ * Opcional: primeira empresa e o administrador dela (EMPRESA_NOME, ADMIN_EMAIL, ADMIN_PASSWORD).
+ * As próximas empresas são cadastradas pelo superadministrador, na tela.
+ */
 async function criarAdministrador(): Promise<void> {
   const email = process.env.ADMIN_EMAIL?.trim().toLowerCase();
   const senha = process.env.ADMIN_PASSWORD;
-  if (!email || !senha) throw new Error("Defina ADMIN_EMAIL e ADMIN_PASSWORD no arquivo .env (veja .env.example).");
+  const nomeEmpresa = process.env.EMPRESA_NOME?.trim() || "Minha oficina";
+  if (!email || !senha) return;
   if (senha.length < 10) throw new Error("ADMIN_PASSWORD precisa ter ao menos 10 caracteres.");
 
   const existente = await db.usuario.findUnique({ where: { email } });
   if (existente) {
-    if (existente.papel !== "ADMIN") throw new Error(`${email} já existe como cliente. Use outro ADMIN_EMAIL.`);
+    if (existente.papel !== "ADMIN") throw new Error(`${email} já existe com outro papel. Use outro ADMIN_EMAIL.`);
     console.log(`Administrador ${email} já existe (a senha não foi alterada).`);
     return;
   }
 
+  const empresa = (await db.empresa.findFirst({ where: { nome: nomeEmpresa } })) ?? (await db.empresa.create({ data: { nome: nomeEmpresa } }));
   await db.usuario.create({
-    data: { email, senhaHash: await bcrypt.hash(senha, 12), papel: "ADMIN", nome: "Administrador" },
+    data: { email, senhaHash: await bcrypt.hash(senha, 12), papel: "ADMIN", nome: "Administrador", empresaId: empresa.id },
   });
-  console.log(`Administrador criado: ${email}`);
+  console.log(`Administrador criado: ${email} (empresa ${empresa.nome})`);
 }
 
 /** Devolve quantos erros de validação foram encontrados. */
@@ -110,6 +134,7 @@ async function carregarBaseDeOleo(): Promise<number> {
 }
 
 async function main(): Promise<void> {
+  await criarSuperadmin();
   await criarAdministrador();
   const erros = await carregarBaseDeOleo();
   if (erros > 0) {

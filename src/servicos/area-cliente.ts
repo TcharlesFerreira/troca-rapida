@@ -1,7 +1,7 @@
 /**
- * Tudo o que o cliente enxerga. REGRA DE OURO: toda consulta daqui parte do clienteId do
- * ator (vindo da sessão, nunca de parâmetro da tela). Um id de outro cliente simplesmente
- * não é encontrado.
+ * Tudo o que o cliente enxerga. REGRA DE OURO: toda consulta daqui parte dos clienteIds do
+ * ator (vindos da sessão, nunca de parâmetro da tela): um por oficina em que ele tem cadastro
+ * confirmado. Um id de outro cliente simplesmente não é encontrado.
  *
  * O banco entra por parâmetro para o teste de isolamento poder usar um banco falso.
  */
@@ -27,14 +27,23 @@ const selecionarHistorico = {
   orderBy: { em: "asc" as const },
 };
 
-const selecionarVeiculoResumo = { id: true, placa: true, marca: true, modelo: true, motor: true, ano: true, cor: true } as const;
+const selecionarVeiculoResumo = {
+  id: true,
+  placa: true,
+  marca: true,
+  modelo: true,
+  motor: true,
+  ano: true,
+  cor: true,
+  empresa: { select: { nome: true } },
+} as const;
 
 export function criarAreaCliente(banco: BancoAreaCliente) {
   return {
     async meusVeiculos(ator: Ator) {
-      const clienteId = exigirClienteVinculado(ator);
+      const clienteIds = exigirClienteVinculado(ator);
       return banco.veiculo.findMany({
-        where: { clienteId },
+        where: { clienteId: { in: clienteIds } },
         orderBy: { placa: "asc" },
         select: {
           ...selecionarVeiculoResumo,
@@ -50,9 +59,9 @@ export function criarAreaCliente(banco: BancoAreaCliente) {
     },
 
     async ordensEmAndamento(ator: Ator) {
-      const clienteId = exigirClienteVinculado(ator);
+      const clienteIds = exigirClienteVinculado(ator);
       return banco.ordemServico.findMany({
-        where: { veiculo: { clienteId }, status: { in: STATUS_ABERTOS } },
+        where: { veiculo: { clienteId: { in: clienteIds } }, status: { in: STATUS_ABERTOS } },
         orderBy: { criadoEm: "desc" },
         select: {
           id: true,
@@ -67,9 +76,9 @@ export function criarAreaCliente(banco: BancoAreaCliente) {
     },
 
     async detalheVeiculo(ator: Ator, veiculoId: string) {
-      const clienteId = exigirClienteVinculado(ator);
+      const clienteIds = exigirClienteVinculado(ator);
       return banco.veiculo.findFirst({
-        where: { id: veiculoId, clienteId },
+        where: { id: veiculoId, clienteId: { in: clienteIds } },
         select: {
           ...selecionarVeiculoResumo,
           kmAtual: true,
@@ -90,9 +99,9 @@ export function criarAreaCliente(banco: BancoAreaCliente) {
     },
 
     async detalheOrdem(ator: Ator, ordemId: string) {
-      const clienteId = exigirClienteVinculado(ator);
+      const clienteIds = exigirClienteVinculado(ator);
       return banco.ordemServico.findFirst({
-        where: { id: ordemId, veiculo: { clienteId } },
+        where: { id: ordemId, veiculo: { clienteId: { in: clienteIds } } },
         select: {
           id: true,
           numero: true,

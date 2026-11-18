@@ -9,9 +9,10 @@ import { exigirAdminSessao } from "@/lib/sessao";
 export const metadata: Metadata = { title: "Nova ordem de serviço" };
 
 export default async function NovaOrdem({ searchParams }: { searchParams: Promise<{ veiculoId?: string }> }) {
-  await exigirAdminSessao();
+  const ator = await exigirAdminSessao();
   const { veiculoId } = await searchParams;
   const veiculos = await db.veiculo.findMany({
+    where: { empresaId: ator.empresaId! },
     orderBy: { placa: "asc" },
     select: { id: true, placa: true, marca: true, modelo: true, kmAtual: true, cliente: { select: { nome: true } } },
   });

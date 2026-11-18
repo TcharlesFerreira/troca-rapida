@@ -13,10 +13,11 @@ export interface NovaConta {
 }
 
 /**
- * Cadastro público do cliente (item 1 e 2).
+ * Cadastro público do cliente (item 1 e 2). Vale para cada oficina em que ele tem cadastro:
  *  - CPF e e-mail iguais ao cadastro da oficina: conta ligada na hora.
- *  - Só o CPF igual: solicitação PENDENTE, o cliente não vê nada até o administrador confirmar.
+ *  - Só o CPF igual: solicitação PENDENTE, o cliente não vê nada daquela oficina até ela confirmar.
  *  - Nenhum cadastro com o CPF: conta criada, esperando a oficina.
+ * O resultado devolvido é o "melhor" entre as oficinas (AUTOMATICO > PENDENTE > SEM_CADASTRO).
  */
 export async function registrarContaCliente(dados: NovaConta): Promise<{ usuarioId: string; vinculo: ResultadoVinculo }> {
   const [emailUsado, cpfUsado] = await Promise.all([
@@ -29,37 +30,36 @@ export async function registrarContaCliente(dados: NovaConta): Promise<{ usuario
   const senhaHash = await bcrypt.hash(dados.senha, 12);
 
   return db.$transaction(async (tx) => {
-    const cadastro = await tx.cliente.findUnique({
-      where: { cpf: dados.cpf },
-      include: { usuario: { select: { id: true } } },
-    });
     // Cadastro que já tem dono não pode ser ligado a outra conta.
-    const candidato = cadastro && !cadastro.usuario ? cadastro : null;
-    const vinculo = decidirVinculo({ cpf: dados.cpf, email: dados.email }, candidato);
+    const candidatos = await tx.cliente.findMany({ where: { cpf: dados.cpf, usuarioId: null } });
 
     const usuario = await tx.usuario.create({
-      data: {
-        nome: dados.nome,
-        email: dados.email,
-        senhaHash,
-        papel: "CLIENTE",
-        cpf: dados.cpf,
-        telefone: dados.telefone,
-        clienteId: vinculo === "AUTOMATICO" && candidato ? candidato.id : null,
-      },
+      data: { nome: dados.nome, email: dados.email, senhaHash, papel: "CLIENTE", cpf: dados.cpf, telefone: dados.telefone },
     });
 
-    if (vinculo === "PENDENTE" && candidato) {
-      await tx.solicitacaoVinculo.create({ data: { usuarioId: usuario.id, clienteId: candidato.id } });
+    const resultados: ResultadoVinculo[] = [];
+    for (const candidato of candidatos) {
+      const vinculo = decidirVinculo({ cpf: dados.cpf, email: dados.email }, candidato);
+      resultados.push(vinculo);
+      if (vinculo === "AUTOMATICO") {
+        await tx.cliente.update({ where: { id: candidato.id }, data: { usuarioId: usuario.id } });
+      } else if (vinculo === "PENDENTE") {
+        await tx.solicitacaoVinculo.create({ data: { usuarioId: usuario.id, clienteId: candidato.id } });
+      }
     }
+    const vinculo: ResultadoVinculo = resultados.includes("AUTOMATICO")
+      ? "AUTOMATICO"
+      : resultados.includes("PENDENTE")
+        ? "PENDENTE"
+        : "SEM_CADASTRO";
     return { usuarioId: usuario.id, vinculo };
   });
 }
 
 export async function listarSolicitacoesPendentes(ator: Ator) {
-  exigirAdmin(ator);
+  const empresaId = exigirAdmin(ator);
   return db.solicitacaoVinculo.findMany({
-    where: { status: "PENDENTE" },
+    where: { status: "PENDENTE", cliente: { empresaId } },
     orderBy: { criadoEm: "asc" },
     include: {
       usuario: { select: { id: true, nome: true, email: true, cpf: true, telefone: true } },
@@ -69,17 +69,20 @@ export async function listarSolicitacoesPendentes(ator: Ator) {
 }
 
 export async function contarSolicitacoesPendentes(ator: Ator): Promise<number> {
-  exigirAdmin(ator);
-  return db.solicitacaoVinculo.count({ where: { status: "PENDENTE" } });
+  const empresaId = exigirAdmin(ator);
+  return db.solicitacaoVinculo.count({ where: { status: "PENDENTE", cliente: { empresaId } } });
 }
 
 export async function decidirSolicitacao(ator: Ator, solicitacaoId: string, aprovar: boolean): Promise<void> {
-  exigirAdmin(ator);
+  const empresaId = exigirAdmin(ator);
 
   await db.$transaction(async (tx) => {
-    const solicitacao = await tx.solicitacaoVinculo.findUnique({
-      where: { id: solicitacaoId },
-      include: { usuario: { select: { id: true, clienteId: true } }, cliente: { include: { usuario: { select: { id: true } } } } },
+    const solicitacao = await tx.solicitacaoVinculo.findFirst({
+      where: { id: solicitacaoId, cliente: { empresaId } },
+      include: {
+        usuario: { select: { id: true, clientes: { where: { empresaId }, select: { id: true } } } },
+        cliente: { include: { usuario: { select: { id: true } } } },
+      },
     });
     if (!solicitacao || solicitacao.status !== "PENDENTE") {
       throw new ErroDeNegocio("Esta solicitação não está mais pendente.");
@@ -95,19 +98,20 @@ export async function decidirSolicitacao(ator: Ator, solicitacaoId: string, apro
       return;
     }
 
-    if (solicitacao.usuario.clienteId) throw new ErroDeNegocio("Esta conta já está ligada a outro cadastro.");
+    if (solicitacao.usuario.clientes.length > 0) throw new ErroDeNegocio("Esta conta já está ligada a outro cadastro desta oficina.");
     if (solicitacao.cliente.usuario) throw new ErroDeNegocio("Este cadastro já está ligado a outra conta.");
 
-    await tx.usuario.update({ where: { id: solicitacao.usuarioId }, data: { clienteId: solicitacao.clienteId } });
+    await tx.cliente.update({ where: { id: solicitacao.clienteId }, data: { usuarioId: solicitacao.usuarioId } });
     await tx.solicitacaoVinculo.update({
       where: { id: solicitacaoId },
       data: { status: "APROVADO", decididoEm: agora, decididoPorId: ator.usuarioId },
     });
-    // Outras solicitações pendentes para o mesmo cadastro ou a mesma conta perdem o sentido.
+    // Outras solicitações pendentes para o mesmo cadastro, ou da mesma conta nesta oficina, perdem o sentido.
     await tx.solicitacaoVinculo.updateMany({
       where: {
         status: "PENDENTE",
         id: { not: solicitacaoId },
+        cliente: { empresaId },
         OR: [{ clienteId: solicitacao.clienteId }, { usuarioId: solicitacao.usuarioId }],
       },
       data: { status: "REJEITADO", decididoEm: agora, decididoPorId: ator.usuarioId },

@@ -17,7 +17,7 @@ export default async function MinhaArea() {
   const ator = await exigirClienteSessao();
 
   // Conta ainda não ligada ao cadastro da oficina: não há nada para mostrar (e nada de outros clientes).
-  if (!ator.clienteId) {
+  if (ator.clienteIds.length === 0) {
     const pendente = await db.solicitacaoVinculo.count({ where: { usuarioId: ator.usuarioId, status: "PENDENTE" } });
     return (
       <>

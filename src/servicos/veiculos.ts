@@ -17,12 +17,13 @@ export interface VeiculoDados {
 }
 
 export async function listarVeiculos(ator: Ator, busca?: string) {
-  exigirAdmin(ator);
+  const empresaId = exigirAdmin(ator);
   const termo = busca?.trim();
   const placa = termo ? normalizarPlaca(termo) : "";
 
   const where: Prisma.VeiculoWhereInput = termo
     ? {
+        empresaId,
         OR: [
           ...(placa ? [{ placa: { contains: placa } }] : []),
           { modelo: { contains: termo, mode: "insensitive" as const } },
@@ -30,7 +31,7 @@ export async function listarVeiculos(ator: Ator, busca?: string) {
           { cliente: { nome: { contains: termo, mode: "insensitive" as const } } },
         ],
       }
-    : {};
+    : { empresaId };
 
   return db.veiculo.findMany({
     where,
@@ -41,9 +42,9 @@ export async function listarVeiculos(ator: Ator, busca?: string) {
 }
 
 export async function obterVeiculo(ator: Ator, id: string) {
-  exigirAdmin(ator);
-  return db.veiculo.findUnique({
-    where: { id },
+  const empresaId = exigirAdmin(ator);
+  return db.veiculo.findFirst({
+    where: { id, empresaId },
     include: {
       cliente: true,
       recomendacaoOleo: { include: incluirRecomendacaoCompleta },
@@ -56,28 +57,28 @@ export async function obterVeiculo(ator: Ator, id: string) {
 }
 
 export async function criarVeiculo(ator: Ator, dados: VeiculoDados) {
-  exigirAdmin(ator);
+  const empresaId = exigirAdmin(ator);
 
-  const cliente = await db.cliente.findUnique({ where: { id: dados.clienteId }, select: { id: true } });
+  const cliente = await db.cliente.findFirst({ where: { id: dados.clienteId, empresaId }, select: { id: true } });
   if (!cliente) throw new ErroDeNegocio("Escolha um cliente da lista.", "clienteId");
 
-  const placaUsada = await db.veiculo.findUnique({ where: { placa: dados.placa }, select: { id: true } });
+  const placaUsada = await db.veiculo.findFirst({ where: { empresaId, placa: dados.placa }, select: { id: true } });
   if (placaUsada) throw new ErroDeNegocio("Já existe um veículo com esta placa.", "placa");
 
   const recomendacao = await buscarRecomendacao(dados);
-  return db.veiculo.create({ data: { ...dados, recomendacaoOleoId: recomendacao?.id ?? null } });
+  return db.veiculo.create({ data: { ...dados, empresaId, recomendacaoOleoId: recomendacao?.id ?? null } });
 }
 
 export async function atualizarVeiculo(ator: Ator, id: string, dados: VeiculoDados) {
-  exigirAdmin(ator);
+  const empresaId = exigirAdmin(ator);
 
-  const atual = await db.veiculo.findUnique({ where: { id }, select: { id: true } });
+  const atual = await db.veiculo.findFirst({ where: { id, empresaId }, select: { id: true } });
   if (!atual) throw new ErroDeNegocio("Veículo não encontrado.");
 
-  const cliente = await db.cliente.findUnique({ where: { id: dados.clienteId }, select: { id: true } });
+  const cliente = await db.cliente.findFirst({ where: { id: dados.clienteId, empresaId }, select: { id: true } });
   if (!cliente) throw new ErroDeNegocio("Escolha um cliente da lista.", "clienteId");
 
-  const placaUsada = await db.veiculo.findFirst({ where: { placa: dados.placa, NOT: { id } }, select: { id: true } });
+  const placaUsada = await db.veiculo.findFirst({ where: { empresaId, placa: dados.placa, NOT: { id } }, select: { id: true } });
   if (placaUsada) throw new ErroDeNegocio("Já existe outro veículo com esta placa.", "placa");
 
   const recomendacao = await buscarRecomendacao(dados);

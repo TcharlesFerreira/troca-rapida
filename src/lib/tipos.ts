@@ -1,6 +1,6 @@
 // Tipos e rótulos compartilhados. Não importam nada do Prisma, para poderem
 // ser usados em telas, serviços e testes.
-export type Papel = "ADMIN" | "CLIENTE";
+export type Papel = "SUPERADMIN" | "ADMIN" | "CLIENTE";
 
 export const STATUS_OS = ["AGUARDANDO", "EM_ANDAMENTO", "PRONTO_RETIRADA", "ENTREGUE", "CANCELADO"] as const;
 export type StatusOS = (typeof STATUS_OS)[number];

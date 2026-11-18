@@ -33,9 +33,10 @@ function tabela(linhas: Linha[]) {
 
 const veiculoDaAna = { id: "v-ana", clienteId: "cli-ana", placa: "AAA1A11" };
 const veiculoDoBeto = { id: "v-beto", clienteId: "cli-beto", placa: "BBB2B22" };
+const veiculoDaAnaNaOficina2 = { id: "v-ana-2", clienteId: "cli-ana-oficina2", placa: "CCC3C33" };
 
 const banco = {
-  veiculo: tabela([veiculoDaAna, veiculoDoBeto]),
+  veiculo: tabela([veiculoDaAna, veiculoDoBeto, veiculoDaAnaNaOficina2]),
   ordemServico: tabela([
     { id: "os-ana", status: "EM_ANDAMENTO", veiculo: veiculoDaAna },
     { id: "os-beto", status: "EM_ANDAMENTO", veiculo: veiculoDoBeto },
@@ -44,9 +45,11 @@ const banco = {
 } as unknown as BancoAreaCliente;
 
 const area = criarAreaCliente(banco);
-const ana: Ator = { usuarioId: "u-ana", papel: "CLIENTE", clienteId: "cli-ana" };
-const semVinculo: Ator = { usuarioId: "u-novo", papel: "CLIENTE", clienteId: null };
-const admin: Ator = { usuarioId: "u-admin", papel: "ADMIN", clienteId: null };
+const ana: Ator = { usuarioId: "u-ana", papel: "CLIENTE", empresaId: null, clienteIds: ["cli-ana"] };
+const semVinculo: Ator = { usuarioId: "u-novo", papel: "CLIENTE", empresaId: null, clienteIds: [] };
+const admin: Ator = { usuarioId: "u-admin", papel: "ADMIN", empresaId: "emp-1", clienteIds: [] };
+// A mesma pessoa com cadastro em duas oficinas: vê os carros das duas, e só os dela.
+const anaEmDuasOficinas: Ator = { usuarioId: "u-ana", papel: "CLIENTE", empresaId: null, clienteIds: ["cli-ana", "cli-ana-oficina2"] };
 
 describe("o cliente nunca vê dados de outro cliente (critério 6)", () => {
   it("lista só os próprios veículos", async () => {
@@ -84,6 +87,12 @@ describe("o cliente nunca vê dados de outro cliente (critério 6)", () => {
       }
     }
     expect(falhou).toBe(4);
+  });
+
+  it("com cadastro em duas oficinas, vê os carros das duas e nenhum de outra pessoa", async () => {
+    const lista = (await area.meusVeiculos(anaEmDuasOficinas)) as Array<{ id: string }>;
+    expect(lista.map((v) => v.id).sort()).toEqual(["v-ana", "v-ana-2"]);
+    expect(await area.detalheVeiculo(anaEmDuasOficinas, "v-beto")).toBeNull();
   });
 
   it("administrador não usa a área do cliente", async () => {

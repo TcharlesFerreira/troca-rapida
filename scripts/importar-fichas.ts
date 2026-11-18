@@ -2,7 +2,7 @@
  * Importa fichas antigas da oficina (JSON gerado a partir dos documentos Word) e classifica
  * o óleo de cada troca contra a base de óleo.
  *
- *   npx tsx scripts/importar-fichas.ts <fichas.json> <pasta-de-saida> [--gravar]
+ *   npx tsx scripts/importar-fichas.ts <fichas.json> <pasta-de-saida> --empresa "Nunes Store" [--gravar]
  *   npx tsx scripts/importar-fichas.ts --desfazer <pasta-de-saida>
  *
  * Sem --gravar, só gera o relatório (nada entra no banco). Com --gravar, cria clientes,
@@ -120,7 +120,12 @@ async function main() {
   if (args[0] === "--desfazer") return desfazer(args[1]);
   const [entrada, saida] = args;
   const gravar = args.includes("--gravar");
-  if (!entrada || !saida) throw new Error("Uso: importar-fichas.ts <fichas.json> <pasta-de-saida> [--gravar]");
+  const nomeEmpresa = args[args.indexOf("--empresa") + 1];
+  if (!entrada || !saida || !args.includes("--empresa") || !nomeEmpresa)
+    throw new Error('Uso: importar-fichas.ts <fichas.json> <pasta-de-saida> --empresa "Nome da empresa" [--gravar]');
+  const empresa = await db.empresa.findFirst({ where: { nome: nomeEmpresa } });
+  if (!empresa) throw new Error(`Empresa "${nomeEmpresa}" não encontrada.`);
+  const empresaId = empresa.id;
   mkdirSync(saida, { recursive: true });
 
   const fichas = JSON.parse(readFileSync(entrada, "utf8")) as Ficha[];
@@ -138,7 +143,7 @@ async function main() {
   // Cliente = mesmo nome e mesmo telefone. Sem telefone, cada placa tem o seu cliente.
   const chaveCliente = (f: Ficha) => (f.telefone ? `${f.nome}|${f.telefone}` : `${f.nome}|placa:${f.placa}`);
 
-  const existentes = new Set((await db.veiculo.findMany({ select: { placa: true } })).map((v) => v.placa));
+  const existentes = new Set((await db.veiculo.findMany({ where: { empresaId }, select: { placa: true } })).map((v) => v.placa));
   const classificadas = validas.map((f) => ({ f, c: classificar(f, base) }));
 
   // ---------- relatório
@@ -217,12 +222,13 @@ async function main() {
     await db.$transaction(async (tx) => {
       let clienteId = clienteIds.get(chave);
       if (!clienteId) {
-        const cliente = await tx.cliente.create({ data: { nome: atual.nome!, telefone: atual.telefone } });
+        const cliente = await tx.cliente.create({ data: { empresaId, nome: atual.nome!, telefone: atual.telefone } });
         clienteId = novos.cliente = cliente.id;
       }
       const cAtual = classificar(atual, base);
       const veiculo = await tx.veiculo.create({
         data: {
+          empresaId,
           clienteId,
           placa,
           marca: atual.marca!,

@@ -20,9 +20,9 @@ export interface UltimaTroca {
   kmEntrada: number;
 }
 
-function carregarVeiculo(placa: string) {
+function carregarVeiculo(empresaId: string, placa: string) {
   return db.veiculo.findUnique({
-    where: { placa },
+    where: { empresaId_placa: { empresaId, placa } },
     include: {
       cliente: true,
       recomendacaoOleo: { include: incluirRecomendacaoCompleta },
@@ -39,12 +39,12 @@ function carregarVeiculo(placa: string) {
 
 /** Busca por placa em qualquer formato de digitação (item 8). Só para administradores. */
 export async function consultarPlaca(ator: Ator, digitado: string, agora: Date = new Date()): Promise<ResultadoBuscaPlaca> {
-  exigirAdmin(ator);
+  const empresaId = exigirAdmin(ator);
 
   if (!placaValida(digitado)) return { tipo: "invalida", digitado };
   const placa = normalizarPlaca(digitado);
 
-  const veiculo = await carregarVeiculo(placa);
+  const veiculo = await carregarVeiculo(empresaId, placa);
   if (!veiculo) return { tipo: "nao_encontrada", placa };
 
   // Última troca = a OS mais recente (não cancelada) que tem troca de óleo registrada.

@@ -50,8 +50,13 @@ Se preferir não usar o `setup:env`, copie `.env.example` para `.env` e preencha
 
 ### Quem usa
 
-- **Administrador (a oficina):** clientes, veículos, OS, trocas de óleo, busca por placa, vínculos pendentes e consulta da base de óleo. Não existe cadastro público de administrador: o primeiro é criado pelo seed com `ADMIN_EMAIL` e `ADMIN_PASSWORD`.
-- **Cliente:** cria a própria conta e vê só os seus veículos, serviços em andamento, histórico e próxima troca de óleo.
+- **Superadministrador (dono do sistema):** em `/superadmin`, cadastra as empresas (oficinas) e o administrador de cada uma. Não vê clientes de nenhuma empresa. É criado pelo seed com `SUPERADMIN_EMAIL` e `SUPERADMIN_PASSWORD`.
+- **Administrador (uma empresa):** clientes, veículos, OS, trocas de óleo, busca por placa, vínculos pendentes e consulta da base de óleo, **só da própria empresa**. Não existe cadastro público de administrador: o superadministrador cria um por empresa (o seed pode criar o da primeira empresa com `EMPRESA_NOME`, `ADMIN_EMAIL` e `ADMIN_PASSWORD`).
+- **Cliente:** cria a própria conta e vê só os seus veículos, serviços em andamento, histórico e próxima troca de óleo, em todas as oficinas em que tem cadastro confirmado.
+
+### Empresas
+
+Cada empresa tem os próprios clientes, veículos e ordens de serviço. CPF e placa são únicos **dentro** da empresa: o mesmo carro pode ter cadastro em duas oficinas, e uma não vê o da outra. Todo serviço de administrador filtra pelo `empresaId` da sessão (`exigirAdmin` devolve esse id), e `tests/isolamento-empresa.test.ts` quebra se algum esquecer. A base de óleo é a mesma para todas.
 
 ### Ligação da conta do cliente com o cadastro da oficina
 

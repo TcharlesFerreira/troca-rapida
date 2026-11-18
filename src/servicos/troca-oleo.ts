@@ -22,10 +22,10 @@ export async function salvarTrocaOleo(
   ordemId: string,
   dados: TrocaOleoDados,
 ): Promise<{ comparacao: ResultadoComparacao }> {
-  exigirAdmin(ator);
+  const empresaId = exigirAdmin(ator);
 
-  const ordem = await db.ordemServico.findUnique({
-    where: { id: ordemId },
+  const ordem = await db.ordemServico.findFirst({
+    where: { id: ordemId, veiculo: { empresaId } },
     include: { veiculo: { include: { recomendacaoOleo: true } } },
   });
   if (!ordem) throw new ErroDeNegocio("Ordem de serviço não encontrada.");
