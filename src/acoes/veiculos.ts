@@ -39,28 +39,25 @@ export async function escolherMotorAction(formData: FormData): Promise<void> {
   redirect(voltar.startsWith("/admin/") ? voltar : `/admin/veiculos/${veiculoId}`);
 }
 
-export async function corrigirUltimoOleoAction(_: EstadoForm, formData: FormData): Promise<EstadoForm> {
+/** Óleo do carro (tela de edição): último óleo usado e quantidade de óleo, salvos juntos. */
+export async function salvarOleoDoCarroAction(_: EstadoForm, formData: FormData): Promise<EstadoForm> {
   const ator = await exigirAdminSessao();
-  const lido = lerFormulario(ultimoOleoSchema, formData);
-  if (!lido.ok) return lido.estado;
-  try {
-    await corrigirUltimoOleo(ator, String(formData.get("veiculoId") ?? ""), lido.dados);
-  } catch (erro) {
-    return { ...tratarErro(erro), valores: valoresDe(formData) };
-  }
-  atualizarTelas();
-  return { ok: true, mensagem: "Último óleo atualizado." };
-}
+  const veiculoId = String(formData.get("veiculoId") ?? "");
+  const temOleo = formData.has("oleoViscosidade");
 
-export async function definirCapacidadeOleoAction(_: EstadoForm, formData: FormData): Promise<EstadoForm> {
-  const ator = await exigirAdminSessao();
-  const lido = lerFormulario(capacidadeOleoSchema, formData);
-  if (!lido.ok) return lido.estado;
+  const quantidade = lerFormulario(capacidadeOleoSchema, formData);
+  const oleo = temOleo ? lerFormulario(ultimoOleoSchema, formData) : null;
+  if (!quantidade.ok || (oleo && !oleo.ok)) {
+    const erros = { ...(oleo && !oleo.ok ? oleo.estado.erros : {}), ...(!quantidade.ok ? quantidade.estado.erros : {}) };
+    return { erro: "Revise os campos destacados.", erros, valores: valoresDe(formData) };
+  }
+
   try {
-    await definirCapacidadeOleo(ator, String(formData.get("veiculoId") ?? ""), lido.dados.capacidadeOleoL ?? null);
+    if (oleo?.ok) await corrigirUltimoOleo(ator, veiculoId, oleo.dados);
+    await definirCapacidadeOleo(ator, veiculoId, quantidade.dados.capacidadeOleoL ?? null);
   } catch (erro) {
     return { ...tratarErro(erro), valores: valoresDe(formData) };
   }
   atualizarTelas();
-  return { ok: true, mensagem: "Quantidade salva." };
+  redirect(`/admin/veiculos/${veiculoId}`);
 }

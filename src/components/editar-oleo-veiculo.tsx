@@ -1,7 +1,7 @@
 "use client";
 
 import { useActionState } from "react";
-import { corrigirUltimoOleoAction, definirCapacidadeOleoAction } from "@/acoes/veiculos";
+import { salvarOleoDoCarroAction } from "@/acoes/veiculos";
 import { AlertaForm } from "@/components/alerta-form";
 import { BotaoEnviar } from "@/components/botao-enviar";
 import { CampoTexto } from "@/components/campos";
@@ -9,68 +9,58 @@ import type { EstadoForm } from "@/lib/formulario";
 
 const virgula = (n: number | null | undefined) => (n === null || n === undefined ? "" : String(n).replace(".", ","));
 
-const resumo = "inline-flex min-h-11 cursor-pointer items-center rounded-md border px-4 font-semibold hover:bg-muted";
-
-/** Corrigir o último óleo usado (marca, viscosidade, norma). A quantidade é a do motor, logo abaixo. */
-export function EditarUltimoOleo({
+/**
+ * Óleo do carro, num formulário só: o último óleo usado (marca, viscosidade, norma) e a
+ * quantidade de óleo do motor. Sem troca registrada, só a quantidade aparece.
+ */
+export function EditarOleoDoCarro({
   veiculoId,
-  atual,
+  ultimo,
+  quantidade,
+  quantidadeDaBase,
 }: {
   veiculoId: string;
-  atual: { oleoMarca: string; oleoViscosidade: string; oleoEspecificacao: string | null };
+  ultimo: { oleoMarca: string; oleoViscosidade: string; oleoEspecificacao: string | null } | null;
+  quantidade: number | null;
+  quantidadeDaBase: number | null;
 }) {
-  const [estado, acao] = useActionState<EstadoForm, FormData>(corrigirUltimoOleoAction, {});
+  const [estado, acao] = useActionState<EstadoForm, FormData>(salvarOleoDoCarroAction, {});
   const v = estado.valores ?? {};
   const e = estado.erros ?? {};
   return (
-    <details className="mt-4" open={!!estado.erro}>
-      <summary className={resumo}>Mudar último óleo</summary>
-      <form action={acao} noValidate className="mt-4 grid gap-4">
-        <AlertaForm estado={estado} />
-        <input type="hidden" name="veiculoId" value={veiculoId} />
+    <form action={acao} noValidate className="grid max-w-xl gap-4">
+      <AlertaForm estado={estado} />
+      <input type="hidden" name="veiculoId" value={veiculoId} />
+      {ultimo ? (
         <div className="grid gap-4 sm:grid-cols-2">
-          <CampoTexto name="oleoMarca" rotulo="Marca do óleo" defaultValue={v.oleoMarca ?? atual.oleoMarca} erros={e.oleoMarca} />
-          <CampoTexto name="oleoViscosidade" rotulo="Viscosidade" defaultValue={v.oleoViscosidade ?? atual.oleoViscosidade} erros={e.oleoViscosidade} dica="Ex.: 5W-30." />
+          <CampoTexto name="oleoMarca" rotulo="Marca do óleo" defaultValue={v.oleoMarca ?? ultimo.oleoMarca} erros={e.oleoMarca} />
+          <CampoTexto name="oleoViscosidade" rotulo="Viscosidade" defaultValue={v.oleoViscosidade ?? ultimo.oleoViscosidade} erros={e.oleoViscosidade} dica="Ex.: 5W-30." />
           <CampoTexto
             name="oleoEspecificacao"
             rotulo="Especificação"
             opcional
-            defaultValue={v.oleoEspecificacao ?? atual.oleoEspecificacao ?? ""}
+            defaultValue={v.oleoEspecificacao ?? ultimo.oleoEspecificacao ?? ""}
             erros={e.oleoEspecificacao}
             dica="Ex.: API SP."
           />
         </div>
-        <div>
-          <BotaoEnviar>Salvar óleo</BotaoEnviar>
-        </div>
-      </form>
-    </details>
-  );
-}
-
-/** Quantidade de óleo do motor deste carro. Vazio = usar o valor da base de óleo. */
-export function EditarCapacidadeOleo({ veiculoId, atual, daBase }: { veiculoId: string; atual: number | null; daBase: number | null }) {
-  const [estado, acao] = useActionState<EstadoForm, FormData>(definirCapacidadeOleoAction, {});
-  const v = estado.valores ?? {};
-  const e = estado.erros ?? {};
-  return (
-    <details className="mt-3" open={!!estado.erro}>
-      <summary className={resumo}>Mudar quantidade de óleo</summary>
-      <form action={acao} noValidate className="mt-4 grid max-w-xs gap-4">
-        <AlertaForm estado={estado} />
-        <input type="hidden" name="veiculoId" value={veiculoId} />
+      ) : (
+        <p className="text-muted-foreground">Este carro ainda não tem troca de óleo registrada. A primeira é registrada pela ordem de serviço.</p>
+      )}
+      <div className="max-w-xs">
         <CampoTexto
           name="capacidadeOleoL"
           rotulo="Quantidade de óleo (litros)"
+          opcional
           inputMode="decimal"
-          defaultValue={v.capacidadeOleoL ?? virgula(atual)}
+          defaultValue={v.capacidadeOleoL ?? virgula(quantidade)}
           erros={e.capacidadeOleoL}
-          dica={daBase ? `Deixe em branco para usar o da base (${virgula(daBase)} L).` : "Ex.: 3,5. Deixe em branco se não souber."}
+          dica={quantidadeDaBase ? `Deixe em branco para usar o da base (${virgula(quantidadeDaBase)} L).` : "Ex.: 3,5."}
         />
-        <div>
-          <BotaoEnviar>Salvar quantidade</BotaoEnviar>
-        </div>
-      </form>
-    </details>
+      </div>
+      <div>
+        <BotaoEnviar>Salvar óleo</BotaoEnviar>
+      </div>
+    </form>
   );
 }

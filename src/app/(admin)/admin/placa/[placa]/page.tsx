@@ -108,7 +108,7 @@ export default async function PaginaPlaca({ params }: { params: Promise<{ placa:
               </p>
               {ultimaTroca.troca.divergiuDaRecomendacao && <p className="mt-2 text-sm font-semibold">Diferente do recomendado na base.</p>}
               <p className="mt-3">
-                <Link href={`/admin/veiculos/${veiculo.id}`} className="font-semibold text-primary underline underline-offset-4">
+                <Link href={`/admin/veiculos/${veiculo.id}/editar`} className="font-semibold text-primary underline underline-offset-4">
                   Mudar óleo ou quantidade
                 </Link>
               </p>

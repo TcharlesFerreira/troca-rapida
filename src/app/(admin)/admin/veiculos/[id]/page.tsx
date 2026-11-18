@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { EditarCapacidadeOleo, EditarUltimoOleo } from "@/components/editar-oleo-veiculo";
 import { Placa } from "@/components/placa";
 import { OleoSemRecomendacao } from "@/components/oleo-sem-recomendacao";
 import { RecomendacaoOleo } from "@/components/recomendacao-oleo";
@@ -76,7 +75,6 @@ export default async function PaginaVeiculo({ params }: { params: Promise<{ id: 
                   {ultima.trocaOleo.proximaTrocaKm ? `. Próxima troca: ${kmBR(ultima.trocaOleo.proximaTrocaKm)}` : ""}
                 </p>
                 {ultima.trocaOleo.divergiuDaRecomendacao && <p className="mt-2 text-sm font-semibold">Diferente do recomendado na base.</p>}
-                <EditarUltimoOleo veiculoId={veiculo.id} atual={ultima.trocaOleo} />
               </>
             ) : (
               <p className="text-muted-foreground">Nenhuma troca de óleo registrada para este veículo.</p>
@@ -91,7 +89,6 @@ export default async function PaginaVeiculo({ params }: { params: Promise<{ id: 
             <p className="text-sm text-muted-foreground">
               {veiculo.capacidadeOleoL ? "Informada pela oficina para este carro." : capacidadeBase ? "Da base de óleo (com filtro)." : "Informe quanto óleo vai neste motor."}
             </p>
-            <EditarCapacidadeOleo veiculoId={veiculo.id} atual={veiculo.capacidadeOleoL} daBase={capacidadeBase} />
           </section>
 
           <section aria-labelledby="oleo" className="lg:col-span-2">
