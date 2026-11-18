@@ -10,7 +10,7 @@ import { StatusBadge } from "@/components/selos";
 import { TituloPagina } from "@/components/titulo-pagina";
 import { Alert } from "@/components/ui/alert";
 import { Button } from "@/components/ui/button";
-import { somarMeses } from "@/lib/datas";
+import { MESES_PROXIMA_TROCA, somarMeses } from "@/lib/datas";
 import { dataBR, kmBR, paraInputData } from "@/lib/formatar";
 import { exigirAdminSessao } from "@/lib/sessao";
 import { proximosStatus } from "@/lib/status-os";
@@ -34,7 +34,8 @@ export default async function PaginaOrdem({ params, searchParams }: { params: Pr
 
   // Sugestão de "próxima troca" a partir do intervalo da base (só quando ainda não há registro).
   const sugestaoKm = rec?.intervaloKm ? String(ordem.kmEntrada + rec.intervaloKm) : undefined;
-  const sugestaoData = rec?.intervaloMeses ? paraInputData(somarMeses(ordem.dataEntrada, rec.intervaloMeses)) : undefined;
+  // Próxima troca por data: sempre 6 meses depois da entrada (a oficina pode mudar no campo).
+  const sugestaoData = paraInputData(somarMeses(ordem.dataEntrada, MESES_PROXIMA_TROCA));
 
   return (
     <>
@@ -132,7 +133,7 @@ export default async function PaginaOrdem({ params, searchParams }: { params: Pr
                           quantidadeLitros: trocaOleo.quantidadeLitros === null ? "" : virgula(trocaOleo.quantidadeLitros),
                           filtroTrocado: trocaOleo.filtroTrocado,
                           proximaTrocaKm: trocaOleo.proximaTrocaKm?.toString(),
-                          proximaTrocaData: paraInputData(trocaOleo.proximaTrocaData),
+                          proximaTrocaData: trocaOleo.proximaTrocaData ? paraInputData(trocaOleo.proximaTrocaData) : sugestaoData,
                         }
                       : {
                           proximaTrocaKm: sugestaoKm,

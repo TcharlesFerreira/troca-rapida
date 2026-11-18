@@ -1,3 +1,6 @@
+/** Prazo padrão da próxima troca de óleo por data. */
+export const MESES_PROXIMA_TROCA = 6;
+
 /** Soma meses mantendo o dia (ou o último dia do mês quando não existir). Trabalha em UTC. */
 export function somarMeses(data: Date, meses: number): Date {
   const ano = data.getUTCFullYear();
