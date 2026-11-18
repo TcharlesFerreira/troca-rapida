@@ -4,7 +4,7 @@ import { intervaloKmPorViscosidade, proximaTrocaKmSugerida } from "@/lib/interva
 describe("intervalo da próxima troca por viscosidade", () => {
   it("segue a tabela da oficina", () => {
     const tabela: Array<[string, number]> = [
-      ["0W-20", 10000], ["5W20", 10000], ["5W-30", 10000], ["5W-40", 10000],
+      ["0W-20", 10000], ["0W-30", 10000], ["5W20", 10000], ["5W-30", 10000], ["5W-40", 10000],
       ["10W-30", 7000], ["10W40", 7000], ["15W-40", 7000],
       ["20W-50", 5000], ["25W50", 5000], ["25W-60", 5000],
     ];
@@ -18,10 +18,10 @@ describe("intervalo da próxima troca por viscosidade", () => {
   });
 
   it("viscosidade fora da lista fica para preencher à mão", () => {
-    expect(intervaloKmPorViscosidade("0W-30")).toBeNull();
+    expect(intervaloKmPorViscosidade("0W-40")).toBeNull();
     expect(intervaloKmPorViscosidade("")).toBeNull();
     expect(intervaloKmPorViscosidade("mineral")).toBeNull();
-    expect(proximaTrocaKmSugerida(50000, "0W-30")).toBeNull();
+    expect(proximaTrocaKmSugerida(50000, "0W-40")).toBeNull();
   });
 
   it("soma o intervalo à quilometragem da entrada", () => {

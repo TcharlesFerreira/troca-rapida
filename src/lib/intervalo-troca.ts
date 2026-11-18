@@ -1,6 +1,7 @@
 /** Intervalo padrão da próxima troca de óleo, em km, conforme a viscosidade usada. */
 const INTERVALO_KM: Record<string, number> = {
   "0W20": 10000,
+  "0W30": 10000,
   "5W20": 10000,
   "5W30": 10000,
   "5W40": 10000,
