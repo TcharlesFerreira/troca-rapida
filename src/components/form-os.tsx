@@ -29,7 +29,7 @@ export function FormOS({ veiculos, veiculoIdInicial, hoje }: Props) {
   const versao = useMemo(() => Math.random(), [estado]);
   const formRef = useRef<HTMLFormElement>(null);
   const [perguntarCompleta, setPerguntarCompleta] = useState(false);
-  const manterIncompleta = useRef(false);
+  const [avisoDesmarcar, setAvisoDesmarcar] = useState(false);
 
   // Troca incompleta com todos os filtros marcados (bujão e arruela não contam): pergunta se não é a completa.
   const tudoMarcado = (form: HTMLFormElement) =>
@@ -70,11 +70,12 @@ export function FormOS({ veiculos, veiculoIdInicial, hoje }: Props) {
       noValidate
       className="grid max-w-2xl gap-4"
       onSubmit={(ev) => {
-        if (servico === "TROCA_OLEO_INCOMPLETA" && !manterIncompleta.current && tudoMarcado(ev.currentTarget)) {
+        // Incompleta não pode ter todos os filtros: ou é completa, ou algum filtro não foi trocado.
+        if (servico === "TROCA_OLEO_INCOMPLETA" && tudoMarcado(ev.currentTarget)) {
           ev.preventDefault();
+          setAvisoDesmarcar(false);
           setPerguntarCompleta(true);
         }
-        manterIncompleta.current = false;
       }}
     >
       <AlertaForm estado={estado} />
@@ -174,8 +175,16 @@ export function FormOS({ veiculos, veiculoIdInicial, hoje }: Props) {
         )}
 
         {MOSTRA_FILTROS.includes(servico as ServicoOS) && (
-          <fieldset className="grid gap-1 rounded-md border p-3">
+          <fieldset
+            className={`grid gap-1 rounded-md border p-3 ${avisoDesmarcar && servico === "TROCA_OLEO_INCOMPLETA" ? "border-2 border-destructive" : ""}`}
+            onChange={() => setAvisoDesmarcar(false)}
+          >
             <legend className="px-1 text-sm font-semibold">Quais filtros foram trocados</legend>
+            {avisoDesmarcar && servico === "TROCA_OLEO_INCOMPLETA" && (
+              <p role="alert" className="text-sm font-medium text-destructive">
+                Desmarque o filtro que não foi trocado.
+              </p>
+            )}
             {TIPOS_FILTRO.map((t) => (
               <CampoCaixa key={`${versao}-${t}`} name={campoFiltroTrocado(t)} rotulo={ROTULO_FILTRO[t]} defaultChecked={v[campoFiltroTrocado(t)] === "on"} />
             ))}
@@ -229,11 +238,10 @@ export function FormOS({ veiculos, veiculoIdInicial, hoje }: Props) {
               className="inline-flex min-h-11 items-center rounded-md border px-4 font-semibold hover:bg-muted"
               onClick={() => {
                 setPerguntarCompleta(false);
-                manterIncompleta.current = true;
-                enviar();
+                setAvisoDesmarcar(true);
               }}
             >
-              Não, manter incompleta
+              Não
             </button>
           </div>
         </div>

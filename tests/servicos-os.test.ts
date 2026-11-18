@@ -29,6 +29,14 @@ describe("serviços da OS", () => {
     );
   });
 
+  it("troca incompleta não aceita todos os filtros marcados", () => {
+    const todos = { filtroTrocado_OLEO: "on", filtroTrocado_COMBUSTIVEL: "on", filtroTrocado_AR: "on", filtroTrocado_AR_CABINE: "on" };
+    expect(montar({ tipoServico: "TROCA_OLEO_INCOMPLETA", ...todos })).toBeNull();
+    expect(montar({ tipoServico: "TROCA_OLEO_INCOMPLETA", ...todos, filtroTrocado_AR_CABINE: "" })).toBe(
+      "Troca de óleo incompleta: filtro de óleo, filtro de combustível, filtro de ar do motor",
+    );
+  });
+
   it("troca de filtros pede ao menos um filtro", () => {
     expect(montar({ tipoServico: "TROCA_FILTROS" })).toBeNull();
     expect(montar({ tipoServico: "TROCA_FILTROS", filtroTrocado_COMBUSTIVEL: "on" })).toBe("Troca de filtros: filtro de combustível");

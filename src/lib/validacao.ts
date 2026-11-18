@@ -172,6 +172,9 @@ export const ordemSchema = z
     const texto = !!d.detalheServico && d.detalheServico.length >= 3;
     if (d.tipoServico === "OUTRO" && !texto) ctx.addIssue({ code: "custom", path: ["detalheServico"], message: "Escreva qual é o serviço" });
     if (d.tipoServico === "TROCA_FILTROS" && !filtros) ctx.addIssue({ code: "custom", path: ["filtrosTrocados"], message: "Marque ao menos um filtro" });
+    if (d.tipoServico === "TROCA_OLEO_INCOMPLETA" && TIPOS_FILTRO.every((t) => d[`filtroTrocado_${t}`])) {
+      ctx.addIssue({ code: "custom", path: ["filtrosTrocados"], message: "Todos os filtros foram trocados: escolha troca de óleo completa ou desmarque o que não foi trocado" });
+    }
     if (d.tipoServico === "TROCA_OLEO_INCOMPLETA" && !filtros && !pecas && !texto) {
       ctx.addIssue({ code: "custom", path: ["detalheServico"], message: "Marque o que foi trocado ou escreva aqui" });
     }
