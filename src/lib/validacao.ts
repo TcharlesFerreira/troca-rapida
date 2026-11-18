@@ -1,0 +1,134 @@
+import { z } from "zod";
+import { cpfValido, normalizarCpf } from "./cpf";
+import { normalizarPlaca, placaValida } from "./placa";
+
+// "" (campo vazio do formulário) vira undefined nos campos opcionais.
+const vazioParaUndefined = (v: unknown) => (typeof v === "string" && v.trim() === "" ? undefined : v);
+
+const texto = (rotulo: string, min = 2, max = 120) =>
+  z
+    .string({ required_error: `${rotulo} é obrigatório`, invalid_type_error: `${rotulo} é obrigatório` })
+    .trim()
+    .min(min, min <= 1 ? `${rotulo} é obrigatório` : `${rotulo} precisa ter ao menos ${min} caracteres`)
+    .max(max, `${rotulo} aceita até ${max} caracteres`);
+
+const textoOpcional = (rotulo: string, max = 300) =>
+  z.preprocess(vazioParaUndefined, z.string().trim().max(max, `${rotulo} aceita até ${max} caracteres`).optional());
+
+const inteiro = (rotulo: string, min: number, max: number) =>
+  z.preprocess(
+    (v) => (v === "" || v === null || v === undefined ? undefined : Number(String(v).replace(/\./g, ""))),
+    z
+      .number({ required_error: `${rotulo} é obrigatório`, invalid_type_error: `${rotulo} precisa ser um número` })
+      .int(`${rotulo} precisa ser um número inteiro`)
+      .min(min, `${rotulo} não pode ser menor que ${min}`)
+      .max(max, `${rotulo} não pode ser maior que ${max}`),
+  );
+
+const inteiroOpcional = (rotulo: string, min: number, max: number) =>
+  z.preprocess(
+    (v) => (v === "" || v === null || v === undefined ? undefined : Number(String(v).replace(/\./g, ""))),
+    z
+      .number({ invalid_type_error: `${rotulo} precisa ser um número` })
+      .int(`${rotulo} precisa ser um número inteiro`)
+      .min(min, `${rotulo} não pode ser menor que ${min}`)
+      .max(max, `${rotulo} não pode ser maior que ${max}`)
+      .optional(),
+  );
+
+const decimal = (rotulo: string, min: number, max: number) =>
+  z.preprocess(
+    (v) => (v === "" || v === null || v === undefined ? undefined : Number(String(v).replace(",", "."))),
+    z
+      .number({ required_error: `${rotulo} é obrigatório`, invalid_type_error: `${rotulo} precisa ser um número` })
+      .min(min, `${rotulo} precisa ser maior que ${min}`)
+      .max(max, `${rotulo} não pode passar de ${max}`),
+  );
+
+const email = z
+  .string({ required_error: "E-mail é obrigatório" })
+  .trim()
+  .toLowerCase()
+  .email("Informe um e-mail válido, como nome@exemplo.com");
+
+const cpf = z
+  .string({ required_error: "CPF é obrigatório" })
+  .trim()
+  .refine(cpfValido, "CPF inválido. Confira os 11 números")
+  .transform(normalizarCpf);
+
+const telefone = z
+  .string({ required_error: "Telefone é obrigatório" })
+  .trim()
+  .transform((v) => v.replace(/\D/g, ""))
+  .refine((v) => v.length === 10 || v.length === 11, "Telefone inválido. Use DDD + número, como (11) 91234-5678");
+
+const dataISO = (rotulo: string) =>
+  z
+    .string({ required_error: `${rotulo} é obrigatória` })
+    .trim()
+    .regex(/^\d{4}-\d{2}-\d{2}$/, `${rotulo} inválida`)
+    .refine((v) => !Number.isNaN(Date.parse(v)), `${rotulo} inválida`)
+    .transform((v) => new Date(`${v}T00:00:00.000Z`));
+
+const dataISOOpcional = (rotulo: string) => z.preprocess(vazioParaUndefined, dataISO(rotulo).optional());
+
+export const loginSchema = z.object({
+  email,
+  senha: z.string({ required_error: "Informe a senha" }).min(1, "Informe a senha"),
+});
+
+export const cadastroSchema = z
+  .object({
+    nome: texto("Nome", 3),
+    email,
+    senha: z
+      .string({ required_error: "Senha é obrigatória" })
+      .min(8, "A senha precisa ter ao menos 8 caracteres")
+      .max(72, "A senha aceita até 72 caracteres")
+      .refine((s) => /[A-Za-z]/.test(s) && /\d/.test(s), "Use letras e números na senha"),
+    confirmarSenha: z.string({ required_error: "Repita a senha" }),
+    cpf,
+    telefone,
+  })
+  .refine((d) => d.senha === d.confirmarSenha, { path: ["confirmarSenha"], message: "As senhas não são iguais" });
+
+export const clienteSchema = z.object({
+  nome: texto("Nome", 3),
+  cpf,
+  telefone,
+  email,
+  endereco: textoOpcional("Endereço"),
+});
+
+export const veiculoSchema = z.object({
+  clienteId: texto("Cliente", 1, 60),
+  placa: z
+    .string({ required_error: "Placa é obrigatória" })
+    .refine(placaValida, "Placa inválida. Use ABC1234 ou ABC1D23 (com ou sem hífen)")
+    .transform(normalizarPlaca),
+  marca: texto("Marca", 2, 60),
+  modelo: texto("Modelo", 1, 80),
+  motor: texto("Motor", 1, 80),
+  ano: inteiro("Ano", 1950, new Date().getFullYear() + 1),
+  cor: texto("Cor", 2, 40),
+  kmAtual: inteiro("Quilometragem atual", 0, 2_000_000),
+});
+
+export const ordemSchema = z.object({
+  veiculoId: texto("Veículo", 1, 60),
+  dataEntrada: dataISO("Data de entrada"),
+  kmEntrada: inteiro("Quilometragem na entrada", 0, 2_000_000),
+  descricao: texto("Descrição dos serviços", 3, 2000),
+  observacoes: textoOpcional("Observações", 2000),
+});
+
+export const trocaOleoSchema = z.object({
+  oleoMarca: texto("Marca do óleo", 2, 80),
+  oleoViscosidade: texto("Viscosidade", 2, 20),
+  oleoEspecificacao: texto("Especificação", 2, 80),
+  quantidadeLitros: decimal("Quantidade", 0.1, 30),
+  filtroTrocado: z.preprocess((v) => v === "on" || v === "true", z.boolean()),
+  proximaTrocaKm: inteiroOpcional("Próxima troca (km)", 1, 3_000_000),
+  proximaTrocaData: dataISOOpcional("Data da próxima troca"),
+});

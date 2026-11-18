@@ -1,0 +1,63 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Azul de macacão + âmbar de óleo, sobre um cinza-azulado frio */
+    --background: 214 24% 96%;
+    --foreground: 220 43% 11%;
+    --card: 0 0% 100%;
+    --card-foreground: 220 43% 11%;
+    --primary: 209 59% 30%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 214 28% 91%;
+    --secondary-foreground: 220 43% 11%;
+    --muted: 214 24% 93%;
+    --muted-foreground: 219 20% 38%;
+    --accent: 40 91% 60%;
+    --accent-foreground: 40 100% 8%;
+    --destructive: 4 77% 40%;
+    --destructive-foreground: 0 0% 100%;
+    --success: 158 91% 21%;
+    --success-foreground: 0 0% 100%;
+    --border: 214 20% 83%;
+    --input: 214 20% 75%;
+    --ring: 209 59% 30%;
+    --radius: 0.5rem;
+    color-scheme: light;
+  }
+
+  * {
+    @apply border-border;
+  }
+
+  html {
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    @apply bg-background font-sans text-foreground antialiased;
+    font-size: 1rem;
+    line-height: 1.5;
+  }
+
+  h1,
+  h2,
+  h3 {
+    @apply font-display tracking-tight;
+  }
+
+  /* Foco sempre visível para quem navega pelo teclado */
+  :focus-visible {
+    outline: 3px solid hsl(var(--ring));
+    outline-offset: 2px;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    * {
+      animation-duration: 0.01ms !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+}
