@@ -44,6 +44,10 @@ export function FormOS({ veiculos, veiculoIdInicial, hoje }: Props) {
   };
   const placaCompleta = placaValida(placa);
   const selecionado = veiculos.find((x) => x.id === veiculoId);
+  // Parte da placa (2 ou mais letras/números): sugere os carros cuja placa contém o que foi digitado.
+  const parte = normalizarPlaca(placa);
+  const sugestoes = !selecionado && parte.length >= 2 ? veiculos.filter((x) => x.placa.includes(parte)).slice(0, 8) : [];
+  const total = !selecionado && parte.length >= 2 ? veiculos.filter((x) => x.placa.includes(parte)).length : 0;
 
   return (
     <form action={acao} noValidate className="grid max-w-2xl gap-4">
@@ -63,6 +67,25 @@ export function FormOS({ veiculos, veiculoIdInicial, hoje }: Props) {
         />
         {selecionado ? (
           <p className="text-sm font-semibold">{selecionado.rotulo}</p>
+        ) : sugestoes.length > 0 ? (
+          <div>
+            <p className="mb-1 text-sm text-muted-foreground">
+              {total === 1 ? "1 veículo encontrado:" : `${total} veículos encontrados${total > sugestoes.length ? ` (mostrando ${sugestoes.length}, digite mais para filtrar)` : ""}:`}
+            </p>
+            <ul className="grid gap-1 rounded-md border bg-card p-1" aria-label="Veículos com esta placa">
+              {sugestoes.map((x) => (
+                <li key={x.id}>
+                  <button
+                    type="button"
+                    onClick={() => escolher(x.id)}
+                    className="flex min-h-11 w-full items-center rounded px-3 text-left hover:bg-muted focus-visible:bg-muted"
+                  >
+                    {x.rotulo}
+                  </button>
+                </li>
+              ))}
+            </ul>
+          </div>
         ) : placaCompleta ? (
           <p className="text-sm">
             Nenhum veículo com esta placa.{" "}
@@ -70,6 +93,8 @@ export function FormOS({ veiculos, veiculoIdInicial, hoje }: Props) {
               Cadastrar este veículo
             </Link>
           </p>
+        ) : parte.length >= 2 ? (
+          <p className="text-sm">Nenhuma placa com “{parte}”.</p>
         ) : null}
       </div>
       <CampoSelecao
