@@ -24,9 +24,14 @@ export default async function PaginaClientes({ searchParams }: { searchParams: P
       <TituloPagina
         titulo="Clientes"
         acoes={
-          <Link href="/admin/clientes/novo" className={estiloBotao()}>
-            Novo cliente
-          </Link>
+          <div className="flex flex-wrap gap-2">
+            <Link href="/admin/cadastros" className={estiloBotao({ variant: "outline" })}>
+              Importar / exportar
+            </Link>
+            <Link href="/admin/clientes/novo" className={estiloBotao()}>
+              Novo cliente
+            </Link>
+          </div>
         }
       />
 

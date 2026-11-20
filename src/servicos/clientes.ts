@@ -89,19 +89,29 @@ export async function criarCliente(ator: Ator, dados: ClienteDados) {
       data: { empresaId, nome: dados.nome, cpf: dados.cpf, telefone: dados.telefone, email: dados.email, endereco: dados.endereco ?? null },
     });
 
-    // O cliente pode já ter criado a conta no site antes de esta oficina cadastrá-lo.
-    // (A mesma conta pode estar ligada a cadastros de outras oficinas: isso não impede.)
-    const conta = await tx.usuario.findFirst({ where: { cpf: dados.cpf, papel: "CLIENTE" } });
-    if (conta?.cpf) {
-      const resultado = decidirVinculo({ cpf: conta.cpf, email: conta.email }, cliente);
-      if (resultado === "AUTOMATICO") {
-        await tx.cliente.update({ where: { id: cliente.id }, data: { usuarioId: conta.id } });
-      } else if (resultado === "PENDENTE") {
-        await tx.solicitacaoVinculo.create({ data: { usuarioId: conta.id, clienteId: cliente.id } });
-      }
-    }
+    await ligarContaExistente(tx, cliente);
     return cliente;
   });
+}
+
+/**
+ * O cliente pode já ter criado a conta no site antes de esta oficina cadastrá-lo: liga sozinho
+ * (CPF e e-mail iguais) ou deixa o pedido para o administrador (só o CPF igual).
+ * A mesma conta pode estar ligada a cadastros de outras oficinas: isso não impede.
+ */
+export async function ligarContaExistente(
+  tx: Prisma.TransactionClient,
+  cliente: { id: string; cpf: string | null; email: string | null },
+) {
+  if (!cliente.cpf) return;
+  const conta = await tx.usuario.findFirst({ where: { cpf: cliente.cpf, papel: "CLIENTE" } });
+  if (!conta?.cpf) return;
+  const resultado = decidirVinculo({ cpf: conta.cpf, email: conta.email }, cliente);
+  if (resultado === "AUTOMATICO") {
+    await tx.cliente.update({ where: { id: cliente.id }, data: { usuarioId: conta.id } });
+  } else if (resultado === "PENDENTE") {
+    await tx.solicitacaoVinculo.create({ data: { usuarioId: conta.id, clienteId: cliente.id } });
+  }
 }
 
 export async function atualizarCliente(ator: Ator, id: string, dados: ClienteDados) {

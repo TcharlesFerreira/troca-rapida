@@ -24,9 +24,14 @@ export default async function PaginaVeiculos({ searchParams }: { searchParams: P
       <TituloPagina
         titulo="Veículos"
         acoes={
-          <Link href="/admin/veiculos/novo" className={estiloBotao()}>
-            Novo veículo
-          </Link>
+          <div className="flex flex-wrap gap-2">
+            <Link href="/admin/cadastros" className={estiloBotao({ variant: "outline" })}>
+              Importar / exportar
+            </Link>
+            <Link href="/admin/veiculos/novo" className={estiloBotao()}>
+              Novo veículo
+            </Link>
+          </div>
         }
       />
       <form role="search" className="mb-5 flex max-w-xl gap-2">

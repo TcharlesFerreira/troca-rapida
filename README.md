@@ -58,6 +58,13 @@ Se preferir não usar o `setup:env`, copie `.env.example` para `.env` e preencha
 
 Cada carro guarda os filtros que a oficina usa (óleo, combustível, ar do motor e ar da cabine). A tela do veículo mostra, ao lado, o que o catálogo do fabricante indica e avisa quando o código é diferente. O catálogo fica em `data/filtros/*.json` (hoje, Tecfil), carregado pelo seed; cada aplicação guarda a página consultada e a data. Os códigos são comparados sem espaço/hífen, e o "GL" das fichas antigas é lido como o "GI" da Tecfil.
 
+### Importar e exportar cadastros
+
+Em **Clientes → Importar / exportar** (`/admin/cadastros`):
+
+- **Exportar** baixa um CSV (abre no Excel) com todos os clientes e veículos da oficina, uma linha por veículo, mais o último óleo e a próxima troca.
+- **Importar** recebe um CSV (modelo para baixar na mesma tela; aceita `;`, `,` ou tabulação, UTF-8 ou o formato antigo do Excel no Windows, e vários nomes de coluna, como "Celular" ou "Quilometragem"). Antes de gravar, mostra a conferência linha a linha. Cliente que já existe (mesmo CPF; sem CPF, mesmo nome e telefone) não é duplicado nem alterado; placa já cadastrada fica como está; linha com erro não entra. A gravação é tudo ou nada e confere tudo de novo no servidor. Máximo de 5.000 linhas por arquivo.
+
 ### Próxima troca
 
 Ao registrar a troca, a data da próxima vem preenchida com **6 meses** depois da entrada e a quilometragem sai da viscosidade (0W20 a 5W40: +10 mil km; 10W30 a 15W40: +7 mil; 20W50 a 25W60: +5 mil). A oficina pode mudar as duas. Trocas antigas sem data podem ser completadas com `npx tsx scripts/preencher-proxima-troca.ts --gravar` (sem `--gravar`, só mostra quantas são); o importador de fichas já grava a data.
