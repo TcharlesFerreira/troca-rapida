@@ -8,6 +8,8 @@ A web app for auto repair shops and oil-change centers in Brazil. Shops register
 
 The UI is in Portuguese (Brazil).
 
+**[Try the live demo](https://troca-rapida-one.vercel.app/login)**: on the login page, click **Entrar na demonstração** (no sign-up needed). Customers and cars are fictitious and reset every day. The first visit may take a few seconds while the free server wakes up.
+
 ![Shop dashboard](docs/imagens/painel.png)
 
 > All screenshots use the **demo shop**, with fictitious customers and cars (`npm run db:seed:demo`).
@@ -21,7 +23,7 @@ The UI is in Portuguese (Brazil).
 | **Work orders** with a status flow (waiting → in progress → ready for pickup → delivered), an audit trail of who changed what, and the oil change form with the next change suggested from the oil viscosity. | ![Work order](docs/imagens/ordem-servico.png) |
 | **New work order** with service types (full, partial, filters only, other) and a sanity check: ticking every filter on a "partial" change asks whether it is actually a full one. | ![New work order](docs/imagens/nova-os.png) |
 | **Spreadsheet import/export** of customers and vehicles, with a line-by-line review before anything is saved and no duplicates. | ![Import and export](docs/imagens/importar.png) |
-| **Oil database with sources**: every recommendation keeps where it came from; confidence (confirmed, single source, conflicting) is computed, never typed in. | ![Oil database](docs/imagens/base-oleo.png) |
+| **Oil and filter database with sources**: every recommendation keeps where it came from; confidence (confirmed, single source, conflicting) is computed, never typed in. Catalog filters show on the same card and are pre-filled when a car is registered. | ![Oil database](docs/imagens/base-oleo.png) |
 
 Also: customer area (customers sign up and follow their services and next oil change), automatic or approval-based linking between a customer account and the shop's record, a super admin who registers shops, safe deletion (history is never erased), login attempt limits, pagination and mobile-friendly pages.
 

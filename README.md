@@ -6,6 +6,8 @@
 
 Sistema web para oficinas mecânicas e centros de troca de óleo. A oficina cadastra clientes e veículos, abre ordens de serviço, registra cada troca de óleo e encontra tudo pela placa. Para cada carro, o sistema mostra **o óleo e os filtros recomendados, com as fontes**, avisa quando a oficina usou algo diferente e calcula a próxima troca por km e por data. Várias oficinas usam o mesmo sistema, cada uma vendo só os próprios clientes.
 
+**[Ver a demonstração online](https://troca-rapida-one.vercel.app/login)**: na tela de login, clique em **Entrar na demonstração** (sem cadastro). Os clientes e carros são fictícios e voltam ao original todo dia. O primeiro acesso pode levar alguns segundos enquanto o servidor gratuito acorda.
+
 ![Painel da oficina](docs/imagens/painel.png)
 
 > Todas as imagens usam a **oficina de demonstração**, com clientes e carros fictícios (`npm run db:seed:demo`).
@@ -19,7 +21,7 @@ Sistema web para oficinas mecânicas e centros de troca de óleo. A oficina cada
 | **Ordem de serviço** com status (aguardando → em andamento → pronto para retirada → entregue), histórico de quem mudou o quê e registro da troca de óleo com a próxima troca sugerida pela viscosidade. | ![Ordem de serviço](docs/imagens/ordem-servico.png) |
 | **Abertura de OS** escolhendo o serviço (troca completa, incompleta, filtros, outro), com conferência: se marcar todos os filtros numa troca "incompleta", o sistema pergunta se ela é completa. | ![Nova OS](docs/imagens/nova-os.png) |
 | **Importar e exportar** clientes e veículos em planilha, com conferência linha a linha antes de gravar e sem duplicar cadastros. | ![Importar e exportar](docs/imagens/importar.png) |
-| **Base de óleo com fontes**: cada recomendação guarda de onde veio; a confiança (confirmado, fonte única, divergente) é calculada, nunca digitada. | ![Base de óleo](docs/imagens/base-oleo.png) |
+| **Base de óleo e filtros com fontes**: cada recomendação guarda de onde veio; a confiança (confirmado, fonte única, divergente) é calculada, nunca digitada. Os filtros do catálogo aparecem no mesmo cartão e já vêm preenchidos ao cadastrar um carro. | ![Base de óleo](docs/imagens/base-oleo.png) |
 
 Também: área do cliente (ele cria a conta e acompanha os serviços e a próxima troca), ligação automática ou com aprovação entre a conta do cliente e o cadastro da oficina, superadministrador que cadastra as oficinas, exclusão segura (não apaga histórico), paginação e telas que funcionam no celular.
 
