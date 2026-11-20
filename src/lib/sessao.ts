@@ -1,3 +1,4 @@
+import { cache } from "react";
 import { redirect } from "next/navigation";
 import { auth } from "@/auth";
 import { db } from "@/lib/db";
@@ -6,8 +7,9 @@ import type { Ator } from "@/lib/permissoes";
 /**
  * Quem está logado, lido do banco a cada requisição (e não só do token):
  * se o administrador confirmar um vínculo ou mudar um papel, vale na hora.
+ * `cache`: o layout e a página pedem o mesmo dado; o banco é consultado uma vez por requisição.
  */
-export async function obterAtor(): Promise<Ator | null> {
+export const obterAtor = cache(async function obterAtor(): Promise<Ator | null> {
   const sessao = await auth();
   if (!sessao?.user?.id) return null;
 
@@ -23,7 +25,7 @@ export async function obterAtor(): Promise<Ator | null> {
     empresaId: usuario.empresaId,
     clienteIds: usuario.clientes.map((c) => c.id),
   };
-}
+});
 
 export async function exigirAdminSessao(): Promise<Ator> {
   const ator = await obterAtor();

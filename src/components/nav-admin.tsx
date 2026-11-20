@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import { useEffect, useState } from "react";
 import { usePathname } from "next/navigation";
 import { cn } from "@/lib/utils";
 
@@ -11,7 +12,11 @@ interface ItemNav {
 }
 
 export function NavAdmin({ itens }: { itens: ItemNav[] }) {
-  const caminho = usePathname();
+  const caminhoAtual = usePathname();
+  // Marca a aba clicada na hora, sem esperar a página nova chegar.
+  const [clicado, setClicado] = useState<string | null>(null);
+  useEffect(() => setClicado(null), [caminhoAtual]);
+  const caminho = clicado ?? caminhoAtual;
   return (
     <nav aria-label="Principal" className="-mx-4 overflow-x-auto px-4">
       <ul className="flex min-w-max gap-1 pb-2">
@@ -22,6 +27,9 @@ export function NavAdmin({ itens }: { itens: ItemNav[] }) {
               <Link
                 href={item.href}
                 aria-current={ativo ? "page" : undefined}
+                onClick={(ev) => {
+                  if (!ev.metaKey && !ev.ctrlKey && !ev.shiftKey && ev.button === 0) setClicado(item.href);
+                }}
                 className={cn(
                   "inline-flex min-h-11 items-center gap-2 rounded-md px-3 font-semibold hover:bg-white/10",
                   ativo ? "bg-white text-primary hover:bg-white" : "text-primary-foreground",
