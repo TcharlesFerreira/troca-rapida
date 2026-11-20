@@ -46,6 +46,8 @@ model Empresa {
   id           String   @id @default(cuid())
   nome         String
   cnpj         String?  @unique // só dígitos
+  /// Oficina de demonstração (dados fictícios): visitantes não podem excluir nem importar.
+  demonstracao Boolean  @default(false)
   criadoEm     DateTime @default(now())
   atualizadoEm DateTime @updatedAt
 
@@ -311,3 +313,15 @@ model FonteOleo {
   @@index([recomendacaoId])
   @@map("fontes_oleo")
 }
+
+/// Tentativa de login errada, para bloquear quem tenta adivinhar senhas.
+/// chave = "email:<e-mail>" ou "ip:<endereço>". Apagadas depois de um dia.
+model TentativaLogin {
+  id    String   @id @default(cuid())
+  chave String
+  em    DateTime @default(now())
+
+  @@index([chave, em])
+  @@map("tentativas_login")
+}
+
