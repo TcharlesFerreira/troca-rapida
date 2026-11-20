@@ -2,6 +2,7 @@ import type { Prisma } from "@prisma/client";
 import { db } from "@/lib/db";
 import { ErroDeNegocio } from "@/lib/erros";
 import { exigirAdmin, type Ator } from "@/lib/permissoes";
+import { fatia, montarPagina } from "@/lib/paginacao";
 import { decidirVinculo } from "@/lib/vinculo";
 
 export interface ClienteDados {
@@ -12,7 +13,7 @@ export interface ClienteDados {
   endereco?: string;
 }
 
-export async function listarClientes(ator: Ator, busca?: string) {
+export async function listarClientes(ator: Ator, busca?: string, pagina = 1) {
   const empresaId = exigirAdmin(ator);
   const termo = busca?.trim();
   const digitos = termo?.replace(/\D/g, "");
@@ -28,17 +29,41 @@ export async function listarClientes(ator: Ator, busca?: string) {
       }
     : { empresaId };
 
-  return db.cliente.findMany({
-    where,
-    orderBy: { nome: "asc" },
-    take: 200,
-    include: { _count: { select: { veiculos: true } } },
-  });
+  const [itens, total] = await Promise.all([
+    db.cliente.findMany({
+      where,
+      orderBy: [{ nome: "asc" }, { id: "asc" }],
+      ...fatia(pagina),
+      include: { _count: { select: { veiculos: true } } },
+    }),
+    db.cliente.count({ where }),
+  ]);
+  return montarPagina(itens, total, pagina);
 }
 
-export async function listarClientesParaSelecao(ator: Ator) {
+export async function contarClientes(ator: Ator) {
   const empresaId = exigirAdmin(ator);
-  return db.cliente.findMany({ where: { empresaId }, orderBy: { nome: "asc" }, select: { id: true, nome: true, cpf: true } });
+  return db.cliente.count({ where: { empresaId } });
+}
+
+/** Sugestões ao escolher o dono de um carro: por nome, telefone ou CPF (até 8). */
+export async function sugerirClientes(ator: Ator, digitado: string) {
+  const empresaId = exigirAdmin(ator);
+  const termo = digitado.trim();
+  if (termo.length < 2) return [];
+  const digitos = termo.replace(/\D/g, "");
+  return db.cliente.findMany({
+    where: {
+      empresaId,
+      OR: [
+        { nome: { contains: termo, mode: "insensitive" } },
+        ...(digitos.length >= 3 ? [{ telefone: { contains: digitos } }, { cpf: { contains: digitos } }] : []),
+      ],
+    },
+    orderBy: { nome: "asc" },
+    take: 8,
+    select: { id: true, nome: true, telefone: true },
+  });
 }
 
 export async function obterCliente(ator: Ator, id: string) {
@@ -46,7 +71,7 @@ export async function obterCliente(ator: Ator, id: string) {
   return db.cliente.findFirst({
     where: { id, empresaId },
     include: {
-      veiculos: { orderBy: { placa: "asc" } },
+      veiculos: { orderBy: { placa: "asc" }, include: { _count: { select: { ordens: true } } } },
       usuario: { select: { id: true, email: true, nome: true } },
       solicitacoes: { where: { status: "PENDENTE" }, include: { usuario: { select: { id: true, email: true, nome: true } } } },
     },
@@ -97,4 +122,28 @@ export async function atualizarCliente(ator: Ator, id: string, dados: ClienteDad
     where: { id },
     data: { nome: dados.nome, cpf: dados.cpf, telefone: dados.telefone, email: dados.email, endereco: dados.endereco ?? null },
   });
+}
+
+/**
+ * Exclui um cliente cadastrado por engano, junto com os carros dele.
+ * Não deixa excluir se algum carro tem ordem de serviço: o histórico da oficina não se apaga.
+ * Se o cliente tem conta no site, a conta continua existindo (só perde o vínculo com esta oficina).
+ */
+export async function excluirCliente(ator: Ator, id: string) {
+  const empresaId = exigirAdmin(ator);
+  const cliente = await db.cliente.findFirst({ where: { id, empresaId }, select: { id: true, nome: true } });
+  if (!cliente) throw new ErroDeNegocio("Cliente não encontrado.");
+
+  const ordens = await db.ordemServico.count({ where: { veiculo: { clienteId: id, empresaId } } });
+  if (ordens > 0) {
+    throw new ErroDeNegocio(
+      `Este cliente tem ${ordens === 1 ? "1 ordem de serviço" : `${ordens} ordens de serviço`} no histórico e não pode ser excluído.`,
+    );
+  }
+
+  await db.$transaction([
+    db.veiculo.deleteMany({ where: { clienteId: id, empresaId } }),
+    db.cliente.delete({ where: { id } }),
+  ]);
+  return cliente;
 }

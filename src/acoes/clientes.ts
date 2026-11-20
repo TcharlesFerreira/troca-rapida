@@ -4,7 +4,7 @@ import { redirect } from "next/navigation";
 import { lerFormulario, valoresDe, type EstadoForm } from "@/lib/formulario";
 import { exigirAdminSessao } from "@/lib/sessao";
 import { clienteSchema } from "@/lib/validacao";
-import { atualizarCliente, criarCliente } from "@/servicos/clientes";
+import { atualizarCliente, criarCliente, excluirCliente } from "@/servicos/clientes";
 import { atualizarTelas, tratarErro } from "./utils";
 
 export async function salvarClienteAction(_: EstadoForm, formData: FormData): Promise<EstadoForm> {
@@ -23,4 +23,15 @@ export async function salvarClienteAction(_: EstadoForm, formData: FormData): Pr
 
   atualizarTelas();
   redirect(destino);
+}
+
+export async function excluirClienteAction(_: EstadoForm, formData: FormData): Promise<EstadoForm> {
+  const ator = await exigirAdminSessao();
+  try {
+    await excluirCliente(ator, String(formData.get("id") ?? ""));
+  } catch (erro) {
+    return tratarErro(erro);
+  }
+  atualizarTelas();
+  redirect("/admin/clientes");
 }

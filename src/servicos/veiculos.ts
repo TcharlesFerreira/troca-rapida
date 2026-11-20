@@ -4,6 +4,7 @@ import { ErroDeNegocio } from "@/lib/erros";
 import { exigirAdmin, type Ator } from "@/lib/permissoes";
 import { normalizarCodigoFiltro } from "@/lib/filtros";
 import { compararOleo, normalizarCodigo } from "@/lib/oleo";
+import { fatia, montarPagina } from "@/lib/paginacao";
 import { normalizarPlaca } from "@/lib/placa";
 import { buscarRecomendacao, incluirRecomendacaoCompleta, opcoesDeRecomendacao } from "./base-oleo";
 
@@ -18,7 +19,7 @@ export interface VeiculoDados {
   kmAtual: number;
 }
 
-export async function listarVeiculos(ator: Ator, busca?: string) {
+export async function listarVeiculos(ator: Ator, busca?: string, pagina = 1) {
   const empresaId = exigirAdmin(ator);
   const termo = busca?.trim();
   const placa = termo ? normalizarPlaca(termo) : "";
@@ -35,12 +36,36 @@ export async function listarVeiculos(ator: Ator, busca?: string) {
       }
     : { empresaId };
 
-  return db.veiculo.findMany({
-    where,
-    orderBy: { placa: "asc" },
-    take: 200,
-    include: { cliente: { select: { id: true, nome: true } }, recomendacaoOleo: { select: { id: true } } },
-  });
+  const [itens, total] = await Promise.all([
+    db.veiculo.findMany({
+      where,
+      orderBy: { placa: "asc" },
+      ...fatia(pagina),
+      include: { cliente: { select: { id: true, nome: true } }, recomendacaoOleo: { select: { id: true } } },
+    }),
+    db.veiculo.count({ where }),
+  ]);
+  return montarPagina(itens, total, pagina);
+}
+
+/**
+ * Exclui um carro cadastrado por engano. Não deixa excluir se ele tem ordem de serviço:
+ * o histórico da oficina não se apaga (para tirar o carro de um cliente, troque o dono na edição).
+ */
+export async function excluirVeiculo(ator: Ator, id: string) {
+  const empresaId = exigirAdmin(ator);
+  const veiculo = await db.veiculo.findFirst({ where: { id, empresaId }, select: { id: true, placa: true, clienteId: true } });
+  if (!veiculo) throw new ErroDeNegocio("Veículo não encontrado.");
+
+  const ordens = await db.ordemServico.count({ where: { veiculoId: id } });
+  if (ordens > 0) {
+    throw new ErroDeNegocio(
+      `Este veículo tem ${ordens === 1 ? "1 ordem de serviço" : `${ordens} ordens de serviço`} no histórico e não pode ser excluído.`,
+    );
+  }
+
+  await db.veiculo.delete({ where: { id } });
+  return veiculo;
 }
 
 export async function obterVeiculo(ator: Ator, id: string) {

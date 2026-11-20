@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import { excluirClienteAction } from "@/acoes/clientes";
+import { ExcluirCadastro } from "@/components/excluir-cadastro";
 import { FormCliente } from "@/components/form-cliente";
 import { Placa } from "@/components/placa";
 import { TituloPagina } from "@/components/titulo-pagina";
@@ -16,6 +18,8 @@ export default async function PaginaCliente({ params }: { params: Promise<{ id: 
   const { id } = await params;
   const cliente = await obterCliente(ator, id);
   if (!cliente) notFound();
+  const ordens = cliente.veiculos.reduce((soma, v) => soma + v._count.ordens, 0);
+  const carros = cliente.veiculos.length;
 
   return (
     <>
@@ -27,6 +31,22 @@ export default async function PaginaCliente({ params }: { params: Promise<{ id: 
             Dados
           </h2>
           <FormCliente cliente={cliente} cpfTravado={!!cliente.usuario} />
+
+          <div className="mt-10 rounded-lg border border-destructive/40 bg-card p-5">
+            <h2 className="mb-2 text-xl font-semibold">Excluir cliente</h2>
+            <p className="mb-4 text-sm text-muted-foreground">Só para cliente cadastrado por engano.</p>
+            <ExcluirCadastro
+              acao={excluirClienteAction}
+              id={cliente.id}
+              rotulo="Excluir cliente"
+              confirmacao={`${cliente.nome} será apagado do cadastro${carros ? ` junto com ${carros === 1 ? "o veículo dele" : `os ${carros} veículos dele`}` : ""}.${cliente.usuario ? " A conta dele no site continua existindo, só deixa de ver esta oficina." : ""}`}
+              bloqueio={
+                ordens > 0
+                  ? `Os veículos deste cliente têm ${ordens === 1 ? "1 ordem de serviço" : `${ordens} ordens de serviço`} no histórico, por isso ele não pode ser excluído.`
+                  : undefined
+              }
+            />
+          </div>
         </section>
 
         <div className="grid content-start gap-8">

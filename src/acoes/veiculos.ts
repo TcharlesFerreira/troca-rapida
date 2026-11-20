@@ -4,7 +4,7 @@ import { redirect } from "next/navigation";
 import { lerFormulario, valoresDe, type EstadoForm } from "@/lib/formulario";
 import { exigirAdminSessao } from "@/lib/sessao";
 import { capacidadeOleoSchema, filtrosSchema, ultimoOleoSchema, veiculoSchema } from "@/lib/validacao";
-import { atualizarVeiculo, corrigirUltimoOleo, criarVeiculo, definirCapacidadeOleo, definirFiltros, escolherMotorDaBase } from "@/servicos/veiculos";
+import { atualizarVeiculo, corrigirUltimoOleo, criarVeiculo, definirCapacidadeOleo, definirFiltros, escolherMotorDaBase, excluirVeiculo } from "@/servicos/veiculos";
 import { atualizarTelas, mensagemDeErro, tratarErro } from "./utils";
 
 export async function salvarVeiculoAction(_: EstadoForm, formData: FormData): Promise<EstadoForm> {
@@ -74,4 +74,17 @@ export async function salvarFiltrosAction(_: EstadoForm, formData: FormData): Pr
   }
   atualizarTelas();
   redirect(`/admin/veiculos/${veiculoId}`);
+}
+
+export async function excluirVeiculoAction(_: EstadoForm, formData: FormData): Promise<EstadoForm> {
+  const ator = await exigirAdminSessao();
+  let destino: string;
+  try {
+    const veiculo = await excluirVeiculo(ator, String(formData.get("id") ?? ""));
+    destino = `/admin/clientes/${veiculo.clienteId}`;
+  } catch (erro) {
+    return tratarErro(erro);
+  }
+  atualizarTelas();
+  redirect(destino);
 }
