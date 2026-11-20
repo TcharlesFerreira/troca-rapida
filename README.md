@@ -100,7 +100,7 @@ Em **Clientes → Importar / exportar** (`/admin/cadastros`):
 
 ### Próxima troca
 
-Ao registrar a troca, a data da próxima vem preenchida com **6 meses** depois da entrada e a quilometragem sai da viscosidade (0W20 a 5W40: +10 mil km; 10W30 a 15W40: +7 mil; 20W50 a 25W60: +5 mil). A oficina pode mudar as duas. Trocas antigas sem data podem ser completadas com `npx tsx scripts/preencher-proxima-troca.ts --gravar` (sem `--gravar`, só mostra quantas são); o importador de fichas já grava a data.
+Ao registrar a troca, a data da próxima vem preenchida com **6 meses** depois da entrada e a quilometragem sai da viscosidade (0W20 a 5W40: +10 mil km; 10W30 a 15W40: +7 mil; 20W50 a 25W60: +5 mil). A oficina pode mudar as duas.
 
 ### Empresas
 

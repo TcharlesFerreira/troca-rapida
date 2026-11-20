@@ -41,14 +41,6 @@ export async function exigirSuperadminSessao(): Promise<Ator> {
   return ator;
 }
 
-/** Administrador de empresa ou superadministrador (base de óleo). */
-export async function exigirEquipeSessao(): Promise<Ator> {
-  const ator = await obterAtor();
-  if (!ator) redirect("/login");
-  if (ator.papel === "CLIENTE") redirect("/minha-area");
-  return ator;
-}
-
 export function inicioDoPapel(papel: Ator["papel"]): string {
   return papel === "SUPERADMIN" ? "/superadmin" : papel === "ADMIN" ? "/admin" : "/minha-area";
 }

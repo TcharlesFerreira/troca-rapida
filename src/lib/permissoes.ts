@@ -25,11 +25,6 @@ export function exigirSuperadmin(ator: Ator): void {
   if (ator.papel !== "SUPERADMIN") throw new ErroPermissao();
 }
 
-/** Administrador de empresa ou superadministrador (telas da base de óleo, que é a mesma para todos). */
-export function exigirEquipe(ator: Ator): void {
-  if (ator.papel !== "SUPERADMIN" && !(ator.papel === "ADMIN" && ator.empresaId)) throw new ErroPermissao();
-}
-
 /** Devolve os cadastros do cliente ou bloqueia: é a base do isolamento entre clientes. */
 export function exigirClienteVinculado(ator: Ator): string[] {
   if (ator.papel !== "CLIENTE" || ator.clienteIds.length === 0) throw new ErroPermissao();

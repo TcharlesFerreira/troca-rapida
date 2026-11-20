@@ -2,7 +2,7 @@
  * Importa fichas antigas da oficina (JSON gerado a partir dos documentos Word) e classifica
  * o óleo de cada troca contra a base de óleo.
  *
- *   npx tsx scripts/importar-fichas.ts <fichas.json> <pasta-de-saida> --empresa "Nunes Store" [--gravar]
+ *   npx tsx scripts/importar-fichas.ts <fichas.json> <pasta-de-saida> --empresa "Minha Oficina" [--gravar]
  *   npx tsx scripts/importar-fichas.ts --desfazer <pasta-de-saida>
  *
  * Sem --gravar, só gera o relatório (nada entra no banco). Com --gravar, cria clientes,

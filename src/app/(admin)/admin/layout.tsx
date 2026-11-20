@@ -1,12 +1,13 @@
 import { db } from "@/lib/db";
 import { exigirAdminSessao } from "@/lib/sessao";
 import { CabecalhoAdmin } from "@/components/cabecalho-admin";
+import { contarSolicitacoesPendentes } from "@/servicos/vinculos";
 
 export default async function LayoutAdmin({ children }: { children: React.ReactNode }) {
   const ator = await exigirAdminSessao();
   const [usuario, vinculosPendentes] = await Promise.all([
     db.usuario.findUnique({ where: { id: ator.usuarioId }, select: { nome: true, empresa: { select: { nome: true, demonstracao: true } } } }),
-    db.solicitacaoVinculo.count({ where: { status: "PENDENTE", cliente: { empresaId: ator.empresaId! } } }),
+    contarSolicitacoesPendentes(ator),
   ]);
 
   return (
