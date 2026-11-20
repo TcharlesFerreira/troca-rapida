@@ -1,4 +1,5 @@
 import { db } from "@/lib/db";
+import { cilindradaDoMotor as cilindrada, filtrosDoRegistro } from "@/lib/filtros";
 import { normalizarCodigo } from "@/lib/oleo";
 import { exigirAdmin, type Ator } from "@/lib/permissoes";
 
@@ -62,8 +63,6 @@ export async function buscarRecomendacao(carro: { marca: string; modelo: string;
   });
 }
 
-/** "1.0 Fire Evo 8V" -> "1.0". */
-const cilindrada = (motor: string) => motor.match(/\d[.,]\d/)?.[0].replace(",", ".") ?? null;
 
 /**
  * Registros da base que PODEM ser do carro quando o motor cadastrado não bate exatamente
@@ -143,13 +142,11 @@ export async function filtrosIndicados(carro: { marca: string; modelo: string; m
     where: { anoInicial: { lte: carro.ano }, anoFinal: { gte: carro.ano } },
     orderBy: [{ tipo: "asc" }, { motor: "asc" }],
   });
-  const cc = cilindrada(carro.motor);
-  return linhas.filter(
-    (l) =>
-      normalizarCodigo(l.marca) === normalizarCodigo(carro.marca) &&
-      normalizarCodigo(l.modelo) === normalizarCodigo(carro.modelo) &&
-      (!cc || cilindrada(l.motor) === cc),
+  const doModelo = linhas.filter(
+    (l) => normalizarCodigo(l.marca) === normalizarCodigo(carro.marca) && normalizarCodigo(l.modelo) === normalizarCodigo(carro.modelo),
   );
+  // Mesma regra da base de óleo: cilindrada e, se o motor diz, turbo ou aspirado.
+  return filtrosDoRegistro({ motor: carro.motor, anoInicial: carro.ano, anoFinal: carro.ano }, doModelo);
 }
 
 /** Todas as aplicações do catálogo de filtros para um modelo (tela da base de óleo). */

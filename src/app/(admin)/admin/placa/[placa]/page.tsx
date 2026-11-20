@@ -173,7 +173,7 @@ export default async function PaginaPlaca({ params }: { params: Promise<{ placa:
         </section>
       </div>
 
-      <div className="grid gap-8 lg:grid-cols-2">
+      <div className="grid grid-cols-1 gap-8 lg:grid-cols-2">
         <section aria-labelledby="recomendado">
           <h2 id="recomendado" className="sr-only">
             Óleo recomendado pela base

@@ -25,7 +25,7 @@ export default async function PaginaCliente({ params }: { params: Promise<{ id: 
     <>
       <TituloPagina titulo={cliente.nome} acoes={<Link href={`/admin/veiculos/novo?clienteId=${cliente.id}`} className={estiloBotao()}>Adicionar veículo</Link>} />
 
-      <div className="grid gap-8 lg:grid-cols-[minmax(0,3fr)_minmax(0,2fr)]">
+      <div className="grid grid-cols-1 gap-8 lg:grid-cols-[minmax(0,3fr)_minmax(0,2fr)]">
         <section aria-labelledby="dados">
           <h2 id="dados" className="mb-3 text-xl font-semibold">
             Dados

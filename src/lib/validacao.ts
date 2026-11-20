@@ -165,6 +165,8 @@ export const ordemSchema = z
     pecaTrocada_BUJAO: caixa,
     pecaTrocada_ARRUELA: caixa,
     observacoes: textoOpcional("Observações", 2000),
+    /** A km é menor que a atual do carro e a oficina confirmou que está certa (ex.: serviço antigo). */
+    kmMenorConfirmado: caixa,
   })
   .superRefine((d, ctx) => {
     const filtros = TIPOS_FILTRO.some((t) => d[`filtroTrocado_${t}`]);
@@ -183,6 +185,7 @@ export const ordemSchema = z
     veiculoId: d.veiculoId,
     dataEntrada: d.dataEntrada,
     kmEntrada: d.kmEntrada,
+    kmMenorConfirmado: d.kmMenorConfirmado,
     descricao: montarDescricao(
       d.tipoServico,
       d.detalheServico,

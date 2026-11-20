@@ -62,7 +62,7 @@ export default async function PaginaOrdem({ params, searchParams }: { params: Pr
         </div>
       </div>
 
-      <div className="grid gap-8 lg:grid-cols-2">
+      <div className="grid grid-cols-1 gap-8 lg:grid-cols-2">
         <div className="grid content-start gap-8">
           <section aria-labelledby="servico" className="rounded-lg border bg-card p-5">
             <h2 id="servico" className="mb-3 text-xl font-semibold">

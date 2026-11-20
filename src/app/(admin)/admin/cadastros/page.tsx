@@ -13,7 +13,7 @@ export default async function PaginaCadastros() {
     <>
       <TituloPagina titulo="Importar e exportar cadastros" descricao="Clientes e veículos em planilha (CSV, abre no Excel)." />
 
-      <div className="grid gap-8 lg:grid-cols-[minmax(0,1fr)_minmax(0,2fr)]">
+      <div className="grid grid-cols-1 gap-8 lg:grid-cols-[minmax(0,1fr)_minmax(0,2fr)]">
         <section aria-labelledby="exportar" className="grid content-start gap-3 rounded-lg border bg-card p-5">
           <h2 id="exportar" className="text-xl font-semibold">
             Exportar

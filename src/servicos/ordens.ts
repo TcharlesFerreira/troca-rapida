@@ -10,6 +10,8 @@ export interface OrdemDados {
   veiculoId: string;
   dataEntrada: Date;
   kmEntrada: number;
+  /** Deixa abrir com km menor que a atual do carro (serviço antigo ou km do cadastro errada). */
+  kmMenorConfirmado?: boolean;
   descricao: string;
   observacoes?: string;
 }
@@ -59,6 +61,12 @@ export async function criarOrdem(ator: Ator, dados: OrdemDados) {
 
   const veiculo = await db.veiculo.findFirst({ where: { id: dados.veiculoId, empresaId }, select: { id: true, kmAtual: true } });
   if (!veiculo) throw new ErroDeNegocio("Escolha um veículo da lista.", "veiculoId");
+  if (dados.kmEntrada < veiculo.kmAtual && !dados.kmMenorConfirmado) {
+    throw new ErroDeNegocio(
+      `A quilometragem é menor que a atual do carro (${veiculo.kmAtual.toLocaleString("pt-BR")} km). Confira o número ou marque que está certa.`,
+      "kmEntrada",
+    );
+  }
 
   return db.$transaction(async (tx) => {
     const ordem = await tx.ordemServico.create({

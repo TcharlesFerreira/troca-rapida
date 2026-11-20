@@ -79,7 +79,7 @@ export default async function PaginaBaseOleo({ searchParams }: { searchParams: P
               <h2 id="registros" className="mb-3 text-lg font-semibold">
                 {modelo.marca.nome} {modelo.nome}
               </h2>
-              <div className="grid gap-4 xl:grid-cols-2">
+              <div className="grid grid-cols-1 gap-4 xl:grid-cols-2">
                 {recomendacoes.map((r) => (
                   <RecomendacaoOleo key={r.id} rec={r} titulo={`${r.motor}, ${r.anoInicial === r.anoFinal ? r.anoInicial : `${r.anoInicial} a ${r.anoFinal}`}`}>
                     <FiltrosDoRegistro aplicacoes={filtrosDoRegistro(r, filtros)} />

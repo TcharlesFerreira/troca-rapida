@@ -149,6 +149,14 @@ export function FormOS({ veiculos, veiculoIdInicial, hoje }: Props) {
         <CampoTexto name="dataEntrada" rotulo="Data de entrada" type="date" defaultValue={v.dataEntrada ?? hoje} erros={e.dataEntrada} />
         <CampoTexto name="kmEntrada" rotulo="Quilometragem na entrada" inputMode="numeric" value={km} onChange={(ev) => setKm(ev.target.value)} erros={e.kmEntrada} />
       </div>
+      {selecionado && km.trim() !== "" && Number(km.replace(/\D/g, "")) < selecionado.kmAtual && (
+        <div className="grid gap-1 rounded-lg border-2 border-accent bg-card p-3" role="status">
+          <p className="font-semibold">
+            Menor que a quilometragem atual do carro ({selecionado.kmAtual.toLocaleString("pt-BR")} km). Confira se não faltou um número.
+          </p>
+          <CampoCaixa key={`km-${versao}`} name="kmMenorConfirmado" rotulo="A quilometragem está certa (serviço antigo ou km do cadastro errada)" defaultChecked={v.kmMenorConfirmado === "on"} />
+        </div>
+      )}
 
       <fieldset className="grid gap-3">
         <legend className="mb-1 text-sm font-semibold">Serviços a fazer</legend>

@@ -149,6 +149,12 @@ describe("cada empresa vê só os próprios dados", () => {
     ).rejects.toThrow("Escolha um veículo da lista.");
   });
 
+  it("recusa km menor que a atual do carro, a não ser que a oficina confirme", async () => {
+    await expect(
+      servicos.ordens.criarOrdem(adminA, { veiculoId: "v-a", dataEntrada: new Date(), kmEntrada: 900, descricao: "Troca de óleo" }),
+    ).rejects.toThrow("menor que a atual do carro");
+  });
+
   it("só exclui cliente e carro da própria empresa, e nunca com ordem de serviço", async () => {
     await expect(servicos.veiculos.excluirVeiculo(adminA, "v-b")).rejects.toThrow("Veículo não encontrado.");
     await expect(servicos.clientes.excluirCliente(adminA, "cli-b")).rejects.toThrow("Cliente não encontrado.");
