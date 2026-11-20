@@ -11,3 +11,10 @@ next-env.d.ts
 !.env.example
 
 .DS_Store
+
+# Dados pessoais de clientes (LGPD): nunca commitar
+dados-clientes/
+*.docx
+*.xlsx
+*.csv
+!data/**/*.csv
