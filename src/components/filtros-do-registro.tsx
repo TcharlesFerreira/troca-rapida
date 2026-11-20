@@ -59,12 +59,13 @@ export function FiltrosDoRegistro({ aplicacoes }: { aplicacoes: Aplicacao[] }) {
               ))}
             </dl>
             <p className="mt-2 text-sm text-muted-foreground">
+              {a.motor}, {anos(a)}
+              {a.observacao && ` · ${a.observacao.replace(/^Tecfil:\s*/, "")}`} ·{" "}
               <a href={a.url} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1 font-semibold text-primary underline underline-offset-4">
-                {a.fabricante}: {a.motor}, {anos(a)}
+                ver fonte
                 <ExternalLink aria-hidden className="size-3.5 shrink-0" />
-                <span className="sr-only">(abre em nova aba)</span>
+                <span className="sr-only">(catálogo {a.fabricante}, abre em nova aba)</span>
               </a>
-              {a.observacao && ` · ${a.observacao.replace(/^Tecfil:\s*/, "")}`}
             </p>
           </li>
         ))}

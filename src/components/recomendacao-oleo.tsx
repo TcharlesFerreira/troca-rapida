@@ -81,13 +81,18 @@ export function RecomendacaoOleo({ rec, titulo = "Óleo recomendado", children }
 
       {rec.confianca === "DIVERGENTE" && (
         <Alert variant="aviso">
-          As fontes discordam em: {rec.divergencias.map((c) => ROTULO_CAMPO[c] ?? c).join(", ")}. Veja o valor de cada fonte abaixo e confira no manual do veículo antes de decidir.
+          As fontes discordam em: {rec.divergencias.map((c) => ROTULO_CAMPO[c] ?? c).join(", ")}. Abra “Ver fontes” para ver o valor de cada uma e confira no manual do veículo antes de decidir.
         </Alert>
       )}
 
-      <div>
-        <h4 className="mb-2 text-sm font-semibold">Fontes ({rec.fontes.length})</h4>
-        <ul className="grid gap-3">
+      {children}
+
+      <details className="group">
+        <summary className="inline-flex min-h-11 cursor-pointer list-none items-center gap-1 text-sm font-semibold text-primary underline underline-offset-4 [&::-webkit-details-marker]:hidden">
+          <span className="group-open:hidden">Ver fontes do óleo ({rec.fontes.length})</span>
+          <span className="hidden group-open:inline">Esconder fontes do óleo</span>
+        </summary>
+        <ul className="mt-2 grid gap-3">
           {rec.fontes.map((f) => (
             <li key={f.id} className="rounded-md bg-muted p-3 text-sm">
               <a href={f.url} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1 break-all font-semibold text-primary underline underline-offset-4">
@@ -101,9 +106,7 @@ export function RecomendacaoOleo({ rec, titulo = "Óleo recomendado", children }
             </li>
           ))}
         </ul>
-      </div>
-
-      {children}
+      </details>
 
       <p className="text-sm font-semibold">Confira sempre no manual do veículo.</p>
     </section>
