@@ -4,6 +4,7 @@ import { ErroDeNegocio } from "@/lib/erros";
 import { exigirAdmin, type Ator } from "@/lib/permissoes";
 import { fatia, montarPagina } from "@/lib/paginacao";
 import { decidirVinculo } from "@/lib/vinculo";
+import { exigirForaDaDemonstracao } from "./demonstracao-guarda";
 
 export interface ClienteDados {
   nome: string;
@@ -141,6 +142,7 @@ export async function atualizarCliente(ator: Ator, id: string, dados: ClienteDad
  */
 export async function excluirCliente(ator: Ator, id: string) {
   const empresaId = exigirAdmin(ator);
+  await exigirForaDaDemonstracao(empresaId);
   const cliente = await db.cliente.findFirst({ where: { id, empresaId }, select: { id: true, nome: true } });
   if (!cliente) throw new ErroDeNegocio("Cliente não encontrado.");
 

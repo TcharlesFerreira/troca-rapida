@@ -17,6 +17,7 @@ import { gerarCsv } from "@/lib/planilha";
 import { formatarPlaca } from "@/lib/placa";
 import { buscarRecomendacao } from "./base-oleo";
 import { ligarContaExistente } from "./clientes";
+import { exigirForaDaDemonstracao } from "./demonstracao-guarda";
 
 const virgula = (n: number | null | undefined) => (n === null || n === undefined ? "" : String(n).replace(".", ","));
 const tel = (t: string | null) => (t ? telefoneBR(t) : "");
@@ -252,6 +253,7 @@ export async function conferirImportacao(ator: Ator, texto: string): Promise<Con
  */
 export async function importarCadastros(ator: Ator, texto: string): Promise<ResumoImportacao> {
   const empresaId = exigirAdmin(ator);
+  await exigirForaDaDemonstracao(empresaId);
   const { conferencia, novos, veiculos } = await planejar(empresaId, texto);
   if (!conferencia.ok) throw new ErroDeNegocio(conferencia.erro);
   if (novos.length === 0 && veiculos.length === 0) throw new ErroDeNegocio("Não há nada novo para importar nesta planilha.");

@@ -6,6 +6,7 @@ import { normalizarCodigoFiltro } from "@/lib/filtros";
 import { compararOleo, normalizarCodigo } from "@/lib/oleo";
 import { fatia, montarPagina } from "@/lib/paginacao";
 import { normalizarPlaca } from "@/lib/placa";
+import { exigirForaDaDemonstracao } from "./demonstracao-guarda";
 import { buscarRecomendacao, incluirRecomendacaoCompleta, opcoesDeRecomendacao } from "./base-oleo";
 
 export interface VeiculoDados {
@@ -54,6 +55,7 @@ export async function listarVeiculos(ator: Ator, busca?: string, pagina = 1) {
  */
 export async function excluirVeiculo(ator: Ator, id: string) {
   const empresaId = exigirAdmin(ator);
+  await exigirForaDaDemonstracao(empresaId);
   const veiculo = await db.veiculo.findFirst({ where: { id, empresaId }, select: { id: true, placa: true, clienteId: true } });
   if (!veiculo) throw new ErroDeNegocio("Veículo não encontrado.");
 

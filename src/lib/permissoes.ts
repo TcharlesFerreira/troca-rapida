@@ -35,3 +35,6 @@ export function exigirClienteVinculado(ator: Ator): string[] {
   if (ator.papel !== "CLIENTE" || ator.clienteIds.length === 0) throw new ErroPermissao();
   return ator.clienteIds;
 }
+
+/** Mensagem quando um visitante da demonstração tenta algo que não pode. */
+export const AVISO_DEMONSTRACAO = "Na demonstração não é possível excluir nem importar cadastros. Os dados voltam ao original todo dia.";

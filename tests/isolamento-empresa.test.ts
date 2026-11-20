@@ -56,12 +56,19 @@ const osA = { id: "os-a", status: "AGUARDANDO", veiculoId: "v-a", veiculo: carro
 const osB = { id: "os-b", status: "AGUARDANDO", veiculoId: "v-b", veiculo: carroB };
 // Cliente e carro da empresa A sem nenhuma OS: podem ser excluídos.
 const clienteC = { id: "cli-c", empresaId: "emp-a", nome: "CAIO", cpf: null, telefone: null, email: null };
+const clienteDemo = { id: "cli-demo", empresaId: "emp-demo", nome: "VISITANTE", cpf: null, telefone: null, email: null };
+const carroDemo = { id: "v-demo", empresaId: "emp-demo", clienteId: "cli-demo", placa: "DEM0A00", kmAtual: 0, cliente: clienteDemo, ordens: [] };
 const carroC = { id: "v-c", empresaId: "emp-a", clienteId: "cli-c", placa: "CCC1C11", kmAtual: 0, cliente: clienteC, ordens: [] };
 
 const banco = {
-  cliente: tabela([clienteA, clienteB, clienteC]),
-  veiculo: tabela([carroA, carroB, carroC]),
+  cliente: tabela([clienteA, clienteB, clienteC, clienteDemo]),
+  veiculo: tabela([carroA, carroB, carroC, carroDemo]),
   ordemServico: tabela([osA, osB]),
+  empresa: tabela([
+    { id: "emp-a", demonstracao: false },
+    { id: "emp-b", demonstracao: false },
+    { id: "emp-demo", demonstracao: true },
+  ]),
   $transaction: async (ops: Promise<unknown>[]) => Promise.all(ops),
   solicitacaoVinculo: tabela([
     { id: "s-a", status: "PENDENTE", cliente: clienteA },
@@ -151,5 +158,15 @@ describe("cada empresa vê só os próprios dados", () => {
 
     await servicos.clientes.excluirCliente(adminA, "cli-c");
     expect(apagados.sort()).toEqual(["cli-c", "v-c"]);
+  });
+
+  it("na oficina de demonstração não se exclui nem se importa nada", async () => {
+    const adminDemo: Ator = { usuarioId: "u-demo", papel: "ADMIN", empresaId: "emp-demo", clienteIds: [] };
+    const antes = apagados.length;
+    await expect(servicos.clientes.excluirCliente(adminDemo, "cli-demo")).rejects.toThrow("Na demonstração");
+    await expect(servicos.veiculos.excluirVeiculo(adminDemo, "v-demo")).rejects.toThrow("Na demonstração");
+    const planilha = await import("@/servicos/cadastros-planilha");
+    await expect(planilha.importarCadastros(adminDemo, "Nome\nFulano de Tal")).rejects.toThrow("Na demonstração");
+    expect(apagados.length).toBe(antes);
   });
 });
