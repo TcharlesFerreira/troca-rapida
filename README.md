@@ -1,10 +1,35 @@
 # Troca Rápida
 
-Sistema web de administração de oficina mecânica. A oficina cadastra clientes e veículos, abre ordens de serviço (OS), registra trocas de óleo e pesquisa tudo pela placa. O cliente cria conta, acompanha o status do serviço e vê o histórico dos seus veículos.
+[![Testes](https://github.com/TcharlesFerreira/troca-rapida/actions/workflows/testes.yml/badge.svg)](https://github.com/TcharlesFerreira/troca-rapida/actions/workflows/testes.yml)
 
-- **Stack:** Next.js (App Router) + TypeScript, Tailwind CSS + componentes no estilo shadcn/ui, PostgreSQL (Docker), Prisma, Auth.js (e-mail e senha), Vitest.
-- **Hoje:** roda 100% local, como um monólito (telas e backend no mesmo projeto).
-- **Amanhã:** pronto para migrar para Vercel + Supabase ou AWS (veja [Como migrar](#como-migrar)).
+Sistema web para oficinas mecânicas e centros de troca de óleo. A oficina cadastra clientes e veículos, abre ordens de serviço, registra cada troca de óleo e encontra tudo pela placa. Para cada carro, o sistema mostra **o óleo e os filtros recomendados, com as fontes**, avisa quando a oficina usou algo diferente e calcula a próxima troca por km e por data. Várias oficinas usam o mesmo sistema, cada uma vendo só os próprios clientes.
+
+![Painel da oficina](docs/imagens/painel.png)
+
+> Todas as imagens usam a **oficina de demonstração**, com clientes e carros fictícios (`npm run db:seed:demo`).
+
+## O que o sistema faz
+
+| | |
+|---|---|
+| **Busca por placa** no topo de todas as telas, aceitando só parte da placa, com sugestões e atalho para cadastrar a placa que não existe. | ![Busca por placa](docs/imagens/busca-placa.png) |
+| **Ficha do veículo**: último óleo, quantidade, filtros comparados com o catálogo Tecfil, óleo recomendado com as fontes e o histórico completo. | ![Veículo](docs/imagens/veiculo.png) |
+| **Ordem de serviço** com status (aguardando → em andamento → pronto para retirada → entregue), histórico de quem mudou o quê e registro da troca de óleo com a próxima troca sugerida pela viscosidade. | ![Ordem de serviço](docs/imagens/ordem-servico.png) |
+| **Abertura de OS** escolhendo o serviço (troca completa, incompleta, filtros, outro), com conferência: se marcar todos os filtros numa troca "incompleta", o sistema pergunta se ela é completa. | ![Nova OS](docs/imagens/nova-os.png) |
+| **Importar e exportar** clientes e veículos em planilha, com conferência linha a linha antes de gravar e sem duplicar cadastros. | ![Importar e exportar](docs/imagens/importar.png) |
+| **Base de óleo com fontes**: cada recomendação guarda de onde veio; a confiança (confirmado, fonte única, divergente) é calculada, nunca digitada. | ![Base de óleo](docs/imagens/base-oleo.png) |
+
+Também: área do cliente (ele cria a conta e acompanha os serviços e a próxima troca), ligação automática ou com aprovação entre a conta do cliente e o cadastro da oficina, superadministrador que cadastra as oficinas, exclusão segura (não apaga histórico), paginação e telas que funcionam no celular.
+
+## Decisões técnicas
+
+- **Next.js 15 (App Router) + React 19 + TypeScript**, com Server Components e Server Actions: telas e backend no mesmo projeto, sem API REST separada.
+- **PostgreSQL + Prisma**, com migrações versionadas. Unicidade por oficina (`@@unique([empresaId, placa])`, `[empresaId, cpf]`).
+- **Isolamento entre oficinas na camada de serviço**: toda consulta parte da empresa de quem está logado (`exigirAdmin(ator)`), e os testes usam um banco falso que aplica o `where` de verdade. Se alguém esquecer o filtro, o teste quebra.
+- **Auth.js** com e-mail e senha (bcrypt). O papel do usuário é relido do banco a cada requisição.
+- **Regras de negócio em funções puras** (`src/lib`), sem depender do banco: status da OS, intervalo de troca por viscosidade, leitura de planilha, validação de CPF e placa. São a maior parte dos **100+ testes (Vitest)**, que rodam no GitHub a cada envio.
+- **Zod** para validar formulários no servidor, com mensagens em português e acessibilidade (rótulos, `aria-*`, foco).
+- **Dados de óleo nunca inventados**: o seed recusa registro sem fonte e bloqueia fóruns e lojas como fonte.
 
 ## Como rodar localmente
 
@@ -27,7 +52,11 @@ npm run db:migrate -- --name init
 # 5. Cria o administrador e carrega a base de óleo (pode rodar de novo sem duplicar nada)
 npm run db:seed
 
-# 6. Abre o sistema
+# 6. (Opcional) Oficina de demonstração com clientes e carros fictícios
+#    Entra com demo@troca-rapida.local / demonstracao
+npm run db:seed:demo
+
+# 7. Abre o sistema
 npm run dev
 ```
 
@@ -140,9 +169,9 @@ A base fica em arquivos JSON, **um por marca**, em `data/oleo/`, e é carregada 
 
 Só `viscosidade` e `especificacao` são obrigatórias (em alguma fonte). Os demais campos entram quando a fonte informa. Faixas de anos do mesmo motor não podem se sobrepor.
 
-### Primeira rodada (estado atual)
+### Estado atual
 
-A primeira rodada traz **poucos registros, todos com fonte**: Chevrolet Onix (1.0 turbo e 1.0 aspirado, algumas faixas de anos) e Fiat Argo 1.0 Firefly (2026). Todas as fontes encontradas são de nível `TECNICA`: ainda faltam o manual do proprietário e as fichas das montadoras. A base cresce em rodadas, começando pelas marcas mais vendidas. Antes de confiar em qualquer registro, **confira no manual do veículo**.
+A base tem **70 registros de motor e faixa de anos**, de 22 modelos populares de 9 marcas (Chevrolet, Fiat, Ford, Honda, Hyundai, Jeep, Renault, Toyota e Volkswagen), de 2009 a 2026: 5 confirmados por duas fontes, 47 com fonte única e 18 em que as fontes discordam (o sistema mostra as duas). As fontes atuais são técnicas; ainda faltam os manuais das montadoras. O catálogo de filtros tem 1.572 aplicações Tecfil de 52 modelos. Antes de confiar em qualquer registro, **confira no manual do veículo**.
 
 Para ampliar: adicione ou edite um JSON, rode `npm test` (ele valida todos os arquivos) e `npm run db:seed`.
 
@@ -201,3 +230,7 @@ O projeto foi feito para a mudança ser pequena: toda configuração vem de vari
 ## Convenções de git
 
 Um commit por etapa concluída, no padrão Conventional Commits (por exemplo, `feat: cadastro de veículos com validação de placa`). Antes de cada commit: `npm run typecheck` e `npm test`. Nunca commitar o `.env`.
+
+## Licença
+
+© Tcharles Ferreira. Todos os direitos reservados. O código está público só para consulta (portfólio): não é permitido copiar, modificar, distribuir nem usar comercialmente sem autorização. Veja [LICENSE](LICENSE).
