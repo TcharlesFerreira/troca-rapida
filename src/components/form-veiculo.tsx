@@ -4,7 +4,8 @@ import { useActionState, useState } from "react";
 import { salvarVeiculoAction } from "@/acoes/veiculos";
 import { AlertaForm } from "@/components/alerta-form";
 import { BotaoEnviar } from "@/components/botao-enviar";
-import { CampoSelecao, CampoTexto } from "@/components/campos";
+import { CampoTexto } from "@/components/campos";
+import { EscolherCliente } from "@/components/escolher-cliente";
 import { Alert } from "@/components/ui/alert";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -29,9 +30,9 @@ interface VeiculoForm {
 
 interface Props {
   catalogo: CatalogoMarca[];
-  clientes: Array<{ id: string; nome: string }>;
   veiculo?: VeiculoForm;
-  clienteIdInicial?: string;
+  /** Dono já conhecido (editar, ou "Adicionar veículo" na tela do cliente). */
+  clienteInicial?: { id: string; nome: string };
   placaInicial?: string;
 }
 
@@ -39,7 +40,7 @@ interface Props {
  * Marca, modelo e motor saem da base de óleo (para o sistema saber qual óleo recomendar).
  * Se o carro não está na base, escolha "Outro" e digite: o veículo fica sem recomendação.
  */
-export function FormVeiculo({ catalogo, clientes, veiculo, clienteIdInicial, placaInicial }: Props) {
+export function FormVeiculo({ catalogo, veiculo, clienteInicial, placaInicial }: Props) {
   const [estado, acao] = useActionState<EstadoForm, FormData>(salvarVeiculoAction, {});
   const v = estado.valores ?? {};
   const e = estado.erros ?? {};
@@ -82,16 +83,7 @@ export function FormVeiculo({ catalogo, clientes, veiculo, clienteIdInicial, pla
       <input type="hidden" name="modelo" value={modelo} />
       <input type="hidden" name="motor" value={motor} />
 
-      <CampoSelecao name="clienteId" rotulo="Cliente" defaultValue={v.clienteId ?? veiculo?.clienteId ?? clienteIdInicial ?? ""} erros={e.clienteId}>
-        <option value="" disabled>
-          Escolha o cliente
-        </option>
-        {clientes.map((c) => (
-          <option key={c.id} value={c.id}>
-            {c.nome}
-          </option>
-        ))}
-      </CampoSelecao>
+      <EscolherCliente name="clienteId" rotulo="Cliente" inicial={clienteInicial} erros={e.clienteId} />
 
       <CampoTexto
         name="placa"
