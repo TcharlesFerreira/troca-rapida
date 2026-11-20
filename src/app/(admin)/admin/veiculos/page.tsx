@@ -1,20 +1,23 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { Placa } from "@/components/placa";
+import { Paginacao } from "@/components/paginacao";
 import { TituloPagina } from "@/components/titulo-pagina";
 import { Button, estiloBotao } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Table, Td, Th } from "@/components/ui/table";
 import { kmBR } from "@/lib/formatar";
+import { lerPagina } from "@/lib/paginacao";
 import { exigirAdminSessao } from "@/lib/sessao";
 import { listarVeiculos } from "@/servicos/veiculos";
 
 export const metadata: Metadata = { title: "Veículos" };
 
-export default async function PaginaVeiculos({ searchParams }: { searchParams: Promise<{ q?: string }> }) {
+export default async function PaginaVeiculos({ searchParams }: { searchParams: Promise<{ q?: string; pagina?: string }> }) {
   const ator = await exigirAdminSessao();
-  const { q } = await searchParams;
-  const veiculos = await listarVeiculos(ator, q);
+  const { q, pagina } = await searchParams;
+  const lista = await listarVeiculos(ator, q, lerPagina(pagina));
+  const veiculos = lista.itens;
 
   return (
     <>
@@ -73,6 +76,9 @@ export default async function PaginaVeiculos({ searchParams }: { searchParams: P
             ))}
           </tbody>
         </Table>
+      )}
+      {lista.total > 0 && (
+        <Paginacao base="/admin/veiculos" q={q} pagina={lista.pagina} paginas={lista.paginas} total={lista.total} singular="veículo" plural="veículos" />
       )}
     </>
   );

@@ -1,20 +1,23 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { Paginacao } from "@/components/paginacao";
 import { TituloPagina } from "@/components/titulo-pagina";
 import { Button, estiloBotao } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Table, Td, Th } from "@/components/ui/table";
 import { formatarCpf } from "@/lib/cpf";
 import { telefoneBR } from "@/lib/formatar";
+import { lerPagina } from "@/lib/paginacao";
 import { exigirAdminSessao } from "@/lib/sessao";
 import { listarClientes } from "@/servicos/clientes";
 
 export const metadata: Metadata = { title: "Clientes" };
 
-export default async function PaginaClientes({ searchParams }: { searchParams: Promise<{ q?: string }> }) {
+export default async function PaginaClientes({ searchParams }: { searchParams: Promise<{ q?: string; pagina?: string }> }) {
   const ator = await exigirAdminSessao();
-  const { q } = await searchParams;
-  const clientes = await listarClientes(ator, q);
+  const { q, pagina } = await searchParams;
+  const lista = await listarClientes(ator, q, lerPagina(pagina));
+  const clientes = lista.itens;
 
   return (
     <>
@@ -68,6 +71,9 @@ export default async function PaginaClientes({ searchParams }: { searchParams: P
             ))}
           </tbody>
         </Table>
+      )}
+      {lista.total > 0 && (
+        <Paginacao base="/admin/clientes" q={q} pagina={lista.pagina} paginas={lista.paginas} total={lista.total} singular="cliente" plural="clientes" />
       )}
     </>
   );
