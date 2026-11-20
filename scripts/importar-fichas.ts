@@ -15,6 +15,7 @@ import { mkdirSync, readFileSync, writeFileSync, existsSync, renameSync } from "
 import { join } from "node:path";
 import { normalizarCodigo } from "../src/lib/oleo";
 import { MESES_PROXIMA_TROCA, somarMeses } from "../src/lib/datas";
+import { proximoNumeroOS } from "../src/servicos/numero-os";
 
 interface Ficha {
   arquivo: string;
@@ -247,6 +248,8 @@ async function main() {
         const c = classificar(f, base);
         const ordem = await tx.ordemServico.create({
           data: {
+            numero: await proximoNumeroOS(tx, empresaId),
+            empresaId,
             veiculoId: veiculo.id,
             dataEntrada: new Date(`${f.data}T12:00:00`),
             kmEntrada: f.km ?? 0,

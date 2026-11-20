@@ -48,12 +48,15 @@ model Empresa {
   cnpj         String?  @unique // só dígitos
   /// Oficina de demonstração (dados fictícios): visitantes não podem excluir nem importar.
   demonstracao Boolean  @default(false)
+  /// Último número de OS usado: cada oficina tem a própria contagem (1, 2, 3...).
+  ultimoNumeroOS Int    @default(0)
   criadoEm     DateTime @default(now())
   atualizadoEm DateTime @updatedAt
 
   usuarios Usuario[]
   clientes Cliente[]
   veiculos Veiculo[]
+  ordens   OrdemServico[]
 
   @@map("empresas")
 }
@@ -160,7 +163,9 @@ model Veiculo {
 
 model OrdemServico {
   id          String   @id @default(cuid())
-  numero      Int      @unique @default(autoincrement())
+  /// Número da OS dentro da oficina (cada oficina conta do 1).
+  numero      Int
+  empresaId   String
   veiculoId   String
   dataEntrada DateTime @db.Date
   kmEntrada   Int
@@ -169,10 +174,12 @@ model OrdemServico {
   observacoes String?
   criadoEm    DateTime @default(now())
 
+  empresa   Empresa             @relation(fields: [empresaId], references: [id], onDelete: Restrict)
   veiculo   Veiculo             @relation(fields: [veiculoId], references: [id], onDelete: Restrict)
   historico HistoricoStatusOS[]
   trocaOleo TrocaOleo?
 
+  @@unique([empresaId, numero])
   @@index([veiculoId])
   @@index([status])
   @@map("ordens_servico")

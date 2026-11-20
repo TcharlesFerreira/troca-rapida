@@ -7,6 +7,7 @@ import type { Prisma, PrismaClient, StatusOS } from "@prisma/client";
 import bcrypt from "bcryptjs";
 import { somarMeses } from "../lib/datas";
 import { proximaTrocaKmSugerida } from "../lib/intervalo-troca";
+import { proximoNumeroOS } from "./numero-os";
 
 export const NOME_EMPRESA_DEMO = "Oficina Demonstração";
 
@@ -71,6 +72,7 @@ async function recriar(db: Prisma.TransactionClient): Promise<ResultadoDemo> {
     (await db.usuario.create({ data: { email, senhaHash: await bcrypt.hash(senha, 12), papel: "ADMIN", nome: "Demonstração", empresaId: empresa.id } }));
 
   await limparDemo(db, empresa.id);
+  await db.empresa.update({ where: { id: empresa.id }, data: { ultimoNumeroOS: 0 } }); // a demonstração recomeça do nº 1
 
   // Carros que estão na base de óleo, para a recomendação e a comparação aparecerem.
   const recs = await db.recomendacaoOleo.findMany({
@@ -136,6 +138,8 @@ async function recriar(db: Prisma.TransactionClient): Promise<ResultadoDemo> {
         const viscosidade = diverge ? sortear(["10W40", "15W40", "20W50"]) : rec.viscosidade;
         await db.ordemServico.create({
           data: {
+            numero: await proximoNumeroOS(db, empresa.id),
+            empresaId: empresa.id,
             veiculoId: veiculo.id,
             dataEntrada: data,
             kmEntrada: km,
@@ -171,6 +175,8 @@ async function recriar(db: Prisma.TransactionClient): Promise<ResultadoDemo> {
     const caminho: StatusOS[] = status === "AGUARDANDO" ? ["AGUARDANDO"] : status === "EM_ANDAMENTO" ? ["AGUARDANDO", "EM_ANDAMENTO"] : ["AGUARDANDO", "EM_ANDAMENTO", "PRONTO_RETIRADA"];
     await db.ordemServico.create({
       data: {
+        numero: await proximoNumeroOS(db, empresa.id),
+        empresaId: empresa.id,
         veiculoId: v.id,
         dataEntrada: hojeUTC,
         kmEntrada: v.kmAtual,
@@ -181,6 +187,14 @@ async function recriar(db: Prisma.TransactionClient): Promise<ResultadoDemo> {
     });
     ordens++;
   }
+
+  // Números em ordem de data (as de hoje ficam com os maiores), como numa oficina de verdade.
+  // Primeiro negativos, para não bater no índice único enquanto troca.
+  await db.$executeRaw`UPDATE "ordens_servico" SET "numero" = -"numero" WHERE "empresaId" = ${empresa.id}`;
+  await db.$executeRaw`
+    UPDATE "ordens_servico" o SET "numero" = r.n
+    FROM (SELECT "id", ROW_NUMBER() OVER (ORDER BY "dataEntrada", "criadoEm") AS n FROM "ordens_servico" WHERE "empresaId" = ${empresa.id}) r
+    WHERE r."id" = o."id"`;
 
   const clientes = await db.cliente.count({ where: { empresaId: empresa.id } });
   return { email, senhaNova: usuario ? null : senha, clientes, veiculos: placas, ordens };

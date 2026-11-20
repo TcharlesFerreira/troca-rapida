@@ -44,6 +44,20 @@ function tabela(linhas: Linha[]) {
       apagados.push(...achar(args).map((l) => l.id));
       return { count: achar(args).length };
     },
+    create: async (args: { data: Linha }) => {
+      const nova = { id: `novo-${linhas.length + 1}`, ...args.data };
+      linhas.push(nova);
+      return nova;
+    },
+    /** Aceita valor direto ou { increment: n }, como o Prisma. */
+    update: async (args: { where: Linha; data: Linha }) => {
+      const linha = achar(args)[0];
+      if (!linha) throw new Error("não encontrado");
+      for (const [campo, valor] of Object.entries(args.data)) {
+        linha[campo] = valor && typeof valor === "object" && "increment" in valor ? (linha[campo] ?? 0) + valor.increment : valor;
+      }
+      return linha;
+    },
   };
 }
 
@@ -65,11 +79,14 @@ const banco = {
   veiculo: tabela([carroA, carroB, carroC, carroDemo]),
   ordemServico: tabela([osA, osB]),
   empresa: tabela([
-    { id: "emp-a", demonstracao: false },
-    { id: "emp-b", demonstracao: false },
-    { id: "emp-demo", demonstracao: true },
+    { id: "emp-a", demonstracao: false, ultimoNumeroOS: 0 },
+    { id: "emp-b", demonstracao: false, ultimoNumeroOS: 0 },
+    { id: "emp-demo", demonstracao: true, ultimoNumeroOS: 0 },
   ]),
-  $transaction: async (ops: Promise<unknown>[]) => Promise.all(ops),
+  historicoStatusOS: tabela([]),
+  // Lista de operações (Promise.all) ou função que recebe o próprio banco, como o Prisma.
+  $transaction: async (ops: Promise<unknown>[] | ((tx: unknown) => Promise<unknown>)): Promise<unknown> =>
+    typeof ops === "function" ? ops(banco) : Promise.all(ops),
   solicitacaoVinculo: tabela([
     { id: "s-a", status: "PENDENTE", cliente: clienteA },
     { id: "s-b", status: "PENDENTE", cliente: clienteB },
@@ -147,6 +164,19 @@ describe("cada empresa vê só os próprios dados", () => {
     await expect(
       servicos.ordens.criarOrdem(adminA, { veiculoId: "v-b", dataEntrada: new Date(), kmEntrada: 3000, descricao: "Troca de óleo" }),
     ).rejects.toThrow("Escolha um veículo da lista.");
+  });
+
+  it("cada empresa numera as próprias OS a partir do 1", async () => {
+    // Empresa B e a de demonstração: os carros da A ficam sem OS novas para os testes de exclusão.
+    const adminB: Ator = { usuarioId: "u-b", papel: "ADMIN", empresaId: "emp-b", clienteIds: [] };
+    const adminD: Ator = { usuarioId: "u-d", papel: "ADMIN", empresaId: "emp-demo", clienteIds: [] };
+    const nova = (ator: Ator, veiculoId: string, kmEntrada: number) =>
+      servicos.ordens.criarOrdem(ator, { veiculoId, dataEntrada: new Date(), kmEntrada, descricao: "Troca de óleo" });
+    const b1 = await nova(adminB, "v-b", 2000);
+    const b2 = await nova(adminB, "v-b", 2100);
+    const d1 = await nova(adminD, "v-demo", 10);
+    expect([b1.numero, b2.numero, d1.numero]).toEqual([1, 2, 1]);
+    expect([b1.empresaId, d1.empresaId]).toEqual(["emp-b", "emp-demo"]);
   });
 
   it("recusa km menor que a atual do carro, a não ser que a oficina confirme", async () => {

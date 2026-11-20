@@ -4,6 +4,7 @@ import { ErroDeNegocio } from "@/lib/erros";
 import { exigirAdmin, type Ator } from "@/lib/permissoes";
 import { transicaoPermitida } from "@/lib/status-os";
 import { ROTULO_STATUS, type StatusOS } from "@/lib/tipos";
+import { proximoNumeroOS } from "./numero-os";
 import { incluirRecomendacaoCompleta } from "./base-oleo";
 
 export interface OrdemDados {
@@ -71,6 +72,8 @@ export async function criarOrdem(ator: Ator, dados: OrdemDados) {
   return db.$transaction(async (tx) => {
     const ordem = await tx.ordemServico.create({
       data: {
+        numero: await proximoNumeroOS(tx, empresaId),
+        empresaId,
         veiculoId: dados.veiculoId,
         dataEntrada: dados.dataEntrada,
         kmEntrada: dados.kmEntrada,
