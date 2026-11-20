@@ -103,6 +103,35 @@
               }
             }
           ]
+        },
+        {
+          "motor": "1.6 16V (Gamma)",
+          "anos": [
+            2012,
+            2024
+          ],
+          "fontes": [
+            {
+              "tipo": "TECNICA",
+              "url": "https://www.manualdooleo.com.br/tabela-oleo/hyundai/hb20",
+              "consultadaEm": "2026-11-20",
+              "observacao": "Tabela: 1.6 16V 128 cv flex (2012 a 2019) e 130 cv flex, manual e automático (2018 a 2024), todos 5W-30 sintético, 3,6 L.",
+              "dados": {
+                "viscosidade": "5W-30",
+                "especificacao": "API SN / ACEA A5",
+                "capacidadeComFiltroL": 3.6
+              }
+            },
+            {
+              "tipo": "TECNICA",
+              "url": "https://omecanico.com.br/guia-de-lubrificacao-para-hyundai-hb20-motores-aspirado-e-turbo/",
+              "consultadaEm": "2026-11-20",
+              "observacao": "Guia (jul/2024) do 1.6 Gamma MPI: 5W30, ACEA A5 ou superior, 3,6 L (não diz se é com filtro; a norma API aparece sem a letra). Diz que o motor saiu de linha em 2021.",
+              "dados": {
+                "viscosidade": "5W-30"
+              }
+            }
+          ]
         }
       ]
     }
