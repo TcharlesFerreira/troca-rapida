@@ -36,6 +36,7 @@ export function CabecalhoAdmin({ nome, empresa, vinculosPendentes }: { nome: str
             { href: "/admin/os", rotulo: "Ordens de serviço" },
             { href: "/admin/vinculos", rotulo: "Vínculos", contagem: vinculosPendentes },
             { href: "/admin/base-oleo", rotulo: "Base de óleo" },
+            { href: "/admin/assistente", rotulo: "Assistente" },
           ]}
         />
       </div>
