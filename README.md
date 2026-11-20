@@ -2,6 +2,8 @@
 
 [![Testes](https://github.com/TcharlesFerreira/troca-rapida/actions/workflows/testes.yml/badge.svg)](https://github.com/TcharlesFerreira/troca-rapida/actions/workflows/testes.yml)
 
+*[English version](README.en.md)*
+
 Sistema web para oficinas mecânicas e centros de troca de óleo. A oficina cadastra clientes e veículos, abre ordens de serviço, registra cada troca de óleo e encontra tudo pela placa. Para cada carro, o sistema mostra **o óleo e os filtros recomendados, com as fontes**, avisa quando a oficina usou algo diferente e calcula a próxima troca por km e por data. Várias oficinas usam o mesmo sistema, cada uma vendo só os próprios clientes.
 
 ![Painel da oficina](docs/imagens/painel.png)
@@ -46,8 +48,8 @@ npm run setup:env
 # 3. Sobe o PostgreSQL em Docker
 npm run db:up
 
-# 4. Cria as tabelas (na primeira vez, gera a pasta prisma/migrations: commite-a)
-npm run db:migrate -- --name init
+# 4. Cria as tabelas (aplica as migrações de prisma/migrations)
+npm run db:deploy
 
 # 5. Cria o administrador e carrega a base de óleo (pode rodar de novo sem duplicar nada)
 npm run db:seed
@@ -180,7 +182,8 @@ Para ampliar: adicione ou edite um JSON, rode `npm test` (ele valida todos os ar
 - Toda página e toda ação conferem **quem está logado e o que pode ver** (ver `src/lib/sessao.ts`). O papel e o vínculo do usuário são lidos do banco a cada requisição, não só do token.
 - O cliente só acessa os próprios dados: toda consulta da área do cliente parte do `clienteId` da sessão (`src/servicos/area-cliente.ts`). Um id de outro cliente simplesmente não é encontrado. Isso é testado em `tests/isolamento-cliente.test.ts`.
 - Senhas guardadas com hash (bcrypt). Nenhum segredo no código: tudo vem do `.env`, que **nunca** vai para o git.
-- Ainda não há limite de tentativas de login. Antes de abrir o sistema na internet, considere adicionar (por exemplo, com o rate limit da própria hospedagem).
+- **Limite de tentativas de login:** 5 erros seguidos com o mesmo e-mail, ou 20 vindos do mesmo endereço, bloqueiam por 15 minutos (`src/lib/limite-login.ts`). A conta pública de demonstração só é limitada pelo endereço, para nenhum visitante conseguir trancá-la.
+- A oficina de demonstração (`Empresa.demonstracao`) não deixa excluir nem importar cadastros.
 
 ## Estrutura de pastas
 
@@ -203,15 +206,19 @@ Nomes do domínio em português (`Cliente`, `Veiculo`, `OrdemServico`, `TrocaOle
 
 O projeto foi feito para a mudança ser pequena: toda configuração vem de variáveis de ambiente, nada é salvo no disco do servidor e nada depende da sua máquina.
 
-### Vercel + Supabase
+### Vercel + Neon (é assim que a demonstração pública roda)
 
-1. **Supabase:** crie um projeto. Em *Project Settings > Database*, copie as duas conexões: a **direta** (porta 5432) e a do **pooler** (porta 6543, modo transaction).
-2. No `prisma/schema.prisma`, no bloco `datasource db`, adicione `directUrl = env("DIRECT_URL")`. O Prisma usa a `DATABASE_URL` (pooler, com `?pgbouncer=true`) para o app e a `DIRECT_URL` para as migrações.
-3. Aplique as tabelas no Supabase, da sua máquina: `DATABASE_URL="<direta>" DIRECT_URL="<direta>" npx prisma migrate deploy`.
-4. Carregue o administrador e a base de óleo: rode o seed com as mesmas variáveis e `ADMIN_EMAIL` / `ADMIN_PASSWORD` definidos.
-5. **Vercel:** importe o repositório do GitHub. Em *Environment Variables*, defina `DATABASE_URL` (pooler), `DIRECT_URL`, `AUTH_SECRET` (gere um novo) e, se o login reclamar do host, `AUTH_TRUST_HOST=true`.
-6. *Build Command* sugerido: `prisma migrate deploy && next build` (o `postinstall` já roda `prisma generate`).
-7. Faça o deploy e entre com o administrador criado no passo 4.
+1. **Vercel:** entre com a conta do GitHub e importe o repositório. O `package.json` tem o script `vercel-build` ([scripts/vercel-build.sh](scripts/vercel-build.sh)), que a Vercel usa sozinha: gera o Prisma, aplica as migrações, roda o seed e compila.
+2. **Banco:** no projeto da Vercel, aba *Storage* → *Create Database* → **Neon** (plano gratuito), ligado ao projeto. A Vercel cria `DATABASE_URL` (com pool, usada pelo site) e `DATABASE_URL_UNPOOLED` (direta, usada nas migrações e no seed).
+3. **Variáveis** (*Settings → Environment Variables*):
+   - `AUTH_SECRET`: novo, gerado com `openssl rand -base64 32`;
+   - `AUTH_TRUST_HOST=true`;
+   - `SUPERADMIN_EMAIL` e `SUPERADMIN_PASSWORD` (senha forte, 10+ caracteres);
+   - para a **demonstração pública**: `DEMO_PUBLICA=true` e `CRON_SECRET` (outro valor aleatório). **Não** defina `EMPRESA_NOME`/`ADMIN_*`: o banco da demonstração só tem dados fictícios.
+4. Publique (*Deploy*). Com `DEMO_PUBLICA=true`, a tela de login ganha o botão **Entrar na demonstração**, e o [Cron da Vercel](vercel.json) recria os dados fictícios todo dia às 3h (horário de Brasília). Na demonstração, ninguém consegue excluir nem importar cadastros.
+5. **Sistema de verdade (com clientes reais):** use outro projeto e outro banco, **sem** `DEMO_PUBLICA`, com `EMPRESA_NOME`, `ADMIN_EMAIL` e `ADMIN_PASSWORD` para criar a primeira oficina.
+
+Supabase também serve: use a conexão do *Session pooler* (porta 5432) em `DATABASE_URL`.
 
 ### AWS
 
