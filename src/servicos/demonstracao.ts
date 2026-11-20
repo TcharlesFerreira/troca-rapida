@@ -3,7 +3,7 @@
  * (nomes sorteados de listas, sem CPF; telefones na faixa 11 90000-xxxx; placas DEM...).
  * Não usa "@/": roda também pelo tsx, fora do Next.
  */
-import type { PrismaClient, StatusOS } from "@prisma/client";
+import type { Prisma, PrismaClient, StatusOS } from "@prisma/client";
 import bcrypt from "bcryptjs";
 import { somarMeses } from "../lib/datas";
 import { proximaTrocaKmSugerida } from "../lib/intervalo-troca";
@@ -28,7 +28,7 @@ const LETRAS = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 /** Placa no formato Mercosul começando por "DEM" (de demonstração). */
 const placaDemo = (i: number) => `DEM${i % 10}${LETRAS[Math.floor(i / 10) % 26]}${String(entre(10, 99))}`;
 
-async function limparDemo(db: PrismaClient, empresaId: string) {
+async function limparDemo(db: Prisma.TransactionClient, empresaId: string) {
   const veiculos = await db.veiculo.findMany({ where: { empresaId }, select: { id: true } });
   const ids = veiculos.map((v) => v.id);
   await db.ordemServico.deleteMany({ where: { veiculoId: { in: ids } } }); // troca e histórico vão junto
@@ -46,9 +46,16 @@ export interface ResultadoDemo {
 
 /**
  * Apaga e recria os dados da oficina de demonstração (e só dela). Usado pelo
- * "npm run db:seed:demo" e pela renovação diária da demonstração online.
+ * "npm run db:seed:demo", pela renovação diária e a cada publicação da demonstração online.
+ * Tudo numa transação: quem estiver usando a demonstração vê os dados antigos até o fim
+ * e depois os novos, nunca a oficina pela metade.
  */
-export async function recriarDemonstracao(db: PrismaClient): Promise<ResultadoDemo> {
+export function recriarDemonstracao(db: PrismaClient): Promise<ResultadoDemo> {
+  // timeout abaixo do limite de 60 s da rota do Cron.
+  return db.$transaction((tx) => recriar(tx), { maxWait: 10_000, timeout: 55_000 });
+}
+
+async function recriar(db: Prisma.TransactionClient): Promise<ResultadoDemo> {
   semente = 20261120;
   const email = (process.env.DEMO_EMAIL ?? "demo@troca-rapida.local").trim().toLowerCase();
   const senha = process.env.DEMO_PASSWORD ?? "demonstracao";
