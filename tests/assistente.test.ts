@@ -41,6 +41,19 @@ const registro = (dados: Partial<RegistroOleo>): RegistroOleo => ({
   ...dados,
 });
 
+const f = (tipo: AplicacaoFiltro["tipo"], codigo: string): AplicacaoFiltro => ({
+    fabricante: "Tecfil",
+    motor: "1.0 12V 3cil 80cv",
+    anoInicial: 2012,
+    anoFinal: 2026,
+    tipo,
+    codigo,
+    url: "https://catalogo.tecfil.com.br/search/HB20",
+    consultadaEm: new Date("2026-11-18"),
+    observacao: null,
+});
+const filtroGol = (tipo: AplicacaoFiltro["tipo"], codigo: string): AplicacaoFiltro => ({ ...f(tipo, codigo), motor: "1.0 8V", anoInicial: 2009, anoFinal: 2013, url: "https://catalogo.tecfil.com.br/search/GOL" });
+
 const gol8v = registro({ id: "gol-8v" });
 const golMpi = registro({ id: "gol-mpi", motor: "1.0 12V MPI (EA211)", anoInicial: 2014, anoFinal: 2023, viscosidade: "5W-40", especificacao: "VW 508 88" });
 const hb20Div = registro({
@@ -61,7 +74,7 @@ const hb20Turbo = registro({ id: "hb20-turbo", motor: "1.0 turbo (TGDI)", anoIni
 
 describe("interpretar", () => {
   it("acha modelo, marca, motor e ano", () => {
-    expect(interpretar("Qual óleo do Gol 1.0 2015?", catalogo)).toEqual({ assunto: "OLEO", marca: "Volkswagen", modelo: "Gol", ano: 2015, motor: "1.0" });
+    expect(interpretar("Qual óleo do Gol 1.0 2015?", catalogo)).toEqual({ assunto: "OLEO", marca: "Volkswagen", modelo: "Gol", ano: 2015, motor: "1.0", tambemFiltros: false });
   });
 
   it("entende vírgula, 'mil', turbo e aspirado", () => {
@@ -90,6 +103,14 @@ describe("interpretar", () => {
     expect(interpretar("filtro de ar do gol 2015", catalogo).assunto).toBe("FILTROS");
     expect(interpretar("oi", catalogo).assunto).toBe("AJUDA");
     expect(interpretar("", catalogo).assunto).toBe("AJUDA");
+  });
+
+  it("óleo e filtros juntos, sem confundir 'filtro de óleo' nem 'com filtro'", () => {
+    expect(interpretar("oleo e filtros do gol 2015", catalogo)).toMatchObject({ assunto: "OLEO", tambemFiltros: true });
+    expect(interpretar("quantos litros e quais filtros do gol 2015", catalogo)).toMatchObject({ assunto: "CAPACIDADE", tambemFiltros: true });
+    expect(interpretar("filtro de oleo do gol 2015", catalogo)).toMatchObject({ assunto: "FILTROS", tambemFiltros: false });
+    expect(interpretar("quantos litros com filtro leva o gol", catalogo)).toMatchObject({ assunto: "CAPACIDADE", tambemFiltros: false });
+    expect(interpretar("qual oleo do gol 2015", catalogo).tambemFiltros).toBe(false);
   });
 
   it("marca sem modelo, pelo apelido", () => {
@@ -172,17 +193,6 @@ describe("montarResposta: regras anti-invenção", () => {
   });
 
   it("filtros: pede o ano, depois responde com a fonte do catálogo", () => {
-    const f = (tipo: AplicacaoFiltro["tipo"], codigo: string): AplicacaoFiltro => ({
-      fabricante: "Tecfil",
-      motor: "1.0 12V 3cil 80cv",
-      anoInicial: 2012,
-      anoFinal: 2026,
-      tipo,
-      codigo,
-      url: "https://catalogo.tecfil.com.br/search/HB20",
-      consultadaEm: new Date("2026-11-18"),
-      observacao: null,
-    });
     const filtros = [f("OLEO", "PSL166"), f("AR", "ARL2338")];
     expect(perguntar("filtros do hb20", [], filtros).tipo).toBe("ESCLARECER");
     const r = perguntar("filtros do hb20 1.0 2015", [], filtros);
@@ -190,5 +200,35 @@ describe("montarResposta: regras anti-invenção", () => {
     expect(r.texto).toContain("óleo PSL166; ar do motor ARL2338");
     expect(r.texto).toContain("Fonte: catálogo Tecfil");
     expect(perguntar("filtros do tucson 2015", [], []).texto).toMatch(/não tenho essa informação/i);
+  });
+
+  it("depois do óleo, oferece os filtros com um botão", () => {
+    const r = perguntar("qual oleo do gol 1.0 2010", [gol8v, golMpi], [filtroGol("OLEO", "PSL55")]);
+    expect(r.texto).toMatch(/Quer saber os filtros também\?$/);
+    expect(r.filtros).toHaveLength(0);
+    expect(r.opcoes).toHaveLength(1);
+    const filtros = perguntar(r.opcoes[0].pergunta, [gol8v, golMpi], [filtroGol("OLEO", "PSL55")]);
+    expect(filtros.tipo).toBe("ENCONTRADO");
+    expect(filtros.texto).toContain("óleo PSL55");
+    // Sem filtros no catálogo, não oferece.
+    expect(perguntar("qual oleo do gol 1.0 2010", [gol8v, golMpi], []).opcoes).toHaveLength(0);
+  });
+
+  it("pediu óleo e filtros juntos: manda tudo na mesma resposta", () => {
+    const r = perguntar("oleo e filtros do gol 1.0 2010", [gol8v, golMpi], [filtroGol("OLEO", "PSL55"), filtroGol("AR", "ARL10")]);
+    expect(r.tipo).toBe("ENCONTRADO");
+    expect(r.registros).toHaveLength(1);
+    expect(r.filtros).toHaveLength(2);
+    expect(r.texto).toContain("óleo 5W-40");
+    expect(r.texto).toContain("óleo PSL55; ar do motor ARL10");
+    expect(r.texto).not.toMatch(/Quer saber/);
+    expect(r.opcoes).toHaveLength(0);
+    expect(perguntar("oleo e filtros do gol 1.0 2010", [gol8v, golMpi], []).texto).toMatch(/Filtros: não tenho essa informação/);
+  });
+
+  it("óleo e filtros com motor a escolher: a opção mantém o pedido dos filtros", () => {
+    const r = perguntar("oleo e filtros do hb20 2021", [hb20Div, hb20Turbo]);
+    expect(r.tipo).toBe("ESCLARECER");
+    expect(interpretar(r.opcoes[1].pergunta, catalogo).tambemFiltros).toBe(true);
   });
 });

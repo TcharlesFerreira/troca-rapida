@@ -26,6 +26,8 @@ export interface Interpretacao {
   ano: number | null;
   /** Monta um texto de motor que as regras de filtro entendem: "1.0", "1.0 turbo", "1.6 aspirado"... */
   motor: string | null;
+  /** Pediu o óleo e os filtros juntos ("óleo e filtros do Gol 2015"). */
+  tambemFiltros: boolean;
 }
 
 /** Marcas e modelos que existem no sistema (base de óleo e catálogo de filtros). */
@@ -88,8 +90,19 @@ function acharMotor(frase: string): string | null {
   return partes.length ? partes.join(" ") : null;
 }
 
-function acharAssunto(frase: string): Assunto {
-  if (/\bfiltros?\b/.test(frase)) return "FILTROS";
+function acharAssunto(frase: string): { assunto: Assunto; tambemFiltros: boolean } {
+  // "3,5 L com filtro" fala de quantidade, não pede os filtros.
+  const semQtd = frase.replace(/\b(com|sem|trocando o|troca do|troca o) filtros?\b/g, " ");
+  const pedeFiltros = /\bfiltros?\b/.test(semQtd);
+  // "filtro de óleo" é um filtro, não um pedido do óleo do motor.
+  const resto = semQtd.replace(/\bfiltros? (de |do |da )?(oleo|ar|combustivel|cabine)\b/g, " ").replace(/\bfiltros?\b/g, " ");
+  const principal = assuntoDoOleo(resto);
+  if (!pedeFiltros) return { assunto: principal, tambemFiltros: false };
+  const pedeOleo = principal !== "OLEO" || /\b(oleo|lubrificante)\b/.test(resto);
+  return pedeOleo ? { assunto: principal, tambemFiltros: true } : { assunto: "FILTROS", tambemFiltros: false };
+}
+
+function assuntoDoOleo(frase: string): Assunto {
   if (/\b(quantos? litros?|litragem|capacidade|quantidade|quanto (de )?oleo (vai|leva|cabe|precisa)|leva quanto|vai quanto)\b/.test(frase)) return "CAPACIDADE";
   if (/\b(quando trocar|quando troca|intervalo|a cada|de quanto em quanto|quantos km|validade|durabilidade|prazo)\b/.test(frase)) return "INTERVALO";
   return "OLEO";
@@ -100,13 +113,8 @@ export function interpretar(pergunta: string, catalogo: CatalogoNomes): Interpre
   const { marca, modelo } = acharCarro(frase, catalogo);
   const ano = Number(frase.match(/\b(19[5-9]\d|20[0-4]\d)\b/)?.[1]) || null;
   const saudacao = /^(oi|ola|ajuda|help|bom dia|boa tarde|boa noite|e ai|opa|menu|inicio)\b/.test(frase);
-  return {
-    assunto: !frase || (saudacao && !marca) ? "AJUDA" : acharAssunto(frase),
-    marca,
-    modelo,
-    ano,
-    motor: acharMotor(frase),
-  };
+  const { assunto, tambemFiltros } = !frase || (saudacao && !marca) ? { assunto: "AJUDA" as const, tambemFiltros: false } : acharAssunto(frase);
+  return { assunto, marca, modelo, ano, motor: acharMotor(frase), tambemFiltros };
 }
 
 // ---------------------------------------------------------------- resposta
@@ -258,7 +266,7 @@ export function montarResposta(i: Interpretacao, dados: DadosDoCarro | null, cat
         ...vazia,
         tipo: "ESCLARECER",
         texto: `Qual modelo da ${i.marca}? Estes estão no sistema:`,
-        opcoes: modelos.slice(0, 12).map((m) => ({ rotulo: m, pergunta: `${perguntaBase(i.assunto)} ${m}${i.motor ? ` ${i.motor}` : ""}${i.ano ? ` ${i.ano}` : ""}` })),
+        opcoes: modelos.slice(0, 12).map((m) => ({ rotulo: m, pergunta: `${perguntaBase(i.assunto)} ${m}${i.motor ? ` ${i.motor}` : ""}${i.ano ? ` ${i.ano}` : ""}${i.tambemFiltros ? " e filtros" : ""}` })),
       };
     }
     return { ...vazia, tipo: "NAO_ENTENDI", texto: "Não reconheci o carro na pergunta. Escreva o modelo, o motor e o ano, como nos exemplos:", opcoes: exemplos };
@@ -298,7 +306,26 @@ export function montarResposta(i: Interpretacao, dados: DadosDoCarro | null, cat
   }
 
   const r = servem[0];
-  return { ...vazia, tipo: "ENCONTRADO", texto: textoDoRegistro(carro, r, i.assunto), registros: [r] };
+  const texto = textoDoRegistro(carro, r, i.assunto);
+  // Filtros deste motor: do ano perguntado, ou de todos os anos do registro.
+  const filtrosDoCarro = filtrosDoRegistro(i.ano ? { motor: r.motor, anoInicial: i.ano, anoFinal: i.ano } : r, filtros);
+
+  if (i.tambemFiltros) {
+    if (filtrosDoCarro.length === 0) {
+      return { ...vazia, tipo: "ENCONTRADO", texto: `${texto} Filtros: não tenho essa informação, o catálogo não tem este motor e ano.`, registros: [r] };
+    }
+    return { ...vazia, tipo: "ENCONTRADO", texto: `${texto} F${textoFiltros(filtrosDoCarro).slice(1)}`, registros: [r], filtros: filtrosDoCarro };
+  }
+
+  if (filtrosDoCarro.length === 0) return { ...vazia, tipo: "ENCONTRADO", texto, registros: [r] };
+  const ano = i.ano ?? r.anoFinal;
+  return {
+    ...vazia,
+    tipo: "ENCONTRADO",
+    texto: `${texto} Quer saber os filtros também?`,
+    registros: [r],
+    opcoes: [{ rotulo: "Sim, ver os filtros", pergunta: `Filtros do ${i.modelo} ${r.motor} ${ano}` }],
+  };
 }
 
 function perguntaBase(assunto: Interpretacao["assunto"]): string {
@@ -308,7 +335,7 @@ function perguntaBase(assunto: Interpretacao["assunto"]): string {
 function opcoesDeRegistros(i: Interpretacao, registros: RegistroOleo[]): Resposta["opcoes"] {
   return registros.slice(0, 10).map((r) => {
     const ano = i.ano && i.ano >= r.anoInicial && i.ano <= r.anoFinal ? i.ano : r.anoFinal;
-    return { rotulo: `${r.motor}, ${anos(r)}`, pergunta: `${perguntaBase(i.assunto)} ${i.modelo} ${r.motor} ${ano}` };
+    return { rotulo: `${r.motor}, ${anos(r)}`, pergunta: `${perguntaBase(i.assunto)} ${i.modelo} ${r.motor} ${ano}${i.tambemFiltros ? " e filtros" : ""}` };
   });
 }
 
@@ -332,6 +359,16 @@ function respostaFiltros(i: Interpretacao, carro: string, filtros: AplicacaoFilt
   if (servem.length === 0) {
     return { ...vazia, tipo: "NAO_ENCONTRADO", texto: `Não tenho essa informação: o catálogo não tem filtros do ${carro}${i.motor ? ` ${i.motor}` : ""} ${i.ano}.` };
   }
+  return {
+    ...vazia,
+    tipo: "ENCONTRADO",
+    texto: `${carro}${i.motor ? ` ${i.motor}` : ""} ${i.ano}, ${textoFiltros(servem)}`,
+    filtros: servem,
+  };
+}
+
+/** "filtros indicados pelo catálogo Tecfil: óleo PSL166; ar ARL2338. Fonte: catálogo Tecfil." */
+function textoFiltros(servem: AplicacaoFiltro[]): string {
   const versoes = new Set(servem.map((f) => `${f.motor}|${f.anoInicial}|${f.anoFinal}|${f.observacao ?? ""}`)).size;
   const resumo = (["OLEO", "COMBUSTIVEL", "AR", "AR_CABINE"] as const)
     .map((t) => {
@@ -341,10 +378,5 @@ function respostaFiltros(i: Interpretacao, carro: string, filtros: AplicacaoFilt
     .filter(Boolean)
     .join("; ");
   const fabricante = servem[0].fabricante;
-  return {
-    ...vazia,
-    tipo: "ENCONTRADO",
-    texto: `${carro}${i.motor ? ` ${i.motor}` : ""} ${i.ano}, filtros indicados pelo catálogo ${fabricante}: ${resumo}.${versoes > 1 ? ` O catálogo tem ${versoes} versões para este carro; veja qual é a sua abaixo.` : ""} Fonte: catálogo ${fabricante}.`,
-    filtros: servem,
-  };
+  return `filtros indicados pelo catálogo ${fabricante}: ${resumo}.${versoes > 1 ? ` O catálogo tem ${versoes} versões para este carro; veja qual é a sua abaixo.` : ""} Fonte: catálogo ${fabricante}.`;
 }
