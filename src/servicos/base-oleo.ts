@@ -151,3 +151,13 @@ export async function filtrosIndicados(carro: { marca: string; modelo: string; m
       (!cc || cilindrada(l.motor) === cc),
   );
 }
+
+/** Todas as aplicações do catálogo de filtros para um modelo (tela da base de óleo). */
+export async function filtrosDoModelo(ator: Ator, marca: string, modelo: string) {
+  exigirAdmin(ator);
+  const linhas = await db.filtroAplicacao.findMany({
+    where: { marca: { equals: marca.trim(), mode: "insensitive" } },
+    orderBy: [{ motor: "asc" }, { anoInicial: "asc" }, { tipo: "asc" }],
+  });
+  return linhas.filter((l) => normalizarCodigo(l.modelo) === normalizarCodigo(modelo));
+}

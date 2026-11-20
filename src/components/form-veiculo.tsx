@@ -6,6 +6,7 @@ import { AlertaForm } from "@/components/alerta-form";
 import { BotaoEnviar } from "@/components/botao-enviar";
 import { CampoTexto } from "@/components/campos";
 import { EscolherCliente } from "@/components/escolher-cliente";
+import { FiltrosCadastro } from "@/components/filtros-cadastro";
 import { Alert } from "@/components/ui/alert";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -204,6 +205,14 @@ export function FormVeiculo({ catalogo, veiculo, clienteInicial, placaInicial }:
       {naBase && !temRecomendacao && <Alert variant="aviso">Este motor está na base, mas não para o ano {ano}. O veículo ficará sem recomendação.</Alert>}
       {marca && modelo && motor && !naBase && (
         <Alert variant="info">Este carro não está na base de óleo: o veículo será salvo sem recomendação. Você pode digitar à vontade.</Alert>
+      )}
+
+      {!veiculo && (
+        <FiltrosCadastro
+          carro={{ marca, modelo, motor, ano }}
+          iniciais={{ filtroOleo: v.filtroOleo, filtroCombustivel: v.filtroCombustivel, filtroAr: v.filtroAr, filtroArCabine: v.filtroArCabine }}
+          erros={e}
+        />
       )}
 
       <div>

@@ -39,9 +39,11 @@ export function FiltrosDoCarro({
               {codigos.length > 0 && (
                 <p className="mt-1 text-sm">
                   {doCatalogo[0].fabricante} indica:{" "}
-                  {new Set(doCatalogo.map((i) => i.motor)).size <= 1
+                  {codigos.length === 1 || new Set(doCatalogo.map((i) => i.motor)).size <= 1
                     ? codigos.join(" ou ")
-                    : [...new Set(doCatalogo.map((i) => `${i.codigo} (${i.motor})`))].join(" ou ")}
+                    : codigos
+                        .map((c) => `${c} (${[...new Set(doCatalogo.filter((i) => i.codigo === c).map((i) => i.motor))].join(" / ")})`)
+                        .join(" ou ")}
                 </p>
               )}
               {diferente && <p className="mt-1 text-sm font-semibold">Diferente do catálogo: confira antes de trocar.</p>}

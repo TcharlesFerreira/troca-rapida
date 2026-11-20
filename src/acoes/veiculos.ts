@@ -9,13 +9,18 @@ import { atualizarTelas, mensagemDeErro, tratarErro } from "./utils";
 
 export async function salvarVeiculoAction(_: EstadoForm, formData: FormData): Promise<EstadoForm> {
   const ator = await exigirAdminSessao();
-  const lido = lerFormulario(veiculoSchema, formData);
-  if (!lido.ok) return lido.estado;
-
   const id = String(formData.get("id") ?? "");
+  const lido = lerFormulario(veiculoSchema, formData);
+  // No cadastro novo os filtros vêm junto (sugeridos pelo catálogo); na edição têm formulário próprio.
+  const filtros = id ? null : lerFormulario(filtrosSchema, formData);
+  if (!lido.ok || (filtros && !filtros.ok)) {
+    const erros = { ...(filtros && !filtros.ok ? filtros.estado.erros : {}), ...(!lido.ok ? lido.estado.erros : {}) };
+    return { erro: "Revise os campos destacados.", erros, valores: valoresDe(formData) };
+  }
+
   let destino: string;
   try {
-    const veiculo = id ? await atualizarVeiculo(ator, id, lido.dados) : await criarVeiculo(ator, lido.dados);
+    const veiculo = id ? await atualizarVeiculo(ator, id, lido.dados) : await criarVeiculo(ator, lido.dados, filtros?.ok ? filtros.dados : undefined);
     destino = `/admin/veiculos/${veiculo.id}`;
   } catch (erro) {
     return { ...tratarErro(erro), valores: valoresDe(formData) };

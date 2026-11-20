@@ -1,11 +1,12 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { FiltrosDoModelo } from "@/components/filtros-do-modelo";
 import { RecomendacaoOleo } from "@/components/recomendacao-oleo";
 import { TituloPagina } from "@/components/titulo-pagina";
 import { Alert } from "@/components/ui/alert";
 import { exigirAdminSessao } from "@/lib/sessao";
 import { cn } from "@/lib/utils";
-import { listarMarcasComContagem, listarModelosDaMarca, listarRecomendacoesDoModelo, obterModelo } from "@/servicos/base-oleo";
+import { filtrosDoModelo, listarMarcasComContagem, listarModelosDaMarca, listarRecomendacoesDoModelo, obterModelo } from "@/servicos/base-oleo";
 
 export const metadata: Metadata = { title: "Base de óleo" };
 
@@ -29,11 +30,13 @@ export default async function PaginaBaseOleo({ searchParams }: { searchParams: P
   const marcas = await listarMarcasComContagem(ator);
   const modelos = marcaId ? await listarModelosDaMarca(ator, marcaId) : [];
   const modelo = modeloId ? await obterModelo(ator, modeloId) : null;
-  const recomendacoes = modelo ? await listarRecomendacoesDoModelo(ator, modelo.id) : [];
+  const [recomendacoes, filtros] = modelo
+    ? await Promise.all([listarRecomendacoesDoModelo(ator, modelo.id), filtrosDoModelo(ator, modelo.marca.nome, modelo.nome)])
+    : [[], []];
 
   return (
     <>
-      <TituloPagina titulo="Base de óleo" descricao="Óleo recomendado por marca, modelo, motor e faixa de anos. Todo registro tem fonte; o nível de confiança mostra se as fontes concordam." />
+      <TituloPagina titulo="Base de óleo" descricao="Óleo e filtros por marca, modelo, motor e faixa de anos. Todo registro tem fonte; o nível de confiança mostra se as fontes concordam." />
       <div className="mb-6">
         <Alert variant="aviso">Confira sempre no manual do veículo.</Alert>
       </div>
@@ -71,14 +74,21 @@ export default async function PaginaBaseOleo({ searchParams }: { searchParams: P
           )}
 
           {modelo && (
-            <section aria-labelledby="registros">
-              <h2 id="registros" className="mb-3 text-lg font-semibold">
+            <section aria-labelledby="registros" className="grid gap-6">
+              <h2 id="registros" className="text-2xl font-semibold">
                 {modelo.marca.nome} {modelo.nome}
               </h2>
-              <div className="grid gap-4 xl:grid-cols-2">
-                {recomendacoes.map((r) => (
-                  <RecomendacaoOleo key={r.id} rec={r} titulo={`${r.motor}, ${r.anoInicial === r.anoFinal ? r.anoInicial : `${r.anoInicial} a ${r.anoFinal}`}`} />
-                ))}
+              <div className="grid gap-3">
+                <h3 className="text-lg font-semibold">Óleo</h3>
+                <div className="grid gap-4 xl:grid-cols-2">
+                  {recomendacoes.map((r) => (
+                    <RecomendacaoOleo key={r.id} rec={r} titulo={`${r.motor}, ${r.anoInicial === r.anoFinal ? r.anoInicial : `${r.anoInicial} a ${r.anoFinal}`}`} />
+                  ))}
+                </div>
+              </div>
+              <div className="grid gap-3">
+                <h3 className="text-lg font-semibold">Filtros</h3>
+                <FiltrosDoModelo aplicacoes={filtros} />
               </div>
             </section>
           )}

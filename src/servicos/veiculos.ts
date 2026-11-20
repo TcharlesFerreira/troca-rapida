@@ -85,7 +85,7 @@ export async function obterVeiculo(ator: Ator, id: string) {
   });
 }
 
-export async function criarVeiculo(ator: Ator, dados: VeiculoDados) {
+export async function criarVeiculo(ator: Ator, dados: VeiculoDados, filtros?: FiltrosDados) {
   const empresaId = exigirAdmin(ator);
 
   const cliente = await db.cliente.findFirst({ where: { id: dados.clienteId, empresaId }, select: { id: true } });
@@ -95,7 +95,19 @@ export async function criarVeiculo(ator: Ator, dados: VeiculoDados) {
   if (placaUsada) throw new ErroDeNegocio("Já existe um veículo com esta placa.", "placa");
 
   const recomendacao = await buscarRecomendacao(dados);
-  return db.veiculo.create({ data: { ...dados, empresaId, recomendacaoOleoId: recomendacao?.id ?? null } });
+  return db.veiculo.create({
+    data: {
+      ...dados,
+      empresaId,
+      recomendacaoOleoId: recomendacao?.id ?? null,
+      ...(filtros && {
+        filtroOleo: normalizarCodigoFiltro(filtros.filtroOleo),
+        filtroCombustivel: normalizarCodigoFiltro(filtros.filtroCombustivel),
+        filtroAr: normalizarCodigoFiltro(filtros.filtroAr),
+        filtroArCabine: normalizarCodigoFiltro(filtros.filtroArCabine),
+      }),
+    },
+  });
 }
 
 export async function atualizarVeiculo(ator: Ator, id: string, dados: VeiculoDados) {
