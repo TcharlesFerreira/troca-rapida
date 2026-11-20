@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { redirect } from "next/navigation";
 import { Paginacao } from "@/components/paginacao";
 import { TituloPagina } from "@/components/titulo-pagina";
 import { Button, estiloBotao } from "@/components/ui/button";
@@ -7,7 +8,7 @@ import { Input } from "@/components/ui/input";
 import { Table, Td, Th } from "@/components/ui/table";
 import { formatarCpf } from "@/lib/cpf";
 import { telefoneBR } from "@/lib/formatar";
-import { lerPagina } from "@/lib/paginacao";
+import { lerPagina, paginaForaDoFim } from "@/lib/paginacao";
 import { exigirAdminSessao } from "@/lib/sessao";
 import { listarClientes } from "@/servicos/clientes";
 
@@ -17,6 +18,8 @@ export default async function PaginaClientes({ searchParams }: { searchParams: P
   const ator = await exigirAdminSessao();
   const { q, pagina } = await searchParams;
   const lista = await listarClientes(ator, q, lerPagina(pagina));
+  const ultima = paginaForaDoFim("/admin/clientes", q, lista);
+  if (ultima) redirect(ultima);
   const clientes = lista.itens;
 
   return (

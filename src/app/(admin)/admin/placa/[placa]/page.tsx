@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { redirect } from "next/navigation";
 import { Placa } from "@/components/placa";
 import { OleoSemRecomendacao } from "@/components/oleo-sem-recomendacao";
 import { RecomendacaoOleo } from "@/components/recomendacao-oleo";
@@ -13,7 +14,8 @@ import { formatarCpf } from "@/lib/cpf";
 import { dataBR, kmBR, litrosBR, telefoneBR } from "@/lib/formatar";
 import { exigirAdminSessao } from "@/lib/sessao";
 import { opcoesDeRecomendacao } from "@/servicos/base-oleo";
-import { consultarPlaca } from "@/servicos/busca-placa";
+import { consultarPlaca, sugerirPlacas } from "@/servicos/busca-placa";
+import { formatarPlaca } from "@/lib/placa";
 
 export const metadata: Metadata = { title: "Busca por placa" };
 
@@ -24,10 +26,32 @@ export default async function PaginaPlaca({ params }: { params: Promise<{ placa:
   const r = await consultarPlaca(ator, digitado);
 
   if (r.tipo === "invalida") {
+    // Parte da placa (ex.: "DEM0" ou "1D23"): um carro só abre direto; vários viram uma lista.
+    const parecidas = await sugerirPlacas(ator, digitado, 50);
+    if (parecidas.length === 1) redirect(`/admin/placa/${parecidas[0].placa}`);
+    if (parecidas.length > 1) {
+      return (
+        <>
+          <TituloPagina titulo={`Placas com “${digitado.toUpperCase()}”`} descricao={`${parecidas.length === 50 ? "Mais de 50" : parecidas.length} veículos. Escolha um.`} />
+          <ul className="grid max-w-2xl gap-2">
+            {parecidas.map((v) => (
+              <li key={v.id}>
+                <Link href={`/admin/placa/${v.placa}`} className="flex flex-wrap items-center gap-3 rounded-lg border bg-card p-3 hover:border-primary">
+                  <span className="font-placa text-lg font-bold tracking-widest">{formatarPlaca(v.placa)}</span>
+                  <span>
+                    {v.marca} {v.modelo} · {v.cliente.nome}
+                  </span>
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </>
+      );
+    }
     return (
       <>
         <TituloPagina titulo="Placa inválida" />
-        <Alert variant="erro">“{digitado}” não parece uma placa. Use ABC1234 ou ABC1D23, com ou sem hífen.</Alert>
+        <Alert variant="erro">“{digitado}” não parece uma placa e nenhum veículo tem esse trecho na placa. Use ABC1234 ou ABC1D23, com ou sem hífen.</Alert>
       </>
     );
   }

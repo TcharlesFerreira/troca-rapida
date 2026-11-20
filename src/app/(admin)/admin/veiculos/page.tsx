@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { redirect } from "next/navigation";
 import { Placa } from "@/components/placa";
 import { Paginacao } from "@/components/paginacao";
 import { TituloPagina } from "@/components/titulo-pagina";
@@ -7,7 +8,7 @@ import { Button, estiloBotao } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Table, Td, Th } from "@/components/ui/table";
 import { kmBR } from "@/lib/formatar";
-import { lerPagina } from "@/lib/paginacao";
+import { lerPagina, paginaForaDoFim } from "@/lib/paginacao";
 import { exigirAdminSessao } from "@/lib/sessao";
 import { listarVeiculos } from "@/servicos/veiculos";
 
@@ -17,6 +18,8 @@ export default async function PaginaVeiculos({ searchParams }: { searchParams: P
   const ator = await exigirAdminSessao();
   const { q, pagina } = await searchParams;
   const lista = await listarVeiculos(ator, q, lerPagina(pagina));
+  const ultima = paginaForaDoFim("/admin/veiculos", q, lista);
+  if (ultima) redirect(ultima);
   const veiculos = lista.itens;
 
   return (
