@@ -1,9 +1,10 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { FiltrosDoModelo } from "@/components/filtros-do-modelo";
+import { FiltrosDoRegistro } from "@/components/filtros-do-registro";
 import { RecomendacaoOleo } from "@/components/recomendacao-oleo";
 import { TituloPagina } from "@/components/titulo-pagina";
 import { Alert } from "@/components/ui/alert";
+import { filtrosDoRegistro } from "@/lib/filtros";
 import { exigirAdminSessao } from "@/lib/sessao";
 import { cn } from "@/lib/utils";
 import { filtrosDoModelo, listarMarcasComContagem, listarModelosDaMarca, listarRecomendacoesDoModelo, obterModelo } from "@/servicos/base-oleo";
@@ -74,21 +75,16 @@ export default async function PaginaBaseOleo({ searchParams }: { searchParams: P
           )}
 
           {modelo && (
-            <section aria-labelledby="registros" className="grid gap-6">
-              <h2 id="registros" className="text-2xl font-semibold">
+            <section aria-labelledby="registros">
+              <h2 id="registros" className="mb-3 text-lg font-semibold">
                 {modelo.marca.nome} {modelo.nome}
               </h2>
-              <div className="grid gap-3">
-                <h3 className="text-lg font-semibold">Óleo</h3>
-                <div className="grid gap-4 xl:grid-cols-2">
-                  {recomendacoes.map((r) => (
-                    <RecomendacaoOleo key={r.id} rec={r} titulo={`${r.motor}, ${r.anoInicial === r.anoFinal ? r.anoInicial : `${r.anoInicial} a ${r.anoFinal}`}`} />
-                  ))}
-                </div>
-              </div>
-              <div className="grid gap-3">
-                <h3 className="text-lg font-semibold">Filtros</h3>
-                <FiltrosDoModelo aplicacoes={filtros} />
+              <div className="grid gap-4 xl:grid-cols-2">
+                {recomendacoes.map((r) => (
+                  <RecomendacaoOleo key={r.id} rec={r} titulo={`${r.motor}, ${r.anoInicial === r.anoFinal ? r.anoInicial : `${r.anoInicial} a ${r.anoFinal}`}`}>
+                    <FiltrosDoRegistro aplicacoes={filtrosDoRegistro(r, filtros)} />
+                  </RecomendacaoOleo>
+                ))}
               </div>
             </section>
           )}

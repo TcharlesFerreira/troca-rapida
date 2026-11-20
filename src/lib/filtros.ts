@@ -49,3 +49,34 @@ export function textoFiltro(codigo: string | null | undefined): string {
   if (codigo === INTERNO) return "Interno (no tanque)";
   return codigo;
 }
+
+/** "1.0 Fire Evo 8V" -> "1.0". */
+export const cilindradaDoMotor = (motor: string) => motor.match(/\d[.,]\d/)?.[0].replace(",", ".") ?? null;
+
+const TURBO = /turbo|\btsi\b|\d{3}\s?tsi|tgdi|t-?jet|ecoboost|\bt\d{3}\b|\b\d{3}t\b/i;
+
+/** true = turbo, false = aspirado, null = o nome não diz. */
+export function motorTurbo(texto: string): boolean | null {
+  if (/aspirado/i.test(texto)) return false;
+  return TURBO.test(texto) ? true : null;
+}
+
+/**
+ * Linhas do catálogo de filtros que valem para um registro da base de óleo do mesmo modelo:
+ * faixas de anos que se cruzam, a mesma cilindrada (quando os dois motores dizem) e, se o
+ * registro diz "turbo" ou "aspirado", só as versões do catálogo do mesmo tipo.
+ * Os nomes de motor dos catálogos não batem letra por letra com os da base de óleo.
+ */
+export function filtrosDoRegistro<T extends { motor: string; anoInicial: number; anoFinal: number; observacao?: string | null }>(
+  registro: { motor: string; anoInicial: number; anoFinal: number },
+  linhas: T[],
+): T[] {
+  const cc = cilindradaDoMotor(registro.motor);
+  const turbo = motorTurbo(registro.motor);
+  return linhas.filter((l) => {
+    if (l.anoInicial > registro.anoFinal || l.anoFinal < registro.anoInicial) return false;
+    const ccLinha = cilindradaDoMotor(l.motor);
+    if (cc && ccLinha && cc !== ccLinha) return false;
+    return turbo === null || (motorTurbo(`${l.motor} ${l.observacao ?? ""}`) ?? false) === turbo;
+  });
+}

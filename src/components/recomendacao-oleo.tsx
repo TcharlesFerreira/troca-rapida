@@ -62,7 +62,7 @@ function resumoDaFonte(f: RecomendacaoView["fontes"][number]): string {
 }
 
 /** Óleo recomendado pela base, com fonte e confiança sempre visíveis. */
-export function RecomendacaoOleo({ rec, titulo = "Óleo recomendado" }: { rec: RecomendacaoView; titulo?: string }) {
+export function RecomendacaoOleo({ rec, titulo = "Óleo recomendado", children }: { rec: RecomendacaoView; titulo?: string; children?: React.ReactNode }) {
   return (
     <section aria-label={titulo} className="grid gap-4 rounded-lg border bg-card p-5">
       <div className="flex flex-wrap items-center justify-between gap-2">
@@ -102,6 +102,8 @@ export function RecomendacaoOleo({ rec, titulo = "Óleo recomendado" }: { rec: R
           ))}
         </ul>
       </div>
+
+      {children}
 
       <p className="text-sm font-semibold">Confira sempre no manual do veículo.</p>
     </section>
