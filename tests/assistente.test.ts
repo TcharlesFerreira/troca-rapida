@@ -1,5 +1,5 @@
 import { describe, it, expect } from "vitest";
-import { interpretar, montarResposta, normalizarTexto, type AplicacaoFiltro, type CatalogoNomes, type RegistroOleo } from "@/lib/assistente";
+import { interpretar, montarResposta, normalizarTexto, type AplicacaoFiltro, type CatalogoNomes, type RegistroOleo, type VeiculoHistorico } from "@/lib/assistente";
 
 const catalogo: CatalogoNomes = [
   { marca: "Volkswagen", modelos: ["Gol", "Polo", "T-Cross"] },
@@ -230,5 +230,68 @@ describe("montarResposta: regras anti-invenção", () => {
     const r = perguntar("oleo e filtros do hb20 2021", [hb20Div, hb20Turbo]);
     expect(r.tipo).toBe("ESCLARECER");
     expect(interpretar(r.opcoes[1].pergunta, catalogo).tambemFiltros).toBe(true);
+  });
+
+  describe("histórico da oficina quando a base não tem o carro", () => {
+    const carro = (motor: string, ano: number, viscosidades: string[], extra: Partial<VeiculoHistorico> = {}): VeiculoHistorico => ({
+      motor,
+      ano,
+      capacidadeOleoL: null,
+      filtroOleo: null,
+      filtroCombustivel: null,
+      filtroAr: null,
+      filtroArCabine: null,
+      trocas: viscosidades.map((v) => ({ oleoViscosidade: v, oleoEspecificacao: "API SN", quantidadeLitros: 3.6 })),
+      ...extra,
+    });
+    const frota = [
+      carro("1.6 16V", 2018, ["5W-30", "5W-30"], { filtroOleo: "PSL818", filtroAr: "NAO_TEM" }),
+      carro("1.6 Flex", 2019, ["5W-30", "5W-40"], { filtroOleo: "PSL 818" }),
+      carro("1.0 12V", 2018, ["0W-20"]),
+    ];
+    const civic = (texto: string, veiculos = frota) => montarResposta(interpretar(texto, catalogo), { registros: [], filtros: [], historico: veiculos }, catalogo);
+
+    it("mostra o que a oficina usou, só nos carros do motor e ano pedidos, e diz que não é do fabricante", () => {
+      const r = civic("qual oleo do civic 1.6 2018");
+      expect(r.tipo).toBe("HISTORICO");
+      expect(r.faltaNaBase).toBe(true);
+      expect(r.registros).toHaveLength(0);
+      expect(r.historico).toMatchObject({ carros: 1, trocas: 2 });
+      expect(r.texto).toContain("A base de óleo não tem o Honda Civic 1.6 2018");
+      expect(r.texto).toContain("5W-30 (2 vezes)");
+      expect(r.texto).not.toContain("0W-20");
+      expect(r.texto).toMatch(/não a recomendação do fabricante/);
+    });
+
+    it("sem ano: junta os carros do motor e mostra a contagem de cada óleo", () => {
+      const r = civic("oleo do civic 1.6");
+      expect(r.historico).toMatchObject({ carros: 2, trocas: 4, anoInicial: 2018, anoFinal: 2019 });
+      expect(r.texto).toContain("5W-30 (3 vezes), 5W-40 (1 vez)");
+      // "PSL818" e "PSL 818" são o mesmo filtro.
+      expect(r.historico?.filtros.OLEO).toHaveLength(1);
+      expect(r.historico?.filtros.OLEO[0].vezes).toBe(2);
+    });
+
+    it("filtros anotados nos carros, com 'não tem' escrito por extenso", () => {
+      const r = civic("filtros do civic 1.6 2018");
+      expect(r.tipo).toBe("HISTORICO");
+      expect(r.texto).toContain("óleo PSL818 (1 carro)");
+      expect(r.texto).toContain("ar do motor não tem (1 carro)");
+      expect(r.texto).not.toMatch(/Óleo usado/);
+    });
+
+    it("nenhum carro parecido na oficina: continua dizendo que não tem e anota o pedido", () => {
+      const r = civic("oleo do civic 2.0 2022");
+      expect(r.tipo).toBe("NAO_ENCONTRADO");
+      expect(r.faltaNaBase).toBe(true);
+      expect(r.texto).toMatch(/não tenho essa informação/i);
+    });
+
+    it("carro que está na base não usa o histórico nem vira pedido", () => {
+      const r = montarResposta(interpretar("oleo do gol 1.0 2010", catalogo), { registros: [gol8v, golMpi], filtros: [], historico: frota }, catalogo);
+      expect(r.tipo).toBe("ENCONTRADO");
+      expect(r.faltaNaBase).toBe(false);
+      expect(r.historico).toBeNull();
+    });
   });
 });

@@ -57,6 +57,7 @@ model Empresa {
   clientes Cliente[]
   veiculos Veiculo[]
   ordens   OrdemServico[]
+  pedidosCarro PedidoCarro[]
 
   @@map("empresas")
 }
@@ -332,3 +333,25 @@ model TentativaLogin {
   @@map("tentativas_login")
 }
 
+
+/// Carro que alguém perguntou no assistente e a base de óleo não tinha.
+/// A oficina vê os mais pedidos e cadastra a partir do manual da montadora.
+/// Guarda só marca, modelo, motor e ano (nunca o texto da pergunta).
+model PedidoCarro {
+  id          String   @id @default(cuid())
+  empresaId   String
+  marca       String   @default("") // vazio quando o modelo não está em nenhuma lista do sistema
+  modelo      String
+  motor       String   @default("")
+  ano         Int      @default(0) // 0 = não informado
+  vezes       Int      @default(1)
+  resolvido   Boolean  @default(false)
+  criadoEm    DateTime @default(now())
+  ultimoEm    DateTime @default(now())
+
+  empresa Empresa @relation(fields: [empresaId], references: [id], onDelete: Cascade)
+
+  @@unique([empresaId, marca, modelo, motor, ano])
+  @@index([empresaId, resolvido])
+  @@map("pedidos_carro")
+}

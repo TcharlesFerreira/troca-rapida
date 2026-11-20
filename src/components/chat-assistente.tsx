@@ -18,6 +18,8 @@ const BOAS_VINDAS: Resposta = {
   registros: [],
   filtros: [],
   opcoes: EXEMPLOS.map((p) => ({ rotulo: p, pergunta: p })),
+  historico: null,
+  faltaNaBase: false,
 };
 
 const anos = (r: { anoInicial: number; anoFinal: number }) => (r.anoInicial === r.anoFinal ? `${r.anoInicial}` : `${r.anoInicial} a ${r.anoFinal}`);
@@ -63,9 +65,11 @@ export function ChatAssistente() {
             </li>
           ) : (
             <li key={m.id} className="grid max-w-full gap-3">
-              <div className={cn("max-w-prose rounded-2xl rounded-bl-sm border bg-card px-4 py-3", m.resposta.tipo === "NAO_ENCONTRADO" && "border-accent")}>
+              <div className={cn("max-w-prose rounded-2xl rounded-bl-sm border bg-card px-4 py-3", m.resposta.tipo === "NAO_ENCONTRADO" && "border-accent", m.resposta.tipo === "HISTORICO" && "border-dashed border-primary")}>
                 <span className="sr-only">Assistente: </span>
+                {m.resposta.tipo === "HISTORICO" && <p className="mb-1 text-sm font-semibold text-muted-foreground">Histórico da sua oficina</p>}
                 {m.resposta.texto}
+                {m.resposta.faltaNaBase && <p className="mt-2 text-sm text-muted-foreground">Anotei este carro na lista de pedidos para cadastrar na base.</p>}
               </div>
 
               {m.resposta.registros.length > 0 && (

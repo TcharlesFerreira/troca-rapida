@@ -6,12 +6,14 @@
  *  1. Nunca inventar: todo valor do texto sai de um registro da base, que vai junto com fonte e confiança.
  *  2. Sem registro, diz que não tem a informação.
  *  3. Fontes que discordam: mostra o valor de cada uma e não escolhe.
+ *  4. Sem registro na base, pode mostrar o histórico da PRÓPRIA oficina (o que ela já usou naquele
+ *     carro), sempre dito como histórico e não como recomendação do fabricante.
  *
  * O "entender" (interpretar) fica separado do "responder" (montarResposta): para trocar as
  * palavras-chave por um modelo de linguagem no futuro, basta outra função que devolva a mesma Interpretacao.
  */
 import { dominioBase } from "./base-oleo-json";
-import { filtrosDoRegistro } from "./filtros";
+import { filtrosDoRegistro, INTERNO, NAO_TEM } from "./filtros";
 import { kmBR, litrosBR } from "./formatar";
 import { ROTULO_CONFIANCA, type Confianca, type TipoFonte } from "./tipos";
 
@@ -162,14 +164,47 @@ export interface AplicacaoFiltro {
   observacao: string | null;
 }
 
+/** Um carro da própria oficina com as trocas de óleo registradas nele. */
+export interface VeiculoHistorico {
+  motor: string;
+  ano: number;
+  capacidadeOleoL: number | null;
+  filtroOleo: string | null;
+  filtroCombustivel: string | null;
+  filtroAr: string | null;
+  filtroArCabine: string | null;
+  trocas: Array<{ oleoViscosidade: string; oleoEspecificacao: string | null; quantidadeLitros: number | null }>;
+}
+
 export interface DadosDoCarro {
   /** Registros de óleo do modelo (todos os motores e anos). */
   registros: RegistroOleo[];
   /** Aplicações do catálogo de filtros do modelo. */
   filtros: AplicacaoFiltro[];
+  /** Carros deste modelo cadastrados na oficina de quem pergunta. */
+  historico?: VeiculoHistorico[];
 }
 
-export type TipoResposta = "AJUDA" | "NAO_ENTENDI" | "NAO_ENCONTRADO" | "ESCLARECER" | "ENCONTRADO";
+export interface Contagem {
+  valor: string;
+  vezes: number;
+}
+
+/** O que a oficina já usou nos carros parecidos (mesmo modelo, e motor e ano quando ditos). */
+export interface ResumoHistorico {
+  carros: number;
+  trocas: number;
+  anoInicial: number;
+  anoFinal: number;
+  viscosidades: Contagem[];
+  especificacoes: Contagem[];
+  quantidades: Contagem[];
+  /** Capacidade anotada no cadastro do carro. */
+  capacidades: Contagem[];
+  filtros: Record<AplicacaoFiltro["tipo"], Contagem[]>;
+}
+
+export type TipoResposta = "AJUDA" | "NAO_ENTENDI" | "NAO_ENCONTRADO" | "ESCLARECER" | "ENCONTRADO" | "HISTORICO";
 
 export interface Resposta {
   tipo: TipoResposta;
@@ -179,6 +214,10 @@ export interface Resposta {
   filtros: AplicacaoFiltro[];
   /** Botões de resposta rápida (ex.: escolher o motor). */
   opcoes: Array<{ rotulo: string; pergunta: string }>;
+  /** Histórico da própria oficina, quando a base não tem o carro. */
+  historico: ResumoHistorico | null;
+  /** A base não tem o que foi pedido: entra na lista de carros pedidos. */
+  faltaNaBase: boolean;
 }
 
 const anos = (r: { anoInicial: number; anoFinal: number }) => (r.anoInicial === r.anoFinal ? `${r.anoInicial}` : `${r.anoInicial} a ${r.anoFinal}`);
@@ -247,7 +286,7 @@ function registrosQueServem(i: Interpretacao, registros: RegistroOleo[]): Regist
 }
 
 export function montarResposta(i: Interpretacao, dados: DadosDoCarro | null, catalogo: CatalogoNomes): Resposta {
-  const vazia = { registros: [], filtros: [], opcoes: [] };
+  const vazia = { registros: [], filtros: [], opcoes: [], historico: null, faltaNaBase: false };
   const exemplos = EXEMPLOS.map((p) => ({ rotulo: p, pergunta: p }));
 
   if (i.assunto === "AJUDA") {
@@ -275,7 +314,17 @@ export function montarResposta(i: Interpretacao, dados: DadosDoCarro | null, cat
   const carro = `${i.marca} ${i.modelo}`;
   const registros = dados?.registros ?? [];
   const filtros = dados?.filtros ?? [];
+  const resposta = respostaDaBase(i, carro, registros, filtros);
+  if (resposta.tipo !== "NAO_ENCONTRADO") return resposta;
 
+  // A base não tem: mostra o que a própria oficina já usou, se tiver.
+  const historico = resumirHistorico(i, dados?.historico ?? []);
+  if (historico) return { ...resposta, tipo: "HISTORICO", texto: textoHistorico(i, carro, historico), historico, faltaNaBase: true };
+  return { ...resposta, faltaNaBase: true };
+}
+
+function respostaDaBase(i: Interpretacao, carro: string, registros: RegistroOleo[], filtros: AplicacaoFiltro[]): Resposta {
+  const vazia = { registros: [], filtros: [], opcoes: [], historico: null, faltaNaBase: false };
   if (i.assunto === "FILTROS") return respostaFiltros(i, carro, filtros);
 
   if (registros.length === 0) {
@@ -306,7 +355,7 @@ export function montarResposta(i: Interpretacao, dados: DadosDoCarro | null, cat
   }
 
   const r = servem[0];
-  const texto = textoDoRegistro(carro, r, i.assunto);
+  const texto = textoDoRegistro(carro, r, i.assunto as Assunto);
   // Filtros deste motor: do ano perguntado, ou de todos os anos do registro.
   const filtrosDoCarro = filtrosDoRegistro(i.ano ? { motor: r.motor, anoInicial: i.ano, anoFinal: i.ano } : r, filtros);
 
@@ -328,6 +377,89 @@ export function montarResposta(i: Interpretacao, dados: DadosDoCarro | null, cat
   };
 }
 
+const ROTULO_CODIGO = (codigo: string) => (codigo === NAO_TEM ? "não tem" : codigo === INTERNO ? "interno" : codigo);
+
+/** Conta valores iguais. Com "chave", junta grafias diferentes do mesmo código ("TM 3" e "TM3") e mostra a mais usada. */
+function contar(valores: Array<string | null | undefined>, chave: (v: string) => string = (v) => v): Contagem[] {
+  const grupos = new Map<string, Map<string, number>>();
+  for (const bruto of valores) {
+    const v = bruto?.trim();
+    if (!v) continue;
+    const grafias = grupos.get(chave(v)) ?? new Map<string, number>();
+    grafias.set(v, (grafias.get(v) ?? 0) + 1);
+    grupos.set(chave(v), grafias);
+  }
+  return [...grupos.values()]
+    .map((grafias) => {
+      const [valor] = [...grafias].sort((a, b) => b[1] - a[1])[0];
+      return { valor, vezes: [...grafias.values()].reduce((a, b) => a + b, 0) };
+    })
+    .sort((a, b) => b.vezes - a.vezes || a.valor.localeCompare(b.valor));
+}
+
+const chaveCodigo = (v: string) => v.toUpperCase().replace(/[^A-Z0-9/]/g, "");
+const codigos = (lista: Array<string | null>) => contar(lista.map((c) => (c ? ROTULO_CODIGO(c) : c)), chaveCodigo);
+
+/** Resume os carros da oficina que batem com o modelo, motor e ano perguntados. Nulo se não tiver nenhum. */
+export function resumirHistorico(i: Interpretacao, veiculos: VeiculoHistorico[]): ResumoHistorico | null {
+  const consulta = { motor: i.motor ?? "", anoInicial: i.ano ?? 0, anoFinal: i.ano ?? 9999 };
+  const servem = filtrosDoRegistro(
+    consulta,
+    veiculos.map((v) => ({ ...v, anoInicial: v.ano, anoFinal: v.ano })),
+  );
+  if (servem.length === 0) return null;
+  const trocas = servem.flatMap((v) => v.trocas);
+  return {
+    carros: servem.length,
+    trocas: trocas.length,
+    anoInicial: Math.min(...servem.map((v) => v.ano)),
+    anoFinal: Math.max(...servem.map((v) => v.ano)),
+    viscosidades: contar(trocas.map((t) => t.oleoViscosidade)),
+    especificacoes: contar(trocas.map((t) => t.oleoEspecificacao)),
+    quantidades: contar(trocas.map((t) => (t.quantidadeLitros ? litrosBR(t.quantidadeLitros) : null))),
+    capacidades: contar(servem.map((v) => (v.capacidadeOleoL ? litrosBR(v.capacidadeOleoL) : null))),
+    filtros: {
+      OLEO: codigos(servem.map((v) => v.filtroOleo)),
+      COMBUSTIVEL: codigos(servem.map((v) => v.filtroCombustivel)),
+      AR: codigos(servem.map((v) => v.filtroAr)),
+      AR_CABINE: codigos(servem.map((v) => v.filtroArCabine)),
+    },
+  };
+}
+
+const vezes = (lista: Contagem[], unidade: [string, string]) =>
+  lista
+    .slice(0, 3)
+    .map((c) => `${c.valor} (${c.vezes} ${c.vezes === 1 ? unidade[0] : unidade[1]})`)
+    .join(", ");
+
+function textoHistorico(i: Interpretacao, carro: string, h: ResumoHistorico): string {
+  const pedido = `${carro}${i.motor ? ` ${i.motor}` : ""}${i.ano ? ` ${i.ano}` : ""}`;
+  const faixa = h.anoInicial === h.anoFinal ? `${h.anoInicial}` : `${h.anoInicial} a ${h.anoFinal}`;
+  const partes: string[] = [];
+  const querOleo = i.assunto !== "FILTROS";
+  const querFiltros = i.assunto === "FILTROS" || i.tambemFiltros;
+  if (querOleo) {
+    if (h.trocas === 0) partes.push("nenhuma troca de óleo registrada neles ainda");
+    else {
+      if (i.assunto !== "CAPACIDADE") partes.push(`óleo usado: ${vezes(h.viscosidades, ["vez", "vezes"])}`);
+      if (i.assunto !== "CAPACIDADE" && h.especificacoes.length) partes.push(`norma: ${vezes(h.especificacoes, ["vez", "vezes"])}`);
+      if (h.quantidades.length) partes.push(`quantidade colocada: ${vezes(h.quantidades, ["vez", "vezes"])}`);
+      else if (i.assunto === "CAPACIDADE") partes.push("a quantidade não foi anotada nas trocas");
+    }
+    if (h.capacidades.length && i.assunto === "CAPACIDADE") partes.push(`capacidade anotada no cadastro: ${vezes(h.capacidades, ["carro", "carros"])}`);
+  }
+  if (querFiltros) {
+    const filtros = (["OLEO", "COMBUSTIVEL", "AR", "AR_CABINE"] as const)
+      .filter((t) => h.filtros[t].length)
+      .map((t) => `${ROTULO_FILTRO_CURTO[t]} ${vezes(h.filtros[t], ["carro", "carros"])}`);
+    partes.push(filtros.length ? `filtros anotados: ${filtros.join("; ")}` : "nenhum filtro anotado nesses carros");
+  }
+  const carros = `${h.carros} ${h.carros === 1 ? "carro" : "carros"} (${faixa})`;
+  const trocas = h.trocas ? `, ${h.trocas} ${h.trocas === 1 ? "troca" : "trocas"} de óleo` : "";
+  return `A base de óleo não tem o ${pedido}. No histórico da sua oficina há ${carros}${trocas}. ${partes.join(". ")}. Isto é o que a oficina já usou, não a recomendação do fabricante: confira no manual do veículo.`.replace(/\. (\p{Ll})/gu, (_, l: string) => `. ${l.toUpperCase()}`);
+}
+
 function perguntaBase(assunto: Interpretacao["assunto"]): string {
   return assunto === "FILTROS" ? "Filtros do" : assunto === "CAPACIDADE" ? "Quantos litros leva o" : assunto === "INTERVALO" ? "Quando trocar o óleo do" : "Qual óleo do";
 }
@@ -342,7 +474,7 @@ function opcoesDeRegistros(i: Interpretacao, registros: RegistroOleo[]): Respost
 const ROTULO_FILTRO_CURTO = { OLEO: "óleo", COMBUSTIVEL: "combustível", AR: "ar do motor", AR_CABINE: "ar da cabine" } as const;
 
 function respostaFiltros(i: Interpretacao, carro: string, filtros: AplicacaoFiltro[]): Resposta {
-  const vazia = { registros: [], filtros: [], opcoes: [] };
+  const vazia = { registros: [], filtros: [], opcoes: [], historico: null, faltaNaBase: false };
   if (filtros.length === 0) {
     return { ...vazia, tipo: "NAO_ENCONTRADO", texto: `Não tenho essa informação: o ${carro} ainda não foi conferido no catálogo de filtros.` };
   }

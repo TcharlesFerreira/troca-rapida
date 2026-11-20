@@ -35,6 +35,7 @@ async function limparDemo(db: Prisma.TransactionClient, empresaId: string) {
   await db.ordemServico.deleteMany({ where: { veiculoId: { in: ids } } }); // troca e histórico vão junto
   await db.veiculo.deleteMany({ where: { empresaId } });
   await db.cliente.deleteMany({ where: { empresaId } });
+  await db.pedidoCarro.deleteMany({ where: { empresaId } });
 }
 
 export interface ResultadoDemo {
