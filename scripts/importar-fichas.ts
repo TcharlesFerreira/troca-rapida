@@ -14,6 +14,7 @@ import { PrismaClient, type Confianca } from "@prisma/client";
 import { mkdirSync, readFileSync, writeFileSync, existsSync, renameSync } from "node:fs";
 import { join } from "node:path";
 import { normalizarCodigo } from "../src/lib/oleo";
+import { MESES_PROXIMA_TROCA, somarMeses } from "../src/lib/datas";
 
 interface Ficha {
   arquivo: string;
@@ -263,6 +264,7 @@ async function main() {
                       quantidadeLitros: f.capacidadeL,
                       filtroTrocado: !!f.filtroOleo,
                       proximaTrocaKm: f.proximaTrocaKm,
+                      proximaTrocaData: somarMeses(new Date(`${f.data}T12:00:00`), MESES_PROXIMA_TROCA),
                       recomendacaoOleoId: c.rec?.id ?? null,
                       divergiuDaRecomendacao: c.situacao === "DIFERENTE",
                     },

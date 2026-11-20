@@ -58,6 +58,10 @@ Se preferir não usar o `setup:env`, copie `.env.example` para `.env` e preencha
 
 Cada carro guarda os filtros que a oficina usa (óleo, combustível, ar do motor e ar da cabine). A tela do veículo mostra, ao lado, o que o catálogo do fabricante indica e avisa quando o código é diferente. O catálogo fica em `data/filtros/*.json` (hoje, Tecfil), carregado pelo seed; cada aplicação guarda a página consultada e a data. Os códigos são comparados sem espaço/hífen, e o "GL" das fichas antigas é lido como o "GI" da Tecfil.
 
+### Próxima troca
+
+Ao registrar a troca, a data da próxima vem preenchida com **6 meses** depois da entrada e a quilometragem sai da viscosidade (0W20 a 5W40: +10 mil km; 10W30 a 15W40: +7 mil; 20W50 a 25W60: +5 mil). A oficina pode mudar as duas. Trocas antigas sem data podem ser completadas com `npx tsx scripts/preencher-proxima-troca.ts --gravar` (sem `--gravar`, só mostra quantas são); o importador de fichas já grava a data.
+
 ### Empresas
 
 Cada empresa tem os próprios clientes, veículos e ordens de serviço. CPF e placa são únicos **dentro** da empresa: o mesmo carro pode ter cadastro em duas oficinas, e uma não vê o da outra. Todo serviço de administrador filtra pelo `empresaId` da sessão (`exigirAdmin` devolve esse id), e `tests/isolamento-empresa.test.ts` quebra se algum esquecer. A base de óleo é a mesma para todas.
